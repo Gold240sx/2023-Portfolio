@@ -1,15 +1,18 @@
 import React from "react"
-import { navbar as Navbar } from "../components/navbar"
 
 const home = () => {
     return (
         <div>
-            <Navbar />
-            <section className="container m-auto w-full h-screen flex justify-center align-middle">
-                <div className="card bg-gray-200 w-1/2 h-1/2 rounded-lg flex my-auto prose">
-                    <h1 className="flex text-center m-auto w-fit bg-gray-200 h-fit">
-                        This is a home screen
-                    </h1>
+            <section
+                className="container m-auto mt-[80px] flex w-full justify-center border-2 border-dashed border-red-500 align-middle"
+                style={{ height: "calc(100vh - 80px)" }}
+            >
+                <div className="my-auto min-h-fit border">
+                    <div className="card prose flex h-1/2 rounded-lg bg-gray-200">
+                        <h1 className="m-auto flex w-full bg-gray-200 text-center">
+                            This is a home screen
+                        </h1>
+                    </div>
                 </div>
             </section>
         </div>

@@ -35,8 +35,10 @@ const signIn = () => {
 
     return (
         <>
-            <Navbar />
-            <section className="max-w-[700px] mx-auto my-16 p-4">
+            <section
+                className="mx-auto mt-[80px] flex  w-full max-w-[700px] flex-col items-center  justify-center border-2 border-dashed border-red-500 p-4 align-middle"
+                style={{ height: "calc(100vh - 80px)" }}
+            >
                 <p
                     ref={errRef}
                     className={error ? "errmsg" : "offscreen"}
@@ -44,16 +46,16 @@ const signIn = () => {
                 >
                     {error}
                 </p>
-                <div>
-                    <h1 className="text-3xl mb-4">Sign In</h1>
+                <div className="align-left mr-auto w-full">
+                    <h1 className="mb-4 text-left  text-4xl">Sign In</h1>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="w-full">
                     <div className="mb-4">
                         <label>Email Address</label>
                         <input
                             type="email"
                             id="email"
-                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            className="w-full rounded-lg border border-gray-300 p-2"
                             ref={userRef}
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
@@ -66,7 +68,7 @@ const signIn = () => {
                             type="password"
                             id="password"
                             autoComplete="off"
-                            className="w-full p-2 border border-gray-300 rounded-lg"
+                            className="w-full rounded-lg border border-gray-300 p-2"
                             onChange={(e) => setPassword(e.target.value)}
                             value={password}
                             required
@@ -85,13 +87,13 @@ const signIn = () => {
                         </p>
                     </div>
                     {!isPending && (
-                        <button className="submit bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer">
+                        <button className="submit cursor-pointer rounded-lg bg-blue-500 px-4 py-2 text-white">
                             Sign In
                         </button>
                     )}
                     {isPending && (
                         <button
-                            className="btn bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer"
+                            className="btn cursor-pointer rounded-lg bg-blue-500 px-4 py-2 text-white"
                             disabled
                         >
                             loading...
