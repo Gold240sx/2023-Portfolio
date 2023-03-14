@@ -40,7 +40,7 @@ function App({ children }) {
 
     return (
         <>
-            <main className=" relative h-auto w-auto bg-slate-50 from-[#0D243B] to-[#0A1120] dark:bg-gradient-to-bl dark:text-white">
+            <main className=" relative h-full w-auto bg-slate-50 from-[#0D243B] to-[#0A1120] dark:bg-gradient-to-bl dark:text-white">
                 {authIsReady && (
                     <BrowserRouter>
                         <Navbar />

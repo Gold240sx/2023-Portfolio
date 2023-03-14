@@ -1,7 +1,7 @@
 import React from "react"
 import { Cursor, useTypewriter } from "react-simple-typewriter"
-import heroImage from "../assets/Images/Hero Image.png"
-import heroRing from "../assets/Images/Hero Ring.png"
+import heroImage from "../../assets/Images/Hero Image.png"
+import heroRing from "../../assets/Images/Hero Ring.png"
 import { motion } from "framer-motion"
 
 export default function Hero() {
