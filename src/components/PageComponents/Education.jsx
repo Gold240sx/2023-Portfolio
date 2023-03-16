@@ -1,9 +1,23 @@
-import { Fragment } from "react"
+import { Fragment, useState } from "react"
 import { Tab } from "@headlessui/react"
+import * as te from "tw-elements"
 import IrondalePhoto from "../../assets/Images/Irondale.jpg"
 import PerpichPhoto from "../../assets/Images/Perpich.jpeg"
 import ArtCenterPhoto from "../../assets/Images/ArtCenter.jpeg"
 import CCSPhoto from "../../assets/Images/CCS.jpg"
+import Next from "../../assets/Images/coursePreviews/next.jpg"
+import Supabase from "../../assets/Images/coursePreviews/Supabase.jpg"
+import Tailwind from "../../assets/Images/coursePreviews/Tailwind.jpg"
+import Email from "../../assets/Images/coursePreviews/email.jpg"
+import D3 from "../../assets/Images/coursePreviews/d3.jpg"
+import React from "../../assets/Images/coursePreviews/react-firebase.jpg"
+import VanillaJS from "../../assets/Images/coursePreviews/vanillaJS.jpg"
+import OpenAi from "../../assets/Images/coursePreviews/openAi.jpg"
+import ReactNative from "../../assets/Images/coursePreviews/reactNative.jpg"
+import APIDev from "../../assets/Images/coursePreviews/apiDev.jpg"
+import Electron from "../../assets/Images/coursePreviews/electron.jpg"
+import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
+import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
 
 const tabs = [
     {
@@ -51,31 +65,215 @@ const tabs = [
             },
         ],
     },
+    // Continued Education
     {
-        name: "Certificates",
+        name: "Continued Education / Certificates",
         features: [
             {
-                name: "U",
+                instructor: "ZTM Academy",
+                name: "Complete Next.js Developer in 2023: Zero to Mastery",
+                certLink: "In Progress...",
+                courseLink:
+                    "https://www.udemy.com/course/complete-nextjs-developer-zero-to-mastery/",
                 description:
-                    "Our customers use Organize throughout the house to bring efficiency to many daily routines. Enjoy Organize in your workspace, kitchen, living room, entry way, garage, and more. We can't wait to see how you'll use it!",
-                imageSrc:
-                    "https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-03.jpg",
+                    "Next JS MasterClass - I'm learning fullstack app developement, Serverside rendering Techniques, and Api Developement with Next JS.",
+                imageSrc: Next,
                 imageAlt:
-                    "Walnut organizer base with white polycarbonate trays in the kitchen with various kitchen utensils.",
+                    "ZTM Academy - Complete Next.js Developer in 2023: Zero to Mastery Preview",
+                qrCode: "",
+                tags: [
+                    "next",
+                    "nextjs",
+                    "serverside",
+                    "server",
+                    "vercel",
+                    "SSR",
+                    "SSG",
+                    "ISR",
+                    "API",
+                ],
+                platform: "Udemy",
+            },
+            {
+                instructor: " Dr. Muhammad Nauman, Codestars",
+                name: "SupaBase From Scratch: Serverless Database Backend with JS",
+                certLink: "https://lnkd.in/ginHiAYr",
+                courseLink:
+                    "https://www.udemy.com/course/supabase-from-scratch-serverless-database-backend-with-javascript/",
+                description:
+                    "I learned how to work with SQL Datatables, and relational datasets with Supabase.",
+                imageSrc: Supabase,
+                imageAlt:
+                    "Supabase Pro by CodeStars - Learn how to build a fullstack app with Supabase and JavaScript Preview",
+                qrCode: "",
+                tags: [
+                    "udemy",
+                    "fullstack",
+                    "SQL",
+                    "jamstack",
+                    "supabase",
+                    "serverless",
+                    "backend",
+                    "database",
+                ],
+                platform: "Udemy",
+            },
+            {
+                instructor: "Tom Phillips, WebDevEducation",
+                name: "Tailwind CSS - Zero to Hero, Tailwind V3 2023",
+                certLink: "https://lnkd.in/d3qzRAYe",
+                courseLink:
+                    "https://www.udemy.com/course/tailwind-css-zero-to-hero/",
+                description:
+                    "I learned how to fully utilize Tailwind CSS in modern, dynamic websites and web apps.",
+                imageSrc: Tailwind,
+                imageAlt: "Zero to Hero, Tailwind V3 2023 Preview",
+                qrCode: "",
+                tags: [
+                    "udemy",
+                    "front-end",
+                    "CSS",
+                    "tailwind",
+                    "webDesign",
+                    "ui",
+                    "UI/UX",
+                    "uiDesign",
+                    "ux",
+                    "uxDesign",
+                    "design",
+                ],
+                platform: "Udemy",
+            },
+            {
+                instructor: "Drew Ryan",
+                name: "HTML Email Mastery - Build Responsive HTML Email Templates",
+                certLink: "https://lnkd.in/g3h8s4Ep",
+                courseLink: "https://www.udemy.com/course/html-email/",
+                description: `
+                    - I learned how to utilize media queries to build user responsive email templates, including accessibility options and accessibility testing.
+                    - I learned how to include Text, Images, Gifs, Tables, Email Links, Call Links, and fonts across all email clients. 
+                    - I also learned testing across all modern and legacy email clients and devices, analyzing emails to score them, and find error with specific, browsers, devices, and clients (Desktop, Mobile, Tablet, IOS, Android, all browsers (modern and legacy), Kindle, and desktop apps)
+                    - Lastly, I learned how to utilize dark/light mode user preferences within email.
+                `,
+                imageSrc: Email,
+                imageAlt: "Zero to Hero, Tailwind V3 2023 Preview",
+                qrCode: "",
+                tags: [
+                    "email",
+                    "emailDev",
+                    "emaildevelopement",
+                    "emailDesign",
+                    "email Marketing",
+                    "mail",
+                ],
+                platform: "Udemy",
+            },
+            {
+                instructor: "Shaun Pelling (The Net Ninja)",
+                name: "Build Data Visualizations with D3.js and Firebase",
+                certLink: "https://lnkd.in/gaW4WYNG",
+                courseLink:
+                    "https://www.udemy.com/course/build-data-uis-with-d3-firebase/",
+                description: `- I learned how to build user Interactive Charts (bar, circle, pie, tree-hierarchy, and data-plot) with realtime- communication with the database.`,
+                imageSrc: D3,
+                imageAlt: "Zero to Hero, Tailwind V3 2023 Preview",
+                qrCode: "",
+                tags: [
+                    "data",
+                    "Data Visualization",
+                    "Charts",
+                    "Analytics",
+                    "analytic",
+                    "dashboard",
+                    "d3",
+                    "d3js",
+                    "firebase",
+                ],
+                platform: "Udemy",
+            },
+            {
+                instructor: "Shaun Pelling (The Net Ninja)",
+                name: "Build Web Apps with React & Firebase",
+                certLink: "https://lnkd.in/g3fmVNRF",
+                courseLink:
+                    "https://www.udemy.com/course/build-web-apps-with-react-firebase/",
+                description: `- I learned how to build full-stack web applications utilizing React.`,
+                imageSrc: React,
+                imageAlt:
+                    "The Net Ninja - Build Web Apps with React & Firebase Preview",
+                qrCode: "",
+                tags: [
+                    "react",
+                    "reactjs",
+                    "firebase",
+                    "front end",
+                    "front end",
+                    "Front end developer",
+                    "front end development",
+                ],
+                platform: "Udemy",
+            },
+            {
+                instructor: "Shaun Pelling (The Net Ninja)",
+                name: "Build Web Apps with React & Firebase",
+                certLink: "https://lnkd.in/gdPeeaEE",
+                courseLink:
+                    "https://www.udemy.com/course/modern-javascript-from-novice-to-ninja/",
+                description: `Modern CS6 Vanilla Javascript Masterclass`,
+                imageSrc: VanillaJS,
+                imageAlt:
+                    "The Net Ninja - Modern CS6 Vanilla Javascript Masterclass Preview",
+                qrCode: "",
+                tags: ["vanilla", "javascript", "js", "front end", "cs6"],
+                platform: "Udemy",
             },
         ],
     },
+    // Future Learning
     {
         name: "On my list to learn",
         features: [
             {
-                name: "Everything you'll need",
+                name: "Stripe Masterclass with React.js and Node.js",
                 description:
-                    "The Organize base set includes the pen, phone, small, and large trays to help you group all your essential items. Expand your set with the drink coaster and headphone stand add-ons.",
-                imageSrc:
-                    "https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-04.jpg",
-                imageAlt:
-                    "Walnut organizer system on black leather desk mat on top of white desk.",
+                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                imageSrc: OpenAi,
+                imageAlt: "Stripe Masterclass Preview.",
+            },
+            {
+                name: "Stripe Masterclass with React.js and Node.js",
+                description:
+                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                imageSrc: Stripe,
+                imageAlt: "Stripe Masterclass Preview.",
+            },
+            {
+                name: "Stripe Masterclass with React.js and Node.js",
+                description:
+                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                imageSrc: Electron,
+                imageAlt: "Stripe Masterclass Preview.",
+            },
+            {
+                name: "Stripe Masterclass with React.js and Node.js",
+                description:
+                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                imageSrc: Postgres,
+                imageAlt: "Stripe Masterclass Preview.",
+            },
+            {
+                name: "Stripe Masterclass with React.js and Node.js",
+                description:
+                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                imageSrc: APIDev,
+                imageAlt: "Stripe Masterclass Preview.",
+            },
+            {
+                name: "Stripe Masterclass with React.js and Node.js",
+                description:
+                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                imageSrc: ReactNative,
+                imageAlt: "Stripe Masterclass Preview.",
             },
         ],
     },
@@ -87,7 +285,10 @@ function classNames(...classes) {
 
 const Education = () => {
     const defaultTabIndex = tabs.findIndex(
-        (tab) => tab.name === "Continued Education"
+        (tab) => tab.name === "Continued Education / Certificates"
+    )
+    const [selectedTab, setSelectedTab] = useState(
+        "Continued Education / Certificates"
     )
 
     return (
@@ -117,6 +318,9 @@ const Education = () => {
                                     {tabs.map((tab) => (
                                         <Tab
                                             key={tab.name}
+                                            onClick={() =>
+                                                setSelectedTab(tab.name)
+                                            }
                                             className={({ selected }) =>
                                                 classNames(
                                                     selected
@@ -139,13 +343,14 @@ const Education = () => {
                                     key={tab.name}
                                     className="space-y-16 pt-10 lg:pt-16"
                                 >
+                                    <h1 className="text-red">{selectedTab}</h1>
                                     {tab.features.map((feature) => (
                                         <div
                                             key={feature.name}
                                             className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-x-8"
                                         >
                                             <div className="mt-6 lg:col-span-5 lg:mt-0">
-                                                <h3 className="text-lg font-medium text-gray-900">
+                                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">
                                                     {feature.name}
                                                 </h3>
                                                 {feature.years && (
@@ -174,6 +379,222 @@ const Education = () => {
                                             </div>
                                         </div>
                                     ))}
+                                    {/* Accordian */}
+                                    {selectedTab ===
+                                        "Continued Education / Certificates" && (
+                                        <div id="accordionExample5">
+                                            <div class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2
+                                                    class="mb-0"
+                                                    id="headingOne5"
+                                                >
+                                                    <button
+                                                        class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white py-4 px-5 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-sky-600 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-sky-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                                        type="button"
+                                                        data-te-collapse-init
+                                                        data-te-target="#collapseOne5"
+                                                        aria-expanded="true"
+                                                        aria-controls="collapseOne5"
+                                                    >
+                                                        Accordion Item #1
+                                                        <span class="ml-auto -mr-1 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none"
+                                                                viewBox="0 0 24 24"
+                                                                stroke-width="1.5"
+                                                                stroke="currentColor"
+                                                                class="h-6 w-6"
+                                                            >
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                                                />
+                                                            </svg>
+                                                        </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="collapseOne5"
+                                                    class="!visible"
+                                                    data-te-collapse-item
+                                                    data-te-collapse-show
+                                                    aria-labelledby="headingOne5"
+                                                >
+                                                    <div class="py-4 px-5">
+                                                        <strong>
+                                                            This is the first
+                                                            item's accordion
+                                                            body.
+                                                        </strong>{" "}
+                                                        It is shown by default,
+                                                        until the collapse
+                                                        plugin adds the
+                                                        appropriate classes that
+                                                        we use to style each
+                                                        element. These classes
+                                                        control the overall
+                                                        appearance, as well as
+                                                        the showing and hiding
+                                                        via CSS transitions. You
+                                                        can modify any of this
+                                                        with custom CSS or
+                                                        overriding our default
+                                                        variables. It's also
+                                                        worth noting that just
+                                                        about any HTML can go
+                                                        within the{" "}
+                                                        <code>
+                                                            .accordion-body
+                                                        </code>
+                                                        , though the transition
+                                                        does limit overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2
+                                                    class="mb-0"
+                                                    id="headingTwo5"
+                                                >
+                                                    <button
+                                                        class="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center rounded-none border-0 bg-white py-4 px-5 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                                        type="button"
+                                                        data-te-collapse-init
+                                                        data-te-collapse-collapsed
+                                                        data-te-target="#collapseTwo5"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseTwo5"
+                                                    >
+                                                        Accordion Item #2
+                                                        <span class="ml-auto -mr-1 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none"
+                                                                viewBox="0 0 24 24"
+                                                                stroke-width="1.5"
+                                                                stroke="currentColor"
+                                                                class="h-6 w-6"
+                                                            >
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                                                />
+                                                            </svg>
+                                                        </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="collapseTwo5"
+                                                    class="!visible hidden"
+                                                    data-te-collapse-item
+                                                    aria-labelledby="headingTwo5"
+                                                >
+                                                    <div class="py-4 px-5">
+                                                        <strong>
+                                                            This is the second
+                                                            item's accordion
+                                                            body.
+                                                        </strong>{" "}
+                                                        It is hidden by default,
+                                                        until the collapse
+                                                        plugin adds the
+                                                        appropriate classes that
+                                                        we use to style each
+                                                        element. These classes
+                                                        control the overall
+                                                        appearance, as well as
+                                                        the showing and hiding
+                                                        via CSS transitions. You
+                                                        can modify any of this
+                                                        with custom CSS or
+                                                        overriding our default
+                                                        variables. It's also
+                                                        worth noting that just
+                                                        about any HTML can go
+                                                        within the{" "}
+                                                        <code>
+                                                            .accordion-body
+                                                        </code>
+                                                        , though the transition
+                                                        does limit overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="rounded-b-lg border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                <h2
+                                                    class="mb-0"
+                                                    id="headingThree5"
+                                                >
+                                                    <button
+                                                        class="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center border-0 bg-white py-4 px-5 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)] [&[data-te-collapse-collapsed]]:rounded-b-[15px] [&[data-te-collapse-collapsed]]:transition-none"
+                                                        type="button"
+                                                        data-te-collapse-init
+                                                        data-te-collapse-collapsed
+                                                        data-te-target="#collapseThree5"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseThree5"
+                                                    >
+                                                        Accordion Item #3
+                                                        <span class="ml-auto -mr-1 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none"
+                                                                viewBox="0 0 24 24"
+                                                                stroke-width="1.5"
+                                                                stroke="currentColor"
+                                                                class="h-6 w-6"
+                                                            >
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                                                />
+                                                            </svg>
+                                                        </span>
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="collapseThree5"
+                                                    class="!visible hidden"
+                                                    data-te-collapse-item
+                                                    aria-labelledby="headingThree5"
+                                                >
+                                                    <div class="py-4 px-5">
+                                                        <strong>
+                                                            This is the third
+                                                            item's accordion
+                                                            body.
+                                                        </strong>{" "}
+                                                        It is hidden by default,
+                                                        until the collapse
+                                                        plugin adds the
+                                                        appropriate classes that
+                                                        we use to style each
+                                                        element. These classes
+                                                        control the overall
+                                                        appearance, as well as
+                                                        the showing and hiding
+                                                        via CSS transitions. You
+                                                        can modify any of this
+                                                        with custom CSS or
+                                                        overriding our default
+                                                        variables. It's also
+                                                        worth noting that just
+                                                        about any HTML can go
+                                                        within the{" "}
+                                                        <code>
+                                                            .accordion-body
+                                                        </code>
+                                                        , though the transition
+                                                        does limit overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
                                 </Tab.Panel>
                             ))}
                         </Tab.Panels>
