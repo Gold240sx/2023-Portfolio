@@ -20,7 +20,7 @@ const Home = () => {
             </section>
             {/* About Me */}
             <section
-                className="container m-auto mt-[80px] flex w-full snap-y snap-mandatory justify-center overflow-scroll border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className="container m-auto mt-[80px] flex w-full snap-y snap-mandatory justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
                 style={{ minHeight: "fit-content" }}
             >
                 <div className="my-auto " style={{ minHeight: "fit-content" }}>

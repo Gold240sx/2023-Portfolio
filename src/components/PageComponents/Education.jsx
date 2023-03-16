@@ -231,14 +231,14 @@ const tabs = [
     },
     // Future Learning
     {
-        name: "On my list to learn",
+        name: "My Learning Queue",
         features: [
             {
-                name: "Stripe Masterclass with React.js and Node.js",
+                name: "Next JS & Open AI / GPT: Next-generation Next JS & AI apps",
                 description:
-                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                    "Integrate OpenAI into your Next Generation Web Application feat. a SAAS project. Setup Stripe for charging customers. Store content with MongoDB.",
                 imageSrc: OpenAi,
-                imageAlt: "Stripe Masterclass Preview.",
+                imageAlt: "Open Ai + Next JS Preview.",
             },
             {
                 name: "Stripe Masterclass with React.js and Node.js",
@@ -248,32 +248,32 @@ const tabs = [
                 imageAlt: "Stripe Masterclass Preview.",
             },
             {
-                name: "Stripe Masterclass with React.js and Node.js",
+                name: "Master Electron: Desktop Apps with HTML, JavaScript & CSS",
                 description:
-                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                    "Create Windows and MacOS Desktop Applications using web-technologies like HTML, CSS, and JavaScript.",
                 imageSrc: Electron,
-                imageAlt: "Stripe Masterclass Preview.",
+                imageAlt: "Electron Masterclass Preview.",
             },
             {
-                name: "Stripe Masterclass with React.js and Node.js",
+                name: "The Complete SQL Bootcamp: Go from Zero to Hero",
                 description:
-                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                    "SQL  database fundamentals and advanced concepts. Build a database from scratch and learn how to query, manipulate, and analyze data.",
                 imageSrc: Postgres,
-                imageAlt: "Stripe Masterclass Preview.",
+                imageAlt: "Postgres SQL Masterclass Preview.",
             },
             {
-                name: "Stripe Masterclass with React.js and Node.js",
+                name: "Learn APIs development with Prisma, Nodejs, and Postgres",
                 description:
-                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                    "Master RESTful APIs development with Prisma, Nodejs, Jest, Express, and Postgres. REST",
                 imageSrc: APIDev,
-                imageAlt: "Stripe Masterclass Preview.",
+                imageAlt: "API Masterclass Preview.",
             },
             {
-                name: "Stripe Masterclass with React.js and Node.js",
+                name: "Complete React Native in 2023: Zero to Mastery (with Hooks)",
                 description:
-                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
+                    "Master React Native for iOS and Android Mobile App Development using JavaScript. Build a modern e-commerce mobile app!",
                 imageSrc: ReactNative,
-                imageAlt: "Stripe Masterclass Preview.",
+                imageAlt: "ReactNatice Masterclass Preview.",
             },
         ],
     },
