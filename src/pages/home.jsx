@@ -67,11 +67,12 @@ const Home = () => {
                 className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
                 style={{ minHeight: "fit-content" }}
             >
-                <div className="my-auto " style={{ minHeight: "fit-content" }}>
-                    <div className="">
-                        <div id="hero" className="mx-10 snap-center">
-                            <Education />
-                        </div>
+                <div
+                    className="my-auto w-full md:mx-5"
+                    style={{ minHeight: "fit-content" }}
+                >
+                    <div id="hero" className=" snap-center">
+                        <Education />
                     </div>
                 </div>
             </section>

@@ -188,7 +188,7 @@ const CertificateSection2 = () => {
     }
 
     return (
-        <section className="my-12 w-full rounded-xl border border-gray-300">
+        <div className="md:mx-5">
             <div className=" w-full">
                 {tabs.features.map((feature, index) => (
                     <div
@@ -395,7 +395,7 @@ const CertificateSection2 = () => {
                     </div>
                 ))}
             </div>
-        </section>
+        </div>
     )
 }
 

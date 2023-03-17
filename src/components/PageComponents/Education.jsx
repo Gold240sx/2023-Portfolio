@@ -18,6 +18,8 @@ import APIDev from "../../assets/Images/coursePreviews/apiDev.jpg"
 import Electron from "../../assets/Images/coursePreviews/electron.jpg"
 import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
 import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
+import Udemy from "../../assets/Images/coursePreviews/udemy.png"
+import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
 const tabs = [
     {
@@ -284,6 +286,15 @@ function classNames(...classes) {
 }
 
 const Education = () => {
+    const [activeIndex, setActiveIndex] = useState(null)
+
+    const handleAccordionClick = (index) => {
+        if (index === activeIndex) {
+            setActiveIndex(null)
+        } else {
+            setActiveIndex(index)
+        }
+    }
     const defaultTabIndex = tabs.findIndex(
         (tab) => tab.name === "Continued Education / Certificates"
     )
@@ -338,263 +349,323 @@ const Education = () => {
                         </div>
 
                         <Tab.Panels as={Fragment}>
-                            {tabs.map((tab) => (
+                            {tabs.map((tab, index) => (
                                 <Tab.Panel
                                     key={tab.name}
-                                    className="space-y-16 pt-10 lg:pt-16"
+                                    className="pt-10 lg:pt-16 "
                                 >
                                     <h1 className="text-red">{selectedTab}</h1>
                                     {tab.features.map((feature) => (
-                                        <div
-                                            key={feature.name}
-                                            className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-x-8"
-                                        >
-                                            <div className="mt-6 lg:col-span-5 lg:mt-0">
-                                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                                                    {feature.name}
-                                                </h3>
-                                                {feature.years && (
-                                                    <h4 className="text-base font-medium text-gray-600">
-                                                        {feature.years} |{" "}
-                                                        {feature.location}
-                                                    </h4>
-                                                )}{" "}
-                                                {feature.degree && (
-                                                    <p className="text-sm font-medium text-gray-600">
-                                                        {feature.degree}
-                                                    </p>
+                                        <>
+                                            {selectedTab !==
+                                                "Continued Education / Certificates" && (
+                                                <div
+                                                    key={feature.name}
+                                                    className="flex flex-col-reverse space-y-16 lg:grid lg:grid-cols-12 lg:gap-x-8 "
+                                                >
+                                                    <div className="mt-6 lg:col-span-5 lg:mt-0">
+                                                        <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                                                            {feature.name}
+                                                        </h3>
+                                                        {feature.years && (
+                                                            <h4 className="text-base font-medium text-gray-600">
+                                                                {feature.years}{" "}
+                                                                |{" "}
+                                                                {
+                                                                    feature.location
+                                                                }
+                                                            </h4>
+                                                        )}{" "}
+                                                        {feature.degree && (
+                                                            <p className="text-sm font-medium text-gray-600">
+                                                                {feature.degree}
+                                                            </p>
+                                                        )}
+                                                        <p className="mt-2 text-sm text-gray-500">
+                                                            {
+                                                                feature.description
+                                                            }
+                                                        </p>
+                                                    </div>
+                                                    <div className="lg:col-span-7">
+                                                        <div className="aspect-w-2 aspect-h-1 overflow-hidden rounded-lg bg-gray-100 sm:aspect-w-5 sm:aspect-h-2">
+                                                            <img
+                                                                src={
+                                                                    feature.imageSrc
+                                                                }
+                                                                alt={
+                                                                    feature.imageAlt
+                                                                }
+                                                                className="object-cover object-center"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            {/* Accordian */}
+                                            <div className="">
+                                                {selectedTab ===
+                                                    "Continued Education / Certificates" && (
+                                                    <div
+                                                        key={feature.name}
+                                                        className="border-b border-gray-300 last:border-b-0"
+                                                    >
+                                                        {/* header */}
+                                                        <div
+                                                            className={` ${
+                                                                index ===
+                                                                activeIndex
+                                                                    ? "border-b border-gray-300 bg-white/50 hover:bg-white/80 dark:bg-black"
+                                                                    : ""
+                                                            } flex cursor-pointer items-center justify-between  px-2 py-2 transition-all duration-300 ease-in-out  hover:bg-white/50 hover:dark:bg-slate-900`}
+                                                            onClick={() =>
+                                                                handleAccordionClick(
+                                                                    index
+                                                                )
+                                                            }
+                                                        >
+                                                            <div className="flex items-center space-x-3">
+                                                                <div className=" h-16 w-16 shrink-0 overflow-hidden rounded-full">
+                                                                    <img
+                                                                        src={
+                                                                            feature.imageSrc
+                                                                        }
+                                                                        alt={
+                                                                            feature.imageAlt
+                                                                        }
+                                                                        className="h-full w-full object-cover"
+                                                                    />
+                                                                </div>
+                                                                <div className="flex flex-col">
+                                                                    <div className="text-md overflow-ellipsis font-bold text-gray-800 line-clamp-2">
+                                                                        {
+                                                                            feature.name
+                                                                        }
+                                                                    </div>
+                                                                    <div className="mt-1  hidden text-sm font-medium text-gray-800 md:flex">
+                                                                        {
+                                                                            feature.instructor
+                                                                        }{" "}
+                                                                        |
+                                                                        <img
+                                                                            src={
+                                                                                feature.platformLogo
+                                                                            }
+                                                                            className="ml-2 h-5 w-auto"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="text-gray-500">
+                                                                {activeIndex ===
+                                                                index ? (
+                                                                    <FaChevronUp />
+                                                                ) : (
+                                                                    <FaChevronDown />
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                        {/* body */}
+                                                        {activeIndex ===
+                                                            index && (
+                                                            <div className="p-2 transition-all duration-300 ease-in-out md:flex md:justify-center md:px-4 lg:p-4 ">
+                                                                {/* Small Screen Image Full */}
+                                                                <div className="relative w-full overflow-hidden rounded-sm md:hidden">
+                                                                    <img
+                                                                        src={
+                                                                            feature.platformLogo
+                                                                        }
+                                                                        className=" absolute right-2 mt-2 h-8 w-auto rounded bg-white/50 px-1 py-1 md:hidden"
+                                                                    />
+                                                                    <img
+                                                                        src={
+                                                                            feature.imageSrc
+                                                                        }
+                                                                        alt={
+                                                                            feature.imageAlt
+                                                                        }
+                                                                        className="h-full w-full rounded object-cover"
+                                                                    />
+                                                                </div>
+                                                                {/* Small Screen Info */}
+                                                                <div className="mb-4 flex items-start justify-between py-2">
+                                                                    <div className="flex items-center md:hidden">
+                                                                        <div>
+                                                                            <a
+                                                                                href={
+                                                                                    feature.courseLink
+                                                                                }
+                                                                                className="cursor-pointer hover:underline"
+                                                                            >
+                                                                                <h3 className="text-lg font-bold text-gray-800">
+                                                                                    {
+                                                                                        feature.name
+                                                                                    }
+                                                                                </h3>
+                                                                            </a>
+                                                                            {/* Instructor */}
+                                                                            <div className="my-2 flex gap-2 text-sm text-gray-500">
+                                                                                <span className="font-semibold">
+                                                                                    Instructor:
+                                                                                </span>{" "}
+                                                                                {
+                                                                                    feature.instructor
+                                                                                }
+                                                                            </div>
+                                                                            {/* Certification */}
+                                                                            <div className="flex gap-2 text-sm text-gray-500">
+                                                                                <span className="font-semibold">
+                                                                                    Certification:
+                                                                                </span>{" "}
+                                                                                {feature.certLink ? (
+                                                                                    <a
+                                                                                        href={
+                                                                                            feature.certLink
+                                                                                        }
+                                                                                        target="_blank"
+                                                                                        rel="noopener noreferrer"
+                                                                                        className="inline-flex items-center text-sky-500"
+                                                                                    >
+                                                                                        See
+                                                                                        Certificate
+                                                                                        <svg
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            className="ml-2 h-4 w-4"
+                                                                                            viewBox="0 0 20 20"
+                                                                                            fill="currentColor"
+                                                                                        >
+                                                                                            <path
+                                                                                                fillRule="evenodd"
+                                                                                                d="M14.707 8.707a1 1 0 010 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L10 10.586V3a1 1 0 112 0v7.586l2.293-2.293a1 1 0 011.414 0z"
+                                                                                                clipRule="evenodd"
+                                                                                            />
+                                                                                        </svg>
+                                                                                    </a>
+                                                                                ) : (
+                                                                                    "Pending..."
+                                                                                )}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {/* Description, Tags and Photo*/}
+                                                                <div className="grid grid-cols-1 md:grid-cols-2">
+                                                                    {/* Description and Tags */}
+                                                                    <div className="w-auto space-y-4">
+                                                                        <div>
+                                                                            <h3 className="text-lg font-bold text-black dark:text-white">
+                                                                                Description
+                                                                            </h3>
+                                                                            <p className="px-2 text-gray-600">
+                                                                                {
+                                                                                    feature.description
+                                                                                }
+                                                                            </p>
+                                                                        </div>
+                                                                        {/* Certificate for md and up screens */}
+                                                                        <div className="hidden gap-2 text-sm text-gray-500 md:flex ">
+                                                                            <span className="font-semibold">
+                                                                                Certification:
+                                                                            </span>{" "}
+                                                                            {feature.certLink ? (
+                                                                                <a
+                                                                                    href={
+                                                                                        feature.certLink
+                                                                                    }
+                                                                                    target="_blank"
+                                                                                    rel="noopener noreferrer"
+                                                                                    className="inline-flex items-center text-sky-500"
+                                                                                >
+                                                                                    See
+                                                                                    Certificate
+                                                                                    <svg
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        className="ml-2 h-4 w-4"
+                                                                                        viewBox="0 0 20 20"
+                                                                                        fill="currentColor"
+                                                                                    >
+                                                                                        <path
+                                                                                            fillRule="evenodd"
+                                                                                            d="M14.707 8.707a1 1 0 010 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L10 10.586V3a1 1 0 112 0v7.586l2.293-2.293a1 1 0 011.414 0z"
+                                                                                            clipRule="evenodd"
+                                                                                        />
+                                                                                    </svg>
+                                                                                </a>
+                                                                            ) : (
+                                                                                "Pending..."
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="">
+                                                                            <h3 className="mb-2 text-lg font-bold text-black dark:text-white md:mb-4">
+                                                                                Tags
+                                                                            </h3>
+                                                                            {/* <div className="flex flex-wrap justify-center overflow-ellipsis line-clamp-2">
+                                                {feature.tags.map((tag) => (
+                                                    <span
+                                                        key={tag}
+                                                        // className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-500"
+                                                        className="xlg:text-base mx-auto mr-2 mb-2 inline-flex items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500 md:border-gray-300 md:bg-transparent  md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
+                                                    >
+                                                        #{tag}
+                                                    </span>
+                                                ))}
+                                            </div> */}
+                                                                            <div
+                                                                                className={`flex max-w-[90%] flex-wrap`}
+                                                                            >
+                                                                                {feature.tags.map(
+                                                                                    (
+                                                                                        tag
+                                                                                    ) => (
+                                                                                        <span
+                                                                                            key={
+                                                                                                tag
+                                                                                            }
+                                                                                            className="xlg:text-base mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
+                                                                                        >
+                                                                                            #
+                                                                                            {
+                                                                                                tag
+                                                                                            }
+                                                                                        </span>
+                                                                                    )
+                                                                                )}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="justify-center">
+                                                                        <div className="relative hidden h-72 w-auto md:flex lg:h-[22rem]">
+                                                                            <img
+                                                                                src={
+                                                                                    feature.imageSrc
+                                                                                }
+                                                                                alt={
+                                                                                    feature.imageAlt
+                                                                                }
+                                                                                className="absolute inset-0 h-full w-full rounded-lg object-cover"
+                                                                            />
+                                                                            <h3 className="text-lg font-medium text-gray-900">
+                                                                                QR
+                                                                                Code
+                                                                            </h3>
+                                                                            <img
+                                                                                src={
+                                                                                    feature.qrCode
+                                                                                }
+                                                                                alt={`${feature.name} QR Code`}
+                                                                                className="mt-2 h-32 w-32 object-contain"
+                                                                            />
+                                                                            {/* class="object-cover object-center" */}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
                                                 )}
-                                                <p className="mt-2 text-sm text-gray-500">
-                                                    {feature.description}
-                                                </p>
                                             </div>
-                                            <div className="lg:col-span-7">
-                                                <div className="aspect-w-2 aspect-h-1 overflow-hidden rounded-lg bg-gray-100 sm:aspect-w-5 sm:aspect-h-2">
-                                                    <img
-                                                        src={feature.imageSrc}
-                                                        alt={feature.imageAlt}
-                                                        className="object-cover object-center"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </>
                                     ))}
-                                    {/* Accordian */}
-                                    {selectedTab ===
-                                        "Continued Education / Certificates" && (
-                                        <div id="accordionExample5">
-                                            <div class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2
-                                                    class="mb-0"
-                                                    id="headingOne5"
-                                                >
-                                                    <button
-                                                        class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white py-4 px-5 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-sky-600 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-sky-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                        type="button"
-                                                        data-te-collapse-init
-                                                        data-te-target="#collapseOne5"
-                                                        aria-expanded="true"
-                                                        aria-controls="collapseOne5"
-                                                    >
-                                                        Accordion Item #1
-                                                        <span class="ml-auto -mr-1 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                fill="none"
-                                                                viewBox="0 0 24 24"
-                                                                stroke-width="1.5"
-                                                                stroke="currentColor"
-                                                                class="h-6 w-6"
-                                                            >
-                                                                <path
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                                                                />
-                                                            </svg>
-                                                        </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="collapseOne5"
-                                                    class="!visible"
-                                                    data-te-collapse-item
-                                                    data-te-collapse-show
-                                                    aria-labelledby="headingOne5"
-                                                >
-                                                    <div class="py-4 px-5">
-                                                        <strong>
-                                                            This is the first
-                                                            item's accordion
-                                                            body.
-                                                        </strong>{" "}
-                                                        It is shown by default,
-                                                        until the collapse
-                                                        plugin adds the
-                                                        appropriate classes that
-                                                        we use to style each
-                                                        element. These classes
-                                                        control the overall
-                                                        appearance, as well as
-                                                        the showing and hiding
-                                                        via CSS transitions. You
-                                                        can modify any of this
-                                                        with custom CSS or
-                                                        overriding our default
-                                                        variables. It's also
-                                                        worth noting that just
-                                                        about any HTML can go
-                                                        within the{" "}
-                                                        <code>
-                                                            .accordion-body
-                                                        </code>
-                                                        , though the transition
-                                                        does limit overflow.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2
-                                                    class="mb-0"
-                                                    id="headingTwo5"
-                                                >
-                                                    <button
-                                                        class="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center rounded-none border-0 bg-white py-4 px-5 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                                        type="button"
-                                                        data-te-collapse-init
-                                                        data-te-collapse-collapsed
-                                                        data-te-target="#collapseTwo5"
-                                                        aria-expanded="false"
-                                                        aria-controls="collapseTwo5"
-                                                    >
-                                                        Accordion Item #2
-                                                        <span class="ml-auto -mr-1 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                fill="none"
-                                                                viewBox="0 0 24 24"
-                                                                stroke-width="1.5"
-                                                                stroke="currentColor"
-                                                                class="h-6 w-6"
-                                                            >
-                                                                <path
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                                                                />
-                                                            </svg>
-                                                        </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="collapseTwo5"
-                                                    class="!visible hidden"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="headingTwo5"
-                                                >
-                                                    <div class="py-4 px-5">
-                                                        <strong>
-                                                            This is the second
-                                                            item's accordion
-                                                            body.
-                                                        </strong>{" "}
-                                                        It is hidden by default,
-                                                        until the collapse
-                                                        plugin adds the
-                                                        appropriate classes that
-                                                        we use to style each
-                                                        element. These classes
-                                                        control the overall
-                                                        appearance, as well as
-                                                        the showing and hiding
-                                                        via CSS transitions. You
-                                                        can modify any of this
-                                                        with custom CSS or
-                                                        overriding our default
-                                                        variables. It's also
-                                                        worth noting that just
-                                                        about any HTML can go
-                                                        within the{" "}
-                                                        <code>
-                                                            .accordion-body
-                                                        </code>
-                                                        , though the transition
-                                                        does limit overflow.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="rounded-b-lg border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                                                <h2
-                                                    class="mb-0"
-                                                    id="headingThree5"
-                                                >
-                                                    <button
-                                                        class="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center border-0 bg-white py-4 px-5 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)] [&[data-te-collapse-collapsed]]:rounded-b-[15px] [&[data-te-collapse-collapsed]]:transition-none"
-                                                        type="button"
-                                                        data-te-collapse-init
-                                                        data-te-collapse-collapsed
-                                                        data-te-target="#collapseThree5"
-                                                        aria-expanded="false"
-                                                        aria-controls="collapseThree5"
-                                                    >
-                                                        Accordion Item #3
-                                                        <span class="ml-auto -mr-1 h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                fill="none"
-                                                                viewBox="0 0 24 24"
-                                                                stroke-width="1.5"
-                                                                stroke="currentColor"
-                                                                class="h-6 w-6"
-                                                            >
-                                                                <path
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                                                                />
-                                                            </svg>
-                                                        </span>
-                                                    </button>
-                                                </h2>
-                                                <div
-                                                    id="collapseThree5"
-                                                    class="!visible hidden"
-                                                    data-te-collapse-item
-                                                    aria-labelledby="headingThree5"
-                                                >
-                                                    <div class="py-4 px-5">
-                                                        <strong>
-                                                            This is the third
-                                                            item's accordion
-                                                            body.
-                                                        </strong>{" "}
-                                                        It is hidden by default,
-                                                        until the collapse
-                                                        plugin adds the
-                                                        appropriate classes that
-                                                        we use to style each
-                                                        element. These classes
-                                                        control the overall
-                                                        appearance, as well as
-                                                        the showing and hiding
-                                                        via CSS transitions. You
-                                                        can modify any of this
-                                                        with custom CSS or
-                                                        overriding our default
-                                                        variables. It's also
-                                                        worth noting that just
-                                                        about any HTML can go
-                                                        within the{" "}
-                                                        <code>
-                                                            .accordion-body
-                                                        </code>
-                                                        , though the transition
-                                                        does limit overflow.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
                                 </Tab.Panel>
                             ))}
                         </Tab.Panels>
