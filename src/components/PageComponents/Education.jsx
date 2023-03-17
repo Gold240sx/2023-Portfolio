@@ -231,7 +231,7 @@ const tabs = [
     },
     // Future Learning
     {
-        name: "My Learning Queue",
+        name: "My Learning Que",
         features: [
             {
                 name: "Next JS & Open AI / GPT: Next-generation Next JS & AI apps",

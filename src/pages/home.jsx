@@ -4,6 +4,7 @@ import AboutMe from "../components/PageComponents/AboutMe"
 import Skills from "../components/PageComponents/Skills"
 import Timeline from "../components/PageComponents/Timeline"
 import Education from "../components/PageComponents/Education"
+import CertificateSection2 from "../components/PageComponents/test"
 
 const Home = () => {
     return (
@@ -77,6 +78,20 @@ const Home = () => {
             {/* Contact */}
             {/* Blog */}
             {/* Art */}
+            {/* Test */}
+            <section
+                className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                style={{ minHeight: "fit-content" }}
+            >
+                <div
+                    className="my-auto mx-0 w-full md:mx-5"
+                    style={{ minHeight: "fit-content" }}
+                >
+                    <div id="hero" className="snap-center">
+                        <CertificateSection2 />
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }
