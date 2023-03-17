@@ -31,11 +31,11 @@ const Timeline = () => {
                             {/* <!-- animate-ping below comes out of the box in tailwind, so no need to set up a custom animation--> */}
                             <div
                                 id="pulse-effect"
-                                className="absolute h-4 w-4 animate-ping rounded-full bg-pink-500 opacity-75"
+                                className="absolute h-4 w-4 animate-ping rounded-full bg-pink-500 opacity-75 dark:border-white/20 sm:ml-0 md:ml-[0.375rem]"
                             ></div>
                             <div
                                 id="pin"
-                                className="relative z-[60] h-4 w-4 rounded-full bg-rose-500 shadow-sm shadow-black"
+                                className="relative z-[60] h-4 w-4 rounded-full bg-rose-500 shadow-sm shadow-black dark:border-white/20 sm:ml-0 md:ml-[0.375rem]"
                             ></div>
                         </div>
                     </div>

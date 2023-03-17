@@ -101,80 +101,80 @@ const tabs = {
     ],
 }
 
-// const CertificateSection = () => {
-//     return (
-//         <section className="my-12">
-//             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-//                 <div className="lg:text-center">
-//                     <h2 className="text-base font-semibold uppercase tracking-wide text-sky-600">
-//                         Continued Education / Certificates
-//                     </h2>
-//                 </div>
-//                 <div className="mt-10">
-//                     {tabs.features.map((feature) => (
-//                         <div
-//                             key={feature.name}
-//                             className="flex flex-col items-center justify-between px-4 py-8 sm:px-0 md:flex-row"
-//                         >
-//                             <div className="mb-8 md:mb-0 md:w-1/2 lg:w-1/3">
-//                                 <div className="h-56 overflow-hidden rounded-lg">
-//                                     <img
-//                                         src={feature.imageSrc}
-//                                         alt={feature.imageAlt}
-//                                         className="h-full w-full object-cover object-center"
-//                                     />
-//                                 </div>
-//                             </div>
-//                             <div className="md:w-1/2 md:pl-8 lg:w-2/3">
-//                                 <h3 className="mb-2 text-xl font-semibold text-gray-700">
-//                                     {feature.name}
-//                                 </h3>
-//                                 <h4 className="mb-4 font-medium text-gray-600">
-//                                     {feature.instructor} | {feature.platform}
-//                                 </h4>
-//                                 <p className="mb-4 leading-relaxed text-gray-600">
-//                                     {feature.description}
-//                                 </p>
-//                                 <div className="flex flex-wrap">
-//                                     {feature.tags.map((tag) => (
-//                                         <span
-//                                             key={tag}
-//                                             className="mr-2 mb-2 inline-flex items-center rounded-full border-2 border-gray-400 py-1.5 px-3 text-sm leading-none text-gray-600"
-//                                         >
-//                                             {tag}
-//                                         </span>
-//                                     ))}
-//                                 </div>
-//                                 <div className="mt-4 flex justify-end">
-//                                     <a
-//                                         href={feature.certLink}
-//                                         target="_blank"
-//                                         rel="noopener noreferrer"
-//                                         className="inline-flex items-center text-sky-500"
-//                                     >
-//                                         See Certificate
-//                                         <svg
-//                                             xmlns="http://www.w3.org/2000/svg"
-//                                             className="ml-2 h-4 w-4"
-//                                             viewBox="0 0 20 20"
-//                                             fill="currentColor"
-//                                         >
-//                                             <path
-//                                                 fillRule="evenodd"
-//                                                 d="M14.707 8.707a1 1 0 010 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L10 10.586V3a1 1 0 112 0v7.586l2.293-2.293a1 1 0 011.414 0z"
-//                                                 clipRule="evenodd"
-//                                             />
-//                                         </svg>
-//                                     </a>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </section>
-//     )
-// }
+export const CertificateSection = () => {
+    return (
+        <section className="my-12">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="lg:text-center">
+                    <h2 className="text-base font-semibold uppercase tracking-wide text-sky-600">
+                        Continued Education / Certificates
+                    </h2>
+                </div>
+                <div className="mt-10">
+                    {tabs.features.map((feature) => (
+                        <div
+                            key={feature.name}
+                            className="flex flex-col items-center justify-between px-4 py-8 sm:px-0 md:flex-row"
+                        >
+                            <div className="mb-8 md:mb-0 md:w-1/2 lg:w-1/3">
+                                <div className="h-56 overflow-hidden rounded-lg">
+                                    <img
+                                        src={feature.imageSrc}
+                                        alt={feature.imageAlt}
+                                        className="h-full w-full object-cover object-center"
+                                    />
+                                </div>
+                            </div>
+                            <div className="md:w-1/2 md:pl-8 lg:w-2/3">
+                                <h3 className="mb-2 text-xl font-semibold text-gray-700">
+                                    {feature.name}
+                                </h3>
+                                <h4 className="mb-4 font-medium text-gray-600">
+                                    {feature.instructor} | {feature.platform}
+                                </h4>
+                                <p className="mb-4 leading-relaxed text-gray-600">
+                                    {feature.description}
+                                </p>
+                                <div className="flex flex-wrap">
+                                    {feature.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="mr-2 mb-2 inline-flex items-center rounded-full border-2 border-gray-400 py-1.5 px-3 text-sm leading-none text-gray-600"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <div className="mt-4 flex justify-end">
+                                    <a
+                                        href={feature.certLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center text-sky-500"
+                                    >
+                                        See Certificate
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="ml-2 h-4 w-4"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M14.707 8.707a1 1 0 010 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L10 10.586V3a1 1 0 112 0v7.586l2.293-2.293a1 1 0 011.414 0z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
 
 const CertificateSection2 = () => {
     const [activeIndex, setActiveIndex] = useState(null)
@@ -188,7 +188,7 @@ const CertificateSection2 = () => {
     }
 
     return (
-        <div className="md:mx-5">
+        <div className="my-12 w-full rounded-xl border border-gray-300">
             <div className=" w-full">
                 {tabs.features.map((feature, index) => (
                     <div
@@ -346,17 +346,7 @@ const CertificateSection2 = () => {
                                             <h3 className="mb-2 text-lg font-bold text-black dark:text-white md:mb-4">
                                                 Tags
                                             </h3>
-                                            {/* <div className="flex flex-wrap justify-center overflow-ellipsis line-clamp-2">
-                                                {feature.tags.map((tag) => (
-                                                    <span
-                                                        key={tag}
-                                                        // className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-500"
-                                                        className="xlg:text-base mx-auto mr-2 mb-2 inline-flex items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500 md:border-gray-300 md:bg-transparent  md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
-                                                    >
-                                                        #{tag}
-                                                    </span>
-                                                ))}
-                                            </div> */}
+                                            {/* Tags */}
                                             <div
                                                 className={`flex max-w-[90%] flex-wrap`}
                                             >
