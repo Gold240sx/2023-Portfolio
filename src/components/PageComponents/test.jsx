@@ -376,7 +376,6 @@ const CertificateSection2 = () => {
                                                 alt={`${feature.name} QR Code`}
                                                 className="mt-2 h-32 w-32 object-contain"
                                             />
-                                            {/* class="object-cover object-center" */}
                                         </div>
                                     </div>
                                 </div>

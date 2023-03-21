@@ -34,14 +34,15 @@ const Home = () => {
             </section>
             {/* Skills */}
             <section
-                className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className="container m-auto mx-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
                 style={{ minHeight: "fit-content" }}
             >
-                <div className="my-auto " style={{ minHeight: "fit-content" }}>
-                    <div className="">
-                        <div id="hero" className="snap-center">
-                            <Skills />
-                        </div>
+                <div
+                    className="my-auto  w-auto min-w-fit"
+                    style={{ minHeight: "fit-content" }}
+                >
+                    <div id="hero" className="w-full snap-center">
+                        <Skills />
                     </div>
                 </div>
             </section>
@@ -89,7 +90,7 @@ const Home = () => {
                     style={{ minHeight: "fit-content" }}
                 >
                     <div id="hero" className="snap-center">
-                        <CertificateSection2 />
+                        {/* <CertificateSection2 /> */}
                     </div>
                 </div>
             </section>

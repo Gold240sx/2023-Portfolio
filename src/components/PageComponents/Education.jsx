@@ -95,6 +95,7 @@ const tabs = [
                     "API",
                 ],
                 platform: "Udemy",
+                platformLogo: Udemy,
             },
             {
                 instructor: " Dr. Muhammad Nauman, Codestars",
@@ -119,6 +120,7 @@ const tabs = [
                     "database",
                 ],
                 platform: "Udemy",
+                platformLogo: Udemy,
             },
             {
                 instructor: "Tom Phillips, WebDevEducation",
@@ -145,6 +147,7 @@ const tabs = [
                     "design",
                 ],
                 platform: "Udemy",
+                platformLogo: Udemy,
             },
             {
                 instructor: "Drew Ryan",
@@ -169,6 +172,7 @@ const tabs = [
                     "mail",
                 ],
                 platform: "Udemy",
+                platformLogo: Udemy,
             },
             {
                 instructor: "Shaun Pelling (The Net Ninja)",
@@ -192,6 +196,7 @@ const tabs = [
                     "firebase",
                 ],
                 platform: "Udemy",
+                platformLogo: Udemy,
             },
             {
                 instructor: "Shaun Pelling (The Net Ninja)",
@@ -214,6 +219,7 @@ const tabs = [
                     "front end development",
                 ],
                 platform: "Udemy",
+                platformLogo: Udemy,
             },
             {
                 instructor: "Shaun Pelling (The Net Ninja)",
@@ -228,6 +234,7 @@ const tabs = [
                 qrCode: "",
                 tags: ["vanilla", "javascript", "js", "front end", "cs6"],
                 platform: "Udemy",
+                platformLogo: Udemy,
             },
         ],
     },
@@ -241,6 +248,7 @@ const tabs = [
                     "Integrate OpenAI into your Next Generation Web Application feat. a SAAS project. Setup Stripe for charging customers. Store content with MongoDB.",
                 imageSrc: OpenAi,
                 imageAlt: "Open Ai + Next JS Preview.",
+                platformLogo: Udemy,
             },
             {
                 name: "Stripe Masterclass with React.js and Node.js",
@@ -248,6 +256,7 @@ const tabs = [
                     "Integrate  payments into your React.js and Node.js apps with Stripe.",
                 imageSrc: Stripe,
                 imageAlt: "Stripe Masterclass Preview.",
+                platformLogo: Udemy,
             },
             {
                 name: "Master Electron: Desktop Apps with HTML, JavaScript & CSS",
@@ -255,6 +264,7 @@ const tabs = [
                     "Create Windows and MacOS Desktop Applications using web-technologies like HTML, CSS, and JavaScript.",
                 imageSrc: Electron,
                 imageAlt: "Electron Masterclass Preview.",
+                platformLogo: Udemy,
             },
             {
                 name: "The Complete SQL Bootcamp: Go from Zero to Hero",
@@ -262,6 +272,7 @@ const tabs = [
                     "SQL  database fundamentals and advanced concepts. Build a database from scratch and learn how to query, manipulate, and analyze data.",
                 imageSrc: Postgres,
                 imageAlt: "Postgres SQL Masterclass Preview.",
+                platformLogo: Udemy,
             },
             {
                 name: "Learn APIs development with Prisma, Nodejs, and Postgres",
@@ -269,6 +280,7 @@ const tabs = [
                     "Master RESTful APIs development with Prisma, Nodejs, Jest, Express, and Postgres. REST",
                 imageSrc: APIDev,
                 imageAlt: "API Masterclass Preview.",
+                platformLogo: Udemy,
             },
             {
                 name: "Complete React Native in 2023: Zero to Mastery (with Hooks)",
@@ -276,6 +288,7 @@ const tabs = [
                     "Master React Native for iOS and Android Mobile App Development using JavaScript. Build a modern e-commerce mobile app!",
                 imageSrc: ReactNative,
                 imageAlt: "ReactNatice Masterclass Preview.",
+                platformLogo: Udemy,
             },
         ],
     },
@@ -307,7 +320,7 @@ const Education = () => {
         <div className="mb-10 w-full rounded-3xl bg-white/60 dark:bg-slate-800">
             <section
                 aria-labelledby="features-heading"
-                className="mx-auto py-32 sm:px-2 lg:px-8"
+                className="mx-auto pt-32 pb-4 sm:px-2 lg:px-8"
             >
                 <div className="mx-auto px-4 lg:max-w-none lg:px-0">
                     <div className="max-w-3xl">
@@ -685,7 +698,6 @@ const Education = () => {
                                                                                         alt={`${feature.name} QR Code`}
                                                                                         className="mt-2 h-32 w-32 object-contain"
                                                                                     /> */}
-                                                                                    {/* class="object-cover object-center" */}
                                                                                 </div>
                                                                             </div>
                                                                         </div>
