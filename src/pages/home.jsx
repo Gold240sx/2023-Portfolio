@@ -4,6 +4,7 @@ import AboutMe from "../components/PageComponents/AboutMe"
 import Skills from "../components/PageComponents/Skills"
 import Timeline from "../components/PageComponents/Timeline"
 import Education from "../components/PageComponents/Education"
+import Work from "../components/PageComponents/Work.jsx"
 import CertificateSection2 from "../components/PageComponents/test"
 
 const Home = () => {
@@ -62,8 +63,6 @@ const Home = () => {
                 </div>
             </section>
             {/* Education */}
-            {/* Experience */}
-            {/* Projects */}
             <section
                 className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
                 style={{ minHeight: "fit-content" }}
@@ -74,6 +73,20 @@ const Home = () => {
                 >
                     <div id="hero" className=" snap-center">
                         <Education />
+                    </div>
+                </div>
+            </section>
+            {/* Projects */}
+            <section
+                className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                style={{ minHeight: "fit-content" }}
+            >
+                <div
+                    className="my-auto w-full md:mx-5"
+                    style={{ minHeight: "fit-content" }}
+                >
+                    <div id="hero" className=" snap-center">
+                        <Work />
                     </div>
                 </div>
             </section>

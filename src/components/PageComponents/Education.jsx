@@ -35,7 +35,7 @@ const tabs = [
                 imageAlt: "Irondale High School",
             },
             {
-                name: "Perpich Center for Arts Education",
+                name: "Perpich Center for the Arts and Education",
                 years: "2006-2008",
                 location: "Golden Valley, MN",
                 description: `Visual Arts Major - Junior and Senior years.`,
@@ -568,8 +568,9 @@ const Education = () => {
                                                                                     <div className="flex gap-2 text-sm text-gray-500">
                                                                                         <span className="font-semibold">
                                                                                             Certification:
-                                                                                        </span>{" "}
-                                                                                        {feature.certLink ? (
+                                                                                        </span>
+                                                                                        {feature.certLink !==
+                                                                                        "In Progress..." ? (
                                                                                             <a
                                                                                                 href={
                                                                                                     feature.certLink
@@ -619,7 +620,8 @@ const Education = () => {
                                                                                     <span className="font-semibold">
                                                                                         Certification:
                                                                                     </span>{" "}
-                                                                                    {feature.certLink ? (
+                                                                                    {feature.certLink !==
+                                                                                    "In Progress..." ? (
                                                                                         <a
                                                                                             href={
                                                                                                 feature.certLink
