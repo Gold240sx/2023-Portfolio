@@ -275,7 +275,7 @@ export const navbar = () => {
                         </div>
                     </motion.div>
                 </div>
-                {currentPath.endsWith("/home") && <SocialBar />}
+                {!currentPath.endsWith("/sginIn") && <SocialBar />}
             </div>
             {currentPath.endsWith("/home") && <PageBar />}
         </div>

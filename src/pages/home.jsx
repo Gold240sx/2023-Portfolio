@@ -6,6 +6,7 @@ import Timeline from "../components/PageComponents/Timeline"
 import Education from "../components/PageComponents/Education"
 import Work from "../components/PageComponents/Work.jsx"
 import CertificateSection2 from "../components/PageComponents/test"
+import Projects from "../components/PageComponents/Projects"
 
 const Home = () => {
     return (
@@ -36,7 +37,12 @@ const Home = () => {
             {/* Skills */}
             <section
                 className="container m-auto mx-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
-                style={{ minHeight: "fit-content" }}
+                style={{
+                    backgroundColor: "#e5e5f7",
+                    background:
+                        "repeating-linear-gradient( -55deg, #FBFBFC, #FBFBFC 5px, #F4F7FA 5px, #F4F7FA 15px",
+                    minHeight: "fit-content",
+                }}
             >
                 <div
                     className="my-auto  w-auto min-w-fit"
@@ -86,7 +92,7 @@ const Home = () => {
                     style={{ minHeight: "fit-content" }}
                 >
                     <div id="hero" className=" snap-center">
-                        <Work />
+                        <Projects />
                     </div>
                 </div>
             </section>
@@ -94,7 +100,7 @@ const Home = () => {
             {/* Blog */}
             {/* Art */}
             {/* Test */}
-            <section
+            {/* <section
                 className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
                 style={{ minHeight: "fit-content" }}
             >
@@ -103,10 +109,10 @@ const Home = () => {
                     style={{ minHeight: "fit-content" }}
                 >
                     <div id="hero" className="snap-center">
-                        {/* <CertificateSection2 /> */}
+                         <CertificateSection2 />
                     </div>
                 </div>
-            </section>
+            </section> */}
         </div>
     )
 }
