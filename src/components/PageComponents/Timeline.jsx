@@ -135,7 +135,7 @@ const Timeline = () => {
                                 </h2>
                                 <input
                                     type="checkbox"
-                                    className="form-checkbox h-5 w-5 rounded-md text-gray-600 dark:text-gray-400"
+                                    className="form-checkbox h-5 w-5 cursor-pointer rounded-md text-gray-600 dark:text-gray-400"
                                     checked={time2000s}
                                     onChange={() => setTime2000s(!time2000s)}
                                 />
@@ -147,7 +147,7 @@ const Timeline = () => {
                             </h2>
                             <input
                                 type="checkbox"
-                                className="form-checkbox h-5 w-5 rounded-md text-gray-600 dark:text-gray-400"
+                                className="form-checkbox h-5 w-5 cursor-pointer rounded-md text-gray-600 dark:text-gray-400"
                                 checked={time2010s}
                                 onChange={() => setTime2010s(!time2010s)}
                             />
