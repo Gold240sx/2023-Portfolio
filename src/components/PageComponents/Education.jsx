@@ -317,13 +317,13 @@ const Education = () => {
     )
 
     return (
-        <div className="mb-10 w-full rounded-3xl bg-white/60 dark:bg-slate-800">
+        <div className="mb-10 w-auto rounded-3xl bg-white/60 dark:bg-slate-800">
             <section
                 aria-labelledby="features-heading"
-                className="mx-auto pt-32 pb-4 sm:px-2 lg:px-8"
+                className="mx-auto pb-4 pt-16  md:pt-32 lg:px-8"
             >
-                <div className="mx-auto px-4 lg:max-w-none lg:px-0">
-                    <div className="max-w-3xl">
+                <div className="mx-auto  px-4 lg:px-0">
+                    <div className="">
                         <h3 className="relative  z-50 text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                             Education
                         </h3>
@@ -337,9 +337,9 @@ const Education = () => {
                         className="mt-4"
                         defaultIndex={defaultTabIndex}
                     >
-                        <div className="-mx-4 flex overflow-x-auto sm:mx-0">
-                            <div className="flex-auto border-b border-gray-200 px-4 sm:px-0">
-                                <Tab.List className="-mb-px flex space-x-10">
+                        <div className="-mx-4 flex flex-col overflow-x-auto sm:mx-0 md:flex-row">
+                            <div className="mx-auto flex-col border-b border-gray-200 px-4 sm:min-w-fit sm:max-w-[60%] sm:px-0 md:flex-row">
+                                <Tab.List className="align-center -mb-px flex w-full flex-col gap-2 md:flex-row md:gap-0 md:space-x-10">
                                     {tabs.map((tab) => (
                                         <Tab
                                             key={tab.name}
@@ -349,9 +349,9 @@ const Education = () => {
                                             className={({ selected }) =>
                                                 classNames(
                                                     selected
-                                                        ? "border-sky-500 text-sky-600"
-                                                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                                                    "whitespace-nowrap border-b-2 border-t-transparent border-l-transparent border-r-transparent py-6 text-sm font-medium"
+                                                        ? "bg-sky-500 text-white md:border-b-2 md:border-sky-500  md:border-l-transparent md:border-t-transparent md:border-r-transparent md:bg-white md:text-sky-600 hover:md:border-l-transparent hover:md:border-t-transparent hover:md:border-r-transparent"
+                                                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 md:border-gray-300 md:border-l-transparent md:border-t-transparent md:border-r-transparent md:bg-white hover:md:border-l-transparent hover:md:border-t-transparent hover:md:border-r-transparent",
+                                                    "text-overflow-ellipsis mx-auto  w-full overflow-hidden overflow-ellipsis whitespace-nowrap rounded-full border-2 border-gray-300 border-transparent px-6 py-2 text-sm font-medium md:w-fit md:rounded-none md:border-b-2  md:border-t-transparent md:border-l-transparent md:border-r-transparent md:py-6 md:px-0 md:text-base"
                                                 )
                                             }
                                         >
@@ -361,6 +361,30 @@ const Education = () => {
                                 </Tab.List>
                             </div>
                         </div>
+                        {/* <div className="-mx-4 flex flex-col overflow-x-auto sm:mx-0 md:hidden">
+                            <div className="flex-col border-b border-gray-200 px-4 sm:px-0">
+                                <Tab.List className="align-center -mb-px flex w-full flex-col gap-2">
+                                    {tabs.map((tab) => (
+                                        <Tab
+                                            key={tab.name}
+                                            onClick={() =>
+                                                setSelectedTab(tab.name)
+                                            }
+                                            className={({ selected }) =>
+                                                classNames(
+                                                    selected
+                                                        ? "bg-sky-500 text-white"
+                                                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                                                    "w-full whitespace-nowrap rounded-full border-2 border-sky-300 py-2 text-sm font-medium"
+                                                )
+                                            }
+                                        >
+                                            {tab.name}
+                                        </Tab>
+                                    ))}
+                                </Tab.List>
+                            </div>
+                        </div> */}
 
                         <Tab.Panels as={Fragment}>
                             {tabs.map((tab, tabIndex) => (

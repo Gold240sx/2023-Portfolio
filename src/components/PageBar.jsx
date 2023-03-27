@@ -50,12 +50,12 @@ export default function PageBar() {
                     >
                         EDUCATION
                     </a>
-                    <a
+                    {/* <a
                         className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-zinc-300 hover:opacity-100 dark:text-slate-700 dark:hover:text-slate-300"
                         href="#"
                     >
                         EXPERIENCE
-                    </a>
+                    </a> */}
                     <a
                         className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-zinc-300 hover:opacity-100 dark:text-slate-700 dark:hover:text-slate-300"
                         href="#"
@@ -68,18 +68,18 @@ export default function PageBar() {
                     >
                         CONTACT
                     </a>
-                    <a
+                    {/* <a
                         className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-zinc-300 hover:opacity-100 dark:text-slate-700 dark:hover:text-slate-300"
                         href="#"
                     >
                         Blog
-                    </a>
-                    <a
+                    </a> */}
+                    {/* <a
                         className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-zinc-300 hover:opacity-100 dark:text-slate-700 dark:hover:text-slate-300"
                         href="#"
                     >
                         ART
-                    </a>
+                    </a> */}
                 </motion.div>
             </header>
         </div>

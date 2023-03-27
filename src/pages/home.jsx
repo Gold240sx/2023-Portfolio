@@ -70,29 +70,34 @@ const Home = () => {
             </section>
             {/* Education */}
             <section
-                className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center align-middle"
                 style={{ minHeight: "fit-content" }}
             >
                 <div
-                    className="my-auto w-full md:mx-5"
+                    className="my-auto  md:mx-5"
                     style={{ minHeight: "fit-content" }}
                 >
-                    <div id="hero" className=" snap-center">
-                        <Education />
+                    {/* to make full width, add an empty div here and wrap around the element below as shown*/}
+                    <div className="w-screen px-6 lg:max-w-[70rem]">
+                        <div id="hero" className=" snap-center">
+                            <Education />
+                        </div>
                     </div>
                 </div>
             </section>
             {/* Projects */}
             <section
-                className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
                 style={{ minHeight: "fit-content" }}
             >
-                <div
-                    className="my-auto w-full md:mx-5"
-                    style={{ minHeight: "fit-content" }}
-                >
-                    <div id="hero" className=" snap-center">
-                        <Projects />
+                <div className="w-screen px-6 lg:max-w-[70rem]">
+                    <div
+                        className="my-auto md:mx-5"
+                        style={{ minHeight: "fit-content" }}
+                    >
+                        <div id="hero" className=" snap-center">
+                            <Projects />
+                        </div>
                     </div>
                 </div>
             </section>

@@ -106,7 +106,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                         </span>{" "}
                                                         About
                                                     </li>
-                                                    <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                    {/* <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
                                                         <span className="mr-5">
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +117,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                             </svg>
                                                         </span>{" "}
                                                         Art
-                                                    </li>
+                                                    </li> */}
                                                     <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
                                                         <span className="mr-5">
                                                             <svg
@@ -143,12 +143,12 @@ export default function MobileMenu({ open, setOpen }) {
                                                         </span>{" "}
                                                         Education
                                                     </li>
-                                                    <li className="text-md  items-centesr flex h-fit rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                    {/* <li className="text-md  items-centesr flex h-fit rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
                                                         <span className="mr-5 ">
                                                             <MdOutlineWorkHistory className="h-6 w-6" />
                                                         </span>{" "}
                                                         Experience
-                                                    </li>
+                                                    </li> */}
                                                     <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
                                                         <span className="mr-5 ">
                                                             <svg

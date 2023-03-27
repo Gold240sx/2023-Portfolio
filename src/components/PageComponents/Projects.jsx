@@ -4,6 +4,8 @@ import { useState } from "react"
 import { HiFilter } from "react-icons/hi"
 import { BsRulers, BsFillCalendarMonthFill } from "react-icons/bs"
 import { FaDatabase } from "react-icons/fa"
+import { Tooltip } from "react-tooltip"
+import { SiStylelint } from "react-icons/si"
 
 function getYearArray() {
     const currentYear = new Date().getFullYear()
@@ -47,26 +49,38 @@ const Technologies = [
         type: "framework",
     },
     {
-        name: "Tailwind",
+        name: "Sass",
         id: 6,
+        logo: "https://img.icons8.com/color/48/000000/sass.png",
+        type: "css",
+    },
+    {
+        name: "Tailwind",
+        id: 7,
         logo: "https://img.icons8.com/color/48/000000/tailwindcss.png",
         type: "css",
     },
     {
         name: "Firebase",
-        id: 7,
+        id: 8,
         logo: "https://img.icons8.com/color/48/000000/firebase.png",
         type: "database",
     },
     {
         name: "Supabase",
-        id: 8,
+        id: 9,
         logo: "https://i.ibb.co/Yjn0Nbx/supabase.png",
         type: "database",
     },
     {
+        name: "PlanetScale",
+        id: 10,
+        logo: "https://i.ibb.co/DQH9WnY/planetscale.png",
+        type: "database",
+    },
+    {
         name: "SendGrid",
-        id: 9,
+        id: 11,
         logo: "https://i.ibb.co/y4ZP2qG/sendgrid.png",
         type: "other",
     },
@@ -79,6 +93,7 @@ const ProjectItems = [
         image: "https://s3-ap-south-1.amazonaws.com/static.awfis.com/wp-content/uploads/2017/07/07184649/ProjectManagement.jpg",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
+        month: "January",
         year: 2021,
         technologies: ["Next.js", "Tailwind", "Firebase", "Typescript"],
         repository: "#",
@@ -91,7 +106,8 @@ const ProjectItems = [
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
-        year: 2021,
+        month: "February",
+        year: 2023,
         technologies: ["Next.js", "Tailwind"],
         repository: "#",
         link: "#",
@@ -100,8 +116,16 @@ const ProjectItems = [
 ]
 
 const ProjectCard = ({ project }) => {
-    const { name, image, description, year, technologies, repository, link } =
-        project
+    const {
+        name,
+        image,
+        description,
+        year,
+        technologies,
+        repository,
+        link,
+        month,
+    } = project
 
     const matchedTechnologies = Technologies.filter((technology) =>
         technologies.includes(technology.name)
@@ -131,6 +155,8 @@ const ProjectCard = ({ project }) => {
         }
     }
 
+    const createValidId = (str) => str.replace(/\s+/g, "_")
+
     return (
         <div className="">
             {/* main content */}
@@ -145,7 +171,7 @@ const ProjectCard = ({ project }) => {
                             className="rounded-md  lg:rounded-lg"
                         />
                         {/* tags */}
-                        <div className=" mt-2 mr-auto hidden flex-col justify-start align-baseline md:flex md:flex-row">
+                        <div className=" mt-2 mr-auto hidden flex-col justify-start align-baseline md:flex md:hidden lg:flex-row">
                             <h4 className=" mx-2 justify-start text-lg font-medium line-clamp-1 md:mt-1 md:text-xl ">
                                 TAGS:
                             </h4>
@@ -169,6 +195,10 @@ const ProjectCard = ({ project }) => {
                     <div className="flex w-full flex-col items-start justify-start">
                         {/* Name */}
                         <h2 className="text-2xl font-bold">{name}</h2>
+                        {/* Date */}
+                        <h2 className="text-base">
+                            {month}, {year}
+                        </h2>
                         {/* Project Info */}
                         <div className="my-4 flex w-auto justify-start gap-2">
                             <h2 className="cursor-pointer text-left ">
@@ -191,14 +221,21 @@ const ProjectCard = ({ project }) => {
                         {/* Description Dropdown*/}
                         <div className="w-full">
                             <div class=" w-auto rounded-xl  border border-neutral-200 dark:border-neutral-600 dark:bg-neutral-800">
-                                <h2 class="mb-0 w-auto" id="headingOne">
+                                <h2
+                                    class="mb-0 w-auto"
+                                    id={`headingOne-${createValidId(name)}`}
+                                >
                                     <button
                                         class="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 font-base group relative flex w-full items-center border-0 py-2 px-5 text-left text-base text-neutral-400 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white  [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
                                         type="button"
                                         data-te-collapse-init
-                                        data-te-target="#collapseOne"
+                                        data-te-target={`#collapseOne-${createValidId(
+                                            name
+                                        )}`}
                                         aria-expanded="true"
-                                        aria-controls="collapseOne"
+                                        aria-controls={`collapseOne-${createValidId(
+                                            name
+                                        )}`}
                                     >
                                         Description
                                         <span class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
@@ -220,11 +257,13 @@ const ProjectCard = ({ project }) => {
                                     </button>
                                 </h2>
                                 <div
-                                    id="collapseOne"
+                                    id={`collapseOne-${createValidId(name)}`}
                                     class="!visible"
                                     data-te-collapse-item
                                     data-te-collapse-show
-                                    aria-labelledby="headingOne"
+                                    aria-labelledby={`headingOne-${createValidId(
+                                        name
+                                    )}`}
                                     data-te-parent="#accordionExample"
                                 >
                                     <div class="py-4 px-5">
@@ -251,7 +290,7 @@ const ProjectCard = ({ project }) => {
                             ))}
                         </div>
                         {/* tags */}
-                        <div className=" mr-auto flex flex-col justify-start align-baseline sm:flex-row md:hidden">
+                        <div className=" mr-auto flex flex-col justify-start align-baseline sm:flex-row lg:flex">
                             <h4 className=" text-md justify-start text-left font-medium line-clamp-1 sm:mt-1.5 md:mt-2 md:text-xl">
                                 TAGS:
                             </h4>
@@ -284,26 +323,109 @@ const Projects = () => {
         "React",
         "Next.js",
         "T3",
+        "Sass",
         "Tailwind",
         "Firebase",
         "Supabase",
         "SendGrid",
+        "PlanetScale",
+        "2023",
     ])
+    const [showMobileFilters, setShowMobileFilters] = useState(true)
+    const [hoveredFilter, setHoveredFilter] = useState({ filter: "", count: 0 })
 
+    // const toggleFilter = (filterName) => {
+    //     if (activeFilters.includes(filterName)) {
+    //         // If filter is already active, remove it
+    //         setActiveFilters(
+    //             activeFilters.filter((name) => name !== filterName)
+    //         )
+    //     } else {
+    //         // If filter is inactive, add it
+    //         setActiveFilters([...activeFilters, filterName])
+    //     }
+    // }
     const toggleFilter = (filterName) => {
+        const yearFilters = getYearArray().map((year) => year.toString())
+
         if (activeFilters.includes(filterName)) {
-            // If filter is already active, remove it
-            setActiveFilters(
-                activeFilters.filter((name) => name !== filterName)
+            // If filter is already active, remove it only if it's not the last year filter
+            if (
+                !yearFilters.includes(filterName) ||
+                yearFilters.some(
+                    (year) =>
+                        activeFilters.includes(year) && year !== filterName
+                )
+            ) {
+                setActiveFilters(
+                    activeFilters.filter((name) => name !== filterName)
+                )
+            }
+
+            // If the user deselects the last active year, select the most recent year
+            const remainingYearFilters = activeFilters.filter(
+                (name) => yearFilters.includes(name) && name !== filterName
             )
+            if (
+                yearFilters.includes(filterName) &&
+                remainingYearFilters.length === 0
+            ) {
+                const mostRecentYear = Math.max(...yearFilters)
+                setActiveFilters([
+                    ...activeFilters.filter((name) => name !== filterName),
+                    mostRecentYear.toString(),
+                ])
+            }
         } else {
             // If filter is inactive, add it
             setActiveFilters([...activeFilters, filterName])
         }
     }
 
+    const handleMobileFilterClose = () => {
+        // Close mobile filter menu
+        showMobileFilters
+            ? setShowMobileFilters(false)
+            : setShowMobileFilters(true)
+    }
+
+    const countMatchingProjects = (filter) => {
+        return ProjectItems.filter(
+            (project) =>
+                project.technologies.includes(filter) ||
+                project.year.toString() === filter
+        ).length
+    }
+
+    const filteredProjects = ProjectItems.filter((project) => {
+        // return (
+        //     project.technologies.some((tech) => activeFilters.includes(tech)) &&
+        //     activeFilters.includes(project.year.toString())
+        // )
+        const hasTechnology = project.technologies.some((tech) =>
+            activeFilters.includes(tech)
+        )
+        const hasYear = activeFilters.includes(project.year.toString())
+
+        return hasTechnology && hasYear
+    })
+
+    const areAllFiltersActive = () => {
+        // Get all technology names
+        const allTechnologyFilters = Technologies.map((tech) => tech.name)
+
+        // Get all years from year array
+        const allYearFilters = getYearArray().map((year) => year.toString())
+
+        // Combine both arrays
+        const allFilters = [...allTechnologyFilters, ...allYearFilters]
+
+        // Check if every filter in allFilters is present in activeFilters
+        return allFilters.every((filter) => activeFilters.includes(filter))
+    }
+
     return (
-        <div className="relative mx-auto flex flex-col items-center justify-evenly text-center md:text-left lg:px-10">
+        <div className="relative mx-auto flex flex-col items-center justify-evenly bg-white text-center md:text-left lg:px-10">
             <h3 className="relative top-24 z-50 w-[541.98px] text-center text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                 Projects
             </h3>
@@ -312,152 +434,395 @@ const Projects = () => {
                 id="lineup-container"
                 className="relative mt-4 w-full rounded-2xl p-2"
             >
-                <p className="mt-24 text-center dark:text-gray-400">
+                <p className="mt-24 px-10 text-center dark:text-gray-400">
                     Currenly being currated for upload. The template for this is
                     currently being created.
                 </p>
             </div>
-            <div className="flex bg-white">
+            <div className="flex w-full bg-white">
                 {/* mobile filter menu */}
-                <div className="mt-20 flex h-full w-fit flex-col items-center justify-center md:hidden">
+                <div className=" flex h-full w-fit flex-col items-center justify-center md:hidden">
                     <div className="relative my-4 h-fit w-full rounded-t-2xl bg-opacity-10 bg-gradient-to-b from-white to-white dark:bg-black">
-                        <div className="flex w-fit flex-col items-center justify-around gap-2 rounded-2xl border-2 p-1.5">
+                        <div
+                            className={`${
+                                showMobileFilters
+                                    ? ""
+                                    : "translate-x-[.7rem] hover:border-gray-300 hover:bg-gray-50 "
+                            } ml-1 flex w-fit flex-col items-center justify-around gap-2 rounded-2xl border-2 p-1.5 `}
+                        >
                             {/* left */}
-                            <HiFilter className=" w-22 h-22 my-auto flex text-center align-middle text-4xl capitalize tracking-widest text-black" />
-                            {/* left middle*/}
-                            <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
-                                <BsRulers className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest" />
-                                <div className=" flex flex-col items-center border-t-2 py-5">
-                                    {Technologies.map((tech) => {
-                                        if (tech.type === "framework") {
-                                            const isActive =
-                                                activeFilters.includes(
-                                                    tech.name
-                                                )
-                                            return (
-                                                <div
-                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
-                                                    key={tech.id}
-                                                    onClick={() =>
-                                                        toggleFilter(tech.name)
-                                                    }
-                                                >
-                                                    <img
-                                                        src={tech.logo}
-                                                        className={` ${
-                                                            isActive
-                                                                ? "opacity-100"
-                                                                : "grayscale"
-                                                        } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
-                                                            tech.invert
-                                                                ? "opacity-50 dark:invert"
-                                                                : ""
-                                                        } ${
-                                                            tech.invert &&
-                                                            isActive
-                                                                ? "opacity-100 dark:opacity-100"
-                                                                : "opacity-50 "
-                                                        }`}
-                                                        alt={tech.name}
-                                                    ></img>
-                                                </div>
+                            <HiFilter
+                                className={`${
+                                    showMobileFilters ? "" : ""
+                                } w-22 h-22 my-auto flex cursor-pointer text-center align-middle text-4xl capitalize tracking-widest text-black hover:text-gray-700`}
+                                onClick={handleMobileFilterClose}
+                                data-tooltip-id="projectMobileFilter"
+                                data-tooltip-content="Filter Projects..."
+                                data-tooltip-delay-show={300}
+                            />
+                            <Tooltip
+                                id="projectMobileFilter"
+                                place="right"
+                                className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                            />
+                            {/* Select All / Deselect All Button */}
+                            <div
+                                className="txt-xs cursor-pointer text-gray-500 dark:text-gray-400"
+                                onClick={() => {
+                                    if (areAllFiltersActive()) {
+                                        setActiveFilters([])
+                                    } else {
+                                        const allTechnologyFilters =
+                                            Technologies.map(
+                                                (tech) => tech.name
                                             )
-                                        }
-                                    })}
-                                </div>
-                            </div>
-                            {/* right middle */}
-                            <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
-                                <FaDatabase className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest" />
-                                <div className="flex flex-col items-center border-t-2 py-5">
-                                    {Technologies.map((tech) => {
-                                        if (tech.type === "database") {
-                                            const isActive =
-                                                activeFilters.includes(
-                                                    tech.name
-                                                )
-                                            return (
-                                                <div
-                                                    key={tech.id}
-                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
-                                                    onClick={() =>
-                                                        toggleFilter(tech.name)
-                                                    }
-                                                >
-                                                    <img
-                                                        src={tech.logo}
-                                                        className={` ${
-                                                            isActive
-                                                                ? "opacity-100"
-                                                                : "grayscale"
-                                                        } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
-                                                            tech.invert
-                                                                ? "opacity-50 dark:invert"
-                                                                : ""
-                                                        } ${
-                                                            tech.invert &&
-                                                            isActive
-                                                                ? "opacity-100 dark:opacity-100"
-                                                                : "opacity-50 "
-                                                        }`}
-                                                        alt={tech.name}
-                                                    ></img>
-                                                </div>
+                                        const allYearFilters =
+                                            getYearArray().map((year) =>
+                                                year.toString()
                                             )
-                                        }
-                                    })}
-                                </div>
+
+                                        setActiveFilters([
+                                            ...allTechnologyFilters,
+                                            ...allYearFilters,
+                                        ])
+                                    }
+                                }}
+                            >
+                                <p className="cursor-pointer whitespace-nowrap rounded p-1 text-xs hover:border-2 hover:border-sky-200 hover:bg-gray-200 hover:text-sky-500">
+                                    {areAllFiltersActive()
+                                        ? "Deselect all"
+                                        : "Select all"}
+                                </p>
                             </div>
-                            {/* right*/}
-                            <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
-                                <BsFillCalendarMonthFill className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest" />
-                                <div className="flex h-full flex-col gap-2 border-t-2 py-5">
-                                    {getYearArray().map((year) => {
-                                        const isActive = activeFilters.includes(
-                                            year.toString()
-                                        )
-                                        return (
-                                            <div
-                                                key={year}
-                                                className="align-center cursor-pointerrounded-lg flex h-full cursor-pointer hover:border-white"
-                                                onClick={() =>
-                                                    toggleFilter(
-                                                        year.toString()
+                            <div
+                                className={`${
+                                    showMobileFilters
+                                        ? "flex flex-col"
+                                        : "hidden"
+                                }
+                                        gap-2
+                                `}
+                            >
+                                {/* left middle*/}
+                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
+                                    <BsRulers
+                                        className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
+                                        data-tooltip-id="projectMobileFrameworks"
+                                        data-tooltip-content="Filter By Framework..."
+                                        data-tooltip-delay-show={300}
+                                    />
+                                    <Tooltip
+                                        id="projectMobileFrameworks"
+                                        place="right"
+                                        className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                    />
+                                    <div className=" flex flex-col items-center border-t-2 py-5">
+                                        {Technologies.map((tech) => {
+                                            if (tech.type === "framework") {
+                                                const isActive =
+                                                    activeFilters.includes(
+                                                        tech.name
                                                     )
-                                                }
-                                            >
-                                                <h3
-                                                    className={`mx-[.15rem] mt-auto rounded-md bg-sky-400 px-1 text-sm text-white hover:bg-sky-300 ${
-                                                        isActive
-                                                            ? ""
-                                                            : "bg-gray-300 text-gray-500"
-                                                    }`}
+                                                return (
+                                                    <div
+                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                        key={tech.id}
+                                                        onClick={() =>
+                                                            toggleFilter(
+                                                                tech.name
+                                                            )
+                                                        }
+                                                        onMouseEnter={() => {
+                                                            const count =
+                                                                countMatchingProjects(
+                                                                    tech.name
+                                                                )
+                                                            setHoveredFilter({
+                                                                filter: tech.name,
+                                                                count,
+                                                            })
+                                                        }}
+                                                        onMouseLeave={() =>
+                                                            setHoveredFilter({
+                                                                filter: "",
+                                                                count: 0,
+                                                            })
+                                                        }
+                                                    >
+                                                        <img
+                                                            src={tech.logo}
+                                                            className={` ${
+                                                                isActive
+                                                                    ? "opacity-100"
+                                                                    : "grayscale"
+                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
+                                                                tech.invert
+                                                                    ? "opacity-50 dark:invert"
+                                                                    : ""
+                                                            } ${
+                                                                tech.invert &&
+                                                                isActive
+                                                                    ? "opacity-100 dark:opacity-100"
+                                                                    : "opacity-50 "
+                                                            }`}
+                                                            alt={tech.name}
+                                                        ></img>
+                                                    </div>
+                                                )
+                                            }
+                                        })}
+                                    </div>
+                                </div>
+                                {/* middile */}
+                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
+                                    <SiStylelint
+                                        className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
+                                        data-tooltip-id="projectMobileCSS"
+                                        data-tooltip-content="Filter By Css..."
+                                        data-tooltip-delay-show={300}
+                                    />
+                                    <Tooltip
+                                        id="projectMobileCSS"
+                                        place="right"
+                                        className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                    />
+                                    <div className=" flex flex-col items-center border-t-2 py-5">
+                                        {Technologies.map((tech) => {
+                                            if (tech.type === "css") {
+                                                const isActive =
+                                                    activeFilters.includes(
+                                                        tech.name
+                                                    )
+                                                return (
+                                                    <div
+                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                        key={tech.id}
+                                                        onClick={() =>
+                                                            toggleFilter(
+                                                                tech.name
+                                                            )
+                                                        }
+                                                        onMouseEnter={() => {
+                                                            const count =
+                                                                countMatchingProjects(
+                                                                    tech.name
+                                                                )
+                                                            setHoveredFilter({
+                                                                filter: tech.name,
+                                                                count,
+                                                            })
+                                                        }}
+                                                        onMouseLeave={() =>
+                                                            setHoveredFilter({
+                                                                filter: "",
+                                                                count: 0,
+                                                            })
+                                                        }
+                                                    >
+                                                        <img
+                                                            src={tech.logo}
+                                                            className={` ${
+                                                                isActive
+                                                                    ? "opacity-100"
+                                                                    : "grayscale"
+                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
+                                                                tech.invert
+                                                                    ? "opacity-50 dark:invert"
+                                                                    : ""
+                                                            } ${
+                                                                tech.invert &&
+                                                                isActive
+                                                                    ? "opacity-100 dark:opacity-100"
+                                                                    : "opacity-50 "
+                                                            }`}
+                                                            alt={tech.name}
+                                                        ></img>
+                                                    </div>
+                                                )
+                                            }
+                                        })}
+                                    </div>
+                                </div>
+                                {/* right middle */}
+                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
+                                    <FaDatabase
+                                        className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
+                                        data-tooltip-id="projectMobileDatabases"
+                                        data-tooltip-content="Filter Projects by Database..."
+                                        data-tooltip-delay-show={300}
+                                    />
+                                    <Tooltip
+                                        id="projectMobileDatabases"
+                                        place="right"
+                                        className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                    />
+                                    <div className="flex flex-col items-center border-t-2 py-5">
+                                        {Technologies.map((tech) => {
+                                            if (tech.type === "database") {
+                                                const isActive =
+                                                    activeFilters.includes(
+                                                        tech.name
+                                                    )
+                                                return (
+                                                    <div
+                                                        key={tech.id}
+                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                        onClick={() =>
+                                                            toggleFilter(
+                                                                tech.name
+                                                            )
+                                                        }
+                                                        onMouseEnter={() => {
+                                                            const count =
+                                                                countMatchingProjects(
+                                                                    tech.name
+                                                                )
+                                                            setHoveredFilter({
+                                                                filter: tech.name,
+                                                                count,
+                                                            })
+                                                        }}
+                                                        onMouseLeave={() =>
+                                                            setHoveredFilter({
+                                                                filter: "",
+                                                                count: 0,
+                                                            })
+                                                        }
+                                                    >
+                                                        <img
+                                                            src={tech.logo}
+                                                            className={` ${
+                                                                isActive
+                                                                    ? "opacity-100"
+                                                                    : "grayscale"
+                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
+                                                                tech.invert
+                                                                    ? "opacity-50 dark:invert"
+                                                                    : ""
+                                                            } ${
+                                                                tech.invert &&
+                                                                isActive
+                                                                    ? "opacity-100 dark:opacity-100"
+                                                                    : "opacity-50 "
+                                                            }`}
+                                                            alt={tech.name}
+                                                        ></img>
+                                                    </div>
+                                                )
+                                            }
+                                        })}
+                                    </div>
+                                </div>
+                                {/* right*/}
+                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
+                                    <BsFillCalendarMonthFill
+                                        className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
+                                        data-tooltip-id="projectMobileYear"
+                                        data-tooltip-content="Filter Projects by Year..."
+                                        data-tooltip-delay-show={300}
+                                    />
+                                    <Tooltip
+                                        id="projectMobileYear"
+                                        place="right"
+                                        className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                    />
+                                    <div className="flex h-full flex-col gap-2 border-t-2 py-5">
+                                        {getYearArray().map((year) => {
+                                            const isActive =
+                                                activeFilters.includes(
+                                                    year.toString()
+                                                )
+                                            return (
+                                                <div
+                                                    key={year}
+                                                    className="align-center cursor-pointerrounded-lg flex h-full cursor-pointer hover:border-white"
+                                                    onClick={() =>
+                                                        toggleFilter(
+                                                            year.toString()
+                                                        )
+                                                    }
+                                                    onMouseEnter={() => {
+                                                        const count =
+                                                            countMatchingProjects(
+                                                                tech.name
+                                                            )
+                                                        setHoveredFilter({
+                                                            filter: tech.name,
+                                                            count,
+                                                        })
+                                                    }}
+                                                    onMouseLeave={() =>
+                                                        setHoveredFilter({
+                                                            filter: "",
+                                                            count: 0,
+                                                        })
+                                                    }
                                                 >
-                                                    {year}
-                                                </h3>
-                                            </div>
-                                        )
-                                    })}
+                                                    <h3
+                                                        className={`mx-[.15rem] mt-auto rounded-md bg-sky-400 px-1 text-sm text-white hover:bg-sky-300 ${
+                                                            isActive
+                                                                ? ""
+                                                                : "bg-gray-300 text-gray-500"
+                                                        }`}
+                                                    >
+                                                        {year}
+                                                    </h3>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* Main Content */}
-                <div className="w-full rounded-lg bg-white dark:bg-gray-800 md:p-4">
+                <div className=" w-full rounded-lg bg-white dark:bg-gray-800 md:p-4">
                     {/* large filter box */}
                     <div className="relative my-4 hidden h-fit w-full rounded-t-2xl bg-opacity-10 bg-gradient-to-b from-white to-white dark:bg-black md:block">
-                        <div className="flex h-full items-center justify-around">
-                            {/* left */}
+                        <div className="flex gap-4">
+                            {" "}
                             <h2 className=" my-auto flex text-center align-middle text-xl capitalize tracking-widest">
                                 FILTER
                             </h2>
+                            <p>|</p>
+                            {/* Select All / Deselect All Button */}
+                            <div
+                                className="txt-xs cursor-pointer text-gray-500 dark:text-gray-400"
+                                onClick={() => {
+                                    if (areAllFiltersActive()) {
+                                        setActiveFilters([])
+                                    } else {
+                                        const allTechnologyFilters =
+                                            Technologies.map(
+                                                (tech) => tech.name
+                                            )
+                                        const allYearFilters =
+                                            getYearArray().map((year) =>
+                                                year.toString()
+                                            )
+
+                                        setActiveFilters([
+                                            ...allTechnologyFilters,
+                                            ...allYearFilters,
+                                        ])
+                                    }
+                                }}
+                            >
+                                <p className="cursor-pointer whitespace-nowrap rounded p-1 text-xs hover:border-2 hover:border-sky-200 hover:bg-gray-200 hover:text-sky-500">
+                                    {areAllFiltersActive()
+                                        ? "Deselect all"
+                                        : "Select all"}
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex h-full items-center justify-around">
                             {/* left middle*/}
                             <div className="flex h-full flex-col items-center justify-center p-1.5 ">
                                 <h3 className="mb-auto tracking-wide underline">
                                     Frameworks
                                 </h3>
-                                <div className="flex">
+                                <div className="flex max-h-16">
                                     {Technologies.map((tech) => {
                                         if (tech.type === "framework") {
                                             const isActive =
@@ -470,6 +835,82 @@ const Projects = () => {
                                                     key={tech.id}
                                                     onClick={() =>
                                                         toggleFilter(tech.name)
+                                                    }
+                                                    onMouseEnter={() => {
+                                                        const count =
+                                                            countMatchingProjects(
+                                                                tech.name
+                                                            )
+                                                        setHoveredFilter({
+                                                            filter: tech.name,
+                                                            count,
+                                                        })
+                                                    }}
+                                                    onMouseLeave={() =>
+                                                        setHoveredFilter({
+                                                            filter: "",
+                                                            count: 0,
+                                                        })
+                                                    }
+                                                >
+                                                    <img
+                                                        src={tech.logo}
+                                                        className={` ${
+                                                            isActive
+                                                                ? "opacity-100"
+                                                                : "grayscale"
+                                                        } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
+                                                            tech.invert
+                                                                ? "opacity-50 dark:invert"
+                                                                : ""
+                                                        } ${
+                                                            tech.invert &&
+                                                            isActive
+                                                                ? "opacity-100 dark:opacity-100"
+                                                                : "opacity-50 "
+                                                        }`}
+                                                        alt={tech.name}
+                                                    ></img>
+                                                </div>
+                                            )
+                                        }
+                                    })}
+                                </div>
+                            </div>
+                            {/*middle */}
+                            <div className="flex h-full flex-col items-center justify-center p-1.5 ">
+                                <h3 className="mb-auto tracking-wide underline">
+                                    CSS
+                                </h3>
+                                <div className="flex">
+                                    {Technologies.map((tech) => {
+                                        if (tech.type === "css") {
+                                            const isActive =
+                                                activeFilters.includes(
+                                                    tech.name
+                                                )
+                                            return (
+                                                <div
+                                                    key={tech.id}
+                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                    onClick={() =>
+                                                        toggleFilter(tech.name)
+                                                    }
+                                                    onMouseEnter={() => {
+                                                        const count =
+                                                            countMatchingProjects(
+                                                                tech.name
+                                                            )
+                                                        setHoveredFilter({
+                                                            filter: tech.name,
+                                                            count,
+                                                        })
+                                                    }}
+                                                    onMouseLeave={() =>
+                                                        setHoveredFilter({
+                                                            filter: "",
+                                                            count: 0,
+                                                        })
                                                     }
                                                 >
                                                     <img
@@ -515,6 +956,22 @@ const Projects = () => {
                                                     onClick={() =>
                                                         toggleFilter(tech.name)
                                                     }
+                                                    onMouseEnter={() => {
+                                                        const count =
+                                                            countMatchingProjects(
+                                                                tech.name
+                                                            )
+                                                        setHoveredFilter({
+                                                            filter: tech.name,
+                                                            count,
+                                                        })
+                                                    }}
+                                                    onMouseLeave={() =>
+                                                        setHoveredFilter({
+                                                            filter: "",
+                                                            count: 0,
+                                                        })
+                                                    }
                                                 >
                                                     <img
                                                         src={tech.logo}
@@ -559,16 +1016,47 @@ const Projects = () => {
                                                         year.toString()
                                                     )
                                                 }
+                                                onMouseEnter={() => {
+                                                    const count =
+                                                        countMatchingProjects(
+                                                            tech.name
+                                                        )
+                                                    setHoveredFilter({
+                                                        filter: tech.name,
+                                                        count,
+                                                    })
+                                                }}
+                                                onMouseLeave={() =>
+                                                    setHoveredFilter({
+                                                        filter: "",
+                                                        count: 0,
+                                                    })
+                                                }
                                             >
-                                                <h3
-                                                    className={`mx-[.15rem] mt-auto rounded-md bg-sky-400 px-1 text-sm text-white hover:bg-sky-300 ${
-                                                        isActive
-                                                            ? ""
-                                                            : "bg-gray-300 text-gray-500"
-                                                    }`}
-                                                >
-                                                    {year}
-                                                </h3>
+                                                <>
+                                                    <h3
+                                                        className={`mx-[.15rem] mt-auto rounded-md bg-sky-400 px-1 text-sm text-white hover:bg-sky-300 ${
+                                                            isActive
+                                                                ? ""
+                                                                : "bg-gray-300 text-gray-500"
+                                                        }`}
+                                                        data-tooltip-id={`projectMobile${year}`}
+                                                        data-tooltip-content={`
+                                                            ${hoveredFilter.filter}
+                                                            ${hoveredFilter.count}
+                                                        projects`}
+                                                        data-tooltip-delay-show={
+                                                            50
+                                                        }
+                                                    >
+                                                        {year}
+                                                    </h3>
+                                                    <Tooltip
+                                                        id={`projectMobile${year}`}
+                                                        place="right"
+                                                        className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                                    />
+                                                </>
                                             </div>
                                         )
                                     })}
@@ -579,10 +1067,27 @@ const Projects = () => {
                     <hr className="relative mx-4 -mt-4  hidden h-2 w-auto rounded border-0 bg-gradient-radial from-sky-400 via-cyan-600 to-teal-600 fill-black md:block" />
                     {/* Project Cards */}
                     <div className=" mt-10 w-full rounded-b-2xl bg-white dark:bg-black">
-                        {ProjectItems.map((project) => {
+                        {filteredProjects.length > 0 ? (
+                            filteredProjects.map((project) => {
+                                const id = project.id
+                                return (
+                                    <ProjectCard key={id} project={project} />
+                                )
+                            })
+                        ) : (
+                            <div className=" flex h-full flex-col items-center justify-center align-middle">
+                                <h2 className=" flex text-center text-2xl">
+                                    No projects found
+                                </h2>
+                                <h3 className="text-center">
+                                    Try removing some filters
+                                </h3>
+                            </div>
+                        )}
+                        {/* {ProjectItems.map((project) => {
                             const id = project.id
                             return <ProjectCard key={id} project={project} />
-                        })}
+                        })} */}
                     </div>
                 </div>
             </div>

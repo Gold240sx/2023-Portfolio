@@ -96,40 +96,44 @@ const Timeline = () => {
                     Click on each button to toggle timeline category visibility.
                 </p>
                 {/* Filter Buttons */}
-                <div className="mt-4 flex justify-center">
-                    <button
-                        className={`${
-                            workTimeline
-                                ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
-                                : ""
-                        } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
-                        onClick={(e) => handleFilter(e)}
-                    >
-                        Work
-                    </button>
-                    <button
-                        className={`${
-                            educationTimeline
-                                ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
-                                : ""
-                        } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
-                        onClick={(e) => handleFilter(e)}
-                    >
-                        Education
-                    </button>
-                    <button
-                        className={`${
-                            lifeTimeline
-                                ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
-                                : ""
-                        } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
-                        onClick={(e) => handleFilter(e)}
-                    >
-                        Life
-                    </button>
-                    <div className="ml-5 flex flex-col justify-center gap-[2px]">
+                <div className="mt-4 flex flex-col items-center justify-center  align-middle md:flex-row">
+                    {/* filter buttons */}
+                    <div className="block w-auto md:flex">
+                        <button
+                            className={`${
+                                workTimeline
+                                    ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
+                                    : ""
+                            } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
+                            onClick={(e) => handleFilter(e)}
+                        >
+                            Work
+                        </button>
+                        <button
+                            className={`${
+                                educationTimeline
+                                    ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
+                                    : ""
+                            } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
+                            onClick={(e) => handleFilter(e)}
+                        >
+                            Education
+                        </button>
+                        <button
+                            className={`${
+                                lifeTimeline
+                                    ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
+                                    : ""
+                            } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
+                            onClick={(e) => handleFilter(e)}
+                        >
+                            Life
+                        </button>
+                    </div>
+                    {/* filter checkboxes */}
+                    <div className="bg-gray my-3 flex h-fit w-fit items-center justify-center gap-3 md:mx-[unset] md:ml-5 md:flex-col md:items-start md:gap-[2px]">
                         {time2010s && (
-                            <div className="flex gap-3">
+                            <div className=" flex gap-3">
                                 <h2 className="text-gray-500 dark:text-gray-400 ">
                                     2000s
                                 </h2>
