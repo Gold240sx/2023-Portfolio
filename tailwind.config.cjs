@@ -13,6 +13,11 @@ module.exports = {
             },
         },
     },
+    variants: {
+        extend: {
+            opacity: ["group-focus"],
+        },
+    },
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),

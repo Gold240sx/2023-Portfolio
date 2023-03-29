@@ -1,6 +1,6 @@
 import { active } from "d3"
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { HiFilter } from "react-icons/hi"
 import { BsRulers, BsFillCalendarMonthFill } from "react-icons/bs"
 import {
@@ -12,6 +12,7 @@ import { IoCloseCircleOutline } from "react-icons/io5"
 import { FaDatabase } from "react-icons/fa"
 import { Tooltip } from "react-tooltip"
 import { SiStylelint } from "react-icons/si"
+import { MdOutlineSearch } from "react-icons/md"
 import Accordion from "react-bootstrap/Accordion"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
@@ -172,7 +173,12 @@ const ProjectItems = [
     },
 ]
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({
+    project,
+    searchTerm,
+    renderMatchedInfo,
+    activeDescription,
+}) => {
     const {
         name,
         image,
@@ -189,30 +195,6 @@ const ProjectCard = ({ project }) => {
         technologies.includes(technology.name)
     )
 
-    const [activeFilters, setActiveFilters] = useState([
-        "Vanilla",
-        "Typescript",
-        "React",
-        "Next.js",
-        "T3",
-        "Tailwind",
-        "Firebase",
-        "Supabase",
-        "SendGrid",
-    ])
-
-    const toggleFilter = (filterName) => {
-        if (activeFilters.includes(filterName)) {
-            // If filter is already active, remove it
-            setActiveFilters(
-                activeFilters.filter((name) => name !== filterName)
-            )
-        } else {
-            // If filter is inactive, add it
-            setActiveFilters([...activeFilters, filterName])
-        }
-    }
-
     const createValidId = (str) => str.replace(/\s+/g, "_")
 
     return (
@@ -228,6 +210,8 @@ const ProjectCard = ({ project }) => {
                             alt={name}
                             className="rounded-md  lg:rounded-lg"
                         />
+                        {/* Search Term Filter Data Match */}
+                        {searchTerm.length ? renderMatchedInfo() : null}
                         {/* tags */}
                         <div className="mt-4 hidden w-fit max-w-full md:flex">
                             <h4 className=" mx-2 w-fit text-sm font-medium md:text-base">
@@ -279,7 +263,7 @@ const ProjectCard = ({ project }) => {
                             <h2 className="cursor-pointer text-left ">
                                 <a
                                     href={link}
-                                    className="rounded-full border-2 border-sky-400 px-5 py-1 text-sky-600 hover:border-sky-300 hover:bg-sky-50/20 hover:text-sky-500"
+                                    className="rounded-full border-2 border-emerald-600 px-5 py-1 text-teal-500 hover:border-emerald-500 hover:bg-sky-50/20 hover:text-teal-600"
                                 >
                                     Demo
                                 </a>
@@ -294,61 +278,6 @@ const ProjectCard = ({ project }) => {
                             </h2>
                         </div>
                         {/* Description Dropdown*/}
-                        {/* <div className="z-10 w-full bg-white">
-                            <div class=" w-auto rounded-xl  border border-neutral-200 dark:border-neutral-600 dark:bg-neutral-800">
-                                <h2
-                                    class="mb-0 w-auto"
-                                    id={`headingOne-${createValidId(name)}`}
-                                >
-                                    <button
-                                        class="font-base group relative flex w-full items-center border-0 py-2 px-5 text-left text-neutral-400 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:text-sky-500  [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-sky-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
-                                        type="button"
-                                        data-te-collapse-init
-                                        data-te-collapse-collapsed
-                                        data-te-target={`#collapseOne-${createValidId(
-                                            name
-                                        )}`}
-                                        aria-expanded="false"
-                                        aria-controls={`collapseOne-${createValidId(
-                                            name
-                                        )}`}
-                                    >
-                                        Description
-                                        <span class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke-width="1.5"
-                                                stroke="currentColor"
-                                                class="h-6 w-6"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                                                />
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </h2>
-                                <div
-                                    id={`collapseOne-${createValidId(name)}`}
-                                    class="!visible hidden"
-                                    data-te-collapse-item
-                                    data-te-collapse-show
-                                    aria-labelledby={`headingOne-${createValidId(
-                                        name
-                                    )}`}
-                                    data-te-parent="#accordionExample"
-                                >
-                                    <div class="py-4 px-5">
-                                        <p className="mb-2">{description}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
-                        {/*  */}
                         <div
                             id="accordionExample"
                             className="z-20 w-full bg-white"
@@ -356,7 +285,7 @@ const ProjectCard = ({ project }) => {
                             <div className="w-auto rounded-t-lg rounded-b-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
                                 <h2 className="mb-0" id="headingOne">
                                     <button
-                                        className="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center rounded-t-lg border-0 py-2 px-3 text-left text-base text-gray-500 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-sky-500 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                        className="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center rounded-t-lg border-0 py-2 px-3 text-left text-base text-gray-500 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-teal-500 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
                                         type="button"
                                         data-te-collapse-init
                                         data-te-collapse-collapsed
@@ -393,7 +322,11 @@ const ProjectCard = ({ project }) => {
                                 <div
                                     // id="collapseOne"
                                     id={`collapseOne-${createValidId(name)}`}
-                                    class="!visible hidden"
+                                    className={`!visible ${
+                                        activeDescription === name
+                                            ? ""
+                                            : "hidden"
+                                    }`}
                                     data-te-collapse-item
                                     // aria-labelledby="headingOne"
                                     aria-labelledby={`headingOne-${createValidId(
@@ -455,12 +388,15 @@ const Projects = () => {
         "SendGrid",
         "PlanetScale",
         "2023",
+        "2022",
     ])
     const [showMobileFilters, setShowMobileFilters] = useState(true)
     const [hoveredFilter, setHoveredFilter] = useState({ filter: "", count: 0 })
     const [currentPage, setCurrentPage] = useState(1)
     const [showHelpInfo, setShowHelpInfo] = useState(false)
     const [searchTerm, setSearchTerm] = useState("")
+    const [inputFocused, setInputFocused] = useState(false)
+    const [searchMatchInfo, setSearchMatchInfo] = useState({})
     const itemsPerPage = 4
 
     const updateCurrentPage = (newPage) => {
@@ -471,17 +407,6 @@ const Projects = () => {
         }
     }
 
-    // const toggleFilter = (filterName) => {
-    //     if (activeFilters.includes(filterName)) {
-    //         // If filter is already active, remove it
-    //         setActiveFilters(
-    //             activeFilters.filter((name) => name !== filterName)
-    //         )
-    //     } else {
-    //         // If filter is inactive, add it
-    //         setActiveFilters([...activeFilters, filterName])
-    //     }
-    // }
     const toggleFilter = (filterName) => {
         const yearFilters = getYearArray().map((year) => year.toString())
 
@@ -534,17 +459,70 @@ const Projects = () => {
         ).length
     }
 
+    // Rename the searchMatches function to getSearchMatchInfo
+    const getSearchMatchInfo = (project, searchTerm) => {
+        if (searchTerm.length === 0) {
+            return { isMatch: true, matchType: "", matchText: "" }
+        }
+
+        const nameMatch = project.name
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase())
+        const tagsMatch = project.tags.some((tag) =>
+            tag.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        const descriptionMatch = project.description
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase())
+
+        if (nameMatch) {
+            return {
+                isMatch: true,
+                matchType: "Name",
+                matchText: project.name,
+            }
+        } else if (tagsMatch) {
+            const matchedTag = project.tags.find((tag) =>
+                tag.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            return {
+                isMatch: true,
+                matchType: "Tag",
+                matchText: matchedTag,
+            }
+        } else if (descriptionMatch) {
+            return {
+                isMatch: true,
+                matchType: "Description",
+                matchText: project.description,
+            }
+        } else {
+            return { isMatch: false, matchType: "", matchText: "" }
+        }
+    }
+
+    // Move setSearchMatchInfo logic outside of filteredProjects function
+    useEffect(() => {
+        const newSearchMatchInfo = {}
+
+        ProjectItems.forEach((project) => {
+            const searchMatch = getSearchMatchInfo(project, searchTerm)
+            newSearchMatchInfo[project.name] = searchMatch
+        })
+
+        setSearchMatchInfo(newSearchMatchInfo)
+    }, [ProjectItems, searchTerm, activeFilters])
+
+    // Update the filteredProjects function
     const filteredProjects = ProjectItems.filter((project) => {
-        // return (
-        //     project.technologies.some((tech) => activeFilters.includes(tech)) &&
-        //     activeFilters.includes(project.year.toString())
-        // )
         const hasTechnology = project.technologies.some((tech) =>
             activeFilters.includes(tech)
         )
         const hasYear = activeFilters.includes(project.year.toString())
 
-        return hasTechnology && hasYear
+        return (
+            hasTechnology && hasYear && searchMatchInfo[project.name]?.isMatch
+        )
     })
 
     const areAllFiltersActive = () => {
@@ -568,27 +546,57 @@ const Projects = () => {
 
     const totalPages = Math.ceil(filteredProjects.length / itemsPerPage)
 
-    const searchProjects = (searchTerm) => {
-        setSearchTerm(searchTerm)
+    const renderMatchedInfo = (searchMatchInfo, name, searchTerm) => {
+        if (searchTerm == "" || searchTerm == null || searchTerm == undefined) {
+            return ""
+        }
 
-        const filteredProjects = ProjectItems.filter((project) => {
-            const hasTechnology = project.technologies.some((tech) =>
-                tech.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-            const hasYear = project.year.toString().includes(searchTerm)
-            const hasTitle = project.title
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase())
-            const hasDescription = project.description
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase())
+        const matchInfo = searchMatchInfo[name] || {}
 
-            // filter the projects and display only the ones that match the search term
+        if (!matchInfo.matchType || !matchInfo.matchText) {
+            return null
+        }
 
-            // return hasTechnology || hasYear || hasTitle || hasDescription
-        })
+        const searchTermIndex = matchInfo.matchText
+            .toLowerCase()
+            .indexOf(searchTerm.toLowerCase())
+        const beforeMatch = matchInfo.matchText.slice(0, searchTermIndex)
+        const matchedText = matchInfo.matchText.slice(
+            searchTermIndex,
+            searchTermIndex + searchTerm.length
+        )
+        const afterMatch = matchInfo.matchText.slice(
+            searchTermIndex + searchTerm.length
+        )
 
-        return filteredProjects
+        return (
+            <>
+                <div
+                    className={` ${
+                        searchTerm === "" ? "hidden h-0 opacity-0" : ""
+                    }
+                my-2 w-full rounded bg-gray-600 p-2 text-white shadow`}
+                >
+                    <h3 className="text-center text-lg font-bold">
+                        Search Term Match
+                    </h3>
+                    <p className="font-bold text-gray-400">
+                        Matching:{" "}
+                        <span className="font-normal text-white">
+                            {matchInfo.matchType}
+                        </span>
+                    </p>
+                    <p className="font-bold text-gray-400">
+                        Matched Text:{" "}
+                        <span className="px-2 py-0.5  font-normal text-white">
+                            {beforeMatch}
+                            <span className="bg-yellow-300">{matchedText}</span>
+                            {afterMatch}
+                        </span>
+                    </p>
+                </div>
+            </>
+        )
     }
 
     return (
@@ -957,29 +965,26 @@ const Projects = () => {
                             </h2>
                             <vr className="border-gray/10 mx-1 mr-auto w-0.5 max-w-[2px] flex-1 border" />
                             {/* Search Bar */}
-                            <div className="hidden w-full flex-col md:flex">
+                            <div className=" hidden w-full flex-col md:flex">
                                 <div className="relative flex w-full flex-row items-center justify-center">
                                     <input
                                         type="text"
-                                        className="focus:shadow-outline h-10 w-full rounded-lg border-2 border-gray-200 px-5 pr-10 text-base placeholder-gray-500 outline-none transition-all duration-300 ease-in-out  focus:border-transparent focus:placeholder-opacity-0 focus:outline-none focus:ring-2 focus:ring-sky-400"
-                                        placeholder="Search..."
+                                        className="focus:shadow-outline h-10 w-full rounded-lg border-2 border-gray-200 px-5 pr-10 text-base placeholder-gray-300 outline-none transition-all duration-300 ease-in-out  focus:border-transparent focus:placeholder-opacity-0 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                                        placeholder="Search Projects..."
                                         value={searchTerm}
                                         onChange={(e) =>
-                                            searchProjects(e.target.value)
+                                            setSearchTerm(e.target.value)
                                         }
+                                        onFocus={() => setInputFocused(true)}
+                                        onBlur={() => setInputFocused(false)}
                                     />
-                                    <button
-                                        type="submit"
-                                        className="absolute right-0 top-0 mt-2 mr-4"
-                                    >
-                                        <svg
-                                            className="h-6 w-6 fill-current text-gray-500"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 52 52"
-                                        >
-                                            <path d="M51.3 47.3l-14-14c1.8-2.1 2.9-4.9 2.9-7.9C46.2 11.4 37 .8 23.1.8S.8 11.4.8 25.3s9.6 24.5 23.5 24.5c3 0 5.8-.8 8.3-2.2l14 14c.6.6 1.5.6 2.1 0l2.1-2.1c.6-.6.6-1.5 0-2.1zM3.9 25.3c0-12.1 9.9-22 22-22s22 9.9 22 22-9.9 22-22 22-22-9.9-22-22z" />
-                                        </svg>
-                                    </button>
+                                    <div className="pointer-events-none absolute right-0 top-0 mt-2 mr-4">
+                                        <MdOutlineSearch
+                                            className={`h-6 w-6 text-gray-400 ${
+                                                inputFocused ? "opacity-50" : ""
+                                            }`}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             {/* Select All / Deselect All Button */}
@@ -1007,7 +1012,7 @@ const Projects = () => {
                                     }
                                 }}
                             >
-                                <p className="h-fit w-fit cursor-pointer  whitespace-nowrap rounded-lg bg-sky-300 p-1 px-3  text-base text-white hover:border-2 hover:bg-sky-300 hover:text-white/80">
+                                <p className="h-fit w-fit cursor-pointer  whitespace-nowrap rounded-lg bg-sky-300 p-1 px-3  text-base text-white hover:bg-sky-200 hover:text-black">
                                     {areAllFiltersActive()
                                         ? "Select none"
                                         : "Select all"}
@@ -1016,7 +1021,7 @@ const Projects = () => {
                         </div>
                         <div className="mt-2 flex h-full items-center justify-around">
                             {/* left middle*/}
-                            <div className="group flex h-full flex-col items-center justify-center rounded-lg p-1.5 hover:bg-gray-50">
+                            <div className="group flex h-full flex-col items-center justify-center rounded-lg p-1.5 ">
                                 <h3 className="mb-1 text-2xl  tracking-wide text-gray-700  opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100">
                                     Frameworks
                                 </h3>
@@ -1302,7 +1307,25 @@ const Projects = () => {
                             projectsToDisplay.map((project) => {
                                 const id = project.id
                                 return (
-                                    <ProjectCard key={id} project={project} />
+                                    <>
+                                        {/* filter project according to the search term if the search term length is greater than 0, where matchtype is the type (contains: name, title or description, and text is the surrounding text of the search containing the search query, and highlighting it in yellow) */}
+                                        <React.Fragment
+                                            key={`${id}-${searchTerm}`}
+                                        >
+                                            <ProjectCard
+                                                key={id}
+                                                project={project}
+                                                searchTerm={searchTerm}
+                                                renderMatchedInfo={() =>
+                                                    renderMatchedInfo(
+                                                        searchMatchInfo,
+                                                        project.name,
+                                                        searchTerm
+                                                    )
+                                                }
+                                            />
+                                        </React.Fragment>
+                                    </>
                                 )
                             })
                         ) : (
@@ -1314,13 +1337,14 @@ const Projects = () => {
                                     Try adding more filters.
                                 </h3>
                                 {/* display help text when the help info button icon is clicked */}
-                                {/* hilp info icon */}
+                                {/* help info icon */}
                                 <div className=" mx-2 mt-2 flex cursor-pointer flex-col  items-end justify-center rounded  border bg-gray-100 p-5  transition-all duration-500 ease-in-out">
                                     <div
                                         className="flex"
-                                        onClick={() =>
+                                        onClick={() => {
                                             setShowHelpInfo(!showHelpInfo)
-                                        }
+                                            setSearchTerm("")
+                                        }}
                                     >
                                         <h2 className="my-auto mr-3 flex text-xl">
                                             {showHelpInfo
