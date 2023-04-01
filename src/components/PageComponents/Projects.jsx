@@ -251,7 +251,7 @@ const ProjectCard = ({
                                         key={tech.id}
                                         className={`${
                                             tech.invert ? "dark:invert" : ""
-                                        } my-2 h-8`}
+                                        } my-2 h-8 pr-1`}
                                         src={tech.logo}
                                         alt={tech.name}
                                     />
@@ -263,7 +263,7 @@ const ProjectCard = ({
                             <h2 className="cursor-pointer text-left ">
                                 <a
                                     href={link}
-                                    className="rounded-full border-2 border-emerald-600 px-5 py-1 text-teal-500 hover:border-emerald-500 hover:bg-sky-50/20 hover:text-teal-600"
+                                    className="rounded-full border-2 border-sky-500 px-5 py-1 text-sky-500 hover:border-sky-700 hover:bg-sky-50/20 hover:text-sky-700"
                                 >
                                     Demo
                                 </a>
@@ -285,7 +285,7 @@ const ProjectCard = ({
                             <div className="w-auto rounded-t-lg rounded-b-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
                                 <h2 className="mb-0" id="headingOne">
                                     <button
-                                        className="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center rounded-t-lg border-0 py-2 px-3 text-left text-base text-gray-500 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-teal-500 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                        className="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center rounded-t-lg border-0 py-2 px-3 text-left text-base text-gray-500 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-sky-500 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
                                         type="button"
                                         data-te-collapse-init
                                         data-te-collapse-collapsed
@@ -1012,7 +1012,7 @@ const Projects = () => {
                                     }
                                 }}
                             >
-                                <p className="h-fit w-fit cursor-pointer  whitespace-nowrap rounded-lg bg-sky-300 p-1 px-3  text-base text-white hover:bg-sky-200 hover:text-black">
+                                <p className="h-fit w-fit cursor-pointer  whitespace-nowrap rounded-lg bg-sky-300 p-1 px-3  text-base text-white hover:bg-sky-600 ">
                                     {areAllFiltersActive()
                                         ? "Select none"
                                         : "Select all"}

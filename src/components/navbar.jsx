@@ -8,10 +8,12 @@ import SocialBar from "../components/SocialBar"
 import PageBar from "./PageBar"
 import { useTheme } from "../hooks/useThemeContext"
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, useScroll } from "framer-motion"
 import MobileMenu from "./mobileMenu"
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
+import { Tooltip } from "react-tooltip"
+import Astronaut from "../assets/Images/astronaut.png"
 import {
     ChevronDownIcon,
     PhoneIcon,
@@ -69,8 +71,39 @@ export const navbar = () => {
     const { mode, changeMode } = useTheme()
     const [open, setOpen] = useState(false)
     const currentPath = window.location.pathname
+    const { scrollYProgress } = useScroll()
+    const [showSpeachBubble, setShowSpeachBubble] = useState(false)
 
     //console.log(location.pathname)
+
+    const speachBubbleHandler = () => {
+        if (scrollYProgress > 0.1) {
+            setShowSpeachBubble(false)
+        } else {
+            setShowSpeachBubble(true)
+        }
+        // setTimeout to 1.5s then set to false
+        setTimeout(() => {
+            setShowSpeachBubble(false)
+        }, 1000)
+    }
+
+    const handleClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        })
+        speachBubbleHandler()
+    }
+
+    const Bubble = ({ children }) => {
+        return (
+            <div className="thought ">
+                {children}
+                <div className="absolute left-2 bottom-2 h-0 w-0 "></div>
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -274,6 +307,46 @@ export const navbar = () => {
                             <MobileMenu open={open} setOpen={setOpen} />
                         </div>
                     </motion.div>
+                    {/* Display astronaut that takes the user to the top of the page on click */}
+                    {/* position to be at the bottom right of the screen and appear only after the first section of the page */}
+                    <div className="absolute z-50 h-full items-end">
+                        <div
+                            className="fixed bottom-0 -right-5 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100"
+                            // data-tooltip-id="astronaut"
+                            // data-tooltip-content="To the moon!!!"
+                            // data-tooltip-delay-show={300}
+                        >
+                            <motion.div
+                                animate={{
+                                    transition: { duration: 0.5 },
+                                }}
+                                className="z-50 duration-500 ease-in "
+                            >
+                                <div
+                                    className="flex cursor-pointer flex-col items-end"
+                                    onClick={handleClick}
+                                >
+                                    {showSpeachBubble && (
+                                        <Bubble className=" dark:text-black">
+                                            To the moon!!!
+                                        </Bubble>
+                                    )}
+                                    <img
+                                        src={Astronaut}
+                                        alt="Astronaut"
+                                        className="h-22 w-15  z-50 ml-auto duration-300 ease-in"
+                                        height={150}
+                                        width={100}
+                                    />
+                                </div>
+                            </motion.div>
+                            {/* <Tooltip
+                                id="astronaut"
+                                place="left"
+                                className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                            /> */}
+                        </div>
+                    </div>
                 </div>
                 {!currentPath.endsWith("/sginIn") && <SocialBar />}
             </div>

@@ -30,7 +30,10 @@ export default function Footer() {
                         </a>
                     ))}
                 </div>
-                <div className="mt-8 mr-auto md:order-1 md:mt-0">
+                <div className="mt-8 mr-auto ml-6 md:order-1 md:mt-0">
+                    <p className="text-left text-base leading-6 text-gray-400">
+                        Astronaut image by ...
+                    </p>
                     <p className="text-center text-xs leading-5 text-gray-500">
                         &copy; 2023 Michael Martell, Inc. All rights reserved.
                     </p>

@@ -1,9 +1,21 @@
 import React from "react"
 import { SocialIcon } from "react-social-icons"
+import ResumeIcon from "../assets/Icons/ResumeDL.svg"
+import resumeFile from "../assets/files/MichaelMartell2023ResumeV1.3.pdf"
+import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Tooltip } from "react-tooltip"
+import qs from "query-string"
 
 type Props = {}
+
+function handleEmailClick() {
+    const params = qs.stringify({
+        subject: "RE:Portfolio Reference - Hey Michael!",
+        body: "Hi Michael, I saw your portfolio and wanted to reach out!",
+    })
+    window.location.href = `mailto:240designworks@gmail.com?${params}`
+}
 
 export default function SocialBar({}: Props) {
     return (
@@ -30,7 +42,7 @@ export default function SocialBar({}: Props) {
                 <SocialIcon
                     url="https://github.com/gold240sx"
                     fgColor="#737373"
-                    className="opacity-30 hover:opacity-100 dark:opacity-50 hover:dark:opacity-100"
+                    className="cursor-pointer opacity-30 hover:opacity-100 dark:opacity-50 hover:dark:opacity-100"
                     data-tooltip-id="github"
                     data-tooltip-content="Link: My Github"
                     data-tooltip-delay-show={1000}
@@ -45,7 +57,7 @@ export default function SocialBar({}: Props) {
                     url="https://stackoverflow.com/users/16441693/michael-martell"
                     fgColor="transparent"
                     bgColor="#737373"
-                    className="opacity-30 hover:opacity-100 dark:opacity-60 hover:dark:opacity-100"
+                    className=" cursor-pointer opacity-30 hover:opacity-100 dark:opacity-60 hover:dark:opacity-100"
                     data-tooltip-id="stack"
                     data-tooltip-content="Link: My StackOverflow Profile"
                     data-tooltip-delay-show={1000}
@@ -60,7 +72,7 @@ export default function SocialBar({}: Props) {
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                 />
-                <SocialIcon
+                {/* <SocialIcon
                     url="https://michael-martell.com"
                     fgColor="#737373"
                     bgColor="transparent"
@@ -73,25 +85,37 @@ export default function SocialBar({}: Props) {
                     id="web"
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
-                />
+                /> */}
                 <SocialIcon
                     url="mailto:240designworks@gmail.com"
-                    className=" mb-1 -mt-2 cursor-pointer opacity-30 hover:opacity-100 dark:opacity-50 hover:dark:opacity-100"
+                    onClick={handleEmailClick}
+                    className=" mb-1  translate-x-0.5 scale-105 cursor-pointer opacity-30 hover:opacity-100 dark:opacity-50 hover:dark:opacity-100"
                     data-tooltip-id="email"
                     data-tooltip-content="Link: Email Me (Direct)"
                     network="email"
                     fgColor="#737373"
                     bgColor="transparent"
-                    data-tooltip-delay-show={1000}
+                    data-tooltip-delay-show={150}
                 />
                 <Tooltip
                     id="email"
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                 />
-                <p className="text sm hidden uppercase text-gray-400 hover:block">
-                    GET IN TOUCH!
-                </p>
+                <Link to={resumeFile} target="_blank" download>
+                    <img
+                        src={ResumeIcon}
+                        className="hover:-red-500  mb-2 h-8 w-auto translate-x-1 scale-90 cursor-pointer opacity-30 hover:opacity-70 dark:fill-white dark:opacity-20 dark:invert hover:dark:opacity-40"
+                        data-tooltip-id="resume"
+                        data-tooltip-content="Download: My Resume"
+                        data-tooltip-delay-show={150}
+                    />
+                </Link>
+                <Tooltip
+                    id="resume"
+                    place="right"
+                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                />
             </motion.div>
         </header>
     )

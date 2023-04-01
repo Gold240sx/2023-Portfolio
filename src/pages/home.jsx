@@ -5,6 +5,7 @@ import Skills from "../components/PageComponents/Skills"
 import Timeline from "../components/PageComponents/Timeline"
 import Education from "../components/PageComponents/Education"
 import Work from "../components/PageComponents/Work.jsx"
+import Contact from "../components/PageComponents/contactForm/Contact"
 import CertificateSection2 from "../components/PageComponents/test"
 import Projects from "../components/PageComponents/Projects"
 
@@ -43,6 +44,7 @@ const Home = () => {
                         "repeating-linear-gradient( -55deg, #FBFBFC, #FBFBFC 5px, #F4F7FA 5px, #F4F7FA 15px",
                     minHeight: "fit-content",
                 }}
+                id="skills"
             >
                 <div
                     className="my-auto  w-auto min-w-fit"
@@ -57,6 +59,7 @@ const Home = () => {
             <section
                 className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
                 style={{ minHeight: "fit-content" }}
+                id="timeline"
             >
                 <div className="my-auto " style={{ minHeight: "fit-content" }}>
                     <div className="">
@@ -72,6 +75,7 @@ const Home = () => {
             <section
                 className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center align-middle"
                 style={{ minHeight: "fit-content" }}
+                id="education"
             >
                 <div
                     className="my-auto  md:mx-5"
@@ -89,6 +93,7 @@ const Home = () => {
             <section
                 className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
                 style={{ minHeight: "fit-content" }}
+                id="projects"
             >
                 <div className="w-screen px-6 lg:max-w-[70rem]">
                     <div
@@ -102,6 +107,22 @@ const Home = () => {
                 </div>
             </section>
             {/* Contact */}
+            <section
+                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                style={{ minHeight: "fit-content" }}
+                id="contact"
+            >
+                <div className="w-screen px-6 lg:max-w-[70rem]">
+                    <div
+                        className="my-auto md:mx-5"
+                        style={{ minHeight: "fit-content" }}
+                    >
+                        <div id="hero" className=" snap-center">
+                            <Contact />
+                        </div>
+                    </div>
+                </div>
+            </section>
             {/* Blog */}
             {/* Art */}
             {/* Test */}

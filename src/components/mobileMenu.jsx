@@ -100,12 +100,14 @@ export default function MobileMenu({ open, setOpen }) {
                                             <div className="flex h-full w-auto">
                                                 <ul className="relative flex h-fit w-full flex-col pl-8 pb-5">
                                                     {/* add mt-auto to position menu to the bottom */}
-                                                    <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span className="mr-5 ">
-                                                            <TbInfoSquare className="h-6 w-6" />
-                                                        </span>{" "}
-                                                        About
-                                                    </li>
+                                                    <a href="#about">
+                                                        <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                            <span className="mr-5 ">
+                                                                <TbInfoSquare className="h-6 w-6" />
+                                                            </span>{" "}
+                                                            About
+                                                        </li>
+                                                    </a>
                                                     {/* <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
                                                         <span className="mr-5">
                                                             <svg
