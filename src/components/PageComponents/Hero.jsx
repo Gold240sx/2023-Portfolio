@@ -27,7 +27,7 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5 }}
-                className="min-h-6 relative z-10 flex h-auto w-full flex-col items-center justify-center"
+                className="min-h-6 relative flex h-auto w-full flex-col items-center justify-center"
             >
                 <img
                     src={heroImage}

@@ -98,16 +98,18 @@ export default function MobileMenu({ open, setOpen }) {
                                         <div className="relative mt-6 h-auto flex-1">
                                             {/* Your content */}
                                             <div className="flex h-full w-auto">
-                                                <ul class="relative flex h-fit w-full flex-col pl-8 pb-5">
+                                                <ul className="relative flex h-fit w-full flex-col pl-8 pb-5">
                                                     {/* add mt-auto to position menu to the bottom */}
-                                                    <li class="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5 ">
-                                                            <TbInfoSquare className="h-6 w-6" />
-                                                        </span>{" "}
-                                                        About
-                                                    </li>
-                                                    <li class="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5">
+                                                    <a href="#about">
+                                                        <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                            <span className="mr-5 ">
+                                                                <TbInfoSquare className="h-6 w-6" />
+                                                            </span>{" "}
+                                                            About
+                                                        </li>
+                                                    </a>
+                                                    {/* <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5">
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 viewBox="0 0 576 512"
@@ -117,11 +119,11 @@ export default function MobileMenu({ open, setOpen }) {
                                                             </svg>
                                                         </span>{" "}
                                                         Art
-                                                    </li>
-                                                    <li class="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5">
+                                                    </li> */}
+                                                    <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5">
                                                             <svg
-                                                                class="h-6 w-6"
+                                                                className="h-6 w-6"
                                                                 fill="none"
                                                                 stroke="currentColor"
                                                                 viewBox="0 0 24 24"
@@ -137,22 +139,22 @@ export default function MobileMenu({ open, setOpen }) {
                                                         </span>{" "}
                                                         Contact
                                                     </li>
-                                                    <li class="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5">
+                                                    <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5">
                                                             <TbSchool className="h-6 w-6" />
                                                         </span>{" "}
                                                         Education
                                                     </li>
-                                                    <li class="text-md  items-centesr flex h-fit rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5 ">
+                                                    {/* <li className="text-md  items-centesr flex h-fit rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5 ">
                                                             <MdOutlineWorkHistory className="h-6 w-6" />
                                                         </span>{" "}
                                                         Experience
-                                                    </li>
-                                                    <li class="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5 ">
+                                                    </li> */}
+                                                    <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5 ">
                                                             <svg
-                                                                class="h-6 w-6"
+                                                                className="h-6 w-6"
                                                                 fill="none"
                                                                 stroke="currentColor"
                                                                 viewBox="0 0 24 24"
@@ -168,10 +170,10 @@ export default function MobileMenu({ open, setOpen }) {
                                                         </span>
                                                         Projects
                                                     </li>
-                                                    <li class="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5">
+                                                    <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5">
                                                             <svg
-                                                                class="h-6 w-6"
+                                                                className="h-6 w-6"
                                                                 fill="none"
                                                                 stroke="currentColor"
                                                                 viewBox="0 0 24 24"
@@ -187,16 +189,16 @@ export default function MobileMenu({ open, setOpen }) {
                                                         </span>{" "}
                                                         Skills
                                                     </li>
-                                                    <li class="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5 ">
+                                                    <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5 ">
                                                             <MdOutlineWorkHistory className="h-6 w-6" />
                                                         </span>{" "}
                                                         Timeline
                                                     </li>
-                                                    <li class="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5 ">
+                                                    <li className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5 ">
                                                             <svg
-                                                                class="h-6 w-6"
+                                                                className="h-6 w-6"
                                                                 fill="none"
                                                                 stroke="currentColor"
                                                                 viewBox="0 0 24 24"
@@ -214,26 +216,26 @@ export default function MobileMenu({ open, setOpen }) {
                                                     </li>
                                                     <br className="w-auto border-gray-500 bg-gray-500 text-gray-500" />
                                                     <div
-                                                        class="absolute left-0 h-14 w-1 bg-indigo-600"
+                                                        className="absolute left-0 h-14 w-1 bg-indigo-600"
                                                         style={{
                                                             bottom: "8.235rem",
                                                         }}
                                                     ></div>
-                                                    <li class="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5 ">
+                                                    <li className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5 ">
                                                             <RiUser3Fill className="h-6 w-6" />
                                                         </span>{" "}
                                                         Client Sign In
                                                     </li>
-                                                    <li class="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
-                                                        <span class="mr-5 ">
+                                                    <li className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                        <span className="mr-5 ">
                                                             <TbCode className="h-6 w-6" />
                                                         </span>{" "}
                                                         Dev Sign In
                                                     </li>
-                                                    {/* <span class="absolute right-5 bottom-5 text-gray-400">
+                                                    {/* <span className="absolute right-5 bottom-5 text-gray-400">
                                                     <svg
-                                                        class="h-8 w-8"
+                                                        className="h-8 w-8"
                                                         fill="none"
                                                         stroke="currentColor"
                                                         viewBox="0 0 24 24"

@@ -40,7 +40,7 @@ function App({ children }) {
 
     return (
         <>
-            <main className=" relative h-full w-auto bg-slate-50 from-[#0D243B] to-[#0A1120] dark:bg-gradient-to-bl dark:text-white">
+            <main className=" relative h-full w-auto bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white">
                 {authIsReady && (
                     <BrowserRouter>
                         <Navbar />
@@ -48,7 +48,7 @@ function App({ children }) {
                             <div
                                 id="dark-mode-toggle"
                                 onClick={() => darkModeToggle()}
-                                className="mt-[100px]  h-16 w-[50px] cursor-pointer rounded-l-xl bg-zinc-200 text-center align-middle text-3xl text-zinc-400 dark:bg-zinc-900 dark:text-zinc-600"
+                                className="mt-[100px]  h-16 w-[50px] cursor-pointer rounded-l-xl bg-zinc-200 text-center align-middle text-3xl text-zinc-400 shadow-xl hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-600 dark:hover:bg-zinc-800"
                             >
                                 <FaSun
                                     className="z-100 m-auto h-full justify-center dark:hidden"
@@ -96,7 +96,7 @@ function App({ children }) {
                     </BrowserRouter>
                 )}
             </main>
-            <section className="h-fit w-full dark:bg-[#111111] dark:text-white">
+            <section className=" h-fit w-full dark:bg-[#111111] dark:text-white">
                 <Footer />
             </section>
         </>

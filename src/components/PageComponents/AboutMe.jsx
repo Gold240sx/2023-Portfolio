@@ -7,10 +7,10 @@ const AboutMe = () => {
             className="relative mx-auto w-full max-w-3xl border-2 border-dashed border-red-500 px-10 text-center lg:px-8"
             style={{ minHeight: "fit-content" }}
         >
-            <h3 className="mb-10 mt-10 text-2xl uppercase  tracking-[20px] text-gray-500">
+            <h3 className=" mt-10 text-2xl uppercase  tracking-[20px] text-gray-500">
                 About Me
             </h3>
-            <div className="mx-auto mb-12 h-fit w-[300px] max-w-[50%]">
+            <div className="mx-auto mb-16 h-fit w-[300px] max-w-[50%]">
                 <motion.div
                     initial={{
                         x: -200,
@@ -18,13 +18,17 @@ const AboutMe = () => {
                     }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.2 }}
-                    className="relative h-0 overflow-hidden rounded-full"
+                    className="relative h-0"
                     style={{ paddingBottom: "100%" }}
                 >
-                    <img
+                    {/* <img
                         src="https://i.ibb.co/C979rFf/AboutMe.jpg"
                         alt="About"
                         className="absolute w-full object-cover"
+                    /> */}
+                    <img
+                        class="mask mask-hexagon-2"
+                        src="https://i.ibb.co/C979rFf/AboutMe.jpg"
                     />
                 </motion.div>
             </div>
