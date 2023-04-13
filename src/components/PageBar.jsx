@@ -2,6 +2,13 @@ import React from "react"
 import { SocialIcon } from "react-social-icons"
 import { motion } from "framer-motion"
 
+const smoothScroll = (target, setOpen) => {
+    const targetElement = document.getElementById(target)
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" })
+    }
+}
+
 export default function PageBar() {
     return (
         <div
@@ -27,26 +34,27 @@ export default function PageBar() {
                     id="page-bar-links"
                 >
                     <a
-                        className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
-                        href="#about"
+                        className="hover:text-shadow-lg cursor-pointer text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
+                        onClick={() => smoothScroll("aboutMe")}
                     >
                         ABOUT
                     </a>
                     <a
-                        className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
-                        href="#skills"
+                        className="hover:text-shadow-lg cursor-pointer text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
+                        onClick={() => smoothScroll("skills")}
                     >
                         SKILLS
                     </a>
                     <a
-                        className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
-                        href="#timeline"
+                        className="hover:text-shadow-lg cursor-pointer text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
+                        onClick={() => smoothScroll("timeline")}
                     >
                         TIMELINE
                     </a>
                     <a
-                        className="hover:text-shadow-lg z-[100000000000] text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
-                        href="#education"
+                        className="hover:text-shadow-lg z-[100000000000] cursor-pointer text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
+                        // href="#education"
+                        onClick={() => smoothScroll("education")}
                         style={{ zIndex: 100000000000 }}
                     >
                         EDUCATION
@@ -58,14 +66,16 @@ export default function PageBar() {
                         EXPERIENCE
                     </a> */}
                     <a
-                        className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
-                        href="#projects"
+                        className="hover:text-shadow-lg cursor-pointer text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
+                        // href="#projects"
+                        onClick={() => smoothScroll("projects")}
                     >
                         PROJECTS
                     </a>
                     <a
-                        className="hover:text-shadow-lg text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
-                        href="#contact"
+                        className="hover:text-shadow-lg cursor-pointer text-5xl uppercase text-gray-200 hover:mr-2 hover:text-6xl hover:text-white hover:opacity-100 hover:[text-shadow:_0_0px_15px_rgb(0_0_0_/_30%)] dark:text-slate-700 dark:hover:text-slate-300"
+                        // href="#contact"
+                        onClick={() => smoothScroll("contact")}
                     >
                         CONTACT
                     </a>

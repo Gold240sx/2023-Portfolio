@@ -26,6 +26,7 @@ const smoothClose = (setOpen) => {
 
 export default function MobileMenu({ open, setOpen }) {
     const { mode, changeMode } = useTheme()
+    const currentPath = window.location.pathname
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -65,6 +66,9 @@ export default function MobileMenu({ open, setOpen }) {
                                                 <Link
                                                     to="/home"
                                                     className="hover:cursor-pointer"
+                                                    onClick={() =>
+                                                        smoothClose(setOpen)
+                                                    }
                                                 >
                                                     <div className="ml-4">
                                                         {/* <h1 className="text-2xl font-semibold text-slate-800 dark:text-slate-200">
@@ -112,21 +116,25 @@ export default function MobileMenu({ open, setOpen }) {
                                             <div className="flex h-full w-auto">
                                                 <ul className="relative flex h-fit w-full flex-col pl-8 pb-5">
                                                     {/* add mt-auto to position menu to the bottom */}
-                                                    <li
-                                                        className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                        onClick={() =>
-                                                            smoothScroll(
-                                                                "about",
-                                                                setOpen
-                                                            )
-                                                        }
-                                                    >
-                                                        <span className="mr-5 ">
-                                                            <TbInfoSquare className="h-6 w-6" />
-                                                        </span>{" "}
-                                                        About
-                                                    </li>
-                                                    {/* <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                    {!currentPath.endsWith(
+                                                        "/sginIn"
+                                                    ) && (
+                                                        <>
+                                                            <li
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                onClick={() =>
+                                                                    smoothScroll(
+                                                                        "aboutMe",
+                                                                        setOpen
+                                                                    )
+                                                                }
+                                                            >
+                                                                <span className="mr-5 ">
+                                                                    <TbInfoSquare className="h-6 w-6" />
+                                                                </span>{" "}
+                                                                About
+                                                            </li>
+                                                            {/* <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
                                                         <span className="mr-5">
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -138,181 +146,190 @@ export default function MobileMenu({ open, setOpen }) {
                                                         </span>{" "}
                                                         Art
                                                     </li> */}
-                                                    <li
-                                                        className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                        onClick={() =>
-                                                            smoothScroll(
-                                                                "contact",
-                                                                setOpen
-                                                            )
-                                                        }
-                                                    >
-                                                        <span className="mr-5">
-                                                            <svg
-                                                                className="h-6 w-6"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                viewBox="0 0 24 24"
-                                                                xmlns="http://www.w3.org/2000/svg"
+                                                            <li
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                onClick={() =>
+                                                                    smoothScroll(
+                                                                        "contact",
+                                                                        setOpen
+                                                                    )
+                                                                }
                                                             >
-                                                                <path
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    strokeWidth="2"
-                                                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                                                                ></path>
-                                                            </svg>
-                                                        </span>{" "}
-                                                        Contact
-                                                    </li>
-                                                    <li
-                                                        className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                        onClick={() =>
-                                                            smoothScroll(
-                                                                "education",
-                                                                setOpen
-                                                            )
-                                                        }
-                                                    >
-                                                        <span className="mr-5">
-                                                            <TbSchool className="h-6 w-6" />
-                                                        </span>{" "}
-                                                        Education
-                                                    </li>
-                                                    {/* <li className="text-md  items-centesr flex h-fit rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                                <span className="mr-5">
+                                                                    <svg
+                                                                        className="h-6 w-6"
+                                                                        fill="none"
+                                                                        stroke="currentColor"
+                                                                        viewBox="0 0 24 24"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                        <path
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            strokeWidth="2"
+                                                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                                                                        ></path>
+                                                                    </svg>
+                                                                </span>{" "}
+                                                                Contact
+                                                            </li>
+                                                            <li
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                onClick={() =>
+                                                                    smoothScroll(
+                                                                        "education",
+                                                                        setOpen
+                                                                    )
+                                                                }
+                                                            >
+                                                                <span className="mr-5">
+                                                                    <TbSchool className="h-6 w-6" />
+                                                                </span>{" "}
+                                                                Education
+                                                            </li>
+                                                            {/* <li className="text-md  items-centesr flex h-fit rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
                                                         <span className="mr-5 ">
                                                             <MdOutlineWorkHistory className="h-6 w-6" />
                                                         </span>{" "}
                                                         Experience
                                                     </li> */}
-                                                    <li
-                                                        className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                        onClick={() =>
-                                                            smoothScroll(
-                                                                "projects",
-                                                                setOpen
-                                                            )
-                                                        }
-                                                    >
-                                                        <span className="mr-5 ">
-                                                            <svg
-                                                                className="h-6 w-6"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                viewBox="0 0 24 24"
-                                                                xmlns="http://www.w3.org/2000/svg"
+                                                            <li
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                onClick={() =>
+                                                                    smoothScroll(
+                                                                        "projects",
+                                                                        setOpen
+                                                                    )
+                                                                }
                                                             >
-                                                                <path
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    strokeWidth="2"
-                                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                                                                ></path>
-                                                            </svg>
-                                                        </span>
-                                                        Projects
-                                                    </li>
-                                                    <li
-                                                        className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                        onClick={() =>
-                                                            smoothScroll(
-                                                                "skills",
-                                                                setOpen
-                                                            )
-                                                        }
-                                                    >
-                                                        <span className="mr-5">
-                                                            <svg
-                                                                className="h-6 w-6"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                viewBox="0 0 24 24"
-                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                <span className="mr-5 ">
+                                                                    <svg
+                                                                        className="h-6 w-6"
+                                                                        fill="none"
+                                                                        stroke="currentColor"
+                                                                        viewBox="0 0 24 24"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                        <path
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            strokeWidth="2"
+                                                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                                                        ></path>
+                                                                    </svg>
+                                                                </span>
+                                                                Projects
+                                                            </li>
+                                                            <li
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                onClick={() =>
+                                                                    smoothScroll(
+                                                                        "skills",
+                                                                        setOpen
+                                                                    )
+                                                                }
                                                             >
-                                                                <path
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    strokeWidth="2"
-                                                                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                                                                ></path>
-                                                            </svg>
-                                                        </span>{" "}
-                                                        Skills
-                                                    </li>
-                                                    <li
-                                                        className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                        onClick={() =>
-                                                            smoothScroll(
-                                                                "timeline",
-                                                                setOpen
-                                                            )
-                                                        }
-                                                    >
-                                                        <span className="mr-5 ">
-                                                            <MdOutlineWorkHistory className="h-6 w-6" />
-                                                        </span>{" "}
-                                                        Timeline
-                                                    </li>
-                                                    <li
-                                                        className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                        // dowload resume
-                                                        onClick={() => {
-                                                            window.open(
-                                                                "https://drive.google.com/file/d/15mEgxP-OCoMcaeh6aUcgDtwfNzRdelYV/view?usp=sharing"
-                                                            )
-                                                        }}
-                                                    >
-                                                        <span className="mr-5 ">
-                                                            <svg
-                                                                className="h-6 w-6"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                viewBox="0 0 24 24"
-                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                <span className="mr-5">
+                                                                    <svg
+                                                                        className="h-6 w-6"
+                                                                        fill="none"
+                                                                        stroke="currentColor"
+                                                                        viewBox="0 0 24 24"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                        <path
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            strokeWidth="2"
+                                                                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                                                                        ></path>
+                                                                    </svg>
+                                                                </span>{" "}
+                                                                Skills
+                                                            </li>
+                                                            <li
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                onClick={() =>
+                                                                    smoothScroll(
+                                                                        "timeline",
+                                                                        setOpen
+                                                                    )
+                                                                }
                                                             >
-                                                                <path
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    strokeWidth="2"
-                                                                    d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                                                ></path>
-                                                            </svg>
-                                                        </span>{" "}
-                                                        My Resume
-                                                    </li>
-                                                    <br className="w-auto border-gray-500 bg-gray-500 text-gray-500" />
-                                                    <div
-                                                        className="absolute left-0 h-14 w-1 bg-indigo-600"
-                                                        style={{
-                                                            bottom: "8.235rem",
-                                                        }}
-                                                    ></div>
-                                                    {/* <Link
-                                                            to="/signIn"
-                                                            className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                        >
-                                                                                                                <>
-                                                            <span className="mr-5 ">
-                                                                <RiUser3Fill className="h-6 w-6" />
-                                                            </span>{" "}
-                                                            <p>Client Sign In</p>
-                                                            </>
-                                                        </Link> */}
-                                                    <Link
-                                                        to="/signIn"
-                                                        onClick={() =>
-                                                            smoothClose()
-                                                        }
-                                                        className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
-                                                    >
-                                                        <>
-                                                            <span className="mr-5 ">
-                                                                <TbCode className="h-6 w-6" />
-                                                            </span>{" "}
-                                                            <p>Sign In</p>
-                                                        </>
-                                                    </Link>
-                                                    {/* <span className="absolute right-5 bottom-5 text-gray-400">
+                                                                <span className="mr-5 ">
+                                                                    <MdOutlineWorkHistory className="h-6 w-6" />
+                                                                </span>{" "}
+                                                                Timeline
+                                                            </li>
+                                                            <li
+                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                // dowload resume
+                                                                onClick={() => {
+                                                                    window.open(
+                                                                        "https://drive.google.com/file/d/15mEgxP-OCoMcaeh6aUcgDtwfNzRdelYV/view?usp=sharing"
+                                                                    )
+                                                                }}
+                                                            >
+                                                                <span className="mr-5 ">
+                                                                    <svg
+                                                                        className="h-6 w-6"
+                                                                        fill="none"
+                                                                        stroke="currentColor"
+                                                                        viewBox="0 0 24 24"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                        <path
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            strokeWidth="2"
+                                                                            d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                                                        ></path>
+                                                                    </svg>
+                                                                </span>{" "}
+                                                                My Resume
+                                                            </li>
+                                                            <br className="w-auto border-gray-500 bg-gray-500 text-gray-500" />
+                                                            <div
+                                                                className="absolute left-0 h-14 w-1 bg-indigo-600"
+                                                                style={{
+                                                                    bottom: "8.235rem",
+                                                                }}
+                                                            ></div>
+                                                            <Link
+                                                                to="/signIn"
+                                                                onClick={() =>
+                                                                    smoothClose()
+                                                                }
+                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                            >
+                                                                <>
+                                                                    <span className="mr-5 ">
+                                                                        <RiUser3Fill className="h-6 w-6" />
+                                                                    </span>{" "}
+                                                                    <p>
+                                                                        Client
+                                                                        Sign In
+                                                                    </p>
+                                                                </>
+                                                            </Link>
+                                                            <Link
+                                                                to="/signIn"
+                                                                onClick={() =>
+                                                                    smoothClose()
+                                                                }
+                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                            >
+                                                                <>
+                                                                    <span className="mr-5 ">
+                                                                        <TbCode className="h-6 w-6" />
+                                                                    </span>{" "}
+                                                                    <p>
+                                                                        Dev Sign
+                                                                        In
+                                                                    </p>
+                                                                </>
+                                                            </Link>
+                                                            {/* <span className="absolute right-5 bottom-5 text-gray-400">
                                                     <svg
                                                         className="h-8 w-8"
                                                         fill="none"
@@ -328,6 +345,8 @@ export default function MobileMenu({ open, setOpen }) {
                                                         ></path>
                                                     </svg>
                                                 </span> */}
+                                                        </>
+                                                    )}
                                                 </ul>
                                             </div>
                                         </div>

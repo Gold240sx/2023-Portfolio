@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useSignOut } from "../hooks/useSignOut"
@@ -8,12 +8,13 @@ import SocialBar from "../components/SocialBar"
 import PageBar from "./PageBar"
 import { useTheme } from "../hooks/useThemeContext"
 import { useState } from "react"
-import { motion, useScroll } from "framer-motion"
+import { motion, useScroll, useAnimation } from "framer-motion"
 import MobileMenu from "./mobileMenu"
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import { Tooltip } from "react-tooltip"
 import Astronaut from "../assets/Images/astronaut.png"
+import debounce from "lodash.debounce"
 import {
     ChevronDownIcon,
     PhoneIcon,
@@ -71,10 +72,10 @@ export const navbar = () => {
     const { mode, changeMode } = useTheme()
     const [open, setOpen] = useState(false)
     const currentPath = window.location.pathname
+    const [showAstronaut, setShowAstronaut] = useState(false)
     const { scrollYProgress } = useScroll()
     const [showSpeachBubble, setShowSpeachBubble] = useState(false)
-
-    //console.log(location.pathname)
+    const astronautAnimation = useAnimation()
 
     const speachBubbleHandler = () => {
         if (scrollYProgress > 0.1) {
@@ -104,6 +105,40 @@ export const navbar = () => {
             </div>
         )
     }
+
+    const setShowAstronautDebounced = debounce((value) => {
+        setShowAstronaut(value)
+    }, 1000)
+
+    const astronautHandler = () => {
+        if (window.scrollY > 1000) {
+            setShowAstronautDebounced(true)
+        } else {
+            setShowAstronautDebounced(false)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", astronautHandler)
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener("scroll", astronautHandler)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (showAstronaut) {
+            astronautAnimation.start({
+                y: 0,
+                transition: {
+                    y: { type: "spring", stiffness: 100, damping: 10 },
+                },
+            })
+        } else {
+            astronautAnimation.start({ y: "100%" })
+        }
+    }, [showAstronaut, astronautAnimation])
 
     return (
         <div>
@@ -309,49 +344,42 @@ export const navbar = () => {
                     </motion.div>
                     {/* Display astronaut that takes the user to the top of the page on click */}
                     {/* position to be at the bottom right of the screen and appear only after the first section of the page */}
-                    <div className="absolute z-50 h-full items-end">
-                        <div
-                            className="fixed bottom-0 -right-5 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100"
-                            // data-tooltip-id="astronaut"
-                            // data-tooltip-content="To the moon!!!"
-                            // data-tooltip-delay-show={300}
-                        >
-                            <motion.div
-                                animate={{
-                                    transition: { duration: 0.5 },
-                                }}
-                                className="z-50 duration-500 ease-in "
-                            >
-                                <div
-                                    className="hidden cursor-pointer flex-col items-end sm:flex"
-                                    onClick={handleClick}
+                    {showAstronaut && (
+                        <div className={`absolute z-50 h-full items-end`}>
+                            <div className="fixed bottom-0 -right-5 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100">
+                                <motion.div
+                                    animate={astronautAnimation}
+                                    className="z-50 duration-500 ease-in "
                                 >
-                                    {showSpeachBubble && mode === "dark" && (
-                                        <Bubble className=" hidden opacity-0 dark:block dark:text-black dark:opacity-100">
-                                            To the moon!!!
-                                        </Bubble>
-                                    )}
-                                    {showSpeachBubble && mode !== "dark" && (
-                                        <Bubble className=" dark:hidden dark:text-black dark:opacity-0">
-                                            To the skies!!!
-                                        </Bubble>
-                                    )}
-                                    <img
-                                        src={Astronaut}
-                                        alt="Astronaut"
-                                        className="h-22 w-15  z-50 ml-auto duration-300 ease-in"
-                                        height={150}
-                                        width={100}
-                                    />
-                                </div>
-                            </motion.div>
-                            {/* <Tooltip
-                                id="astronaut"
-                                place="left"
-                                className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
-                            /> */}
+                                    <div
+                                        className="hidden cursor-pointer flex-col items-end sm:flex"
+                                        onClick={handleClick}
+                                    >
+                                        {showSpeachBubble &&
+                                            mode === "dark" && (
+                                                <Bubble className=" hidden opacity-0 dark:block dark:text-black dark:opacity-100">
+                                                    To the moon!!!
+                                                </Bubble>
+                                            )}
+                                        {showSpeachBubble &&
+                                            mode !== "dark" && (
+                                                <Bubble className=" dark:hidden dark:text-black dark:opacity-0">
+                                                    To the skies!!!
+                                                </Bubble>
+                                            )}
+                                        <img
+                                            src={Astronaut}
+                                            alt="Astronaut"
+                                            className="h-22 w-15 z-50 ml-auto duration-300 ease-in"
+                                            height={150}
+                                            width={100}
+                                        />
+                                    </div>
+                                </motion.div>
+                                {/* ... */}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
                 {!currentPath.endsWith("/sginIn") && <SocialBar />}
             </div>

@@ -29,7 +29,7 @@ const Home = () => {
             >
                 <div className="my-auto " style={{ minHeight: "fit-content" }}>
                     <div className="">
-                        <div id="hero" className="snap-center">
+                        <div id="aboutMe" className="snap-center">
                             <AboutMe />
                         </div>
                     </div>
