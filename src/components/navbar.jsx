@@ -323,12 +323,17 @@ export const navbar = () => {
                                 className="z-50 duration-500 ease-in "
                             >
                                 <div
-                                    className="flex cursor-pointer flex-col items-end"
+                                    className="hidden cursor-pointer flex-col items-end sm:flex"
                                     onClick={handleClick}
                                 >
-                                    {showSpeachBubble && (
-                                        <Bubble className=" dark:text-black">
+                                    {showSpeachBubble && mode === "dark" && (
+                                        <Bubble className=" hidden opacity-0 dark:block dark:text-black dark:opacity-100">
                                             To the moon!!!
+                                        </Bubble>
+                                    )}
+                                    {showSpeachBubble && mode !== "dark" && (
+                                        <Bubble className=" dark:hidden dark:text-black dark:opacity-0">
+                                            To the skies!!!
                                         </Bubble>
                                     )}
                                     <img

@@ -1,46 +1,89 @@
 import * as React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { FaUserAstronaut, FaUserTie } from "react-icons/fa"
+// import { addDays, format } from "date-fns/fp"
+import { format, utcToZonedTime } from "date-fns-tz"
 import { MdOutlineWork, MdEmail } from "react-icons/md"
 
 export default ({
     onSubmit,
     store,
 }: {
-    store: { company: string; email: string; position: string; message: string }
+    store: {
+        company: string
+        email: string
+        contactName: string
+        position: string
+        customPosition: string
+        message: string
+        submissionTimestamp: string
+        date: string
+        recievedDateandTime: any
+    }
     onSubmit: SubmitHandler<{
         company: string
         email: string
         position: string
         message: string
-        date: string
     }>
 }) => {
+    const updatedStore = {
+        ...store,
+        contactType: "Hire Me",
+    }
     const {
         handleSubmit,
         register,
+        reset,
         setValue,
-        formState: { errors },
+        formState: { errors, isValid },
     } = useForm({
-        defaultValues: store,
+        defaultValues: updatedStore,
+        mode: "onChange",
     })
 
     const [showCustomPosition, setShowCustomPosition] = useState(false)
-    const [submissionTimestamp, setSubmissionTimestamp] = useState("")
 
-    const handlePositionChange = (e) => {
+    const handlePositionChange = (e: any) => {
         const isOtherSelected = e.target.value === "Other"
         setShowCustomPosition(isOtherSelected)
     }
 
-    const handleFormSubmit = (data) => {
-        setSubmissionTimestamp(new Date().toISOString())
-        onSubmit(data)
+    const handleFormSubmit = (data: any) => {
+        const targetTimeZone = "America/Chicago"
+        const submissionTimestamp = new Date().toISOString()
+        const date = format(new Date(), "MM-dd-yyyy, h:mma")
+        const myConvertedDateandTime = format(
+            utcToZonedTime(submissionTimestamp, targetTimeZone),
+            "MM-dd-yyyy, h:mma"
+        )
+
+        const updatedData = {
+            ...data,
+            submissionTimestamp,
+            date,
+            myConvertedDateandTime,
+        }
+
+        onSubmit(updatedData)
+        console.log(data)
+
+        reset({
+            company: "",
+            contactName: "",
+            email: "",
+            position: "",
+            customPosition: "",
+            message: "",
+        })
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="">
+        <form
+            onSubmit={handleSubmit(handleFormSubmit)}
+            className="my-5 mx-auto flex w-full flex-col md:w-4/5 xl:w-3/4"
+        >
             {/* Company */}
             <div className="floating-label-container flex h-fit flex-col md:mx-4">
                 <MdOutlineWork
@@ -150,17 +193,17 @@ export default ({
                 {showCustomPosition && (
                     <div className="mt-4">
                         <label
-                            htmlFor="custom_position"
+                            htmlFor="customPosition"
                             className="mb-2 block text-xl text-gray-400 dark:text-white/30"
                         >
                             Custom Position
                         </label>
                         <input
                             type="text"
-                            {...register("custom_position")}
-                            name="custom_position"
-                            id="custom_position"
-                            placeholder="Enter custom position"
+                            {...register("customPosition")}
+                            name="customPosition"
+                            id="customPosition"
+                            placeholder="Enter custom position (Note: *SALES POSITIONS WILL BE IGNORED*)"
                             className="w-full rounded border-transparent bg-gray-300/10 font-normal outline-none placeholder:text-gray-300 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-400/50 focus:placeholder:opacity-0 dark:border-none dark:bg-black/25 dark:text-white "
                         />
                     </div>
@@ -188,18 +231,15 @@ export default ({
                 )}
             </div>
 
-            {/*auto timestamp */}
-            <input
-                type="hidden"
-                {...register("submissionTimestamp")}
-                name="submissionTimestamp"
-                id="submissionTimestamp"
-                value={submissionTimestamp}
-            />
             <div className="mt-6 flex justify-center md:justify-start">
                 <button
                     type="submit"
-                    className="mx-4 w-40 rounded bg-pink-500 py-2 px-4 text-2xl  text-white hover:bg-pink-600"
+                    className={`mx-4 w-40 rounded py-2 px-4 text-2xl ${
+                        isValid
+                            ? "bg-pink-500 text-white hover:bg-pink-600"
+                            : "cursor-not-allowed bg-pink-500/10 text-gray-500/30"
+                    }`}
+                    disabled={!isValid}
                 >
                     Submit
                 </button>
