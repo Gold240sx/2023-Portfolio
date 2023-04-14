@@ -120,13 +120,13 @@ export const DatePicker = ({ onChange }) => {
                                     setShowDatepicker(!showDatepicker)
                                 }
                                 onBlur={() => handleInputBlur()}
-                                className=" w-full cursor-pointer select-none rounded-lg border-2 border-transparent bg-slate-100/50 py-3 pl-4 pr-10 text-base font-medium leading-none text-gray-500 shadow-sm transition duration-150 ease-in-out focus:border-sky-300 focus:outline-none focus:ring-0"
+                                className=" w-full cursor-pointer select-none rounded-lg border-2 border-transparent bg-slate-100/50 py-3 pl-4 pr-10 text-base font-medium leading-none text-gray-500 shadow-sm transition duration-150 ease-in-out focus:border-sky-300 focus:outline-none focus:ring-0 dark:bg-black/25"
                                 placeholder="Select date"
                             />
 
                             <div className="pointer-events-none absolute top-0 right-0 px-3 py-2">
                                 <svg
-                                    className="h-6 w-6 text-gray-400"
+                                    className="h-6 w-6 translate-y-0.5 text-gray-400"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -141,7 +141,7 @@ export const DatePicker = ({ onChange }) => {
                             </div>
 
                             <div
-                                className={`absolute top-0 left-0 mt-12 rounded-lg bg-white p-4 shadow transition-all duration-300 ease-in-out ${
+                                className={`absolute top-0 left-0 mt-12 rounded-lg bg-white p-4 shadow transition-all duration-300 ease-in-out dark:bg-[#141514] dark:text-white ${
                                     showDatepicker
                                         ? "z-50 scale-100 opacity-100 shadow-2xl  shadow-black/20"
                                         : "pointer-events-none  absolute h-0 scale-95 opacity-0"
@@ -150,10 +150,10 @@ export const DatePicker = ({ onChange }) => {
                             >
                                 <div className="mb-2 flex items-center justify-between ">
                                     <div>
-                                        <span className="text-lg font-bold text-gray-800">
+                                        <span className="text-lg font-bold text-gray-800 dark:text-white">
                                             {MONTH_NAMES[month]}
                                         </span>
-                                        <span className="ml-1 text-lg font-normal text-gray-600">
+                                        <span className="ml-1 text-lg font-normal text-gray-600 dark:text-gray-400">
                                             {year}
                                         </span>
                                     </div>
@@ -167,7 +167,7 @@ export const DatePicker = ({ onChange }) => {
                                             }}
                                         >
                                             <svg
-                                                className="inline-flex h-6 w-6 text-gray-500"
+                                                className="inline-flex h-6 w-6 text-gray-500 dark:text-gray-400"
                                                 fill="none"
                                                 viewBox="0 0 24 24"
                                                 stroke="currentColor"
@@ -189,7 +189,7 @@ export const DatePicker = ({ onChange }) => {
                                             }}
                                         >
                                             <svg
-                                                className="inline-flex h-6 w-6 text-gray-500"
+                                                className="inline-flex h-6 w-6 text-gray-500 dark:text-gray-400"
                                                 fill="none"
                                                 viewBox="0 0 24 24"
                                                 stroke="currentColor"
@@ -211,7 +211,7 @@ export const DatePicker = ({ onChange }) => {
                                             style={{ width: "14.26%" }}
                                             className="px-1"
                                         >
-                                            <div className="text-center text-xs font-medium text-gray-800">
+                                            <div className="text-center text-xs font-medium text-gray-800 dark:text-gray-200">
                                                 {day}
                                             </div>
                                         </div>
@@ -248,10 +248,10 @@ export const DatePicker = ({ onChange }) => {
                                                     className={`cursor-pointer rounded-full text-center text-sm leading-loose transition duration-100 ease-in-out
                                                         ${
                                                             isToday(date)
-                                                                ? "bg-sky-400 pr-0.5 text-white"
+                                                                ? "bg-sky-400 pr-0.5 text-white dark:text-black"
                                                                 : disabled
-                                                                ? "text-gray-400 hover:bg-gray-50 active:bg-red-200 active:text-red-500"
-                                                                : "text-gray-700 hover:bg-sky-100"
+                                                                ? "text-gray-400 hover:bg-gray-50 active:bg-red-200 active:text-red-500 dark:text-gray-700 dark:hover:bg-black dark:active:bg-red-600"
+                                                                : "text-gray-700 hover:bg-sky-100 dark:text-gray-200 dark:hover:bg-slate-700 dark:active:bg-slate-600"
                                                         }
                                                     `}
                                                 >

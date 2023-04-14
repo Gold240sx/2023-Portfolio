@@ -31,10 +31,17 @@ export default function Footer() {
                     ))}
                 </div>
                 <div className="mt-8 mr-auto ml-6 md:order-1 md:mt-0">
-                    <p className="text-left text-base leading-6 text-gray-400">
-                        Astronaut image by ...
-                    </p>
-                    <p className="text-center text-xs leading-5 text-gray-500">
+                    {/* <p className="text-left text-base leading-6 text-gray-400">
+                        image by ...
+                    </p> */}
+                    <a
+                        href="https://www.freepik.com/free-vector/paper-with-coffee-phone-pen-cartoon-icon-illustration-business-object-icon-concept-isolated-flat-cartoon-style_10848236.htm"
+                        className="text-left text-sm leading-6 text-gray-400"
+                    >
+                        [Astronaut] Image by catalyststuff
+                    </a>{" "}
+                    on Freepik
+                    <p className="text-left text-xs leading-5 text-gray-500">
                         &copy; 2023 Michael Martell, Inc. All rights reserved.
                     </p>
                 </div>

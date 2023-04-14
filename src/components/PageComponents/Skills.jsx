@@ -17,7 +17,7 @@ export const skillData = [
 const Skills = () => {
     return (
         <>
-            <h3 className="mb-6 mt-10 text-center text-2xl  uppercase tracking-[20px] text-gray-500">
+            <h3 className=" mt-12 mb-12 text-center  text-2xl uppercase tracking-[20px] text-gray-500">
                 Skills
             </h3>
             <div className=" flex flex-col lg:flex-row ">

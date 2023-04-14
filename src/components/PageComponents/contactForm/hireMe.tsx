@@ -163,7 +163,7 @@ export default ({
             <div className="floating-label-container flex h-fit flex-col md:mx-4">
                 <label
                     htmlFor="position"
-                    className="floating-label z-10 mb-2 w-fit text-xl text-gray-400 dark:text-white/30"
+                    className="floating-label z-10 mb-2 w-fit text-xl text-gray-400 dark:text-white/70"
                 >
                     Position
                 </label>
@@ -194,7 +194,7 @@ export default ({
                     <div className="mt-4">
                         <label
                             htmlFor="customPosition"
-                            className="mb-2 block text-xl text-gray-400 dark:text-white/30"
+                            className="mb-2 block text-xl text-gray-400 dark:text-white/70"
                         >
                             Custom Position
                         </label>
@@ -204,7 +204,7 @@ export default ({
                             name="customPosition"
                             id="customPosition"
                             placeholder="Enter custom position (Note: *SALES POSITIONS WILL BE IGNORED*)"
-                            className="w-full rounded border-transparent bg-gray-300/10 font-normal outline-none placeholder:text-gray-300 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-400/50 focus:placeholder:opacity-0 dark:border-none dark:bg-black/25 dark:text-white "
+                            className="w-full rounded border-transparent bg-gray-300/10 font-normal outline-none placeholder:text-gray-300 placeholder:text-white/30 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-400/50 focus:placeholder:opacity-0 dark:border-none dark:bg-black/25 dark:text-white "
                         />
                     </div>
                 )}

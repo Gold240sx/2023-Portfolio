@@ -65,6 +65,14 @@ const callsToAction = [
     { name: "Contact sales", href: "#", icon: PhoneIcon },
 ]
 
+export const ScrollToTop = () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop
+    if (c > 0) {
+        window.requestAnimationFrame(ScrollToTop)
+        window.scrollTo(0, c - c / 12)
+    }
+}
+
 export const navbar = () => {
     const { user } = useAuthContext()
     const { logout } = useSignOut()
@@ -75,7 +83,10 @@ export const navbar = () => {
     const [showAstronaut, setShowAstronaut] = useState(false)
     const { scrollYProgress } = useScroll()
     const [showSpeachBubble, setShowSpeachBubble] = useState(false)
+    const [astronautHanging, setAstronautHanging] = useState(false)
+    const [astronautIsFlying, setAstronautIsFlying] = useState(false)
     const astronautAnimation = useAnimation()
+    const [isSwinging, setIsSwinging] = useState(false)
 
     const speachBubbleHandler = () => {
         if (scrollYProgress > 0.1) {
@@ -89,12 +100,16 @@ export const navbar = () => {
         }, 1000)
     }
 
-    const handleClick = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        })
+    const handleClick = (e) => {
+        setAstronautIsFlying(true)
+        ScrollToTop()
         speachBubbleHandler()
+
+        setIsSwinging(true)
+        setTimeout(() => {
+            setIsSwinging(false)
+        }, 1500)
+        setAstronautIsFlying(false)
     }
 
     const Bubble = ({ children }) => {
@@ -108,13 +123,15 @@ export const navbar = () => {
 
     const setShowAstronautDebounced = debounce((value) => {
         setShowAstronaut(value)
-    }, 1000)
+    }, 150)
 
     const astronautHandler = () => {
         if (window.scrollY > 1000) {
             setShowAstronautDebounced(true)
+            setIsSwinging(true)
         } else {
             setShowAstronautDebounced(false)
+            setIsSwinging(false)
         }
     }
 
@@ -185,7 +202,8 @@ export const navbar = () => {
                         </div>
                     </motion.div>
                     {/* Projects */}
-                    <motion.div
+
+                    {/* <motion.div
                         initial={{
                             x: 200,
                             opacity: 0,
@@ -274,7 +292,8 @@ export const navbar = () => {
                                 </Transition>
                             </Popover>
                         </div>
-                    </motion.div>
+                    </motion.div> */}
+
                     {/* End Projects */}
                     <motion.div
                         initial={{
@@ -332,7 +351,7 @@ export const navbar = () => {
                             </div>
                             <div
                                 id="hamburger-menu"
-                                className="z-50 mr-4 cursor-pointer space-y-1.5 rounded-xl border-2 border-transparent p-2 opacity-70 hover:bg-white/20 hover:opacity-100 hover:shadow-lg active:bg-black/20 sm:space-y-2 lg:hidden"
+                                className="z-50 mr-4 cursor-pointer space-y-1.5 rounded-lg border-2 border-transparent p-2 opacity-70 hover:bg-white/20 hover:opacity-100 hover:shadow-lg active:bg-black/20 sm:space-y-2 lg:hidden"
                                 onClick={() => setOpen(!open)}
                             >
                                 <span className=" pointer-events-none block h-1 w-6  rounded-full bg-gray-400 sm:w-8"></span>
@@ -344,12 +363,29 @@ export const navbar = () => {
                     </motion.div>
                     {/* Display astronaut that takes the user to the top of the page on click */}
                     {/* position to be at the bottom right of the screen and appear only after the first section of the page */}
-                    {showAstronaut && (
-                        <div className={`absolute z-50 h-full items-end`}>
-                            <div className="fixed bottom-0 -right-5 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100">
+
+                    <div
+                        className={`${
+                            astronautIsFlying ? "translate-y-[-500px]" : ""
+                        } absolute z-50 h-full select-none items-end`}
+                    >
+                        <div className="fixed bottom-0 right-2 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100">
+                            <motion.div
+                                animate={astronautAnimation}
+                                className="z-50 duration-500 ease-in "
+                            >
                                 <motion.div
-                                    animate={astronautAnimation}
-                                    className="z-50 duration-500 ease-in "
+                                    className="astronaut"
+                                    animate={{
+                                        rotate: isSwinging ? [2, -2, 2] : 0,
+                                        originX: isSwinging ? "100%" : "50%",
+                                        originY: isSwinging ? "0%" : "50%",
+                                        transition: {
+                                            repeat: Infinity,
+                                            repeatType: "mirror",
+                                            duration: 0.8,
+                                        },
+                                    }}
                                 >
                                     <div
                                         className="hidden cursor-pointer flex-col items-end sm:flex"
@@ -367,19 +403,35 @@ export const navbar = () => {
                                                     To the skies!!!
                                                 </Bubble>
                                             )}
-                                        <img
+                                        {/* <img
                                             src={Astronaut}
                                             alt="Astronaut"
                                             className="h-22 w-15 z-50 ml-auto duration-300 ease-in"
                                             height={150}
                                             width={100}
-                                        />
+                                        /> */}
+                                        <div className="relative">
+                                            <img
+                                                src={Astronaut}
+                                                alt="Astronaut"
+                                                className={` h-22 w-15 z-50 ml-auto duration-300 ease-in `}
+                                                height={150}
+                                                width={100}
+                                            />
+                                            {astronautIsFlying && (
+                                                <div className="absolute bottom-0 flex h-10 w-full justify-between">
+                                                    <div className="mx-auto h-full w-1 translate-y-12 rounded-full bg-black/10 dark:bg-white/20"></div>
+                                                    <div className="mx-auto h-full w-1 translate-y-12 rounded-full bg-black/10 dark:bg-white/20"></div>
+                                                    <div className="mx-auto h-full w-1 -translate-y-6 rounded-full bg-black/10 dark:bg-white/20"></div>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </motion.div>
-                                {/* ... */}
-                            </div>
+                            </motion.div>
                         </div>
-                    )}
+                    </div>
+                    {/*  */}
                 </div>
                 {!currentPath.endsWith("/sginIn") && <SocialBar />}
             </div>
