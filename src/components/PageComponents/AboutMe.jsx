@@ -10,7 +10,7 @@ const AboutMe = () => {
             <h3 className=" mt-10 text-2xl uppercase  tracking-[20px] text-gray-500">
                 About Me
             </h3>
-            <div className="mx-auto mb-16 h-fit w-[300px] max-w-[50%]">
+            <div className="mx-auto mb-16 h-fit w-[300px] max-w-[70%]">
                 <motion.div
                     initial={{
                         x: -200,

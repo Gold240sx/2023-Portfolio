@@ -17,6 +17,8 @@ import Accordion from "react-bootstrap/Accordion"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 
+const projects = document.getElementById("projects")
+
 function getYearArray() {
     const currentYear = new Date().getFullYear()
     const yearArray = []
@@ -221,7 +223,7 @@ const ProjectCard = ({
                                 return (
                                     <div
                                         key={tag}
-                                        className="mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1 py-[2px] text-xs leading-none text-gray-500 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-xs xl:text-xs"
+                                        className="mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1 py-[2px] text-xs leading-none text-gray-500 dark:bg-transparent md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-xs xl:text-xs"
                                     >
                                         {tag}
                                     </div>
@@ -280,7 +282,7 @@ const ProjectCard = ({
                         {/* Description Dropdown*/}
                         <div
                             id="accordionExample"
-                            className="z-20 w-full bg-white"
+                            className="z-20 w-full bg-white dark:bg-transparent"
                         >
                             <div className="w-auto rounded-t-lg rounded-b-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
                                 <h2 className="mb-0" id="headingOne">
@@ -600,7 +602,7 @@ const Projects = () => {
     }
 
     return (
-        <div className="relative mx-auto flex flex-col items-center justify-evenly bg-white text-center md:text-left lg:px-10">
+        <div className="relative mx-auto flex flex-col items-center justify-evenly bg-white pb-12 text-center dark:bg-transparent md:text-left lg:px-10">
             <h3 className="relative top-24 z-50 w-[541.98px] text-center text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                 Projects
             </h3>
@@ -614,10 +616,10 @@ const Projects = () => {
                     currently being created.
                 </p>
             </div>
-            <div className="flex w-full bg-white">
+            <div className="flex w-full bg-white dark:bg-[#141514]">
                 {/* mobile filter menu */}
                 <div className=" z-20 flex h-full w-fit flex-col items-center justify-center md:hidden">
-                    <div className="relative my-4 h-fit w-full rounded-t-2xl bg-opacity-10 bg-gradient-to-b from-white to-white dark:bg-black">
+                    <div className="relative my-4 h-fit w-full rounded-t-2xl bg-opacity-10 bg-gradient-to-b from-white to-white  dark:from-[#262826] dark:to-gray-300">
                         <div
                             className={`${
                                 showMobileFilters
@@ -955,9 +957,9 @@ const Projects = () => {
                     </div>
                 </div>
                 {/* Main Content */}
-                <div className=" w-full rounded-lg bg-white dark:bg-gray-800 md:p-4">
+                <div className=" w-full rounded-lg bg-white dark:bg-transparent md:p-4">
                     {/* large filter box */}
-                    <div className="relative my-4 hidden h-fit w-full rounded-2xl border-2 border-gray-200 bg-opacity-10 bg-gradient-to-b from-white to-white p-2 dark:bg-black md:block">
+                    <div className="relative my-4 hidden h-fit w-full rounded-2xl border-2 border-gray-200 bg-opacity-10 bg-gradient-to-b from-white to-white p-2 dark:bg-[#141514] md:block">
                         <div className="flex gap-4">
                             {" "}
                             <h2 className=" m-auto ml-5 flex text-center align-middle text-4xl capitalize tracking-widest">
@@ -1302,7 +1304,7 @@ const Projects = () => {
                         </div>
                     </div>
                     {/* Project Cards */}
-                    <div className=" mt-10 w-full rounded-b-2xl bg-white transition-all duration-300 ease-in-out dark:bg-black">
+                    <div className=" mt-10 w-full rounded-b-2xl bg-white transition-all duration-300 ease-in-out dark:bg-[#262826]">
                         {projectsToDisplay.length > 0 ? (
                             projectsToDisplay.map((project) => {
                                 const id = project.id
@@ -1482,9 +1484,10 @@ const Projects = () => {
                                 } mt-4 flex w-0 flex-1 cursor-pointer justify-end`}
                             >
                                 <a
-                                    onClick={() =>
+                                    onClick={() => {
                                         updateCurrentPage(currentPage + 1)
-                                    }
+                                    }}
+                                    href="#projects"
                                     className="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium "
                                 >
                                     Next

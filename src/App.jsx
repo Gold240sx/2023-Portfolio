@@ -9,6 +9,7 @@ import { FaSun } from "react-icons/fa"
 import { BsFillMoonStarsFill } from "react-icons/bs"
 import { Tooltip } from "react-tooltip"
 import MobileMenu from "./components/mobileMenu"
+import ScrollToTop from "./components/ScrollToTop"
 
 import { useTheme } from "./hooks/useThemeContext"
 import Footer from "./components/Footer"
@@ -96,6 +97,7 @@ function App({ children }) {
                     </BrowserRouter>
                 )}
             </main>
+            <ScrollToTop />
             <section className=" h-fit w-full dark:bg-[#111111] dark:text-white">
                 <Footer />
             </section>

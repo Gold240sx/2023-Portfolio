@@ -1,4 +1,5 @@
 @import "react-tooltip/dist/react-tooltip.css";
+/* @import "react-datepicker/dist/react-datepicker.css"; */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -126,6 +127,14 @@
         pointer-events: none;
         position: absolute;
         right: 0;
+    }
+
+    input[type="radio"]:checked {
+        background-color: rgb(100, 211, 239); /* sky-400/50 */
+    }
+
+    .dark input[type="radio"]:checked {
+        background-color: rgb(100, 211, 239); /* sky-400/50 */
     }
 
     /* the floating label's containing div MUST include the .floating-label-container class */

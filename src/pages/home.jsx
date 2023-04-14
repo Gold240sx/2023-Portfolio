@@ -8,8 +8,11 @@ import Work from "../components/PageComponents/Work.jsx"
 import Contact from "../components/PageComponents/contactForm/Contact"
 import CertificateSection2 from "../components/PageComponents/test"
 import Projects from "../components/PageComponents/Projects"
+import { useTheme } from "../hooks/useThemeContext"
 
 const Home = () => {
+    const { mode } = useTheme()
+
     return (
         <div>
             <section
@@ -29,7 +32,7 @@ const Home = () => {
             >
                 <div className="my-auto " style={{ minHeight: "fit-content" }}>
                     <div className="">
-                        <div id="hero" className="snap-center">
+                        <div id="aboutMe" className="snap-center">
                             <AboutMe />
                         </div>
                     </div>
@@ -37,13 +40,22 @@ const Home = () => {
             </section>
             {/* Skills */}
             <section
-                className="container m-auto mx-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
-                style={{
-                    backgroundColor: "#e5e5f7",
-                    background:
-                        "repeating-linear-gradient( -55deg, #FBFBFC, #FBFBFC 5px, #F4F7FA 5px, #F4F7FA 15px",
-                    minHeight: "fit-content",
-                }}
+                className="container m-auto mx-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 pb-[40px] align-middle"
+                style={
+                    mode !== "dark"
+                        ? {
+                              backgroundColor: "#e5e5f7",
+                              background:
+                                  "repeating-linear-gradient( -55deg, #FBFBFC, #FBFBFC 5px, #F4F7FA 5px, #F4F7FA 15px",
+                              minHeight: "fit-content",
+                          }
+                        : {
+                              backgroundColor: "#1a202c",
+                              background:
+                                  "repeating-linear-gradient( -55deg, #0D2136, #0D2136 5px, #10263D 5px, #10263D 15px",
+                              minHeight: "fit-content",
+                          }
+                }
                 id="skills"
             >
                 <div
@@ -91,7 +103,7 @@ const Home = () => {
             </section>
             {/* Projects */}
             <section
-                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-opacity-50 align-middle dark:bg-[#141514]"
                 style={{ minHeight: "fit-content" }}
                 id="projects"
             >

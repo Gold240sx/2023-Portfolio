@@ -1,6 +1,8 @@
 import React from "react"
 import { useForm } from "react-hook-form"
 import TabGroup from "./contactTabGroup"
+import { FaInfoCircle } from "react-icons/fa"
+import { Tooltip } from "react-tooltip"
 
 const Contact = () => {
     const { register, handleSubmit } = useForm()
@@ -25,135 +27,18 @@ const Contact = () => {
                     {/* Form */}
                     <TabGroup />
 
-                    {/* <div className="flex flex-col items-center justify-center">
-                        {/* <form className="w-full max-w-lg">
-                            <div className="-mx-3 mb-6 flex flex-wrap">
-                                <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
-                                    <label
-                                        className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-                                        for="grid-first-name"
-                                    >
-                                        First Name
-                                    </label>
-                                    <input
-                                        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
-                                        id="grid-first-name"
-                                        type="text"
-                                        placeholder="Jane"
-                                    />
-                                    <p className="text-xs italic text-gray-600">
-                                        Make it as long and as crazy as you'd
-                                        like
-                                    </p>
-
-                                    <label
-                                        className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-                                        for="grid-last-name"
-                                    >
-                                        Last Name
-                                    </label>
-                                    <input
-                                        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
-                                        id="grid-last-name"
-                                        type="text"
-                                        placeholder="Doe"
-                                    />
-                                    <p className="text-xs italic text-gray-600">
-                                        Make it as long and as crazy as you'd
-                                        like
-                                    </p>
-                                </div>
-                                <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
-                                    <label
-                                        className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-                                        for="grid-email"
-                                    >
-                                        Email
-                                    </label>
-                                    <input
-                                        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
-                                        id="grid-email"
-                                        type="email"
-                                        placeholder=""
-                                    />
-                                    <p className="text-xs italic text-gray-600">
-                                        Make it as long and as crazy as you'd
-                                        like
-                                    </p>
-                                    <label
-                                        className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-                                        for="grid-phone"
-                                    >
-                                        Phone
-                                    </label>
-                                    <input
-                                        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
-                                        id="grid-phone"
-                                        type="text"
-                                        placeholder="555-555-5555"
-                                    />
-                                    <p className="text-xs italic text-gray-600">
-                                        Make it as long and as crazy as you'd
-                                        like
-                                    </p>
-                                </div>
-
-                                <div className="mb-6 flex w-full px-3 md:mb-0 md:w-1/2">
-                                    <label
-                                        className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-                                        for="grid-company"
-                                    >
-                                        Company
-                                    </label>
-                                    <input
-                                        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
-                                        id="grid-company"
-                                        type="text"
-                                        placeholder="Company"
-                                    />
-                                    <p className="text-xs italic text-gray-600">
-                                        Make it as long and as crazy as you'd
-                                        like
-                                    </p>
-
-                                    <label
-                                        className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
-                                        for="grid-project"
-                                    >
-                                        Project
-                                    </label>
-                                    <input
-                                        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
-                                        id="grid-project"
-                                        type="text"
-                                        placeholder="Project"
-                                    />
-                                    <p className="text-xs italic text-gray-600">
-                                        Make it as long and as crazy as you'd
-                                        like
-                                    </p>
-                                </div>
-                            </div>
-                        </form>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <input
-                                {...register("firstName", {
-                                    required: true,
-                                    maxLength: 20,
-                                })}
-                            />
-                            <input
-                                {...register("lastName", {
-                                    pattern: /^[A-Za-z]+$/i,
-                                })}
-                            />
-                            <input
-                                type="number"
-                                {...register("age", { min: 18, max: 99 })}
-                            />
-                            <input type="submit" />
-                        </form>
-                    </div> */}
+                    <FaInfoCircle
+                        className="absolute bottom-0 right-0 mt-4 mr-2 h-6 w-6 cursor-help text-gray-400 dark:text-gray-500"
+                        data-tooltip-id="contactInfo"
+                        data-tooltip-content="This contact form uses Google Firebase as a database, Trigger-Email serverless
+                        functions and sendgrid to send emails. Any information obtained by this form will not be used for any other purpose than to contact you. I will never sell this information to any third party."
+                        data-tooltip-delay-show={100}
+                    />
+                    <Tooltip
+                        id="contactInfo"
+                        place="left"
+                        className="z-[1000] flex  h-fit max-w-[300px] rounded bg-gray-200 text-sm font-semibold text-slate-700 dark:bg-black dark:text-white"
+                    />
                 </div>
             </div>
         </div>

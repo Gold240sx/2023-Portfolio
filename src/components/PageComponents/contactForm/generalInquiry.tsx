@@ -2,6 +2,7 @@ import * as React from "react"
 import { useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { FaUserAstronaut } from "react-icons/fa"
+import { format, utcToZonedTime } from "date-fns-tz"
 import { MdEmail } from "react-icons/md"
 
 export default ({
@@ -16,18 +17,51 @@ export default ({
         message: string
     }>
 }) => {
+    const updatedStore = {
+        ...store,
+        contactType: "Talk with Me",
+    }
     const {
         handleSubmit,
         register,
-        formState: { errors },
+        reset,
+        formState: { errors, isValid },
     } = useForm({
-        defaultValues: store,
+        defaultValues: updatedStore,
+        mode: "onChange",
     })
 
-    const [submissionTimestamp, setSubmissionTimestamp] = useState("")
+    const handleFormSubmit = async (data: any) => {
+        const targetTimeZone = "America/Chicago"
+        const submissionTimestamp = new Date().toISOString()
+        const date = format(new Date(), "MM-dd-yyyy, h:mma")
+        const myConvertedDateandTime = format(
+            utcToZonedTime(submissionTimestamp, targetTimeZone),
+            "MM-dd-yyyy, h:mma"
+        )
+
+        const updatedData = {
+            ...data,
+            submissionTimestamp,
+            date,
+            myConvertedDateandTime,
+        }
+
+        onSubmit(updatedData)
+        console.log(updatedData)
+        reset({
+            name: "",
+            email: "",
+            developer: "no",
+            message: "",
+        })
+    }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="">
+        <form
+            onSubmit={handleSubmit(handleFormSubmit)}
+            className="my-5 mx-auto flex w-full flex-col justify-center md:w-4/5 xl:w-3/4"
+        >
             <div className="floating-label-container flex h-fit flex-col md:mx-4">
                 <FaUserAstronaut
                     alt="user icon"
@@ -139,18 +173,15 @@ export default ({
                 )}
             </div>
 
-            {/*auto timestamp */}
-            <input
-                type="hidden"
-                {...register("submissionTimestamp")}
-                name="submissionTimestamp"
-                id="submissionTimestamp"
-                value={submissionTimestamp}
-            />
             <div className="mt-6 flex justify-center md:justify-start">
                 <button
                     type="submit"
-                    className="mx-4 w-40 rounded bg-pink-500 py-2 px-4 text-2xl  text-white hover:bg-pink-600"
+                    className={`mx-4 w-40 rounded py-2 px-4 text-2xl ${
+                        isValid
+                            ? "bg-pink-500 text-white hover:bg-pink-600"
+                            : "cursor-not-allowed bg-pink-500/10 text-gray-500/30"
+                    }`}
+                    disabled={!isValid}
                 >
                     Submit
                 </button>

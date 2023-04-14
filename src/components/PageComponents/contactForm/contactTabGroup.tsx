@@ -1,7 +1,8 @@
 import React from "react"
 import GetQuote from "./getQuote"
-import GeneralInquiry from "./generalInquiry"
+import Generalinquiry from "./generalinquiry"
 import HireMe from "./hireMe"
+import Swal from "sweetalert2"
 
 interface TabPanelProps {
     children?: React.ReactNode
@@ -27,11 +28,7 @@ function TabPanel(props: TabPanelProps) {
 }
 
 export default function TabGroup() {
-    const [store, setStore] = React.useState({
-        test1: "",
-        test2: "",
-        test3: "",
-    })
+    const [store, setStore] = React.useState({})
     const [value, setValue] = React.useState(0)
 
     const handleChange = (newValue: number) => {
@@ -43,9 +40,36 @@ export default function TabGroup() {
             ...store,
             ...data,
         })
-    }
 
-    console.log(store)
+        // alert and thank the user for their submission using sweetalert2
+        Swal.fire({
+            title: "Thank you for Reaching Out!",
+            text: "We will get back to you as soon as possible.",
+            icon: "success",
+            confirmButtonText: "OK",
+        })
+
+        // Upload all the data to the database
+
+        //  reset all form fields within the store
+        setStore({
+            company: "",
+            email: "",
+            position: "",
+            message: "",
+            submissionTimestamp: "",
+            date: "",
+            recievedDateandTime: "",
+            name: "",
+            projectName: "",
+            contactName: "",
+            projectType: "",
+            developer: "",
+            deadline: "",
+        })
+
+        console.log("store reset")
+    }
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -107,7 +131,7 @@ export default function TabGroup() {
                 <GetQuote onSubmit={onSubmit} store={store} />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <GeneralInquiry onSubmit={onSubmit} store={store} />
+                <Generalinquiry onSubmit={onSubmit} store={store} />
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <HireMe onSubmit={onSubmit} store={store} />
