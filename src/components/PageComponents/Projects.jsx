@@ -615,22 +615,32 @@ const Projects = () => {
                     currently being created.
                 </p>
             </div>
-            <div className="flex w-full bg-white dark:bg-[#141514]/80">
+            <div className=" flex w-full bg-white dark:bg-[#141514]/80">
                 {/* mobile filter menu */}
-                <div className=" z-20 flex h-full w-fit flex-col items-center justify-center md:hidden">
-                    <div className="relative my-4 h-fit w-full rounded-t-2xl  bg-opacity-10 dark:bg-[#262826]">
+                <div
+                    className={`${
+                        showMobileFilters
+                            ? "w-[76px]"
+                            : "absolute mt-16 w-[0px]"
+                    } relative z-20 flex h-full flex-col items-center justify-center md:hidden `}
+                >
+                    <div
+                        className={`${
+                            showMobileFilters ? "" : "absolute "
+                        } my-4 h-fit w-full rounded-t-2xl  bg-opacity-10 dark:bg-transparent `}
+                    >
                         <div
                             className={`${
                                 showMobileFilters
-                                    ? ""
-                                    : "absolute translate-x-[.7rem] shadow-lg hover:bg-gray-50"
-                            } ml-1 flex w-fit flex-col items-center justify-around gap-2 rounded-2xl border-2 border-gray-200 bg-white p-1.5 outline-none dark:border-gray-700 dark:bg-black`}
+                                    ? " w-fit "
+                                    : " w-[76px] shadow-lg hover:bg-gray-50"
+                            } ml-1 flex flex-col items-center justify-around gap-2 rounded-2xl border-2 border-gray-200 bg-white p-1.5 outline-none dark:border-gray-700 dark:bg-[#323737]/80 `}
                         >
                             {/* left */}
                             <HiFilter
                                 className={`${
                                     showMobileFilters ? "" : ""
-                                } w-22 h-22 my-auto flex cursor-pointer text-center align-middle text-4xl capitalize tracking-widest text-black hover:text-gray-700`}
+                                } w-22 h-22 my-auto flex cursor-pointer text-center align-middle text-4xl capitalize tracking-widest text-gray-500 hover:text-gray-700 dark:text-gray-200 dark:hover:text-white`}
                                 onClick={handleMobileFilterClose}
                                 data-tooltip-id="projectMobileFilter"
                                 data-tooltip-content="Filter Projects (Click to minimize)."
@@ -643,7 +653,7 @@ const Projects = () => {
                             />
                             {/* Select All / Deselect All Button */}
                             <div
-                                className="txt-xs cursor-pointer rounded-md border-2 border-sky-200 text-gray-500 dark:text-gray-400"
+                                className="txt-sm flex min-w-fit cursor-pointer justify-center rounded-md border-2 border-transparent bg-sky-400 text-center align-middle text-white  hover:bg-sky-500  hover:text-white dark:bg-sky-500 dark:hover:bg-sky-400"
                                 onClick={() => {
                                     if (areAllFiltersActive()) {
                                         setActiveFilters(["2023"])
@@ -667,7 +677,7 @@ const Projects = () => {
                                     }
                                 }}
                             >
-                                <p className="cursor-pointer rounded p-[2px] text-xs hover:bg-sky-400 hover:text-white">
+                                <p className="m-auto flex h-fit w-5/6 cursor-pointer rounded p-[2px] text-xs  hover:text-white">
                                     {areAllFiltersActive()
                                         ? "Select none"
                                         : "Select all"}
@@ -683,7 +693,7 @@ const Projects = () => {
                                 `}
                             >
                                 {/* left middle*/}
-                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
+                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <BsRulers
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
                                         data-tooltip-id="projectMobileFrameworks"
@@ -753,7 +763,7 @@ const Projects = () => {
                                     </div>
                                 </div>
                                 {/* middle */}
-                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
+                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <SiStylelint
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
                                         data-tooltip-id="projectMobileCSS"
@@ -823,7 +833,7 @@ const Projects = () => {
                                     </div>
                                 </div>
                                 {/* right middle */}
-                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
+                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <FaDatabase
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
                                         data-tooltip-id="projectMobileDatabases"
@@ -893,7 +903,7 @@ const Projects = () => {
                                     </div>
                                 </div>
                                 {/* right*/}
-                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5">
+                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <BsFillCalendarMonthFill
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
                                         data-tooltip-id="projectMobileYear"

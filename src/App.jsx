@@ -56,6 +56,10 @@ function App({ children }) {
                             Mobile filters should be absolute when closed.
                         </p>{" "}
                         <p className="ml-1 text-[18px]">
+                            The tooltips for the mobile menu are behind the
+                            description
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
                             position Mobile filters to center while scrolling
                         </p>{" "}
                         <p className="ml-1 text-[18px]">
@@ -69,9 +73,6 @@ function App({ children }) {
                         </p>{" "}
                         <p className="ml-1 text-[18px]">
                             make bg overrall width
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            mobileFilters icon should be white in dark mode
                         </p>{" "}
                         <p className="ml-1 text-[18px]">
                             mobileFilters major dark mode overhaul
