@@ -216,14 +216,14 @@ const ProjectCard = ({
                         {searchTerm.length ? renderMatchedInfo() : null}
                         {/* tags */}
                         <div className="mt-4 hidden w-fit max-w-full md:flex">
-                            <h4 className=" mx-2 w-fit text-sm font-medium md:text-base">
+                            <h4 className=" mx-2 w-fit text-sm font-medium dark:text-gray-300 md:text-base">
                                 TAGS:
                             </h4>
                             {tags.map((tag) => {
                                 return (
                                     <div
                                         key={tag}
-                                        className="mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1 py-[2px] text-xs leading-none text-gray-500 dark:bg-transparent md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-xs xl:text-xs"
+                                        className="mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1 py-[2px] text-xs leading-none text-gray-500 dark:bg-transparent md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 md:dark:border-white/10 lg:px-3 lg:text-xs xl:text-xs"
                                     >
                                         {tag}
                                     </div>
@@ -238,12 +238,12 @@ const ProjectCard = ({
                             {name}
                         </h2>
                         {/* Date */}
-                        <h2 className="text-base">
+                        <h2 className="text-base dark:text-gray-500">
                             {month}, {year}
                         </h2>
                         {/* Techs */}
                         <div className="flex overflow-ellipsis lg:mb-1">
-                            <h4 className="align-center text-md mt-3 flex h-8 justify-center p-[2px] text-center font-medium md:mt-2 md:text-xl">
+                            <h4 className="align-center text-md mt-3 flex h-8 justify-center p-[2px] text-center font-medium dark:text-gray-400 md:mt-2 md:text-xl">
                                 TECH:
                             </h4>
                             {/* output logos of each techology used in each project */}
@@ -265,7 +265,7 @@ const ProjectCard = ({
                             <h2 className="cursor-pointer text-left ">
                                 <a
                                     href={link}
-                                    className="rounded-full border-2 border-sky-500 px-5 py-1 text-sky-500 hover:border-sky-700 hover:bg-sky-50/20 hover:text-sky-700"
+                                    className="rounded-full border-2 border-sky-500 px-5 py-1 text-sky-500 hover:border-sky-700 hover:bg-sky-50/20 hover:text-sky-700 dark:border-sky-400 dark:text-white dark:hover:border-sky-300 dark:hover:bg-white/5  dark:hover:text-white"
                                 >
                                     Demo
                                 </a>
@@ -273,7 +273,7 @@ const ProjectCard = ({
                             <h2 className="cursor-pointer text-left">
                                 <a
                                     href={repository}
-                                    className="rounded-full bg-sky-400 px-5 py-1 text-white hover:bg-sky-500 "
+                                    className="rounded-full bg-sky-400 px-5 py-1 text-white hover:bg-sky-500 dark:bg-sky-600 dark:hover:bg-sky-500"
                                 >
                                     Repository
                                 </a>
@@ -284,16 +284,13 @@ const ProjectCard = ({
                             id="accordionExample"
                             className="z-20 w-full bg-white dark:bg-transparent"
                         >
-                            <div className="w-auto rounded-t-lg rounded-b-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                            <div className="w-auto rounded-t-lg rounded-b-lg border border-neutral-200 dark:border-neutral-600">
                                 <h2 className="mb-0" id="headingOne">
                                     <button
-                                        className="dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 group relative flex w-full items-center rounded-t-lg border-0 py-2 px-3 text-left text-base text-gray-500 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-sky-500 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                        className=" group relative flex w-full items-center rounded-t-lg rounded-b-lg border-0 py-2 px-3 text-left text-base text-gray-500 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-[#1E1E1D] dark:text-white [&:not([data-te-collapse-collapsed])]:rounded-b-none [&:not([data-te-collapse-collapsed])]:border-b-0 [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-sky-500 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-[#1E1E1D] dark:[&:not([data-te-collapse-collapsed])]:text-sky-300 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
                                         type="button"
                                         data-te-collapse-init
                                         data-te-collapse-collapsed
-                                        // data-te-target="#collapseOne"
-                                        // aria-expanded="false"
-                                        // aria-controls="collapseOne"
                                         data-te-target={`#collapseOne-${createValidId(
                                             name
                                         )}`}
@@ -336,12 +333,12 @@ const ProjectCard = ({
                                     )}`}
                                     data-te-parent="#accordionExample"
                                 >
-                                    <div className="py-4 px-5">
+                                    <div className="rounded-b-lg border-[#525252] bg-white py-4 px-5 dark:bg-[#1E1E1D] dark:text-gray-300 dark:[&:not([data-te-collapse-collapsed])]:border-t-[1px]">
                                         <p className="mb-2 text-left">
-                                            <strong>
+                                            <strong className="dark:text-white">
                                                 This is the first item's
                                                 accordion body.
-                                            </strong>
+                                            </strong>{" "}
                                             {description}
                                         </p>
                                     </div>
@@ -577,22 +574,24 @@ const Projects = () => {
                     className={` ${
                         searchTerm === "" ? "hidden h-0 opacity-0" : ""
                     }
-                my-2 w-full rounded bg-gray-600 p-2 text-white shadow`}
+                my-2 w-full rounded bg-gray-600 p-2 text-white shadow dark:bg-black/50`}
                 >
-                    <h3 className="text-center text-lg font-bold">
+                    <h3 className="text-center text-lg font-bold dark:text-gray-200">
                         Search Term Match
                     </h3>
-                    <p className="font-bold text-gray-400">
+                    <p className="font-bold text-gray-400 dark:text-gray-200">
                         Matching:{" "}
-                        <span className="font-normal text-white">
+                        <span className="font-normal text-white dark:text-gray-300">
                             {matchInfo.matchType}
                         </span>
                     </p>
-                    <p className="font-bold text-gray-400">
+                    <p className="font-bold text-gray-400 dark:text-gray-600">
                         Matched Text:{" "}
-                        <span className="px-2 py-0.5  font-normal text-white">
+                        <span className="px-2 py-0.5  font-normal text-white dark:text-gray-400">
                             {beforeMatch}
-                            <span className="bg-yellow-300">{matchedText}</span>
+                            <span className="bg-yellow-300 dark:text-black">
+                                {matchedText}
+                            </span>
                             {afterMatch}
                         </span>
                     </p>
@@ -616,10 +615,10 @@ const Projects = () => {
                     currently being created.
                 </p>
             </div>
-            <div className="flex w-full bg-white dark:bg-[#141514]">
+            <div className="flex w-full bg-white dark:bg-[#141514]/80">
                 {/* mobile filter menu */}
                 <div className=" z-20 flex h-full w-fit flex-col items-center justify-center md:hidden">
-                    <div className="relative my-4 h-fit w-full rounded-t-2xl bg-opacity-10 bg-gradient-to-b from-white to-white  dark:from-[#262826] dark:to-gray-300">
+                    <div className="relative my-4 h-fit w-full rounded-t-2xl  bg-opacity-10 dark:bg-[#262826]">
                         <div
                             className={`${
                                 showMobileFilters
@@ -959,19 +958,19 @@ const Projects = () => {
                 {/* Main Content */}
                 <div className=" w-full rounded-lg bg-white dark:bg-transparent md:p-4">
                     {/* large filter box */}
-                    <div className="relative my-4 hidden h-fit w-full rounded-2xl border-2 border-gray-200 bg-opacity-10 bg-gradient-to-b from-white to-white p-2 dark:bg-[#141514] md:block">
+                    <div className="relative my-4 hidden h-fit w-full rounded-2xl border-2 border-gray-200 bg-white bg-opacity-10  p-2 dark:border-none dark:bg-[#323737]/80 dark:text-white md:block">
                         <div className="flex gap-4">
                             {" "}
-                            <h2 className=" m-auto ml-5 flex text-center align-middle text-4xl capitalize tracking-widest">
+                            <h2 className=" m-auto ml-5 flex text-center align-middle text-4xl capitalize tracking-widest dark:text-gray-300">
                                 FILTER
                             </h2>
-                            <vr className="border-gray/10 mx-1 mr-auto w-0.5 max-w-[2px] flex-1 border" />
+                            <vr className="border-gray/10 mx-1 mr-auto w-0.5 max-w-[2px] flex-1 border dark:border-black/30" />
                             {/* Search Bar */}
                             <div className=" hidden w-full flex-col md:flex">
                                 <div className="relative flex w-full flex-row items-center justify-center">
                                     <input
                                         type="text"
-                                        className="focus:shadow-outline h-10 w-full rounded-lg border-2 border-gray-200 px-5 pr-10 text-base placeholder-gray-300 outline-none transition-all duration-300 ease-in-out  focus:border-transparent focus:placeholder-opacity-0 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                                        className="focus:shadow-outline h-10 w-full rounded-lg border-2 border-gray-200 px-5 pr-10 text-base placeholder-gray-300 outline-none transition-all duration-300 ease-in-out focus:border-transparent focus:placeholder-opacity-0  focus:outline-none focus:ring-2 focus:ring-sky-400 dark:border-none dark:bg-[#272825] "
                                         placeholder="Search Projects..."
                                         value={searchTerm}
                                         onChange={(e) =>
@@ -991,7 +990,7 @@ const Projects = () => {
                             </div>
                             {/* Select All / Deselect All Button */}
                             <div
-                                className="txt-xs my-auto mx-auto cursor-pointer text-gray-500 dark:text-gray-400"
+                                className="txt-xs my-auto mx-auto mr-2 cursor-pointer text-gray-500 dark:text-gray-400"
                                 onClick={() => {
                                     if (areAllFiltersActive()) {
                                         setActiveFilters(["2023"])
@@ -1014,7 +1013,7 @@ const Projects = () => {
                                     }
                                 }}
                             >
-                                <p className="h-fit w-fit cursor-pointer  whitespace-nowrap rounded-lg bg-sky-300 p-1 px-3  text-base text-white hover:bg-sky-600 ">
+                                <p className="h-fit w-fit cursor-pointer  whitespace-nowrap rounded-lg bg-sky-300 p-1 px-3  text-base text-white hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-700">
                                     {areAllFiltersActive()
                                         ? "Select none"
                                         : "Select all"}
@@ -1024,7 +1023,7 @@ const Projects = () => {
                         <div className="mt-2 flex h-full items-center justify-around">
                             {/* left middle*/}
                             <div className="group flex h-full flex-col items-center justify-center rounded-lg p-1.5 ">
-                                <h3 className="mb-1 text-2xl  tracking-wide text-gray-700  opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100">
+                                <h3 className="mb-1 text-2xl  tracking-wide text-gray-700  opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     Frameworks
                                 </h3>
                                 <div className="flex max-h-16 lg:gap-2">
@@ -1097,7 +1096,7 @@ const Projects = () => {
                             </div>
                             {/*middle */}
                             <div className="group flex h-full flex-col items-center justify-center p-1.5">
-                                <h3 className="mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100">
+                                <h3 className="mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     CSS
                                 </h3>
                                 <div className="flex lg:gap-2">
@@ -1170,7 +1169,7 @@ const Projects = () => {
                             </div>
                             {/* right middle */}
                             <div className="group flex h-full flex-col items-center justify-center p-1.5">
-                                <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100">
+                                <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     Databases
                                 </h3>
                                 <div className="flex lg:gap-2">
@@ -1243,7 +1242,7 @@ const Projects = () => {
                             </div>
                             {/* right*/}
                             <div className="group flex h-full flex-col items-center justify-center p-1.5 ">
-                                <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100">
+                                <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     Year
                                 </h3>
                                 <div className="flex h-full flex-col flex-wrap gap-[2px] lg:flex-row">
@@ -1304,7 +1303,7 @@ const Projects = () => {
                         </div>
                     </div>
                     {/* Project Cards */}
-                    <div className=" mt-10 w-full rounded-b-2xl bg-white transition-all duration-300 ease-in-out dark:bg-[#262826]">
+                    <div className=" mt-10 w-full rounded-2xl bg-white py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/80">
                         {projectsToDisplay.length > 0 ? (
                             projectsToDisplay.map((project) => {
                                 const id = project.id
@@ -1340,7 +1339,7 @@ const Projects = () => {
                                 </h3>
                                 {/* display help text when the help info button icon is clicked */}
                                 {/* help info icon */}
-                                <div className=" mx-2 mt-2 flex cursor-pointer flex-col  items-end justify-center rounded  border bg-gray-100 p-5  transition-all duration-500 ease-in-out">
+                                <div className=" mx-2 mt-2 flex cursor-pointer flex-col  items-end justify-center rounded  border bg-gray-100 p-5  transition-all duration-500 ease-in-out hover:text-gray-600 dark:border-none dark:bg-[#1E1E1D] dark:text-gray-400 dark:hover:text-gray-200">
                                     <div
                                         className="flex"
                                         onClick={() => {
@@ -1359,16 +1358,16 @@ const Projects = () => {
                                                 showHelpInfo
                                                     ? "hidden"
                                                     : "text-gray-500"
-                                            } my-auto h-12 w-12 text-2xl `}
+                                            } my-auto h-12 w-12 text-2xl  `}
                                         />
                                         {showHelpInfo && (
-                                            <IoCloseCircleOutline className="my-auto h-12 w-12 text-2xl text-gray-500" />
+                                            <IoCloseCircleOutline className="my-auto h-12 w-12 rounded-full text-2xl text-gray-500 hover:text-gray-700 dark:hover:bg-[#262826] dark:hover:text-gray-300" />
                                         )}
                                     </div>
                                     <div
                                         className={`${
                                             showHelpInfo ? "" : "hidden"
-                                        } mt-2 flex flex-col rounded bg-gray-500 p-8 text-white transition-opacity duration-500  ease-in-out`}
+                                        } mt-2 flex flex-col rounded-lg bg-gray-500 p-8 text-white transition-opacity  duration-500 ease-in-out dark:border-2 dark:border-white/5 dark:bg-[#151515]`}
                                     >
                                         <p className="text-center md:hidden">
                                             {!showMobileFilters && (
@@ -1447,12 +1446,12 @@ const Projects = () => {
                     </div>
                     {/* Pagination */}
                     {projectsToDisplay.length !== 0 && (
-                        <nav className="mx-3 flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+                        <nav className="mx-3 flex items-center justify-between border-t border-gray-200 px-4 dark:border-none sm:px-0">
                             <div
                                 className={`${
                                     currentPage === 1 || totalPages === 0
-                                        ? "cursor-not-allowed text-gray-200 "
-                                        : "text-gray-600 hover:border-gray-300 hover:text-black active:text-sky-400"
+                                        ? "cursor-not-allowed text-gray-200 dark:text-gray-700"
+                                        : "text-gray-600 hover:border-gray-300 hover:text-black  dark:text-gray-400 dark:hover:text-white"
                                 } mt-4 flex w-0 flex-1 cursor-pointer`}
                             >
                                 <a
@@ -1479,8 +1478,8 @@ const Projects = () => {
                                 className={`${
                                     totalPages === currentPage ||
                                     totalPages === 0
-                                        ? "cursor-not-allowed text-gray-200 "
-                                        : "text-gray-600 hover:border-gray-300 hover:text-black active:text-sky-400"
+                                        ? "cursor-not-allowed text-gray-200 dark:text-gray-700"
+                                        : "text-gray-600 hover:border-gray-300 hover:text-black  dark:text-gray-400 dark:hover:text-white"
                                 } mt-4 flex w-0 flex-1 cursor-pointer justify-end`}
                             >
                                 <a

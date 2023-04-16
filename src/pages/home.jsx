@@ -103,7 +103,8 @@ const Home = () => {
             </section>
             {/* Projects */}
             <section
-                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-opacity-50 align-middle dark:bg-[#141514]"
+                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-opacity-50 align-middle dark:bg-black/30"
+                // dark:bg-[#141514]
                 style={{ minHeight: "fit-content" }}
                 id="projects"
             >
@@ -120,7 +121,7 @@ const Home = () => {
             </section>
             {/* Contact */}
             <section
-                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center  align-middle"
                 style={{ minHeight: "fit-content" }}
                 id="contact"
             >
