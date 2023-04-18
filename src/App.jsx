@@ -65,11 +65,9 @@ function App({ children }) {
                         <p className="ml-1 text-[18px]">
                             Scrollable Mobile Menu
                         </p>{" "}
-                        <h2 className="mt-2 block w-screen text-lg text-slate-400">
-                            Timeline
-                        </h2>{" "}
                         <p className="ml-1 text-[18px]">
-                            Fix Timeline for Mobile
+                            Compare the accordian menu to the last commit to
+                            redesign light mode
                         </p>{" "}
                         <p className="ml-1 text-[18px]">
                             Ensure the images always stay the same aspect ratio
@@ -79,6 +77,15 @@ function App({ children }) {
                         </p>{" "}
                         <p className="ml-1 text-[18px]">
                             max-4 projects with expansion
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Add the labels for Education tabs
+                        </p>{" "}
+                        <h2 className="mt-2 block w-screen text-lg text-slate-400">
+                            Timeline
+                        </h2>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Fix Timeline for Mobile
                         </p>{" "}
                         <hr className="w-full border-gray-800" />
                     </span>
