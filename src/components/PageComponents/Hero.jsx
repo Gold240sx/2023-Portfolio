@@ -42,7 +42,7 @@ export default function Hero() {
                 transition={{ duration: 1.5 }}
                 className="relative z-10 flex h-auto w-full flex-col items-center justify-center"
             >
-                <h1 className="z-20 hidden -translate-y-5 md:block">
+                <h1 className="z-20 hidden translate-y-[.8vh] md:block">
                     <span className="text-start text-sm text-gray-400 sm:ml-[4.5rem] md:mx-4 md:text-xl lg:text-2xl ">
                         {text}
                     </span>

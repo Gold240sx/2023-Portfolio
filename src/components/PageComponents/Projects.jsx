@@ -120,6 +120,16 @@ const ProjectItems = [
             "firebase",
             "typescript",
         ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+        ],
     },
     {
         id: 2,
@@ -133,6 +143,16 @@ const ProjectItems = [
         repository: "#",
         link: "#",
         tags: ["Next.js", "Tailwind"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+        ],
     },
     {
         id: 3,
@@ -146,6 +166,16 @@ const ProjectItems = [
         repository: "#",
         link: "#",
         tags: ["Next.js", "Tailwind"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+        ],
     },
     {
         id: 4,
@@ -159,6 +189,16 @@ const ProjectItems = [
         repository: "#",
         link: "#",
         tags: ["Next.js", "Tailwind"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+        ],
     },
     {
         id: 5,
@@ -172,6 +212,16 @@ const ProjectItems = [
         repository: "#",
         link: "#",
         tags: ["Next.js", "Tailwind"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+        ],
     },
 ]
 

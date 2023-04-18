@@ -25,8 +25,12 @@ function TimelineItem(props) {
             <>
                 <>
                     <div className="mt-4 text-right">
-                        <div className="font-bold">{title}</div>
-                        <div className="text-zinc-400">{props.description}</div>
+                        <div className="text-sm font-bold md:text-base">
+                            {title}
+                        </div>
+                        <div className=" text-xs text-zinc-400 md:text-sm">
+                            {props.description}
+                        </div>
                     </div>
                     <div id="empty-right-2"></div>
                 </>
@@ -37,9 +41,11 @@ function TimelineItem(props) {
             <>
                 <>
                     <div id="empty-left-1"></div>
-                    <div className=" mt-4 text-left md:ml-2 ">
-                        <div className=" font-bold">{title}</div>
-                        <div className=" overflow-ellipsis text-zinc-400 ">
+                    <div className=" mt-4 text-left text-sm md:ml-2 md:text-base">
+                        <div className=" wrap max-w-[200px] break-normal font-bold lg:max-w-none">
+                            {title}
+                        </div>
+                        <div className=" overflow-ellipsis text-xs text-zinc-400 md:text-sm">
                             {description}
                         </div>
                     </div>
@@ -55,7 +61,7 @@ function YearLabel(props) {
     return (
         <>
             <div id="lineup-col-content" className="">
-                <h4 className="mt-4 rounded-lg bg-white p-2 text-xl dark:bg-zinc-900">
+                <h4 className="mx-auto mt-4 flex max-w-[80%] rounded-lg bg-white p-2 text-center text-xl dark:bg-zinc-900 ">
                     {props.year}
                 </h4>
             </div>
@@ -84,7 +90,7 @@ const Timeline = () => {
     }
 
     return (
-        <div className="relative mx-auto flex h-fit  max-w-7xl flex-col items-center justify-evenly px-10 text-center md:text-left">
+        <div className="relative mx-auto flex h-fit  w-auto max-w-screen-xs flex-col items-center justify-evenly text-center sm:max-w-screen-sm sm:px-4 md:max-w-7xl md:text-left">
             <h3 className="relative top-24 z-50 w-[541.98px] text-center text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                 Timeline
             </h3>
@@ -104,7 +110,7 @@ const Timeline = () => {
                                 workTimeline
                                     ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
                                     : ""
-                            } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
+                            } mx-3 my-2  rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
                             onClick={(e) => handleFilter(e)}
                         >
                             Work
@@ -114,7 +120,7 @@ const Timeline = () => {
                                 educationTimeline
                                     ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
                                     : ""
-                            } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
+                            } mx-3  my-2 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
                             onClick={(e) => handleFilter(e)}
                         >
                             Education
@@ -124,7 +130,7 @@ const Timeline = () => {
                                 lifeTimeline
                                     ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
                                     : ""
-                            } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
+                            } mx-3  my-2 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
                             onClick={(e) => handleFilter(e)}
                         >
                             Life
@@ -254,7 +260,7 @@ const Timeline = () => {
                                                 href="https://www.juggle.org/"
                                                 target="_blank"
                                                 rel="noreferrer"
-                                                className="cursor-pointer underline"
+                                                className="cursor-pointer text-[.95rem] underline"
                                             >
                                                 Juggling World Championships
                                             </a>
@@ -318,7 +324,7 @@ const Timeline = () => {
                                 {lifeTimeline && (
                                     <TimelineItem
                                         category="life"
-                                        title="Moved to Fresno, CA"
+                                        title="Moved: Fresno, CA"
                                         description=""
                                         position="left"
                                     />
@@ -348,7 +354,7 @@ const Timeline = () => {
                                 {lifeTimeline && (
                                     <TimelineItem
                                         category="life"
-                                        title="Moved to Minnesota"
+                                        title="Moved: Minnesota"
                                         description=""
                                         position="right"
                                     />
@@ -374,7 +380,7 @@ const Timeline = () => {
                                 {lifeTimeline && (
                                     <TimelineItem
                                         category="life"
-                                        title="Moved to Fresno, CA"
+                                        title="Moved: Fresno, CA"
                                         description=""
                                         position="left"
                                     />
@@ -391,9 +397,10 @@ const Timeline = () => {
                                 {lifeTimeline && (
                                     <TimelineItem
                                         category="life"
-                                        title="Moved to Pasadena, CA"
+                                        title="Moved: Pasadena, CA"
                                         description="to Attend Art Center"
                                         position="left"
+                                        className="text-[.95rem]"
                                     />
                                 )}
                                 {educationTimeline && (
@@ -424,15 +431,16 @@ const Timeline = () => {
                                 {lifeTimeline && (
                                     <TimelineItem
                                         category="life"
-                                        title="Moved to Huntington Beach, CA"
+                                        title="Moved: Huntington Beach, CA"
                                         description=""
                                         position="right"
+                                        className="flex text-[.6rem]"
                                     />
                                 )}
                                 {lifeTimeline && (
                                     <TimelineItem
                                         category="life"
-                                        title="Moved back to Fresno, CA"
+                                        title="Moved: Fresno, CA"
                                         description=""
                                         position="left"
                                     />
@@ -441,7 +449,7 @@ const Timeline = () => {
                                 {lifeTimeline && (
                                     <TimelineItem
                                         category="life"
-                                        title="Moved to Marin County, CA"
+                                        title="Moved: Marin County, CA"
                                         description=""
                                         position="right"
                                     />
@@ -491,7 +499,7 @@ const Timeline = () => {
                                 {lifeTimeline && (
                                     <TimelineItem
                                         category="life"
-                                        title="Moved to Dallas, TX"
+                                        title="Moved: Dallas, TX"
                                         description=""
                                         position="right"
                                     />

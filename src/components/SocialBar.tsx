@@ -40,6 +40,25 @@ export default function SocialBar({}: Props) {
                 {/* above bg-orange-500 rounded-full */}
                 {/* social icons */}
                 <SocialIcon
+                    url="https://www.linkedin.com/in/martell01"
+                    fgColor="transparent"
+                    bgColor="#737373"
+                    className=" cursor-pointer opacity-30 hover:opacity-100 dark:opacity-60 hover:dark:opacity-100"
+                    data-tooltip-id="stack"
+                    data-tooltip-content="Link: My Linkedin Profile"
+                    data-tooltip-delay-show={1000}
+                    style={{
+                        height: "26px",
+                        width: "26px",
+                        marginBlock: "0.5rem 0.4rem",
+                    }}
+                />
+                <Tooltip
+                    id="linkedin"
+                    place="right"
+                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                />
+                <SocialIcon
                     url="https://github.com/gold240sx"
                     fgColor="#737373"
                     className="cursor-pointer opacity-30 hover:opacity-100 dark:opacity-50 hover:dark:opacity-100"

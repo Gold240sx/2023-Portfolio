@@ -117,6 +117,7 @@
     img,
     svg {
         user-select: none;
+        pointer-events: none;
         /* pointer-events: none;   this will disable the click event on the icons */
     }
     /* hides the safari auto complete on webforms */

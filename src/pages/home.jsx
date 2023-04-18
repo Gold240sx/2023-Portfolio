@@ -16,7 +16,7 @@ const Home = () => {
     return (
         <div>
             <section
-                className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center align-middle"
                 style={{ height: "calc(100vh - 80px)" }}
             >
                 <div className="my-auto min-h-fit">
@@ -72,7 +72,7 @@ const Home = () => {
             </section>
             {/* Timeline */}
             <section
-                className="container m-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className=" m-auto mt-[80px] flex w-full snap-y snap-center justify-center  align-middle"
                 style={{ minHeight: "fit-content" }}
                 id="timeline"
             >

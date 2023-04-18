@@ -42,12 +42,12 @@ function App({ children }) {
         <>
             <main className=" relative h-full w-screen bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white">
                 {/* Developer Notes*/}
-                <div className="text-red fixed top-0 z-[9999999999999999999999999999999999] mb-20 h-fit max-h-[180px] w-full overflow-y-auto scroll-auto bg-black p-5">
+                {/* <div className="text-red fixed top-0 z-[9999999999999999999999999999999999] mb-20 h-fit max-h-[180px] w-full overflow-y-auto scroll-auto bg-black p-5 text-white">
                     <h2 className=" mb-2 block text-2xl text-slate-300">
                         Developer Notes:
                     </h2>{" "}
                     <hr className="w-full border-gray-800" />
-                    <span className="flex h-fit flex-wrap text-2xl text-slate-700 dark:text-white">
+                    <span className="flex h-fit flex-wrap text-2xl ">
                         <h2 className=" text-lg text-slate-200 ">Projects:</h2>{" "}
                         <p className="ml-1 text-[18px] text-gray-600">
                             Maybe add a gallery with previews of each project
@@ -62,30 +62,17 @@ function App({ children }) {
                         <h2 className="mt-2 block w-screen text-lg text-slate-400">
                             Education
                         </h2>{" "}
-                        <p className="ml-1 text-[18px]">
+                        <p className="ml-1 text-[18px] text-gray-500 line-through">
                             Scrollable Mobile Menu
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Compare the accordian menu to the last commit to
-                            redesign light mode
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Ensure the images always stay the same aspect ratio
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Max width to education mobile view (stacked)
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            max-4 projects with expansion
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Add the labels for Education tabs
                         </p>{" "}
                         <h2 className="mt-2 block w-screen text-lg text-slate-400">
                             Timeline
                         </h2>{" "}
+                        <h2 className="mt-2 block w-screen text-lg text-slate-400">
+                            Contact
+                        </h2>{" "}
                         <p className="ml-1 text-[18px]">
-                            Fix Timeline for Mobile
+                            Maybe add a photo for contact me.
                         </p>{" "}
                         <hr className="w-full border-gray-800" />
                     </span>
@@ -99,7 +86,7 @@ function App({ children }) {
                             Optimize images for faster DL Speed.
                         </p>{" "}
                     </span>
-                </div>
+                </div> */}
                 {/* End Developer Notes*/}
                 {authIsReady && (
                     <BrowserRouter>
@@ -138,9 +125,9 @@ function App({ children }) {
                         </div>
                         <Routes>
                             <Route path="/*" element={<Home />} />
-                            <Route path="/signin" element={<SignIn />} />
-                            <Route path="/signup" element={<Signup />} />
-                            {user && (
+                            {/* <Route path="/signin" element={<SignIn />} />
+                            <Route path="/signup" element={<Signup />} /> */}
+                            {/* {user && (
                                 <Route
                                     path="/dashboard"
                                     element={<Dashboard />}
@@ -151,7 +138,7 @@ function App({ children }) {
                                     path="/dashboard"
                                     element={<Navigate to="/signin" />}
                                 />
-                            )}
+                            )} */}
                         </Routes>
                     </BrowserRouter>
                 )}
