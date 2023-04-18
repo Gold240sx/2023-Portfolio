@@ -55,7 +55,7 @@ function YearLabel(props) {
     return (
         <>
             <div id="lineup-col-content" className="">
-                <h4 className="mt-4 rounded-lg bg-white p-2 dark:bg-zinc-900">
+                <h4 className="mt-4 rounded-lg bg-white p-2 text-xl dark:bg-zinc-900">
                     {props.year}
                 </h4>
             </div>

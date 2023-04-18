@@ -27,10 +27,13 @@ const Home = () => {
             </section>
             {/* About Me */}
             <section
-                className="container m-auto mt-[80px] flex w-full snap-y snap-mandatory justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className="container m-auto mt-[80px] flex w-full snap-y snap-mandatory justify-center  align-middle"
                 style={{ minHeight: "fit-content" }}
             >
-                <div className="my-auto " style={{ minHeight: "fit-content" }}>
+                <div
+                    className="my-auto  w-full"
+                    style={{ minHeight: "fit-content" }}
+                >
                     <div className="">
                         <div id="aboutMe" className="snap-center">
                             <AboutMe />
@@ -40,7 +43,7 @@ const Home = () => {
             </section>
             {/* Skills */}
             <section
-                className="container m-auto mx-auto mt-[80px] flex w-full snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 pb-[40px] align-middle"
+                className=" m-auto mx-auto my-[80px] flex h-[600px] w-full skew-y-12 snap-y snap-center justify-center border-t-8 border-gray-200 pb-[40px] align-middle dark:border-gray-600 lg:skew-y-0 lg:border-transparent"
                 style={
                     mode !== "dark"
                         ? {
@@ -59,7 +62,7 @@ const Home = () => {
                 id="skills"
             >
                 <div
-                    className="my-auto  w-auto min-w-fit"
+                    className="max-w-screen  my-auto w-auto min-w-fit -skew-y-12  overflow-hidden lg:skew-y-0"
                     style={{ minHeight: "fit-content" }}
                 >
                     <div id="hero" className="w-full snap-center">
@@ -103,11 +106,15 @@ const Home = () => {
             </section>
             {/* Projects */}
             <section
-                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-opacity-50 align-middle dark:bg-[#141514]"
+                className=" m-auto mt-[80px] flex w-screen snap-y snap-center justify-center overflow-x-visible border-opacity-50 align-middle dark:bg-black/30"
+                // dark:bg-[#141514]
                 style={{ minHeight: "fit-content" }}
                 id="projects"
             >
-                <div className="w-screen px-6 lg:max-w-[70rem]">
+                <div
+                    className="mx-auto   px-6 lg:max-w-[70rem]"
+                    style={{ width: "max(98vw, 380px)" }}
+                >
                     <div
                         className="my-auto md:mx-5"
                         style={{ minHeight: "fit-content" }}
@@ -120,11 +127,11 @@ const Home = () => {
             </section>
             {/* Contact */}
             <section
-                className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center border-2 border-dashed border-red-500 border-opacity-50 align-middle"
+                className="m-auto mt-[80px] flex w-screen snap-y snap-center justify-center  align-middle"
                 style={{ minHeight: "fit-content" }}
                 id="contact"
             >
-                <div className="w-screen px-6 lg:max-w-[70rem]">
+                <div className="w-screen px-6 lg:max-w-[50rem]">
                     <div
                         className="my-auto md:mx-5"
                         style={{ minHeight: "fit-content" }}

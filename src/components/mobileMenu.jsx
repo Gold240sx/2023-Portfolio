@@ -11,6 +11,7 @@ import { MdOutlineWorkHistory } from "react-icons/md"
 import { TbInfoSquare, TbSchool, TbCode } from "react-icons/tb"
 import { RiUser3Fill } from "react-icons/ri"
 import { GrPaint } from "react-icons/gr"
+import { HiOutlineHome } from "react-icons/hi"
 
 const smoothScroll = (target, setOpen) => {
     setOpen(false)
@@ -60,12 +61,12 @@ export default function MobileMenu({ open, setOpen }) {
                                 leaveTo="translate-x-full"
                             >
                                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                                    <div className="ml-auto flex h-full w-fit flex-col overflow-y-scroll bg-white py-6 pr-2 shadow-xl dark:bg-slate-900">
+                                    <div className="ml-auto flex h-full w-fit flex-col overflow-y-scroll bg-white py-6 pr-2 shadow-xl dark:bg-zinc-900">
                                         <div className="">
                                             <div className="flex items-start justify-between">
                                                 <Link
                                                     to="/home"
-                                                    className="hover:cursor-pointer"
+                                                    className="outline-none hover:cursor-pointer focus:outline-none "
                                                     onClick={() =>
                                                         smoothClose(setOpen)
                                                     }
@@ -95,7 +96,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                 <div className="ml-3 flex h-7 items-center">
                                                     <button
                                                         type="button"
-                                                        className="rounded-md hover:cursor-pointer hover:bg-slate-50 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 dark:hover:bg-slate-800"
+                                                        className="rounded-md hover:cursor-pointer hover:bg-slate-50 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                         onClick={() =>
                                                             setOpen(false)
                                                         }
@@ -114,14 +115,14 @@ export default function MobileMenu({ open, setOpen }) {
                                         <div className="relative mt-6 h-auto flex-1">
                                             {/* Your content */}
                                             <div className="flex h-full w-auto">
-                                                <ul className="relative flex h-fit w-full flex-col pl-8 pb-5">
+                                                <ul className="relative flex h-fit w-full flex-col pl-8 pb-5 text-xl">
                                                     {/* add mt-auto to position menu to the bottom */}
                                                     {!currentPath.endsWith(
-                                                        "/sginIn"
+                                                        "/signIn"
                                                     ) && (
                                                         <>
                                                             <li
-                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="flex  h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                                 onClick={() =>
                                                                     smoothScroll(
                                                                         "aboutMe",
@@ -130,11 +131,11 @@ export default function MobileMenu({ open, setOpen }) {
                                                                 }
                                                             >
                                                                 <span className="mr-5 ">
-                                                                    <TbInfoSquare className="h-6 w-6" />
+                                                                    <TbInfoSquare className="h-6 w-6 text-sky-600 dark:text-sky-400" />
                                                                 </span>{" "}
                                                                 About
                                                             </li>
-                                                            {/* <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                            {/* <li className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400 hover:text-sky-600">
                                                         <span className="mr-5">
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +148,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                         Art
                                                     </li> */}
                                                             <li
-                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                                 onClick={() =>
                                                                     smoothScroll(
                                                                         "contact",
@@ -157,10 +158,10 @@ export default function MobileMenu({ open, setOpen }) {
                                                             >
                                                                 <span className="mr-5">
                                                                     <svg
-                                                                        className="h-6 w-6"
+                                                                        className="h-6 w-6 text-sky-600 dark:text-sky-400"
                                                                         fill="none"
-                                                                        stroke="currentColor"
                                                                         viewBox="0 0 24 24"
+                                                                        stroke="currentColor"
                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                     >
                                                                         <path
@@ -174,7 +175,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                                 Contact
                                                             </li>
                                                             <li
-                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                                 onClick={() =>
                                                                     smoothScroll(
                                                                         "education",
@@ -183,18 +184,18 @@ export default function MobileMenu({ open, setOpen }) {
                                                                 }
                                                             >
                                                                 <span className="mr-5">
-                                                                    <TbSchool className="h-6 w-6" />
+                                                                    <TbSchool className="h-6 w-6 text-sky-600 dark:text-sky-400" />
                                                                 </span>{" "}
                                                                 Education
                                                             </li>
-                                                            {/* <li className="text-md  items-centesr flex h-fit rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800">
+                                                            {/* <li className="text-md  items-centesr flex h-fit rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400 hover:text-sky-600">
                                                         <span className="mr-5 ">
                                                             <MdOutlineWorkHistory className="h-6 w-6" />
                                                         </span>{" "}
                                                         Experience
                                                     </li> */}
                                                             <li
-                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                                 onClick={() =>
                                                                     smoothScroll(
                                                                         "projects",
@@ -204,7 +205,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                             >
                                                                 <span className="mr-5 ">
                                                                     <svg
-                                                                        className="h-6 w-6"
+                                                                        className="h-6 w-6 text-sky-600 dark:text-sky-400"
                                                                         fill="none"
                                                                         stroke="currentColor"
                                                                         viewBox="0 0 24 24"
@@ -221,7 +222,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                                 Projects
                                                             </li>
                                                             <li
-                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                                 onClick={() =>
                                                                     smoothScroll(
                                                                         "skills",
@@ -231,7 +232,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                             >
                                                                 <span className="mr-5">
                                                                     <svg
-                                                                        className="h-6 w-6"
+                                                                        className="h-6 w-6 text-sky-600 dark:text-sky-400"
                                                                         fill="none"
                                                                         stroke="currentColor"
                                                                         viewBox="0 0 24 24"
@@ -248,7 +249,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                                 Skills
                                                             </li>
                                                             <li
-                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                                 onClick={() =>
                                                                     smoothScroll(
                                                                         "timeline",
@@ -257,12 +258,12 @@ export default function MobileMenu({ open, setOpen }) {
                                                                 }
                                                             >
                                                                 <span className="mr-5 ">
-                                                                    <MdOutlineWorkHistory className="h-6 w-6" />
+                                                                    <MdOutlineWorkHistory className="h-6 w-6 text-sky-600 dark:text-sky-400" />
                                                                 </span>{" "}
                                                                 Timeline
                                                             </li>
                                                             <li
-                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                                 // dowload resume
                                                                 onClick={() => {
                                                                     window.open(
@@ -272,7 +273,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                             >
                                                                 <span className="mr-5 ">
                                                                     <svg
-                                                                        className="h-6 w-6"
+                                                                        className="h-6 w-6 text-sky-600 dark:text-sky-400"
                                                                         fill="none"
                                                                         stroke="currentColor"
                                                                         viewBox="0 0 24 24"
@@ -300,11 +301,11 @@ export default function MobileMenu({ open, setOpen }) {
                                                                 onClick={() =>
                                                                     smoothClose()
                                                                 }
-                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                             >
                                                                 <>
                                                                     <span className="mr-5 ">
-                                                                        <RiUser3Fill className="h-6 w-6" />
+                                                                        <RiUser3Fill className="h-6 w-6 text-gray-500" />
                                                                     </span>{" "}
                                                                     <p>
                                                                         Client
@@ -317,11 +318,11 @@ export default function MobileMenu({ open, setOpen }) {
                                                                 onClick={() =>
                                                                     smoothClose()
                                                                 }
-                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 active:text-gray-500 dark:hover:bg-slate-800"
+                                                                className="text-md flex items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
                                                             >
                                                                 <>
                                                                     <span className="mr-5 ">
-                                                                        <TbCode className="h-6 w-6" />
+                                                                        <TbCode className="h-6 w-6 text-gray-500" />
                                                                     </span>{" "}
                                                                     <p>
                                                                         Dev Sign
@@ -345,6 +346,21 @@ export default function MobileMenu({ open, setOpen }) {
                                                         ></path>
                                                     </svg>
                                                 </span> */}
+                                                        </>
+                                                    )}
+                                                    {currentPath.endsWith(
+                                                        "/signIn"
+                                                    ) && (
+                                                        <>
+                                                            <a
+                                                                className="text-md  flex h-fit items-center rounded-md py-4 pl-2 hover:cursor-pointer hover:bg-gray-100 hover:text-sky-600 active:text-gray-500 dark:hover:bg-zinc-800 dark:hover:text-sky-400"
+                                                                href="/"
+                                                            >
+                                                                <span className="mr-5">
+                                                                    <HiOutlineHome className="h-6 w-6 text-sky-600 dark:text-sky-400" />
+                                                                </span>{" "}
+                                                                Home
+                                                            </a>
                                                         </>
                                                     )}
                                                 </ul>

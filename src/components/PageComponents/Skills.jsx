@@ -221,7 +221,7 @@ const Skills = () => {
                                 >
                                     <img
                                         src="https://img.icons8.com/color/48/000000/nextjs.png"
-                                        className="dark:invert"
+                                        className="dark:grayscale dark:invert"
                                     />
                                 </a>
                                 <Tooltip

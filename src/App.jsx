@@ -9,7 +9,6 @@ import { FaSun } from "react-icons/fa"
 import { BsFillMoonStarsFill } from "react-icons/bs"
 import { Tooltip } from "react-tooltip"
 import MobileMenu from "./components/mobileMenu"
-import ScrollToTop from "./components/ScrollToTop"
 
 import { useTheme } from "./hooks/useThemeContext"
 import Footer from "./components/Footer"
@@ -41,7 +40,67 @@ function App({ children }) {
 
     return (
         <>
-            <main className=" relative h-full w-auto bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white">
+            <main className=" relative h-full w-screen bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white">
+                {/* Developer Notes*/}
+                <div className="text-red fixed top-0 z-[9999999999999999999999999999999999] mb-20 h-fit max-h-[180px] w-full overflow-y-auto scroll-auto bg-black p-5">
+                    <h2 className=" mb-2 block text-2xl text-slate-300">
+                        Developer Notes:
+                    </h2>{" "}
+                    <hr className="w-full border-gray-800" />
+                    <span className="flex h-fit flex-wrap text-2xl text-slate-700 dark:text-white">
+                        <h2 className=" text-lg text-slate-200 ">Projects:</h2>{" "}
+                        <p className="ml-1 text-[18px] text-gray-600">
+                            Maybe add a gallery with previews of each project
+                        </p>{" "}
+                        <p className="ml-1 text-[18px] text-gray-600">
+                            Add a mac computer icon next to Projects
+                        </p>{" "}
+                        <hr className="w-full border-gray-800" />
+                        <h2 className=" text-lg text-slate-400 ">
+                            Skills:
+                        </h2>{" "}
+                        <h2 className="mt-2 block w-screen text-lg text-slate-400">
+                            Education
+                        </h2>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Scrollable Mobile Menu
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Compare the accordian menu to the last commit to
+                            redesign light mode
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Ensure the images always stay the same aspect ratio
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Max width to education mobile view (stacked)
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
+                            max-4 projects with expansion
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Add the labels for Education tabs
+                        </p>{" "}
+                        <h2 className="mt-2 block w-screen text-lg text-slate-400">
+                            Timeline
+                        </h2>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Fix Timeline for Mobile
+                        </p>{" "}
+                        <hr className="w-full border-gray-800" />
+                    </span>
+                    <hr className="w-full border-gray-800" />
+                    <span className="flex h-fit flex-wrap text-2xl text-slate-700 dark:text-white">
+                        <h2 className="text-lg text-slate-400">Other:</h2>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Create an open / close state for dev notes.
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
+                            Optimize images for faster DL Speed.
+                        </p>{" "}
+                    </span>
+                </div>
+                {/* End Developer Notes*/}
                 {authIsReady && (
                     <BrowserRouter>
                         <Navbar />
@@ -97,7 +156,6 @@ function App({ children }) {
                     </BrowserRouter>
                 )}
             </main>
-            <ScrollToTop />
             <section className=" h-fit w-full dark:bg-[#111111] dark:text-white">
                 <Footer />
             </section>

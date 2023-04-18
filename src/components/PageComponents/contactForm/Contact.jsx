@@ -31,13 +31,13 @@ const Contact = () => {
                         className="absolute bottom-0 right-0 mt-4 mr-2 h-6 w-6 cursor-help text-gray-400 dark:text-gray-500"
                         data-tooltip-id="contactInfo"
                         data-tooltip-content="This contact form uses Google Firebase as a database, Trigger-Email serverless
-                        functions and sendgrid to send emails. Any information obtained by this form will not be used for any other purpose than to contact you. I will never sell this information to any third party."
+                        functions and sendgrid to send emails. Any information obtained by this form will not be used for any other purpose than to contact you. I will never sell your information to any third party."
                         data-tooltip-delay-show={100}
                     />
                     <Tooltip
                         id="contactInfo"
                         place="left"
-                        className="z-[1000] flex  h-fit max-w-[300px] rounded bg-gray-200 text-sm font-semibold text-slate-700 dark:bg-black dark:text-white"
+                        className="z-[1000] flex  h-fit max-w-[300px] rounded bg-gray-200 text-sm font-semibold text-slate-700 dark:bg-zinc-900 dark:text-white"
                     />
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react"
 import { Tab } from "@headlessui/react"
+import { useTheme } from "../../hooks/useThemeContext"
 import * as te from "tw-elements"
 import IrondalePhoto from "../../assets/Images/Irondale.jpg"
 import PerpichPhoto from "../../assets/Images/Perpich.jpeg"
@@ -20,6 +21,25 @@ import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
 import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
 import Udemy from "../../assets/Images/coursePreviews/udemy.png"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
+
+// Optimized  images
+import CollegeDarkGray from "../../assets/Icons/education-icons/college-dark-gray.png"
+import CollegeLightGray from "../../assets/Icons/education-icons/college-light-gray.png"
+import CollegeSelected from "../../assets/Icons/education-icons/college-selected.png"
+import HighSchoolDarkGray from "../../assets/Icons/education-icons/hs-dark-gray.png"
+import HighSchoolLightGray from "../../assets/Icons/education-icons/hs-light-gray.png"
+import HighSchoolSelected from "../../assets/Icons/education-icons/hs-selected.png"
+import ContEdDarkGray from "../../assets/Icons/education-icons/contEd-dark-gray.png"
+import ContEdLightGray from "../../assets/Icons/education-icons/contEd-light-gray.png"
+import ContEdSelected from "../../assets/Icons/education-icons/contEd-selected.png"
+import QueDarkGray from "../../assets/Icons/education-icons/que-dark-gray.png"
+import QueLightGray from "../../assets/Icons/education-icons/que-light-gray.png"
+import QueSelected from "../../assets/Icons/education-icons/que-selected.png"
+import CollegeNeon from "../../assets/Icons/education-icons/college-neon.png"
+import HighSchoolNeon from "../../assets/Icons/education-icons/highSchool-neon.png"
+import ContinuedNeon from "../../assets/Icons/education-icons/continued.png"
+import EducationNeon from "../../assets/Icons/education-icons/education.png"
+import QueNeon from "../../assets/Icons/education-icons/que.png"
 
 const tabs = [
     {
@@ -315,15 +335,16 @@ const Education = () => {
     const [selectedTab, setSelectedTab] = useState(
         "Continued Education / Certificates"
     )
+    const { mode } = useTheme()
 
     return (
-        <div className="mb-10 w-auto rounded-3xl bg-white dark:bg-slate-800">
+        <div className="mb-10 w-auto rounded-3xl bg-white dark:bg-white/5">
             <section
                 aria-labelledby="features-heading"
                 className="mx-auto pb-4 pt-16  md:pt-32 lg:px-8"
             >
                 <div className="mx-auto  px-4 lg:px-0">
-                    <div className="">
+                    <div className="text-center">
                         <h3 className="relative  z-50 text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                             Education
                         </h3>
@@ -337,7 +358,7 @@ const Education = () => {
                         className="mt-4"
                         defaultIndex={defaultTabIndex}
                     >
-                        <div className="-mx-4 flex flex-col overflow-x-auto sm:mx-0 md:flex-row">
+                        {/* <div className="-mx-4 hidden flex-col overflow-x-auto sm:mx-0 md:flex-row lg:flex">
                             <div className="flex-col border-b border-gray-200 px-4 xs:mx-auto sm:min-w-fit sm:max-w-[60%] sm:px-0 md:mr-auto md:ml-0 md:flex-row">
                                 <Tab.List className=" -mb-px mr-auto flex w-full flex-col items-center gap-3 md:flex-row md:items-start md:gap-2">
                                     {tabs.map((tab) => (
@@ -349,33 +370,9 @@ const Education = () => {
                                             className={({ selected }) =>
                                                 classNames(
                                                     selected
-                                                        ? "bg-sky-500 text-white md:border-b-2 md:border-sky-500  md:border-l-transparent md:border-t-transparent md:border-r-transparent md:bg-white md:text-sky-600 hover:md:border-l-transparent hover:md:border-t-transparent hover:md:border-r-transparent"
+                                                        ? "bg-sky-500 text-white md:border-b-2 md:border-sky-500  md:border-l-transparent md:border-t-transparent md:border-r-transparent  md:text-sky-600 hover:md:border-l-transparent hover:md:border-t-transparent hover:md:border-r-transparent "
                                                         : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 md:border-gray-300 md:border-l-transparent md:border-t-transparent md:border-r-transparent md:bg-white hover:md:border-l-transparent hover:md:border-t-transparent hover:md:border-r-transparent",
-                                                    "text-overflow-ellipsis w-full overflow-hidden overflow-ellipsis whitespace-nowrap rounded-full border-2 border-gray-300 border-transparent px-3 py-2 text-sm font-medium md:w-fit md:rounded-none md:border-b-2  md:border-t-transparent md:border-l-transparent md:border-r-transparent  md:text-base"
-                                                )
-                                            }
-                                        >
-                                            {tab.name}
-                                        </Tab>
-                                    ))}
-                                </Tab.List>
-                            </div>
-                        </div>
-                        {/* <div className="-mx-4 flex flex-col overflow-x-auto sm:mx-0 md:hidden">
-                            <div className="flex-col border-b border-gray-200 px-4 sm:px-0">
-                                <Tab.List className="align-center -mb-px flex w-full flex-col gap-2">
-                                    {tabs.map((tab) => (
-                                        <Tab
-                                            key={tab.name}
-                                            onClick={() =>
-                                                setSelectedTab(tab.name)
-                                            }
-                                            className={({ selected }) =>
-                                                classNames(
-                                                    selected
-                                                        ? "bg-sky-500 text-white"
-                                                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                                                    "w-full whitespace-nowrap rounded-full border-2 border-sky-300 py-2 text-sm font-medium"
+                                                    "text-overflow-ellipsis w-full overflow-hidden overflow-ellipsis whitespace-nowrap rounded-full border-2 border-gray-300 border-transparent px-3 py-2 text-sm font-medium dark:bg-transparent md:w-fit md:rounded-none md:border-b-2  md:border-t-transparent md:border-l-transparent md:border-r-transparent  md:text-base"
                                                 )
                                             }
                                         >
@@ -385,16 +382,324 @@ const Education = () => {
                                 </Tab.List>
                             </div>
                         </div> */}
+                        {/* Mobile Tabs */}
+                        <div className="relative mt-16 h-32 w-full border-0 py-2 px-4 outline-none ">
+                            <div
+                                className={`absolute mx-auto mt-20 inline-block h-12 w-[95%] -skew-x-12 border-0 bg-gray-200  outline-none dark:bg-black/50`}
+                            >
+                                {/* gold line decoration */}
+                                <div className="absolute right-1  ml-auto mr-2 flex w-fit justify-between gap-2">
+                                    <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
+                                    <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
+                                    <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
+                                </div>
+                                {/* Tab Title */}
+                                {/* <p className="absolute -top-36 -ml-8 aspect-1 h-fit max-w-full md:-ml-4">
+                                    {selectedTab ===
+                                        "Continued Education / Certificates" && (
+                                        <div className=" flex w-auto flex-col md:flex-row">
+                                            <img
+                                                src={ContinuedNeon}
+                                                className="h-14 w-auto scale-110 md:h-16"
+                                            />
+                                            <img
+                                                src={EducationNeon}
+                                                className="-ml-2 h-14 w-auto scale-90 md:ml-0 md:h-16"
+                                            />
+                                        </div>
+                                    )}
+
+                                    {selectedTab === "High School" && (
+                                        <img
+                                            src={HighSchoolNeon}
+                                            className="h-16 w-auto"
+                                        />
+                                    )}
+
+                                    {selectedTab === "College" && (
+                                        <img
+                                            src={CollegeNeon}
+                                            className="h-16 w-auto"
+                                        />
+                                    )}
+
+                                    {selectedTab === "My Learning Que" && (
+                                        <img
+                                            src={QueNeon}
+                                            className="h-16 w-auto"
+                                        />
+                                    )}
+                                </p> */}
+                                {/* Tabs in the form of icons */}
+                                <Tab.List className="  sm:pr-15 flex -translate-y-5 justify-between border-0 outline-none hover:outline-none focus:border-0 focus:outline-none md:pr-20">
+                                    {tabs.map((tab) => (
+                                        <Tab
+                                            key={tab.name}
+                                            onClick={() =>
+                                                setSelectedTab(tab.name)
+                                            }
+                                            className={({ selected }) =>
+                                                classNames(
+                                                    selected
+                                                        ? " scale:125 translate-y-6 md:translate-y-6 md:scale-150"
+                                                        : "-mx-2 translate-y-6 sm:ml-1 md:translate-y-3",
+                                                    "h-auto border-0 outline-none transition-all duration-300 ease-in-out"
+                                                )
+                                            }
+                                        >
+                                            {/* {tab.name} */}
+                                            {/* Each icon */}
+                                            {/* <div className=" flex-row items-center justify-center">
+                                                {/* LIghtMode 
+                                                {mode !== "dark" && (
+                                                    <>
+                                                        {tab.name ===
+                                                            "High School" && (
+                                                            <img
+                                                                src={
+                                                                    HighSchoolLightGray
+                                                                }
+                                                                alt="High School"
+                                                                className={`${({
+                                                                    selected,
+                                                                }) =>
+                                                                    classNames(
+                                                                        selected
+                                                                            ? "h-[190px] w-[190px] bg-red-500"
+                                                                            : ""
+                                                                    )} my-auto h-40 w-[160px] -translate-y-10 skew-x-12  `}
+                                                            />
+                                                        )}
+                                                        {tab.name ===
+                                                            "Continued Education / Certificates" && (
+                                                            <img
+                                                                src={
+                                                                    ContEdLightGray
+                                                                }
+                                                                alt="Continued Education"
+                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                            />
+                                                        )}
+                                                        {tab.name ===
+                                                            "College" && (
+                                                            <img
+                                                                src={
+                                                                    CollegeLightGray
+                                                                }
+                                                                alt="College"
+                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                            />
+                                                        )}
+                                                        {tab.name ===
+                                                            "My Learning Que" && (
+                                                            <img
+                                                                src={
+                                                                    QueLightGray
+                                                                }
+                                                                alt="High School"
+                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                            />
+                                                        )}
+                                                    </>
+                                                )}
+                                                {/* DarkMode 
+                                                {mode === "dark" && (
+                                                    <>
+                                                        {tab.name ===
+                                                            "High School" && (
+                                                            <img
+                                                                src={
+                                                                    HighSchoolDarkGray
+                                                                }
+                                                                alt="High School"
+                                                                className="my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                            />
+                                                        )}
+                                                        {tab.name ===
+                                                            "Continued Education / Certificates" && (
+                                                            <img
+                                                                src={
+                                                                    ContEdDarkGray
+                                                                }
+                                                                alt="Continued Education"
+                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                            />
+                                                        )}
+                                                        {tab.name ===
+                                                            "College" && (
+                                                            <img
+                                                                src={
+                                                                    CollegeDarkGray
+                                                                }
+                                                                alt="College"
+                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                            />
+                                                        )}
+                                                        {tab.name ===
+                                                            "My Learning Que" && (
+                                                            <img
+                                                                src={
+                                                                    QueDarkGray
+                                                                }
+                                                                alt="High School"
+                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                            />
+                                                        )}
+                                                    </>
+                                                )}
+                                            </div> */}
+                                            {selectedTab === tab.name && (
+                                                <>
+                                                    {tab.name ===
+                                                        "High School" && (
+                                                        <img
+                                                            src={
+                                                                HighSchoolSelected
+                                                            }
+                                                            alt="High School"
+                                                            className="my-auto h-[120px] w-[120px] -translate-y-10 skew-x-12  sm:h-[130px]  sm:w-[140px] md:h-40 md:w-[160px]"
+                                                        />
+                                                    )}
+                                                    {tab.name ===
+                                                        "Continued Education / Certificates" && (
+                                                        <img
+                                                            src={ContEdSelected}
+                                                            alt="Continued Education"
+                                                            className="my-auto h-[120px] w-[120px] -translate-y-10 skew-x-12 sm:h-[130px] sm:w-[140px] md:h-40 md:w-[160px]"
+                                                        />
+                                                    )}
+                                                    {tab.name === "College" && (
+                                                        <img
+                                                            src={
+                                                                CollegeSelected
+                                                            }
+                                                            alt="College"
+                                                            className="my-auto h-[120px] w-[120px] -translate-y-10 skew-x-12 sm:h-[130px] sm:w-[140px] md:h-40 md:w-[160px]"
+                                                        />
+                                                    )}
+                                                    {tab.name ===
+                                                        "My Learning Que" && (
+                                                        <img
+                                                            src={QueSelected}
+                                                            alt="My Learning Que"
+                                                            className="my-auto h-[120px] w-[120px] -translate-y-10 skew-x-12 sm:h-[130px] sm:w-[140px] md:h-40 md:w-[160px]"
+                                                        />
+                                                    )}
+                                                </>
+                                            )}
+                                            {selectedTab !== tab.name && (
+                                                <>
+                                                    {/* LIghtMode */}
+                                                    {mode !== "dark" && (
+                                                        <>
+                                                            {tab.name ===
+                                                                "High School" && (
+                                                                <img
+                                                                    src={
+                                                                        HighSchoolLightGray
+                                                                    }
+                                                                    alt="High School"
+                                                                    className="my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
+                                                                />
+                                                            )}
+                                                            {tab.name ===
+                                                                "Continued Education / Certificates" && (
+                                                                <img
+                                                                    src={
+                                                                        ContEdLightGray
+                                                                    }
+                                                                    alt="Continued Education"
+                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
+                                                                />
+                                                            )}
+                                                            {tab.name ===
+                                                                "College" && (
+                                                                <img
+                                                                    src={
+                                                                        CollegeLightGray
+                                                                    }
+                                                                    alt="College"
+                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
+                                                                />
+                                                            )}
+                                                            {tab.name ===
+                                                                "My Learning Que" && (
+                                                                <img
+                                                                    src={
+                                                                        QueLightGray
+                                                                    }
+                                                                    alt="My Learning Que"
+                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12  sm:w-[120px] md:h-40 md:w-[160px]"
+                                                                />
+                                                            )}
+                                                        </>
+                                                    )}
+                                                    {/* DarkMode */}
+                                                    {mode === "dark" && (
+                                                        <>
+                                                            {tab.name ===
+                                                                "High School" && (
+                                                                <img
+                                                                    src={
+                                                                        HighSchoolDarkGray
+                                                                    }
+                                                                    alt="High School"
+                                                                    className="my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
+                                                                />
+                                                            )}
+                                                            {tab.name ===
+                                                                "Continued Education / Certificates" && (
+                                                                <img
+                                                                    src={
+                                                                        ContEdDarkGray
+                                                                    }
+                                                                    alt="Continued Education"
+                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12  sm:w-[120px] md:h-40 md:w-[160px]"
+                                                                />
+                                                            )}
+                                                            {tab.name ===
+                                                                "College" && (
+                                                                <img
+                                                                    src={
+                                                                        CollegeDarkGray
+                                                                    }
+                                                                    alt="College"
+                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
+                                                                />
+                                                            )}
+                                                            {tab.name ===
+                                                                "My Learning Que" && (
+                                                                <img
+                                                                    src={
+                                                                        QueDarkGray
+                                                                    }
+                                                                    alt="High School"
+                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12  sm:w-[120px] md:h-40 md:w-[160px]"
+                                                                />
+                                                            )}
+                                                        </>
+                                                    )}
+                                                </>
+                                            )}
+                                        </Tab>
+                                    ))}
+                                </Tab.List>
+                            </div>
+                        </div>
+                        {/* End Mobile Tabs */}
 
                         <Tab.Panels as={Fragment}>
                             {tabs.map((tab, tabIndex) => (
-                                <Tab.Panel key={tab.name} className=" lg:pt-16">
+                                <Tab.Panel
+                                    key={tab.name}
+                                    className=" mt-10 md:mt-28 lg:mt-10 lg:pt-16"
+                                >
                                     <div
                                         className={` ${
                                             tab.name ===
                                             "Continued Education / Certificates"
-                                                ? "my-12 w-full rounded-xl border border-gray-300 bg-slate-50 text-white  dark:bg-slate-900"
-                                                : null
+                                                ? "my-12 w-full rounded-xl text-white "
+                                                : ""
                                         }`}
                                     >
                                         {tab.features.map(
@@ -413,12 +718,12 @@ const Education = () => {
                                                             >
                                                                 {/* Info */}
                                                                 <div className="md:w-1/2 md:pl-8 lg:w-2/3">
-                                                                    <h3 className="mb-2 text-xl font-semibold text-gray-700">
+                                                                    <h3 className="mb-2 text-xl font-semibold text-gray-700 dark:text-white">
                                                                         {
                                                                             feature.name
                                                                         }
                                                                     </h3>
-                                                                    <h4 className="mb-4 font-medium text-gray-600">
+                                                                    <h4 className="mb-4 font-medium text-gray-600 dark:text-gray-400">
                                                                         {
                                                                             feature.instructor
                                                                         }
@@ -427,7 +732,7 @@ const Education = () => {
                                                                         }
                                                                         {feature.years && (
                                                                             <div>
-                                                                                <h4 className="text-base font-medium text-gray-600">
+                                                                                <h4 className="text-base font-medium text-gray-600 dark:text-gray-400">
                                                                                     {
                                                                                         feature.years
                                                                                     }{" "}
@@ -437,7 +742,7 @@ const Education = () => {
                                                                                     }
                                                                                 </h4>
                                                                                 {feature.degree && (
-                                                                                    <p className="text-sm font-medium text-gray-600">
+                                                                                    <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                                                                                         {
                                                                                             feature.degree
                                                                                         }
@@ -474,23 +779,23 @@ const Education = () => {
                                                             </div>
                                                         )}
                                                     {/* Accordian */}
-                                                    <div className="">
+                                                    <div className="overflow-hidden border-l-0  border-t-0 border-r-0 first:overflow-hidden first:rounded-t-2xl first:rounded-b-none last:overflow-hidden last:rounded-t-none last:rounded-b-2xl dark:border-b-2 dark:border-zinc-900 ">
                                                         {selectedTab ===
                                                             "Continued Education / Certificates" && (
                                                             <div
                                                                 key={
                                                                     feature.name
                                                                 }
-                                                                className=" border-gray-300 last:border-b-0"
+                                                                className=" border border-gray-300  last:border-b-0 dark:border-2 dark:border-zinc-800"
                                                             >
                                                                 {/* header */}
                                                                 <div
                                                                     className={` ${
                                                                         featureIndex ===
                                                                         activeIndex
-                                                                            ? " border-gray-300 bg-white/50 hover:bg-white/80 dark:bg-black"
-                                                                            : ""
-                                                                    } flex cursor-pointer items-center justify-between border border-t border-l-transparent border-r-transparent px-2 py-2  transition-all duration-300 ease-in-out  last:border-b-transparent  hover:bg-white/50 hover:dark:bg-slate-900`}
+                                                                            ? " border-gray-300 bg-white/50  dark:bg-[#353535] "
+                                                                            : " "
+                                                                    } flex cursor-pointer items-center justify-between border-2  border-t  border-l-transparent border-r-transparent px-2 py-2 transition-all duration-300 ease-in-out last:border-b-transparent hover:bg-white/50 dark:border-zinc-800  dark:bg-zinc-800 dark:hover:bg-[#353535] dark:hover:text-sky-300`}
                                                                     onClick={() =>
                                                                         handleAccordionClick(
                                                                             featureIndex
@@ -510,12 +815,12 @@ const Education = () => {
                                                                             />
                                                                         </div>
                                                                         <div className="flex flex-col">
-                                                                            <div className="text-md overflow-ellipsis font-bold text-gray-800 line-clamp-2">
+                                                                            <div className="text-md overflow-ellipsis font-bold text-gray-800 line-clamp-2 dark:text-gray-200">
                                                                                 {
                                                                                     feature.name
                                                                                 }
                                                                             </div>
-                                                                            <div className="mt-1  hidden text-sm font-medium text-gray-800 md:flex">
+                                                                            <div className="mt-1  hidden text-sm font-medium text-gray-800 dark:text-gray-200 md:flex">
                                                                                 {
                                                                                     feature.instructor
                                                                                 }{" "}
@@ -524,12 +829,12 @@ const Education = () => {
                                                                                     src={
                                                                                         feature.platformLogo
                                                                                     }
-                                                                                    className="ml-2 h-5 w-auto"
+                                                                                    className="ml-2 h-5 w-auto dark:grayscale dark:invert"
                                                                                 />
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="text-gray-500">
+                                                                    <div className="mr-4 text-gray-500 dark:text-white">
                                                                         {activeIndex ===
                                                                         featureIndex ? (
                                                                             <FaChevronUp />
@@ -541,7 +846,7 @@ const Education = () => {
                                                                 {/* body */}
                                                                 {activeIndex ===
                                                                     featureIndex && (
-                                                                    <div className="p-2 transition-all duration-300 ease-in-out md:flex md:justify-center md:px-4 lg:p-4">
+                                                                    <div className="p-2 transition-all duration-300 ease-in-out dark:bg-zinc-900 dark:shadow-inner dark:shadow-black/50 md:flex md:justify-center md:px-4 lg:p-4">
                                                                         {/* Small Screen Image Full */}
                                                                         <div className="relative w-full overflow-hidden rounded-sm md:hidden">
                                                                             <img
@@ -570,7 +875,7 @@ const Education = () => {
                                                                                         }
                                                                                         className="cursor-pointer hover:underline"
                                                                                     >
-                                                                                        <h3 className="text-lg font-bold text-gray-800">
+                                                                                        <h3 className="text-lg font-bold text-gray-800 dark:text-white">
                                                                                             {
                                                                                                 feature.name
                                                                                             }
@@ -627,17 +932,17 @@ const Education = () => {
                                                                             {/* Description and Tags */}
                                                                             <div className="w-auto space-y-4">
                                                                                 <div>
-                                                                                    <h3 className="text-lg font-bold text-black dark:text-white">
+                                                                                    <h3 className="mb-2 text-lg font-bold text-black dark:text-white">
                                                                                         Description
                                                                                     </h3>
-                                                                                    <p className="px-2 text-gray-600">
+                                                                                    <p className="px-2 text-gray-600 dark:text-gray-400">
                                                                                         {
                                                                                             feature.description
                                                                                         }
                                                                                     </p>
                                                                                 </div>
                                                                                 {/* Certificate for md and up screens */}
-                                                                                <div className="hidden gap-2 text-sm text-gray-500 md:flex ">
+                                                                                <div className="hidden gap-2 text-sm text-gray-500 dark:text-gray-300  md:flex">
                                                                                     <span className="font-semibold">
                                                                                         Certification:
                                                                                     </span>{" "}
@@ -649,7 +954,7 @@ const Education = () => {
                                                                                             }
                                                                                             target="_blank"
                                                                                             rel="noopener noreferrer"
-                                                                                            className="inline-flex items-center font-bold text-sky-500"
+                                                                                            className="inline-flex items-center font-bold text-sky-500 hover:underline dark:text-sky-400"
                                                                                         >
                                                                                             See
                                                                                             Certificate
@@ -686,7 +991,7 @@ const Education = () => {
                                                                                                         key={
                                                                                                             tag
                                                                                                         }
-                                                                                                        className="xlg:text-base mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
+                                                                                                        className="border-2/50 mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500  dark:border-zinc-800 dark:bg-zinc-700 dark:text-gray-300 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 md:dark:border-gray-700 md:dark:text-white lg:px-3 lg:text-sm xl:text-base"
                                                                                                     >
                                                                                                         #
                                                                                                         {
@@ -737,7 +1042,7 @@ const Education = () => {
                                                             className="flex flex-col items-center justify-between px-4 py-8 sm:px-0 md:flex-row"
                                                         >
                                                             <div className="mb-8 md:mb-0 md:w-1/2 lg:w-1/3">
-                                                                <div className="h-56 overflow-hidden rounded-lg">
+                                                                <div className="h-fit w-full rounded-lg sm:h-56 md:overflow-hidden">
                                                                     <img
                                                                         src={
                                                                             feature.imageSrc
@@ -745,17 +1050,17 @@ const Education = () => {
                                                                         alt={
                                                                             feature.imageAlt
                                                                         }
-                                                                        className="h-full w-full object-cover object-center"
+                                                                        className="h-auto max-h-full w-auto scale-110 bg-cover object-center sm:h-full md:object-cover"
                                                                     />
                                                                 </div>
                                                             </div>
-                                                            <div className="md:w-1/2 md:pl-8 lg:w-2/3">
-                                                                <h3 className="mb-2 text-xl font-semibold text-gray-700">
+                                                            <div className="w-full px-4 md:pl-8 lg:w-2/3">
+                                                                <h3 className="mb-2 text-xl font-semibold text-gray-700 dark:text-white">
                                                                     {
                                                                         feature.name
                                                                     }
                                                                 </h3>
-                                                                <h4 className="mb-4 font-medium text-gray-600">
+                                                                <h4 className="mb-4 font-medium text-gray-600 dark:text-gray-400">
                                                                     {
                                                                         feature.instructor
                                                                     }
@@ -763,7 +1068,7 @@ const Education = () => {
                                                                         feature.platform
                                                                     }
                                                                 </h4>
-                                                                <p className="mb-4 leading-relaxed text-gray-600">
+                                                                <p className="mb-4 leading-relaxed text-gray-600 dark:text-gray-400">
                                                                     {
                                                                         feature.description
                                                                     }
