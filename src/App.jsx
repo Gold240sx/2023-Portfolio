@@ -101,6 +101,9 @@ function App({ children }) {
                             Different mobile menu.
                         </p>{" "}
                         <p className="ml-1 text-[18px]">
+                            Max width to education mobile view (stacked)
+                        </p>{" "}
+                        <p className="ml-1 text-[18px]">
                             max-4 projects with expansion
                         </p>{" "}
                         <hr className="w-full border-gray-800" />
