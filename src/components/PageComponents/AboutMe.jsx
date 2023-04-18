@@ -4,13 +4,13 @@ import { motion } from "framer-motion"
 const AboutMe = () => {
     return (
         <div
-            className="relative mx-auto w-full max-w-3xl border-2 border-dashed border-red-500 px-10 text-center lg:px-8"
+            className="relative mx-auto flex w-full flex-col items-center  justify-center px-10 text-center lg:px-8"
             style={{ minHeight: "fit-content" }}
         >
             <h3 className=" mt-10 text-2xl uppercase  tracking-[20px] text-gray-500">
                 About Me
             </h3>
-            <div className="mx-auto mb-16 h-fit w-[300px] max-w-[70%]">
+            <div className="mx-auto mb-16 flex h-fit  w-[300px] max-w-2xl">
                 <motion.div
                     initial={{
                         x: -200,
@@ -27,7 +27,7 @@ const AboutMe = () => {
                         className="absolute w-full object-cover"
                     /> */}
                     <img
-                        class="mask mask-hexagon-2"
+                        class="mask mask-hexagon-2 -translate-x-7"
                         src="https://i.ibb.co/C979rFf/AboutMe.jpg"
                     />
                 </motion.div>
@@ -36,7 +36,7 @@ const AboutMe = () => {
                 Hi, I'm{" "}
                 <span className="text-zinc-500 dark:text-white">Michael</span>!
             </h1>
-            <p className="prose mx-6 mt-6 mb-10 ml-10 text-left text-base leading-8 text-gray-600 dark:text-gray-400 lg:ml-[unset]">
+            <p className="prose mx-6 mt-6 mb-10 ml-10 w-full text-left text-base leading-8 text-gray-600 dark:text-gray-400 lg:ml-[unset]">
                 {"\u00A0\u00A0\u00A0"} Thanks for checking out my portfolio! I
                 am a former arts and design student in Frisco, TX. I began my
                 web developement journey in November of 2020. My first formal

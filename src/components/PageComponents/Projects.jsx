@@ -211,6 +211,7 @@ const ProjectCard = ({
                             src={image}
                             alt={name}
                             className="rounded-md  lg:rounded-lg"
+                            style={{ minHeight: "180px" }}
                         />
                         {/* Search Term Filter Data Match */}
                         {searchTerm.length ? renderMatchedInfo() : null}
@@ -574,7 +575,7 @@ const Projects = () => {
                     className={` ${
                         searchTerm === "" ? "hidden h-0 opacity-0" : ""
                     }
-                my-2 w-full rounded bg-gray-600 p-2 text-white shadow dark:bg-black/50`}
+                my-2 w-screen rounded bg-gray-600 p-2 text-white shadow`}
                 >
                     <h3 className="text-center text-lg font-bold dark:text-gray-200">
                         Search Term Match
@@ -601,7 +602,7 @@ const Projects = () => {
     }
 
     return (
-        <div className="relative mx-auto flex flex-col items-center justify-evenly bg-white pb-12 text-center dark:bg-transparent md:text-left lg:px-10">
+        <div className="max-w-screen relative flex w-auto flex-col items-center justify-evenly bg-white pb-12 text-center dark:bg-transparent md:px-6 md:text-left lg:px-10">
             <h3 className="relative top-24 z-50 w-[541.98px] text-center text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                 Projects
             </h3>
@@ -615,14 +616,14 @@ const Projects = () => {
                     currently being created.
                 </p>
             </div>
-            <div className=" relative flex w-full bg-white dark:bg-[#141514]/80">
+            <div className=" relative flex w-full bg-white dark:bg-transparent">
                 {/* mobile filter menu */}
                 <div
                     className={`${
                         showMobileFilters
                             ? "w-[76px]"
                             : "  sticky top-1/2  mt-16 w-[0px] default:top-0"
-                    } z-20 flex h-full flex-col items-center justify-center md:hidden`}
+                    } z-40 flex h-full flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden`}
                 >
                     <div
                         className={`${
@@ -632,9 +633,9 @@ const Projects = () => {
                         <div
                             className={`${
                                 showMobileFilters
-                                    ? " mt-5 w-fit"
-                                    : " w-[76px] shadow-lg hover:bg-gray-50"
-                            } ml-1 flex flex-col items-center justify-around gap-2 rounded-2xl border-2 border-gray-200 bg-white p-1.5 outline-none dark:border-gray-700 dark:bg-[#323737]/80 `}
+                                    ? " mt-5 w-fit dark:bg-[#323737]/20 dark:hover:bg-gray-700/30"
+                                    : " w-[76px] shadow-2xl shadow-black hover:bg-gray-50 "
+                            } ml-1 flex flex-col items-center justify-around gap-2 rounded-2xl border-2 border-gray-200 bg-white p-1.5 outline-none dark:border-gray-700 dark:bg-[#323737]  dark:hover:bg-slate-700`}
                         >
                             {/* left */}
                             <a href="#projects">
@@ -767,7 +768,7 @@ const Projects = () => {
                                 {/* middle */}
                                 <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <SiStylelint
-                                        className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
+                                        className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest "
                                         data-tooltip-id="projectMobileCSS"
                                         data-tooltip-content="Filter Projects by Css..."
                                         data-tooltip-delay-show={300}
@@ -968,9 +969,9 @@ const Projects = () => {
                     </div>
                 </div>
                 {/* Main Content */}
-                <div className=" w-full rounded-lg bg-white dark:bg-transparent md:p-4">
+                <div className=" max-w-screen w-full rounded-lg bg-white dark:bg-transparent md:p-4">
                     {/* large filter box */}
-                    <div className="relative my-4 hidden h-fit w-full rounded-2xl border-2 border-gray-200 bg-white bg-opacity-10  p-2 dark:border-none dark:bg-[#323737]/80 dark:text-white md:block">
+                    <div className="relative my-4 hidden h-fit w-full rounded-2xl border-2 border-gray-200 bg-white bg-opacity-10  p-2 dark:border-none dark:bg-[#323737]/40 dark:text-white md:block">
                         <div className="flex gap-4">
                             {" "}
                             <h2 className=" m-auto ml-5 flex text-center align-middle text-4xl capitalize tracking-widest dark:text-gray-300">
@@ -982,7 +983,7 @@ const Projects = () => {
                                 <div className="relative flex w-full flex-row items-center justify-center">
                                     <input
                                         type="text"
-                                        className="focus:shadow-outline h-10 w-full rounded-lg border-2 border-gray-200 px-5 pr-10 text-base placeholder-gray-300 outline-none transition-all duration-300 ease-in-out focus:border-transparent focus:placeholder-opacity-0  focus:outline-none focus:ring-2 focus:ring-sky-400 dark:border-none dark:bg-[#272825] "
+                                        className="focus:shadow-outline h-10 w-full rounded-lg border-2 border-gray-200 px-5 pr-10 text-base placeholder-gray-300 outline-none transition-all duration-300 ease-in-out focus:border-transparent focus:placeholder-opacity-0  focus:outline-none focus:ring-2 focus:ring-sky-400 dark:border-none dark:bg-[#57534E]/20 dark:focus:bg-[#57534E]/40 "
                                         placeholder="Search Projects..."
                                         value={searchTerm}
                                         onChange={(e) =>
@@ -1315,7 +1316,7 @@ const Projects = () => {
                         </div>
                     </div>
                     {/* Project Cards */}
-                    <div className=" mt-10 w-full rounded-2xl bg-white py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/80">
+                    <div className=" mt-10 w-full rounded-2xl bg-white py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/30">
                         {projectsToDisplay.length > 0 ? (
                             projectsToDisplay.map((project) => {
                                 const id = project.id
