@@ -406,7 +406,7 @@ const Education = () => {
                                                 className={({ selected }) =>
                                                     classNames(
                                                         selected
-                                                            ? "-translate-x-6 scale-125"
+                                                            ? "scale-125 md:-translate-x-6"
                                                             : "scale-100 hover:scale-110",
 
                                                         "flex h-auto w-full items-center justify-center border-0 outline-none transition-all duration-300 ease-in-out sm:-translate-y-[2vw]"

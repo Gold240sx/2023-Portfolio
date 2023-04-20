@@ -1748,7 +1748,7 @@ const Projects = () => {
                 </div>
             </div>
             {showCarousel && (
-                <div className="fixed top-0 bottom-0 z-[99999999999999999999999] h-screen w-screen">
+                <div className="fixed top-0 bottom-0 z-[99999999999999999999999] h-screen w-screen overscroll-contain">
                     <Carousel
                         slides={activeGalleryImages}
                         autoslide={true}

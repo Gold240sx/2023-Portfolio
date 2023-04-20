@@ -46,7 +46,7 @@ function Carousel({ slides, autoslide, interval, setShowCarousel }) {
     }, [currentSlide, setAutoSlide, autoSlide])
 
     return (
-        <div className="absolute h-screen w-screen overflow-hidden">
+        <div className="absolute h-screen w-screen overflow-hidden overscroll-contain ">
             {/* <p> {setShowCarousel ? "true" : "false"}</p> */}
             <div
                 className="absolute inset-0 bg-white/50 backdrop-blur-lg backdrop-filter dark:bg-black/60"
@@ -77,7 +77,7 @@ function Carousel({ slides, autoslide, interval, setShowCarousel }) {
                             <img
                                 src={slide.startsWith("http") ? slide : slide}
                                 alt="slide"
-                                className={`pointer-events-none z-50 my-auto h-fit w-fit align-middle ${
+                                className={`pointer-events-none z-50 my-auto h-fit w-fit scale-[80%] align-middle ${
                                     slide.endsWith(".png") &&
                                     slide.indexOf("?bg=transparent") !== -1
                                         ? "bg-checkerboard"
