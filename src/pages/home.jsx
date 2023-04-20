@@ -108,7 +108,28 @@ const Home = () => {
             <section
                 className=" m-auto mt-[80px] flex w-screen snap-y snap-center justify-center overflow-x-visible border-opacity-50 align-middle dark:bg-black/30"
                 // dark:bg-[#141514]
-                style={{ minHeight: "fit-content" }}
+                style={
+                    mode !== "dark"
+                        ? {
+                              backgroundColor: "#ffffff",
+                              opacity: 1,
+                              backgroundImage:
+                                  "linear-gradient(#F8FAFC 2.4000000000000004px, transparent 2.4000000000000004px), linear-gradient(90deg, #F8FAFC 2.4000000000000004px, transparent 2.4000000000000004px), linear-gradient(#F8FAFC 1.2000000000000002px, transparent 1.2000000000000002px), linear-gradient(90deg, #F8FAFC 1.2000000000000002px, #FFFFFF 1.2000000000000002px)",
+                              backgroundSize:
+                                  "60px 60px, 60px 60px, 12px 12px, 12px 12px",
+                              backgroundPosition:
+                                  "-2.4000000000000004px -2.4000000000000004px, -2.4000000000000004px -2.4000000000000004px, -1.2000000000000002px -1.2000000000000002px, -1.2000000000000002px -1.2000000000000002px",
+                          }
+                        : {
+                              opacity: 1,
+                              backgroundImage:
+                                  "linear-gradient( rgba(255, 255, 255, .0058) 2.4000000000000004px, transparent 2.4000000000000004px), linear-gradient(90deg, rgba(255, 255, 255, .0058) 2.4000000000000004px, transparent 2.4000000000000004px), linear-gradient(rgba(255, 255, 255, .0058) 1.2000000000000002px, transparent 1.2000000000000002px), linear-gradient(90deg, rgba(255, 255, 255, .0058) 1.2000000000000002px,  rgba(255, 255, 255, 0) 1.2000000000000002px)",
+                              backgroundSize:
+                                  "60px 60px, 60px 60px, 12px 12px, 12px 12px",
+                              backgroundPosition:
+                                  "-2.4000000000000004px -2.4000000000000004px, -2.4000000000000004px -2.4000000000000004px, -1.2000000000000002px -1.2000000000000002px, -1.2000000000000002px -1.2000000000000002px",
+                          }
+                }
                 id="projects"
             >
                 <div

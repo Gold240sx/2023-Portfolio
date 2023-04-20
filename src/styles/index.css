@@ -138,6 +138,17 @@
         background-color: rgb(100, 211, 239); /* sky-400/50 */
     }
 
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
     /* the floating label's containing div MUST include the .floating-label-container class */
     /* only works for rimple label / input fields matching: */
     div.floating-label-container:has(.floating-label + input) .floating-label {
