@@ -20,6 +20,10 @@ import Electron from "../../assets/Images/coursePreviews/electron.jpg"
 import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
 import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
 import Udemy from "../../assets/Images/coursePreviews/udemy.png"
+import Crosses from "../../assets/Images/backgrounds/crosses.png"
+import Holes from "../../assets/Images/backgrounds/holes.png"
+import Lines from "../../assets/Images/backgrounds/lines.png"
+import Mud from "../../assets/Images/backgrounds/mud.png"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
 // Optimized  images
@@ -264,6 +268,7 @@ const tabs = [
         features: [
             {
                 name: "Next JS & Open AI / GPT: Next-generation Next JS & AI apps",
+                courseLink: "https://www.udemy.com/course/next-js-ai/",
                 description:
                     "Integrate OpenAI into your Next Generation Web Application feat. a SAAS project. Setup Stripe for charging customers. Store content with MongoDB.",
                 imageSrc: OpenAi,
@@ -272,6 +277,8 @@ const tabs = [
             },
             {
                 name: "Stripe Masterclass with React.js and Node.js",
+                courseLink:
+                    "https://www.udemy.com/course/stripe-masterclass-with-react-node/",
                 description:
                     "Integrate  payments into your React.js and Node.js apps with Stripe.",
                 imageSrc: Stripe,
@@ -280,6 +287,7 @@ const tabs = [
             },
             // {
             //     name: "Master Electron: Desktop Apps with HTML, JavaScript & CSS",
+            // courseLink: "https://www.udemy.com/course/master-electron/",
             //     description:
             //         "Create Windows and MacOS Desktop Applications using web-technologies like HTML, CSS, and JavaScript.",
             //     imageSrc: Electron,
@@ -288,6 +296,8 @@ const tabs = [
             // },
             {
                 name: "The Complete SQL Bootcamp: Go from Zero to Hero",
+                courseLink:
+                    "https://www.udemy.com/course/the-complete-sql-bootcamp/",
                 description:
                     "SQL  database fundamentals and advanced concepts. Build a database from scratch and learn how to query, manipulate, and analyze data.",
                 imageSrc: Postgres,
@@ -296,6 +306,8 @@ const tabs = [
             },
             {
                 name: "Learn APIs development with Prisma, Nodejs, and Postgres",
+                courseLink:
+                    "https://www.udemy.com/course/learn-apis-development-with-prisma-nodejs-and-postgres/",
                 description:
                     "Master RESTful APIs development with Prisma, Nodejs, Jest, Express, and Postgres. REST",
                 imageSrc: APIDev,
@@ -304,6 +316,8 @@ const tabs = [
             },
             {
                 name: "Complete React Native in 2023: Zero to Mastery (with Hooks)",
+                courseLink:
+                    "https://www.udemy.com/course/complete-react-native-mobile-development-zero-to-mastery-with-hooks/",
                 description:
                     "Master React Native for iOS and Android Mobile App Development using JavaScript. Build a modern e-commerce mobile app!",
                 imageSrc: ReactNative,
@@ -338,7 +352,50 @@ const Education = () => {
     const { mode } = useTheme()
 
     return (
-        <div className="mb-10 w-auto rounded-3xl bg-white dark:bg-white/5">
+        <div className="relative mb-10 w-auto overflow-hidden rounded-3xl bg-white dark:bg-white/5">
+            {/* backgrounds */}
+            <div className="pointer-events-none absolute z-10 h-full  w-[120%]">
+                {" "}
+                {selectedTab === "High School" && (
+                    <img
+                        src={Lines}
+                        alt="background-decoration"
+                        className={`${
+                            mode === "dark" ? "opacity-[3%]" : "opacity-5"
+                        } -z-1 translate-y-38  absolute h-full -translate-x-28 scale-125 object-cover `}
+                    />
+                )}
+                {selectedTab === "College" && (
+                    <img
+                        src={Holes}
+                        alt="background-decoration"
+                        className={`${
+                            mode === "dark" ? "opacity-10" : "opacity-20"
+                        } -z-1  right-0 h-full -translate-y-60 -translate-x-20 rotate-[195deg] object-cover md:translate-x-0`}
+                    />
+                )}
+                {selectedTab === "Continued Education / Certificates" && (
+                    <img
+                        src={Crosses}
+                        alt="background-decoration"
+                        className={`${
+                            mode === "dark" ? "opacity-[3%]" : "opacity-[7%]"
+                        } -z-1  left-0 h-fit w-[400%] -translate-y-[400px] translate-x-24 scale-[3] object-cover md:scale-150`}
+                    />
+                )}
+                {selectedTab === "My Learning Que" && (
+                    <img
+                        src={Mud}
+                        alt="background-decoration"
+                        className={`${
+                            mode === "dark"
+                                ? "opacity-[2%] invert filter"
+                                : "opacity-5"
+                        } -z-1   h-full w-3/4 scale-125 object-cover`}
+                    />
+                )}
+            </div>
+
             <section
                 aria-labelledby="features-heading"
                 className="mx-auto pb-4 pt-16  md:pt-32 lg:px-8"
@@ -617,14 +674,17 @@ const Education = () => {
 
                         <Tab.Panels as={Fragment}>
                             {tabs.map((tab, tabIndex) => (
-                                <Tab.Panel key={tab.name} className=" lg:pt-16">
+                                <Tab.Panel
+                                    key={tab.name}
+                                    className=" z-50 lg:pt-16"
+                                >
                                     <div
                                         className={` ${
                                             tab.name ===
                                             "Continued Education / Certificates"
                                                 ? " w-full rounded-xl text-white "
                                                 : ""
-                                        }`}
+                                        } bg-white dark:bg-zinc-800`}
                                     >
                                         {tab.features.map(
                                             (feature, featureIndex) => (
@@ -696,7 +756,7 @@ const Education = () => {
                                                                             alt={
                                                                                 feature.imageAlt
                                                                             }
-                                                                            className="h-full w-full object-cover object-center"
+                                                                            className="z-50 h-full w-full object-cover object-center"
                                                                         />
                                                                     </div>
                                                                 </div>
@@ -972,8 +1032,8 @@ const Education = () => {
                                                             key={feature.name}
                                                             className="flex flex-col items-center justify-between px-4 py-8 sm:px-0 md:flex-row"
                                                         >
-                                                            <div className="mb-8 md:mb-0 md:w-1/2 lg:w-1/3">
-                                                                <div className="h-fit w-full rounded-lg sm:h-56 md:overflow-hidden">
+                                                            <div className="w-sull mb-8 md:mb-0 md:w-1/2 lg:w-1/3">
+                                                                <div className="mx-auto flex h-fit rounded-lg sm:h-56 md:w-fit md:overflow-hidden">
                                                                     <img
                                                                         src={
                                                                             feature.imageSrc

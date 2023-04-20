@@ -152,7 +152,7 @@ const Home = () => {
                 style={{ minHeight: "fit-content" }}
                 id="contact"
             >
-                <div className="w-screen px-6 lg:max-w-[50rem]">
+                <div className="w-screen px-6 lg:max-w-[55rem]">
                     <div
                         className="my-auto md:mx-5"
                         style={{ minHeight: "fit-content" }}

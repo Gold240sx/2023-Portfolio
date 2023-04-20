@@ -149,6 +149,7 @@ const ProjectItems = [
         id: 2,
         name: "My Super Awesome Portfolio that is so cool",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "February",
@@ -172,6 +173,7 @@ const ProjectItems = [
         id: 3,
         name: "Project 3",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "February",
@@ -199,6 +201,7 @@ const ProjectItems = [
         id: 4,
         name: "Project 4",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "February",
@@ -218,6 +221,7 @@ const ProjectItems = [
         id: 5,
         name: "Project 5",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "February",
@@ -238,19 +242,6 @@ const ProjectItems = [
         ],
     },
 ]
-
-// const slides = [
-//     "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
-//     "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
-//     "https://i.ibb.co/M8M8Vkr/megaman.png",
-//     "https://i.ibb.co/bQqMwvY/fireship.png",
-// ]
-
-// const slides = ProjectItems.map((item) => ({
-//     id: item.id,
-//     image: item.image,
-//     galleryImages: item.galleryImages,
-// }))
 
 const ProjectCard = ({
     project,
@@ -357,6 +348,11 @@ const ProjectCard = ({
                                         ? "w-full"
                                         : "w-full md:w-4/5"
                                 }`}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
                             >
                                 <img
                                     src={image}
@@ -578,7 +574,7 @@ const ProjectCard = ({
                             </div>
                         </div>
 
-                        <hr className="mx-3 mr-6 w-full border border-gray-200 md:hidden" />
+                        <hr className="mx-3 mr-6 w-full border border-gray-200 dark:border-gray-700 md:hidden" />
                     </div>
                 </div>
             </div>
@@ -790,7 +786,7 @@ const Projects = () => {
                     className={` ${
                         searchTerm === "" ? "hidden h-0 opacity-0" : ""
                     }
-                w-automax-w-[50vw] my-2 rounded bg-gray-600 p-2 text-white shadow`}
+                w-automax-w-[50vw] my-2 rounded bg-gray-600 p-2 text-white shadow dark:bg-zinc-700`}
                 >
                     <h3 className="text-center text-lg font-bold dark:text-gray-200">
                         Search Term Match
@@ -801,7 +797,7 @@ const Projects = () => {
                             {matchInfo.matchType}
                         </span>
                     </p>
-                    <p className="font-bold text-gray-400 dark:text-gray-600">
+                    <p className="overflow-hidden font-bold text-gray-400">
                         Matched Text:{" "}
                         <span className="px-2 py-0.5  font-normal text-white dark:text-gray-400">
                             {beforeMatch}

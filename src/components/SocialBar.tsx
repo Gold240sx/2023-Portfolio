@@ -121,10 +121,15 @@ export default function SocialBar({}: Props) {
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                 />
-                <Link to={resumeFile} target="_blank" download>
+                <Link
+                    to={resumeFile}
+                    target="_blank"
+                    download
+                    className="scale-90 hover:scale-100"
+                >
                     <img
                         src={ResumeIcon}
-                        className="hover:-red-500  mb-2 h-8 w-auto translate-x-1 scale-90 cursor-pointer opacity-30 hover:opacity-70 dark:fill-white dark:opacity-20 dark:invert hover:dark:opacity-40"
+                        className="mb-2 h-8 w-auto translate-x-1 cursor-pointer opacity-30 hover:scale-100  dark:fill-white dark:opacity-20 dark:invert hover:dark:opacity-40"
                         data-tooltip-id="resume"
                         data-tooltip-content="Download: My Resume"
                         data-tooltip-delay-show={150}

@@ -59,7 +59,13 @@ function Carousel({ slides, autoslide, interval, setShowCarousel }) {
                 {slides.map((slide, index) => (
                     <div
                         key={index}
-                        className=" top-0 flex w-screen flex-shrink-0 items-center justify-center"
+                        className="top-0 flex w-screen flex-shrink-0 items-center justify-center"
+                        style={{
+                            height: "100vh", // set height to the height of viewport
+                            textAlign: "center",
+                            display: "flex", // use flexbox to center the image vertically
+                            alignItems: "center",
+                        }}
                     >
                         {/* If slide is an image */}
                         {slide.endsWith(".mp4" || ".gif") ? (
@@ -77,7 +83,7 @@ function Carousel({ slides, autoslide, interval, setShowCarousel }) {
                             <img
                                 src={slide.startsWith("http") ? slide : slide}
                                 alt="slide"
-                                className={`pointer-events-none z-50 my-auto h-fit w-fit scale-[80%] align-middle ${
+                                className={`pointer-events-none z-50 my-auto flex h-fit w-fit scale-[80%] object-center align-middle ${
                                     slide.endsWith(".png") &&
                                     slide.indexOf("?bg=transparent") !== -1
                                         ? "bg-checkerboard"
@@ -85,13 +91,11 @@ function Carousel({ slides, autoslide, interval, setShowCarousel }) {
                                 }`}
                                 style={{
                                     objectFit: "contain",
-                                    width: "100vw",
-                                    maxHeight: "100vh",
+                                    maxWidth: "100%", // use maxWidth instead of width
+                                    maxHeight: "100%", // use maxHeight instead of height
                                 }}
                             />
                         )}
-
-                        {/*  If slide is a gif or a video */}
                     </div>
                 ))}
             </div>

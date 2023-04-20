@@ -49,12 +49,6 @@ function App({ children }) {
                     <hr className="w-full border-gray-800" />
                     <span className="flex h-fit flex-wrap text-2xl ">
                         <h2 className=" text-lg text-slate-200 ">Projects:</h2>{" "}
-                        <p className="ml-1 text-[18px] text-gray-600">
-                            Maybe add a gallery with previews of each project
-                        </p>{" "}
-                        <p className="ml-1 text-[18px] text-gray-600">
-                            Add a mac computer icon next to Projects
-                        </p>{" "}
                         <hr className="w-full border-gray-800" />
                         <h2 className=" text-lg text-slate-400 ">
                             Skills:
@@ -62,16 +56,13 @@ function App({ children }) {
                         <h2 className="mt-2 block w-screen text-lg text-slate-400">
                             Education
                         </h2>{" "}
-                        <p className="ml-1 text-[18px] text-gray-500 line-through">
-                            Scrollable Mobile Menu
-                        </p>{" "}
                         <h2 className="mt-2 block w-screen text-lg text-slate-400">
                             Timeline
                         </h2>{" "}
                         <h2 className="mt-2 block w-screen text-lg text-slate-400">
                             Contact
                         </h2>{" "}
-                        <p className="ml-1 text-[18px]">
+                        <p className="ml-1 text-[18px] text-gray-600 line-through">
                             Maybe add a photo for contact me.
                         </p>{" "}
                         <hr className="w-full border-gray-800" />

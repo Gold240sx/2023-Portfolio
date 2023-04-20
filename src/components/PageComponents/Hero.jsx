@@ -19,10 +19,7 @@ export default function Hero() {
     })
 
     return (
-        <div
-            className="w-fit space-y-8 overflow-hidden text-center"
-            id="hero-section"
-        >
+        <div className="w-fit space-y-8 text-center" id="hero-section">
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -33,7 +30,8 @@ export default function Hero() {
                     src={heroImage}
                     alt="hero-image"
                     id="hero-image"
-                    className=" h-fit max-h-[90vh] w-[500px]"
+                    className="h-auto max-w-[500px]"
+                    style={{ maxHeight: "90vh" }} // set max height if needed
                 />
             </motion.div>
             <motion.div
@@ -42,7 +40,7 @@ export default function Hero() {
                 transition={{ duration: 1.5 }}
                 className="relative z-10 flex h-auto w-full flex-col items-center justify-center"
             >
-                <h1 className="z-20 hidden translate-y-[.8vh] md:block">
+                <h1 className="z-20 hidden h-fit translate-y-[.8vh] md:block">
                     <span className="text-start text-sm text-gray-400 sm:ml-[4.5rem] md:mx-4 md:text-xl lg:text-2xl ">
                         {text}
                     </span>

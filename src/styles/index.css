@@ -1,5 +1,4 @@
 @import "react-tooltip/dist/react-tooltip.css";
-/* @import "react-datepicker/dist/react-datepicker.css"; */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,6 +8,21 @@
     ** {
         box-sizing: border-box;
     }
+
+    body {
+        width: 100dvw;
+        height: auto;
+        overflow-x: hidden;
+    }
+
+    @media screen and (orientation: landscape) {
+        body {
+            width: 100dvh;
+            height: auto;
+            overflow-x: hidden;
+        }
+    }
+
     .hide {
         margin-left: -9999px;
         position: absolute;
