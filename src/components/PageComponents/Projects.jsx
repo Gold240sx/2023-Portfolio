@@ -288,14 +288,14 @@ const ProjectCard = ({
                                 />
                             </div>
                             <div className="right add-images z-20 flex w-full gap-2 md:w-1/5 md:max-w-[75px] md:flex-col">
-                                <ul className="flex h-full w-full gap-2 md:h-full md:flex-col">
+                                <ul className="flex h-full w-full gap-2 p-2 md:h-full md:flex-col md:p-0">
                                     {/* Map over the first 4 images of the gallry and display them in a column */}
 
                                     {gall4.map((gallery4) => {
                                         return (
                                             <li
                                                 key={image.id}
-                                                className="h-[10vw] w-full cursor-pointer overflow-hidden rounded-lg bg-gray-700 object-fill opacity-80 hover:opacity-100 md:h-1/4 "
+                                                className="h-[10vw] w-1/4 cursor-pointer overflow-hidden rounded-lg bg-gray-700 object-fill opacity-80 hover:opacity-100 md:h-1/4 md:w-full"
                                             >
                                                 <img
                                                     src={gallery4.image}
@@ -727,18 +727,21 @@ const Projects = () => {
                     >
                         <div
                             className={`${
+                                //
                                 showMobileFilters
-                                    ? " mt-5 w-fit dark:bg-[#323737]/20 dark:hover:bg-gray-700/30"
-                                    : " w-[76px] shadow-2xl shadow-black hover:bg-gray-50 "
-                            } ml-1 flex flex-col items-center justify-around gap-2 rounded-2xl border-2 border-gray-200 bg-white p-1.5 outline-none dark:border-gray-700 dark:bg-[#323737]  dark:hover:bg-slate-700`}
+                                    ? " dark: mt-5 w-fit dark:bg-gray-700/30 dark:hover:bg-gray-700/30"
+                                    : " w-[76px] shadow-2xl shadow-black hover:bg-gray-50 dark:bg-[#323737]"
+                            } ml-1 flex flex-col items-center justify-around gap-2 rounded-2xl border-2 border-gray-200 bg-white p-1.5 outline-none dark:border-gray-700  dark:hover:bg-slate-700`}
                         >
                             {/* left */}
-                            <a href="#projects">
+                            <a
+                                href="#projects"
+                                onClick={handleMobileFilterClose}
+                            >
                                 <HiFilter
                                     className={`${
                                         showMobileFilters ? "" : ""
-                                    } w-22 h-22 my-auto flex cursor-pointer text-center align-middle text-4xl capitalize tracking-widest text-gray-500 hover:text-gray-700 dark:text-gray-200 dark:hover:text-white`}
-                                    onClick={handleMobileFilterClose}
+                                    } w-22 h-22 z-50 my-auto flex cursor-pointer text-center align-middle text-4xl capitalize tracking-widest text-gray-500 hover:text-gray-700 dark:text-gray-200 dark:hover:text-white`}
                                     data-tooltip-id="projectMobileFilter"
                                     data-tooltip-content="Filter Projects (Click to minimize)."
                                     data-tooltip-delay-show={300}
