@@ -94,7 +94,7 @@ const Timeline = () => {
             <h3 className="relative top-24 z-50 w-[541.98px] text-center text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                 Timeline
             </h3>
-            <div className="absolute top-10 left-0 right-0 bottom-0 z-0 origin-top-right skew-y-[10deg] transform rounded-lg bg-zinc-200 md:skew-y-0"></div>
+            <div className="absolute top-10 left-0 right-0 bottom-0 z-0 origin-top-right skew-y-[10deg] transform rounded-lg bg-zinc-200 dark:bg-slate-800 md:skew-y-0"></div>
             <div
                 id="lineup-container"
                 className="relative mt-2 w-full rounded-lg bg-zinc-200 px-2 py-4 dark:bg-slate-800 dark:text-zinc-200"
