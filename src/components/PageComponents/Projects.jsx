@@ -129,6 +129,14 @@ const ProjectItems = [
                 id: 2,
                 image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
             },
+            {
+                id: 1,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
         ],
     },
     {
@@ -169,6 +177,10 @@ const ProjectItems = [
         galleryImages: [
             {
                 id: 1,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+            {
+                id: 2,
                 image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
             },
             {
@@ -238,6 +250,7 @@ const ProjectCard = ({
         year,
         technologies,
         repository,
+        galleryImages,
         link,
         month,
         tags,
@@ -247,22 +260,54 @@ const ProjectCard = ({
         technologies.includes(technology.name)
     )
 
+    const gall4 = galleryImages.slice(0, 4)
+
     const createValidId = (str) => str.replace(/\s+/g, "_")
 
     return (
         <div className="">
             {/* main content */}
             <div className="h-full w-full items-center justify-center rounded-lg p-4">
-                <div className="flex w-auto flex-col  gap-4 overflow-hidden md:flex-row">
+                <div className="flex w-auto flex-col gap-2  overflow-hidden md:flex-row lg:gap-4">
                     {/* Left */}
-                    <div className="relative flex w-auto flex-col items-start justify-start md:max-w-[50%]">
+                    <div className="relative flex w-auto flex-col items-start justify-start md:max-w-[60%]">
                         {/* image */}
-                        <img
+                        {/* <img
                             src={image}
                             alt={name}
                             className="rounded-md  lg:rounded-lg"
                             style={{ minHeight: "180px" }}
-                        />
+                        /> */}
+                        <div className="flex w-full flex-col gap-2 md:h-[222px] md:flex-row">
+                            <div className="left main-image h-auto cursor-pointer overflow-hidden rounded-lg opacity-90  hover:opacity-100 md:w-4/5">
+                                <img
+                                    src={image}
+                                    alt={name}
+                                    className="cursor-pointer rounded-md object-cover  lg:rounded-lg"
+                                    style={{ minHeight: "220px" }}
+                                />
+                            </div>
+                            <div className="right add-images z-20 flex w-full gap-2 md:w-1/5 md:max-w-[75px] md:flex-col">
+                                <ul className="flex h-full w-full gap-2 md:h-full md:flex-col">
+                                    {/* Map over the first 4 images of the gallry and display them in a column */}
+
+                                    {gall4.map((gallery4) => {
+                                        return (
+                                            <li
+                                                key={image.id}
+                                                className="h-[10vw] w-full cursor-pointer overflow-hidden rounded-lg bg-gray-700 object-fill opacity-80 hover:opacity-100 md:h-1/4 "
+                                            >
+                                                <img
+                                                    src={gallery4.image}
+                                                    className="h-full w-full object-cover"
+                                                />
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
+                        </div>
+
                         {/* Search Term Filter Data Match */}
                         {searchTerm.length ? renderMatchedInfo() : null}
                         {/* tags */}

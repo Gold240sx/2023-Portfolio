@@ -82,9 +82,6 @@ function App({ children }) {
                         <p className="ml-1 text-[18px]">
                             Create an open / close state for dev notes.
                         </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Optimize images for faster DL Speed.
-                        </p>{" "}
                     </span>
                 </div> */}
                 {/* End Developer Notes*/}

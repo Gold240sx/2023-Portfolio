@@ -23,7 +23,7 @@ import Udemy from "../../assets/Images/coursePreviews/udemy.png"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
 // Optimized  images
-import CollegeDarkGray from "../../assets/Icons/education-icons/college-dark-gray2.png"
+import CollegeDarkGray from "../../assets/Icons/education-icons/college-dark-gray.png"
 import CollegeLightGray from "../../assets/Icons/education-icons/college-light-gray.png"
 import CollegeSelected from "../../assets/Icons/education-icons/college-selected.png"
 import HighSchoolDarkGray from "../../assets/Icons/education-icons/hs-dark-gray.png"
@@ -32,7 +32,7 @@ import HighSchoolSelected from "../../assets/Icons/education-icons/hs-selected.p
 import ContEdDarkGray from "../../assets/Icons/education-icons/contEd-dark-gray.png"
 import ContEdLightGray from "../../assets/Icons/education-icons/contEd-light-gray.png"
 import ContEdSelected from "../../assets/Icons/education-icons/contEd-selected.png"
-import QueDarkGray from "../../assets/Icons/education-icons/que-dark-gray2.png"
+import QueDarkGray from "../../assets/Icons/education-icons/que-dark-gray.png"
 import QueLightGray from "../../assets/Icons/education-icons/que-light-gray.png"
 import QueSelected from "../../assets/Icons/education-icons/que-selected.png"
 import CollegeNeon from "../../assets/Icons/education-icons/college-neon.png"
