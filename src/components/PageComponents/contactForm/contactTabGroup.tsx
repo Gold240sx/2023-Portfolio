@@ -4,38 +4,24 @@ import Generalinquiry from "./generalinquiry"
 import HireMe from "./hireMe"
 import Swal from "sweetalert2"
 
-import { getFunctions, httpsCallable } from "firebase/functions"
-import sgMail from "@sendgrid/mail"
-
 interface TabPanelProps {
     children?: React.ReactNode
     index: any
     value: any
 }
 
-interface SendTestEmailResponse {
-    success: boolean
-    error?: string
-}
-
-// const handleSendTestEmail = async () => {
-//     const functions = getFunctions()
-//     const sendTestEmail = httpsCallable(functions, "sendTestEmail")
-
-//     try {
-//         const result = await sendTestEmail()
-//         const responseData = result.data as SendTestEmailResponse
-//         console.log("Email sent:", responseData.success)
-//     } catch (error) {
-//         console.error("Error sending email:", error)
-//     }
-// }
-const handleSendTestEmail = async () => {
+const handleSendTestEmail = async (data) => {
     const url =
         "https://us-central1-portfolio-23-b06dc.cloudfunctions.net/sendTestEmail"
 
     try {
-        const response = await fetch(url, { method: "POST" })
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
         const responseData = await response.json()
         console.log("Email sent:", responseData.success)
     } catch (error) {
@@ -72,6 +58,7 @@ export default function TabGroup() {
         setStore({
             ...data,
         })
+        handleSendTestEmail(data)
 
         // alert and thank the user for their submission using sweetalert2
         Swal.fire({
@@ -85,6 +72,7 @@ export default function TabGroup() {
 
         //  reset all form fields within the store
         setStore({
+            contactType: "Get a Quote",
             company: "",
             email: "",
             position: "",
@@ -168,10 +156,7 @@ export default function TabGroup() {
             <TabPanel value={value} index={2}>
                 <HireMe onSubmit={onSubmit} store={store} />
             </TabPanel>
-            <button
-                className="h-fit w-fit rounded-xl bg-sky-700 p-4 text-white hover:bg-sky-600 active:bg-sky-700"
-                onClick={handleSendTestEmail}
-            >
+            <button className="h-fit w-fit rounded-xl bg-sky-700 p-4 text-white hover:bg-sky-600 active:bg-sky-700">
                 send email
             </button>
         </div>

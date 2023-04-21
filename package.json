@@ -37,6 +37,7 @@
         "esbuild": "^0.17.11",
         "fast-glob": "^3.2.12",
         "firebase": "^9.17.1",
+        "firebase-functions": "^4.3.1",
         "framer-motion": "^10.2.4",
         "lodash.debounce": "^4.0.8",
         "query-string": "^8.1.0",
