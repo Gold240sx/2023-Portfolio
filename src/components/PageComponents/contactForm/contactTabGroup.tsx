@@ -4,10 +4,40 @@ import Generalinquiry from "./generalinquiry"
 import HireMe from "./hireMe"
 import Swal from "sweetalert2"
 
+import { getFunctions, httpsCallable } from "firebase/functions"
+import sgMail from "@sendgrid/mail"
+
 interface TabPanelProps {
     children?: React.ReactNode
     index: any
     value: any
+}
+
+const handleSendTestEmail = async () => {
+    const functions = getFunctions()
+    const sendTestEmail = httpsCallable(functions, "sendTestEmail")
+
+    try {
+        const result = await sendTestEmail()
+        console.log("Email sent:", result.data.success)
+    } catch (error) {
+        console.error("Error sending email:", error)
+    }
+
+    const msg = {
+        to: "240designworks@gmail.com", // Change to your recipient
+        from: "240designworks@gmail.com", // Change to your verified sender
+        subject: "Sending with SendGrid is Fun",
+        text: "and easy to do anywhere, even with Node.js",
+        html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+    }
+
+    try {
+        await sgMail.send(msg)
+        console.log("Email sent")
+    } catch (error) {
+        console.error(error)
+    }
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -37,7 +67,6 @@ export default function TabGroup() {
 
     const onSubmit = (data: Partial<{}>) => {
         setStore({
-            ...store,
             ...data,
         })
 
@@ -136,6 +165,12 @@ export default function TabGroup() {
             <TabPanel value={value} index={2}>
                 <HireMe onSubmit={onSubmit} store={store} />
             </TabPanel>
+            <button
+                className="h-fit w-fit rounded-xl bg-sky-700 p-4 text-white hover:bg-sky-600 active:bg-sky-700"
+                onClick={handleSendTestEmail}
+            >
+                send email
+            </button>
         </div>
     )
 }

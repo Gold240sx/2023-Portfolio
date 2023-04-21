@@ -380,7 +380,7 @@ const Education = () => {
                         alt="background-decoration"
                         className={`${
                             mode === "dark" ? "opacity-[3%]" : "opacity-[7%]"
-                        } -z-1  left-0 h-fit w-[400%] -translate-y-[400px] translate-x-24 scale-[3] object-cover md:scale-150`}
+                        } -z-1  left-0 h-fit w-[400%] -translate-y-[400px] translate-x-24 scale-[3] object-cover hue-rotate-90 saturate-100 md:scale-150`}
                     />
                 )}
                 {selectedTab === "My Learning Que" && (
