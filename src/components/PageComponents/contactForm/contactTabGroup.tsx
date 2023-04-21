@@ -13,30 +13,33 @@ interface TabPanelProps {
     value: any
 }
 
+interface SendTestEmailResponse {
+    success: boolean
+    error?: string
+}
+
+// const handleSendTestEmail = async () => {
+//     const functions = getFunctions()
+//     const sendTestEmail = httpsCallable(functions, "sendTestEmail")
+
+//     try {
+//         const result = await sendTestEmail()
+//         const responseData = result.data as SendTestEmailResponse
+//         console.log("Email sent:", responseData.success)
+//     } catch (error) {
+//         console.error("Error sending email:", error)
+//     }
+// }
 const handleSendTestEmail = async () => {
-    const functions = getFunctions()
-    const sendTestEmail = httpsCallable(functions, "sendTestEmail")
+    const url =
+        "https://us-central1-portfolio-23-b06dc.cloudfunctions.net/sendTestEmail"
 
     try {
-        const result = await sendTestEmail()
-        console.log("Email sent:", result.data.success)
+        const response = await fetch(url, { method: "POST" })
+        const responseData = await response.json()
+        console.log("Email sent:", responseData.success)
     } catch (error) {
         console.error("Error sending email:", error)
-    }
-
-    const msg = {
-        to: "240designworks@gmail.com", // Change to your recipient
-        from: "240designworks@gmail.com", // Change to your verified sender
-        subject: "Sending with SendGrid is Fun",
-        text: "and easy to do anywhere, even with Node.js",
-        html: "<strong>and easy to do anywhere, even with Node.js</strong>",
-    }
-
-    try {
-        await sgMail.send(msg)
-        console.log("Email sent")
-    } catch (error) {
-        console.error(error)
     }
 }
 
