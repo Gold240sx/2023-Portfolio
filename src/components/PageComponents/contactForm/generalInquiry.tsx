@@ -19,7 +19,7 @@ export default ({
 }) => {
     const updatedStore = {
         ...store,
-        contactType: "Talk with Me",
+        contactType: "General Inquiry",
     }
     const {
         handleSubmit,

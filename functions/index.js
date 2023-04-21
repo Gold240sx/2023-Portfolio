@@ -1,14 +1,15 @@
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+// Main entry point for Firebase Cloud Functions
 
 const functions = require("firebase-functions")
 const sgMail = require("@sendgrid/mail")
 const cors = require("cors")({ origin: true })
+
+const recieveQuoteTemplate = require("./emailTemplates/recieveQuoteTemplate")
+const recieveHireMe = require("./emailTemplates/recieveHireMe")
+const recieveGeneralInquiry = require("./emailTemplates/recieveGeneralInquiry")
+const confirmRecieptQuoteTemplate = require("./emailTemplates/confirmRecieptQuoteTemplate")
+const confirmRecieptHireMe = require("./emailTemplates/confirmRecieptHireMe")
+const confirmRecieptGeneralInquiry = require("./emailTemplates/confirmRecieptGeneralInquiry")
 
 sgMail.setApiKey(functions.config().sendgrid.api_key)
 
@@ -23,47 +24,44 @@ exports.sendTestEmail = functions.https.onRequest((req, res) => {
         }
 
         const formData = req.body
+        let emailTemplate
+
+        switch (formData.contactType) {
+            case "Get a Quote":
+                emailTemplate = recieveQuoteTemplate(formData)
+                break
+            case "Hire Me":
+                emailTemplate = recieveHireMe(formData)
+                break
+            case "General Inquiry":
+                emailTemplate = recieveGeneralInquiry(formData)
+                break
+            default:
+                res.status(400).json({
+                    success: false,
+                    error: "Invalid contact type",
+                })
+                return
+        }
 
         const msg = {
             to: "240designworks@gmail.com",
-            from: "240designworks@gmail.com", // Must be verified sender
-            subject: `Contact Form Submission - ${formData.contactType}`,
-            text: `Project Name: ${formData.projectName}
-            Date: ${formData.date}
-            Deadline: ${formData.deadline}
-            RecievedDateAndTime: ${formData.recievedDateandTime}
-            submissionTimestamp: ${formData.submissionTimestamp}
-            Name: ${formData.name}
-            Contact Name: ${formData.contactName}
-            Company: ${formData.company}
-            Position: ${formData.position}
-            Custom Positionr: ${formData.customPosition}
-            Email: ${formData.email}
-            Project Type: ${formData.projectType}
-            Developer?: ${formData.developer}
-            Message: ${formData.message}`,
-            html: `<h2>Contact Form Submission</h2><br>
-            <p><strong>Contact Type:</strong> ${formData.contactType}<br>
-            <strong>Date: </strong>${formData.date}<br>
-            <strong>Deadline:</strong> ${formData.deadline}<br>
-            <strong>RecievedDateAndTime:</strong> ${formData.recievedDateandTime}<br>
-            <strong>submissionTimestamp: </strong>${formData.submissionTimestamp}<br>
-            <strong>Name:</strong> ${formData.name}<br>
-            <strong>Contact Name:</strong> ${formData.contactName}<br>
-             <strong>Company:</strong> ${formData.company}<br>
-            <strong>Position:</strong>   ${formData.position} <br>
-            <strong>Custom Position: </strong>  ${formData.customPosition} <br>
-            <strong>Email:</strong> ${formData.email}<br>
-            <strong>Developer?:</strong> ${formData.developer}<br>
-            <strong>Project Name:</strong> ${formData.projectName}<br>
-            <strong>Project Type:</strong> ${formData.projectType}<br>
-            <strong>Message:</strong> ${formData.message}</p>`,
+            from: "240designworks@gmail.com",
+            subject: `MM 2023 Portfolio: ${
+                formData.contactName ? formData.contactName : formData.name
+            }  ${
+                formData.contactType === "General Inquiry"
+                    ? "has a"
+                    : "would like to"
+            } ${formData.contactType}`,
+            text: emailTemplate.text,
+            html: emailTemplate.html,
         }
 
         try {
             await sgMail.send(msg)
             console.log("Email sent")
-            res.status(200).send({ success: true, formData })
+            res.status(200).send({ success: true })
         } catch (error) {
             console.error(error)
             res.status(500).send({ success: false, error: error.message })
