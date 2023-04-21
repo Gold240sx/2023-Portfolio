@@ -20,6 +20,10 @@ import Electron from "../../assets/Images/coursePreviews/electron.jpg"
 import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
 import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
 import Udemy from "../../assets/Images/coursePreviews/udemy.png"
+import Crosses from "../../assets/Images/backgrounds/crosses.png"
+import Holes from "../../assets/Images/backgrounds/holes.png"
+import Lines from "../../assets/Images/backgrounds/lines.png"
+import Mud from "../../assets/Images/backgrounds/mud.png"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
 // Optimized  images
@@ -264,6 +268,7 @@ const tabs = [
         features: [
             {
                 name: "Next JS & Open AI / GPT: Next-generation Next JS & AI apps",
+                courseLink: "https://www.udemy.com/course/next-js-ai/",
                 description:
                     "Integrate OpenAI into your Next Generation Web Application feat. a SAAS project. Setup Stripe for charging customers. Store content with MongoDB.",
                 imageSrc: OpenAi,
@@ -272,22 +277,27 @@ const tabs = [
             },
             {
                 name: "Stripe Masterclass with React.js and Node.js",
+                courseLink:
+                    "https://www.udemy.com/course/stripe-masterclass-with-react-node/",
                 description:
                     "Integrate  payments into your React.js and Node.js apps with Stripe.",
                 imageSrc: Stripe,
                 imageAlt: "Stripe Masterclass Preview.",
                 platformLogo: Udemy,
             },
-            {
-                name: "Master Electron: Desktop Apps with HTML, JavaScript & CSS",
-                description:
-                    "Create Windows and MacOS Desktop Applications using web-technologies like HTML, CSS, and JavaScript.",
-                imageSrc: Electron,
-                imageAlt: "Electron Masterclass Preview.",
-                platformLogo: Udemy,
-            },
+            // {
+            //     name: "Master Electron: Desktop Apps with HTML, JavaScript & CSS",
+            // courseLink: "https://www.udemy.com/course/master-electron/",
+            //     description:
+            //         "Create Windows and MacOS Desktop Applications using web-technologies like HTML, CSS, and JavaScript.",
+            //     imageSrc: Electron,
+            //     imageAlt: "Electron Masterclass Preview.",
+            //     platformLogo: Udemy,
+            // },
             {
                 name: "The Complete SQL Bootcamp: Go from Zero to Hero",
+                courseLink:
+                    "https://www.udemy.com/course/the-complete-sql-bootcamp/",
                 description:
                     "SQL  database fundamentals and advanced concepts. Build a database from scratch and learn how to query, manipulate, and analyze data.",
                 imageSrc: Postgres,
@@ -296,6 +306,8 @@ const tabs = [
             },
             {
                 name: "Learn APIs development with Prisma, Nodejs, and Postgres",
+                courseLink:
+                    "https://www.udemy.com/course/learn-apis-development-with-prisma-nodejs-and-postgres/",
                 description:
                     "Master RESTful APIs development with Prisma, Nodejs, Jest, Express, and Postgres. REST",
                 imageSrc: APIDev,
@@ -304,6 +316,8 @@ const tabs = [
             },
             {
                 name: "Complete React Native in 2023: Zero to Mastery (with Hooks)",
+                courseLink:
+                    "https://www.udemy.com/course/complete-react-native-mobile-development-zero-to-mastery-with-hooks/",
                 description:
                     "Master React Native for iOS and Android Mobile App Development using JavaScript. Build a modern e-commerce mobile app!",
                 imageSrc: ReactNative,
@@ -338,21 +352,63 @@ const Education = () => {
     const { mode } = useTheme()
 
     return (
-        <div className="mb-10 w-auto rounded-3xl bg-white dark:bg-white/5">
+        <div className="relative mb-10 w-auto overflow-hidden rounded-3xl bg-white dark:bg-white/5">
+            {/* backgrounds */}
+            <div className="pointer-events-none absolute z-10 h-full  w-[120%]">
+                {" "}
+                {selectedTab === "High School" && (
+                    <img
+                        src={Lines}
+                        alt="background-decoration"
+                        className={`${
+                            mode === "dark" ? "opacity-[3%]" : "opacity-5"
+                        } -z-1 translate-y-38  absolute h-full -translate-x-28 scale-125 object-cover `}
+                    />
+                )}
+                {selectedTab === "College" && (
+                    <img
+                        src={Holes}
+                        alt="background-decoration"
+                        className={`${
+                            mode === "dark" ? "opacity-10" : "opacity-20"
+                        } -z-1  right-0 h-full -translate-y-60 -translate-x-20 rotate-[195deg] object-cover md:translate-x-0`}
+                    />
+                )}
+                {selectedTab === "Continued Education / Certificates" && (
+                    <img
+                        src={Crosses}
+                        alt="background-decoration"
+                        className={`${
+                            mode === "dark" ? "opacity-[3%]" : "opacity-[7%]"
+                        } -z-1  left-0 h-fit w-[400%] -translate-y-[400px] translate-x-24 scale-[3] object-cover hue-rotate-90 saturate-100 md:scale-150`}
+                    />
+                )}
+                {selectedTab === "My Learning Que" && (
+                    <img
+                        src={Mud}
+                        alt="background-decoration"
+                        className={`${
+                            mode === "dark"
+                                ? "opacity-[2%] invert filter"
+                                : "opacity-5"
+                        } -z-1   h-full w-3/4 scale-125 object-cover`}
+                    />
+                )}
+            </div>
+
             <section
                 aria-labelledby="features-heading"
                 className="mx-auto pb-4 pt-16  md:pt-32 lg:px-8"
             >
-                <div className="mx-auto  px-4 lg:px-0">
-                    <div className="text-center">
-                        <h3 className="relative  z-50 text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
-                            Education
-                        </h3>
-                        <p className="mt-4 text-gray-500">
-                            Always Learning, Never Quiting, Always Growing
-                        </p>
-                    </div>
-
+                <div className="text-center">
+                    <h3 className="relative  z-50 text-[1.3rem] uppercase tracking-[15px] text-gray-500 dark:text-white sm:text-2xl sm:tracking-[20px]">
+                        Education
+                    </h3>
+                    <p className="mt-4 text-sm text-gray-500">
+                        Always Learning, Never Quiting, Always Growing
+                    </p>
+                </div>
+                <div className="mx-auto  sm:px-4 lg:px-0">
                     <Tab.Group
                         as="div"
                         className="mt-4"
@@ -383,306 +439,234 @@ const Education = () => {
                             </div>
                         </div> */}
                         {/* Mobile Tabs */}
-                        <div className="relative mt-16 h-32 w-full border-0 py-2 px-4 outline-none ">
-                            <div
-                                className={`absolute mx-auto mt-20 inline-block h-12 w-[95%] -skew-x-12 border-0 bg-gray-200  outline-none dark:bg-black/50`}
-                            >
-                                {/* gold line decoration */}
-                                <div className="absolute right-1  ml-auto mr-2 flex w-fit justify-between gap-2">
-                                    <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
-                                    <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
-                                    <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
-                                </div>
-                                {/* Tab Title */}
-                                {/* <p className="absolute -top-36 -ml-8 aspect-1 h-fit max-w-full md:-ml-4">
-                                    {selectedTab ===
-                                        "Continued Education / Certificates" && (
-                                        <div className=" flex w-auto flex-col md:flex-row">
-                                            <img
-                                                src={ContinuedNeon}
-                                                className="h-14 w-auto scale-110 md:h-16"
-                                            />
-                                            <img
-                                                src={EducationNeon}
-                                                className="-ml-2 h-14 w-auto scale-90 md:ml-0 md:h-16"
-                                            />
-                                        </div>
-                                    )}
-
-                                    {selectedTab === "High School" && (
-                                        <img
-                                            src={HighSchoolNeon}
-                                            className="h-16 w-auto"
-                                        />
-                                    )}
-
-                                    {selectedTab === "College" && (
-                                        <img
-                                            src={CollegeNeon}
-                                            className="h-16 w-auto"
-                                        />
-                                    )}
-
-                                    {selectedTab === "My Learning Que" && (
-                                        <img
-                                            src={QueNeon}
-                                            className="h-16 w-auto"
-                                        />
-                                    )}
-                                </p> */}
+                        <div className="relative mt-28 h-fit w-full border-0 py-2 outline-none md:px-4 ">
+                            <div>
                                 {/* Tabs in the form of icons */}
-                                <Tab.List className="  sm:pr-15 flex -translate-y-5 justify-between border-0 outline-none hover:outline-none focus:border-0 focus:outline-none md:pr-20">
+                                <Tab.List className="flex -translate-y-5 justify-between  border-0 outline-none hover:outline-none focus:border-0 focus:outline-none sm:pr-10 md:ml-5 md:pr-20">
+                                    <div
+                                        className={` absolute mx-auto inline-block h-12 w-[95%] translate-y-[3vw] -skew-x-12 border-0 bg-gray-200 outline-none dark:bg-black/50  md:mt-[1.5rem] md:translate-y-0`}
+                                    >
+                                        {/* gold line decoration */}
+                                        <div className="absolute right-1  ml-auto mr-2 flex w-fit justify-between gap-2">
+                                            <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
+                                            <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
+                                            <div className=" ml-auto h-8 w-1 -translate-y-1 bg-[#ffd666]  "></div>
+                                        </div>
+                                    </div>
                                     {tabs.map((tab) => (
-                                        <Tab
-                                            key={tab.name}
-                                            onClick={() =>
-                                                setSelectedTab(tab.name)
-                                            }
-                                            className={({ selected }) =>
-                                                classNames(
-                                                    selected
-                                                        ? " scale:125 translate-y-6 md:translate-y-6 md:scale-150"
-                                                        : "-mx-2 translate-y-6 sm:ml-1 md:translate-y-3",
-                                                    "h-auto border-0 outline-none transition-all duration-300 ease-in-out"
-                                                )
-                                            }
-                                        >
-                                            {/* {tab.name} */}
-                                            {/* Each icon */}
-                                            {/* <div className=" flex-row items-center justify-center">
-                                                {/* LIghtMode 
-                                                {mode !== "dark" && (
-                                                    <>
+                                        <>
+                                            <Tab
+                                                key={tab.name}
+                                                onClick={() =>
+                                                    setSelectedTab(tab.name)
+                                                }
+                                                className={({ selected }) =>
+                                                    classNames(
+                                                        selected
+                                                            ? "scale-125 md:-translate-x-6"
+                                                            : "scale-100 hover:scale-110",
+
+                                                        "flex h-auto w-full items-center justify-center border-0 outline-none transition-all duration-300 ease-in-out sm:-translate-y-[2vw]"
+                                                    )
+                                                }
+                                            >
+                                                {/* Create previous / next buttons to go to the previous / next tab group*/}
+
+                                                {/* {tab.name} */}
+                                                {/* Each icon */}
+                                                {selectedTab === tab.name && (
+                                                    <div className=" p-2">
                                                         {tab.name ===
                                                             "High School" && (
                                                             <img
                                                                 src={
-                                                                    HighSchoolLightGray
+                                                                    HighSchoolSelected
                                                                 }
                                                                 alt="High School"
-                                                                className={`${({
-                                                                    selected,
-                                                                }) =>
-                                                                    classNames(
-                                                                        selected
-                                                                            ? "h-[190px] w-[190px] bg-red-500"
-                                                                            : ""
-                                                                    )} my-auto h-40 w-[160px] -translate-y-10 skew-x-12  `}
+                                                                aria-label="High School"
+                                                                className="h-auto w-full max-w-[127px] scale-125"
                                                             />
                                                         )}
                                                         {tab.name ===
                                                             "Continued Education / Certificates" && (
                                                             <img
                                                                 src={
-                                                                    ContEdLightGray
+                                                                    ContEdSelected
                                                                 }
                                                                 alt="Continued Education"
-                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                                aria-label="Continued Education and Certificates"
+                                                                className="h-auto w-full max-w-[127px] scale-125"
                                                             />
                                                         )}
                                                         {tab.name ===
                                                             "College" && (
                                                             <img
                                                                 src={
-                                                                    CollegeLightGray
+                                                                    CollegeSelected
                                                                 }
                                                                 alt="College"
-                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                                aria-label="College"
+                                                                className="h-auto w-full max-w-[127px] scale-125"
                                                             />
                                                         )}
                                                         {tab.name ===
                                                             "My Learning Que" && (
                                                             <img
                                                                 src={
-                                                                    QueLightGray
+                                                                    QueSelected
                                                                 }
-                                                                alt="High School"
-                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
+                                                                alt="My Learning Que"
+                                                                aria-label="My Learning Que"
+                                                                className="h-auto w-full max-w-[127px] scale-125 transform"
                                                             />
                                                         )}
-                                                    </>
+                                                    </div>
                                                 )}
-                                                {/* DarkMode 
-                                                {mode === "dark" && (
-                                                    <>
-                                                        {tab.name ===
-                                                            "High School" && (
-                                                            <img
-                                                                src={
-                                                                    HighSchoolDarkGray
-                                                                }
-                                                                alt="High School"
-                                                                className="my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
-                                                            />
+                                                {selectedTab !== tab.name && (
+                                                    <div className="flex w-full flex-row">
+                                                        {/* LIghtMode */}
+                                                        {mode !== "dark" && (
+                                                            <>
+                                                                {tab.name ===
+                                                                    "High School" && (
+                                                                    <img
+                                                                        src={
+                                                                            HighSchoolLightGray
+                                                                        }
+                                                                        alt="High School"
+                                                                        aria-label="High School"
+                                                                        className="h-auto w-full max-w-[143px] transform object-cover object-center"
+                                                                    />
+                                                                )}
+                                                                {tab.name ===
+                                                                    "Continued Education / Certificates" && (
+                                                                    <img
+                                                                        src={
+                                                                            ContEdLightGray
+                                                                        }
+                                                                        alt="Continued Education"
+                                                                        aria-label="Continued Education and Certificates"
+                                                                        className="h-auto w-full max-w-[143px] transform object-cover object-center"
+                                                                    />
+                                                                )}
+                                                                {tab.name ===
+                                                                    "College" && (
+                                                                    <img
+                                                                        src={
+                                                                            CollegeLightGray
+                                                                        }
+                                                                        alt="College"
+                                                                        aria-label="College"
+                                                                        className="h-auto w-full max-w-[143px] transform object-cover object-center"
+                                                                    />
+                                                                )}
+                                                                {tab.name ===
+                                                                    "My Learning Que" && (
+                                                                    <img
+                                                                        src={
+                                                                            QueLightGray
+                                                                        }
+                                                                        alt="My Learning Que"
+                                                                        aria-label="My Learning Que"
+                                                                        className="h-auto w-full max-w-[143px] transform object-cover object-center"
+                                                                    />
+                                                                )}
+                                                            </>
                                                         )}
-                                                        {tab.name ===
-                                                            "Continued Education / Certificates" && (
-                                                            <img
-                                                                src={
-                                                                    ContEdDarkGray
-                                                                }
-                                                                alt="Continued Education"
-                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
-                                                            />
+                                                        {/* DarkMode */}
+                                                        {mode === "dark" && (
+                                                            <>
+                                                                {tab.name ===
+                                                                    "High School" && (
+                                                                    <img
+                                                                        src={
+                                                                            HighSchoolDarkGray
+                                                                        }
+                                                                        alt="High School"
+                                                                        aria-label="High School"
+                                                                        className="h-auto w-full max-w-[143px] transform object-cover object-center"
+                                                                    />
+                                                                )}
+                                                                {tab.name ===
+                                                                    "Continued Education / Certificates" && (
+                                                                    <img
+                                                                        src={
+                                                                            ContEdDarkGray
+                                                                        }
+                                                                        alt="Continued Education"
+                                                                        aria-label="Continued Education and Certificates"
+                                                                        className="h-auto w-full max-w-[143px] transform object-cover object-center"
+                                                                    />
+                                                                )}
+                                                                {tab.name ===
+                                                                    "College" && (
+                                                                    <img
+                                                                        src={
+                                                                            CollegeDarkGray
+                                                                        }
+                                                                        alt="College"
+                                                                        aria-label="College"
+                                                                        className="h-auto w-full max-w-[143px] transform object-cover object-center"
+                                                                    />
+                                                                )}
+                                                                {tab.name ===
+                                                                    "My Learning Que" && (
+                                                                    <img
+                                                                        src={
+                                                                            QueDarkGray
+                                                                        }
+                                                                        alt="My Learning Que"
+                                                                        aria-label="My Learning Que"
+                                                                        className="h-auto w-full max-w-[143px] transform object-cover object-center"
+                                                                    />
+                                                                )}
+                                                            </>
                                                         )}
-                                                        {tab.name ===
-                                                            "College" && (
-                                                            <img
-                                                                src={
-                                                                    CollegeDarkGray
-                                                                }
-                                                                alt="College"
-                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
-                                                            />
-                                                        )}
-                                                        {tab.name ===
-                                                            "My Learning Que" && (
-                                                            <img
-                                                                src={
-                                                                    QueDarkGray
-                                                                }
-                                                                alt="High School"
-                                                                className=" my-auto h-40 w-[160px] -translate-y-10 skew-x-12  "
-                                                            />
-                                                        )}
-                                                    </>
+                                                    </div>
                                                 )}
-                                            </div> */}
-                                            {selectedTab === tab.name && (
-                                                <>
-                                                    {tab.name ===
-                                                        "High School" && (
-                                                        <img
-                                                            src={
-                                                                HighSchoolSelected
-                                                            }
-                                                            alt="High School"
-                                                            className="my-auto h-[120px] w-[120px] -translate-y-10 skew-x-12  sm:h-[130px]  sm:w-[140px] md:h-40 md:w-[160px]"
-                                                        />
-                                                    )}
-                                                    {tab.name ===
-                                                        "Continued Education / Certificates" && (
-                                                        <img
-                                                            src={ContEdSelected}
-                                                            alt="Continued Education"
-                                                            className="my-auto h-[120px] w-[120px] -translate-y-10 skew-x-12 sm:h-[130px] sm:w-[140px] md:h-40 md:w-[160px]"
-                                                        />
-                                                    )}
-                                                    {tab.name === "College" && (
-                                                        <img
-                                                            src={
-                                                                CollegeSelected
-                                                            }
-                                                            alt="College"
-                                                            className="my-auto h-[120px] w-[120px] -translate-y-10 skew-x-12 sm:h-[130px] sm:w-[140px] md:h-40 md:w-[160px]"
-                                                        />
-                                                    )}
-                                                    {tab.name ===
-                                                        "My Learning Que" && (
-                                                        <img
-                                                            src={QueSelected}
-                                                            alt="My Learning Que"
-                                                            className="my-auto h-[120px] w-[120px] -translate-y-10 skew-x-12 sm:h-[130px] sm:w-[140px] md:h-40 md:w-[160px]"
-                                                        />
-                                                    )}
-                                                </>
-                                            )}
-                                            {selectedTab !== tab.name && (
-                                                <>
-                                                    {/* LIghtMode */}
-                                                    {mode !== "dark" && (
-                                                        <>
-                                                            {tab.name ===
-                                                                "High School" && (
-                                                                <img
-                                                                    src={
-                                                                        HighSchoolLightGray
-                                                                    }
-                                                                    alt="High School"
-                                                                    className="my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
-                                                                />
-                                                            )}
-                                                            {tab.name ===
-                                                                "Continued Education / Certificates" && (
-                                                                <img
-                                                                    src={
-                                                                        ContEdLightGray
-                                                                    }
-                                                                    alt="Continued Education"
-                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
-                                                                />
-                                                            )}
-                                                            {tab.name ===
-                                                                "College" && (
-                                                                <img
-                                                                    src={
-                                                                        CollegeLightGray
-                                                                    }
-                                                                    alt="College"
-                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
-                                                                />
-                                                            )}
-                                                            {tab.name ===
-                                                                "My Learning Que" && (
-                                                                <img
-                                                                    src={
-                                                                        QueLightGray
-                                                                    }
-                                                                    alt="My Learning Que"
-                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12  sm:w-[120px] md:h-40 md:w-[160px]"
-                                                                />
-                                                            )}
-                                                        </>
-                                                    )}
-                                                    {/* DarkMode */}
-                                                    {mode === "dark" && (
-                                                        <>
-                                                            {tab.name ===
-                                                                "High School" && (
-                                                                <img
-                                                                    src={
-                                                                        HighSchoolDarkGray
-                                                                    }
-                                                                    alt="High School"
-                                                                    className="my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
-                                                                />
-                                                            )}
-                                                            {tab.name ===
-                                                                "Continued Education / Certificates" && (
-                                                                <img
-                                                                    src={
-                                                                        ContEdDarkGray
-                                                                    }
-                                                                    alt="Continued Education"
-                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12  sm:w-[120px] md:h-40 md:w-[160px]"
-                                                                />
-                                                            )}
-                                                            {tab.name ===
-                                                                "College" && (
-                                                                <img
-                                                                    src={
-                                                                        CollegeDarkGray
-                                                                    }
-                                                                    alt="College"
-                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12 sm:w-[120px]   md:h-40 md:w-[160px]"
-                                                                />
-                                                            )}
-                                                            {tab.name ===
-                                                                "My Learning Que" && (
-                                                                <img
-                                                                    src={
-                                                                        QueDarkGray
-                                                                    }
-                                                                    alt="High School"
-                                                                    className=" my-auto h-24 w-[90px] -translate-y-10 skew-x-12  sm:w-[120px] md:h-40 md:w-[160px]"
-                                                                />
-                                                            )}
-                                                        </>
-                                                    )}
-                                                </>
-                                            )}
-                                        </Tab>
+                                            </Tab>
+                                        </>
                                     ))}
+                                    {/* Tab Title */}
+                                    <div className="absolute mt-36 ml-4 overflow-ellipsis  text-left text-xl tracking-[2px] text-gray-500">
+                                        <p className="row -mt-52 overflow-ellipsis line-clamp-2 dark:text-gray-300 lg:hidden">
+                                            {selectedTab.toUpperCase()}
+                                        </p>
+                                        <div className=" hidden h-fit max-w-full md:-ml-4 lg:flex">
+                                            {selectedTab ===
+                                                "Continued Education / Certificates" && (
+                                                <div className=" flex w-auto flex-col md:flex-row">
+                                                    <img
+                                                        src={ContinuedNeon}
+                                                        className="h-14 w-auto scale-110 md:h-16"
+                                                    />
+                                                    <img
+                                                        src={EducationNeon}
+                                                        className="-ml-2 h-14 w-auto scale-90 md:ml-0 md:h-16"
+                                                    />
+                                                </div>
+                                            )}
+                                            {selectedTab === "High School" && (
+                                                <img
+                                                    src={HighSchoolNeon}
+                                                    className="h-16 w-auto"
+                                                />
+                                            )}
+                                            {selectedTab === "College" && (
+                                                <img
+                                                    src={CollegeNeon}
+                                                    className="h-16 w-auto"
+                                                />
+                                            )}
+                                            {selectedTab ===
+                                                "My Learning Que" && (
+                                                <img
+                                                    src={QueNeon}
+                                                    className="h-16 w-auto"
+                                                />
+                                            )}
+                                        </div>
+                                    </div>
                                 </Tab.List>
                             </div>
                         </div>
@@ -692,15 +676,15 @@ const Education = () => {
                             {tabs.map((tab, tabIndex) => (
                                 <Tab.Panel
                                     key={tab.name}
-                                    className=" mt-10 md:mt-28 lg:mt-10 lg:pt-16"
+                                    className=" z-50 lg:pt-16"
                                 >
                                     <div
                                         className={` ${
                                             tab.name ===
                                             "Continued Education / Certificates"
-                                                ? "my-12 w-full rounded-xl text-white "
+                                                ? " w-full rounded-xl text-white "
                                                 : ""
-                                        }`}
+                                        } bg-white dark:bg-zinc-800`}
                                     >
                                         {tab.features.map(
                                             (feature, featureIndex) => (
@@ -772,21 +756,28 @@ const Education = () => {
                                                                             alt={
                                                                                 feature.imageAlt
                                                                             }
-                                                                            className="h-full w-full object-cover object-center"
+                                                                            className="z-50 h-full w-full object-cover object-center"
                                                                         />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         )}
                                                     {/* Accordian */}
-                                                    <div className="overflow-hidden border-l-0  border-t-0 border-r-0 first:overflow-hidden first:rounded-t-2xl first:rounded-b-none last:overflow-hidden last:rounded-t-none last:rounded-b-2xl dark:border-b-2 dark:border-zinc-900 ">
+                                                    <div
+                                                        className={` ${
+                                                            selectedTab ===
+                                                            "Continued Education / Certificates"
+                                                                ? "border border-b-0 border-gray-300  last:border-b-2 dark:border-b-[1px] dark:border-zinc-900"
+                                                                : null
+                                                        } overflow-hidden first:overflow-hidden  first:rounded-t-2xl first:rounded-b-none last:overflow-hidden last:rounded-t-none last:rounded-b-2xl dark:border-l-0 dark:border-t-0 dark:border-r-0  `}
+                                                    >
                                                         {selectedTab ===
                                                             "Continued Education / Certificates" && (
                                                             <div
                                                                 key={
                                                                     feature.name
                                                                 }
-                                                                className=" border border-gray-300  last:border-b-0 dark:border-2 dark:border-zinc-800"
+                                                                className=" border-gray-300  last:border-b-0 dark:border-2 dark:border-zinc-800"
                                                             >
                                                                 {/* header */}
                                                                 <div
@@ -795,7 +786,7 @@ const Education = () => {
                                                                         activeIndex
                                                                             ? " border-gray-300 bg-white/50  dark:bg-[#353535] "
                                                                             : " "
-                                                                    } flex cursor-pointer items-center justify-between border-2  border-t  border-l-transparent border-r-transparent px-2 py-2 transition-all duration-300 ease-in-out last:border-b-transparent hover:bg-white/50 dark:border-zinc-800  dark:bg-zinc-800 dark:hover:bg-[#353535] dark:hover:text-sky-300`}
+                                                                    } flex cursor-pointer items-center justify-between border-2  border-t-0  border-l-transparent border-r-transparent px-2 py-2 transition-all duration-300 ease-in-out last:border-b-transparent hover:bg-white/50 dark:border-zinc-800  dark:bg-zinc-800 dark:hover:bg-[#353535] dark:hover:text-sky-300`}
                                                                     onClick={() =>
                                                                         handleAccordionClick(
                                                                             featureIndex
@@ -846,7 +837,7 @@ const Education = () => {
                                                                 {/* body */}
                                                                 {activeIndex ===
                                                                     featureIndex && (
-                                                                    <div className="p-2 transition-all duration-300 ease-in-out dark:bg-zinc-900 dark:shadow-inner dark:shadow-black/50 md:flex md:justify-center md:px-4 lg:p-4">
+                                                                    <div className="bg-zinc-100 p-2 transition-all duration-300 ease-in-out dark:bg-zinc-900 dark:shadow-inner dark:shadow-black/50 md:flex md:justify-center md:px-4 lg:p-4">
                                                                         {/* Small Screen Image Full */}
                                                                         <div className="relative w-full overflow-hidden rounded-sm md:hidden">
                                                                             <img
@@ -991,7 +982,7 @@ const Education = () => {
                                                                                                         key={
                                                                                                             tag
                                                                                                         }
-                                                                                                        className="border-2/50 mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500  dark:border-zinc-800 dark:bg-zinc-700 dark:text-gray-300 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 md:dark:border-gray-700 md:dark:text-white lg:px-3 lg:text-sm xl:text-base"
+                                                                                                        className="border-2/50 mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-white px-1.5 py-1 text-xs leading-none text-gray-500  dark:border-zinc-800 dark:bg-zinc-700 dark:text-gray-300    md:px-2 md:text-gray-400 md:dark:border-gray-700 md:dark:text-white lg:px-3 lg:text-sm xl:text-base"
                                                                                                     >
                                                                                                         #
                                                                                                         {
@@ -1041,8 +1032,8 @@ const Education = () => {
                                                             key={feature.name}
                                                             className="flex flex-col items-center justify-between px-4 py-8 sm:px-0 md:flex-row"
                                                         >
-                                                            <div className="mb-8 md:mb-0 md:w-1/2 lg:w-1/3">
-                                                                <div className="h-fit w-full rounded-lg sm:h-56 md:overflow-hidden">
+                                                            <div className="w-sull mb-8 md:mb-0 md:w-1/2 lg:w-1/3">
+                                                                <div className="mx-auto flex h-fit rounded-lg sm:h-56 md:w-fit md:overflow-hidden">
                                                                     <img
                                                                         src={
                                                                             feature.imageSrc
@@ -1073,7 +1064,7 @@ const Education = () => {
                                                                         feature.description
                                                                     }
                                                                 </p>
-                                                                <div className="flex flex-wrap">
+                                                                <div className="flex flex-wrap bg-white">
                                                                     {feature.tags &&
                                                                         feature.tags.map(
                                                                             (
@@ -1083,7 +1074,7 @@ const Education = () => {
                                                                                     key={
                                                                                         tag
                                                                                     }
-                                                                                    className="mr-2 mb-2 inline-flex items-center rounded-full border-2 border-gray-400 py-1.5 px-3 text-sm leading-none text-gray-600"
+                                                                                    className="border-gray-40 mr-2 mb-2 inline-flex h-fit w-fit items-center rounded-full border-2 bg-white py-1.5 px-3 text-sm leading-none text-gray-600"
                                                                                 >
                                                                                     {
                                                                                         tag

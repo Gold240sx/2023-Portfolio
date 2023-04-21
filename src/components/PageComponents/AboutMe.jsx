@@ -1,7 +1,13 @@
-import React from "react"
-import { motion } from "framer-motion"
+import React, { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 const AboutMe = () => {
+    const [isVisible, setIsVisible] = useState(false)
+
+    useEffect(() => {
+        setIsVisible(true)
+    }, [])
+
     return (
         <div
             className="relative mx-auto flex w-full flex-col items-center  justify-center px-10 text-center lg:px-8"
@@ -11,26 +17,30 @@ const AboutMe = () => {
                 About Me
             </h3>
             <div className="mx-auto mb-16 flex h-fit  w-[300px] max-w-2xl">
-                <motion.div
-                    initial={{
-                        x: -200,
-                        opacity: 0,
-                    }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1.2 }}
-                    className="relative h-0"
-                    style={{ paddingBottom: "100%" }}
-                >
-                    {/* <img
+                <AnimatePresence>
+                    {isVisible && (
+                        <motion.div
+                            initial={{
+                                x: -200,
+                                opacity: 0,
+                            }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 1.2 }}
+                            className="relative h-0"
+                            style={{ paddingBottom: "100%" }}
+                        >
+                            {/* <img
                         src="https://i.ibb.co/C979rFf/AboutMe.jpg"
                         alt="About"
                         className="absolute w-full object-cover"
                     /> */}
-                    <img
-                        class="mask mask-hexagon-2 -translate-x-7"
-                        src="https://i.ibb.co/C979rFf/AboutMe.jpg"
-                    />
-                </motion.div>
+                            <img
+                                class="mask mask-hexagon-2 -translate-x-7"
+                                src="https://i.ibb.co/C979rFf/AboutMe.jpg"
+                            />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
             <h1 className=" mb-4 text-4xl font-bold tracking-[5px] text-gray-700 dark:text-gray-400">
                 Hi, I'm{" "}

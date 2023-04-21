@@ -13,11 +13,12 @@ import { FaDatabase } from "react-icons/fa"
 import { Tooltip } from "react-tooltip"
 import { SiStylelint } from "react-icons/si"
 import { MdOutlineSearch } from "react-icons/md"
+import { useTheme } from "../../hooks/useThemeContext"
 import Accordion from "react-bootstrap/Accordion"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
-
-const projects = document.getElementById("projects")
+import MobileMenu from "../mobileMenu"
+import Carousel from "../Carousel"
 
 function getYearArray() {
     const currentYear = new Date().getFullYear()
@@ -101,8 +102,9 @@ const Technologies = [
 const ProjectItems = [
     {
         id: 1,
-        name: "Project 1",
+        name: "Solar Proposal Tool",
         image: "https://s3-ap-south-1.amazonaws.com/static.awfis.com/wp-content/uploads/2017/07/07184649/ProjectManagement.jpg",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "January",
@@ -120,11 +122,34 @@ const ProjectItems = [
             "firebase",
             "typescript",
         ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
+            },
+            {
+                id: 3,
+                image: "https://i.ibb.co/M8M8Vkr/megaman.png",
+            },
+            {
+                id: 4,
+                image: "https://i.ibb.co/bQqMwvY/fireship.png",
+            },
+            {
+                id: 5,
+                image: "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
+            },
+        ],
     },
     {
         id: 2,
-        name: "Project 2",
+        name: "My Super Awesome Portfolio that is so cool",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "February",
@@ -133,11 +158,22 @@ const ProjectItems = [
         repository: "#",
         link: "#",
         tags: ["Next.js", "Tailwind"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
+            },
+        ],
     },
     {
         id: 3,
         name: "Project 3",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "February",
@@ -146,11 +182,26 @@ const ProjectItems = [
         repository: "#",
         link: "#",
         tags: ["Next.js", "Tailwind"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
+            },
+            {
+                id: 3,
+                image: "https://i.ibb.co/M8M8Vkr/megaman.png",
+            },
+        ],
     },
     {
         id: 4,
         name: "Project 4",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "February",
@@ -159,11 +210,18 @@ const ProjectItems = [
         repository: "#",
         link: "#",
         tags: ["Next.js", "Tailwind"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
+            },
+        ],
     },
     {
         id: 5,
         name: "Project 5",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+        tagline: "This website is a portfolio of my work.",
         description:
             "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
         month: "February",
@@ -172,6 +230,16 @@ const ProjectItems = [
         repository: "#",
         link: "#",
         tags: ["Next.js", "Tailwind"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
+            },
+        ],
     },
 ]
 
@@ -180,43 +248,197 @@ const ProjectCard = ({
     searchTerm,
     renderMatchedInfo,
     activeDescription,
+    setShowCarousel,
+    activeGalleryImages,
+    setActiveGalleryImages,
 }) => {
     const {
         name,
         image,
+        tagline,
         description,
         year,
         technologies,
         repository,
+        galleryImages,
         link,
         month,
         tags,
+        id,
     } = project
+
+    const { mode } = useTheme()
+
+    const [minimizeGallery, setMinimizeGallery] = useState(true)
+    const [isMobile, setIsMobile] = useState(false)
+    const [isLarge, setIsLarge] = useState(false)
+
+    const handleGalleryClick = (clickedImage) => {
+        const images = [image, ...galleryImages.map((item) => item.image)]
+        const filteredImages = images.filter((item) => item !== clickedImage)
+        setActiveGalleryImages([clickedImage, ...filteredImages])
+        console.log(activeGalleryImages)
+        setShowCarousel(true)
+    }
 
     const matchedTechnologies = Technologies.filter((technology) =>
         technologies.includes(technology.name)
     )
 
+    const gall4 = galleryImages.slice(0, 4)
+
     const createValidId = (str) => str.replace(/\s+/g, "_")
+
+    const windowCheck = () => {
+        const handleResize = () => {
+            if (window.innerWidth > 768 && window.innerWidth < 1024) {
+                setMinimizeGallery(false)
+                setIsMobile(false)
+                setIsLarge(false)
+            } else if (window.innerWidth > 1024) {
+                setMinimizeGallery(true)
+                setIsMobile(false)
+                setIsLarge(true)
+            } else {
+                setMinimizeGallery(true)
+                setIsMobile(true)
+                setIsLarge(false)
+            }
+        }
+
+        // Set the initial values on load
+        handleResize()
+
+        // Add the event listener
+        window.addEventListener("resize", handleResize)
+    }
+
+    useEffect(() => {
+        windowCheck()
+    }, [])
 
     return (
         <div className="">
             {/* main content */}
-            <div className="h-full w-full items-center justify-center rounded-lg p-4">
-                <div className="flex w-auto flex-col  gap-4 overflow-hidden md:flex-row">
+            <div className="h-full w-full items-center justify-center rounded-lg p-1">
+                <div className="flex w-auto flex-col gap-2 overflow-hidden md:flex-row lg:gap-4 ">
                     {/* Left */}
-                    <div className="relative flex w-auto flex-col items-start justify-start md:max-w-[50%]">
+                    <div
+                        className={`relative flex w-auto flex-col items-start justify-start ${
+                            minimizeGallery ? "md:w-[60%]" : "md:w-[50%]"
+                        } `}
+                    >
                         {/* image */}
-                        <img
+                        {/* <img
                             src={image}
                             alt={name}
                             className="rounded-md  lg:rounded-lg"
                             style={{ minHeight: "180px" }}
-                        />
+                        /> */}
+                        <div
+                            className={` ${
+                                minimizeGallery == true ? "" : ""
+                            } flex flex-col md:h-[222px] md:flex-row`}
+                        >
+                            {/* Main Image */}
+                            <div
+                                onClick={() => handleGalleryClick(image)}
+                                className={`main-image h-auto cursor-pointer overflow-hidden rounded-lg  opacity-90 transition-all duration-300 ease-in-out hover:opacity-100 md:rounded-r-none lg:rounded-lg ${
+                                    minimizeGallery
+                                        ? "w-full"
+                                        : "w-full md:w-4/5"
+                                }`}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <img
+                                    src={image}
+                                    alt={name}
+                                    className="cursor-pointer object-cover"
+                                    style={{ minHeight: "220px" }}
+                                />
+                            </div>
+
+                            {/* Additional Images */}
+                            <div
+                                className={` ${
+                                    minimizeGallery == true
+                                        ? "h-[99%] w-full  p-1  md:w-1/5 md:max-w-[75px]"
+                                        : "w-0"
+                                } z-20 flex bg-transparent transition-all duration-300 ease-in-out md:flex-col lg:mx-2 lg:w-auto lg:max-w-[75px] lg:bg-transparent`}
+                                style={
+                                    isMobile === false && isLarge === false
+                                        ? mode !== "dark"
+                                            ? {
+                                                  backgroundColor: "#d5d5d5",
+                                                  opacity: "0.8",
+                                                  backgroundImage:
+                                                      "radial-gradient(#484848 0.8px, #d5d5d5 0.8px)",
+                                                  backgroundSize: "16px 16px",
+                                              }
+                                            : {
+                                                  backgroundColor: "#1c1c1c",
+                                                  opacity: "0.8",
+                                                  backgroundImage:
+                                                      "radial-gradient(#727272 0.8px, #1c1c1c 0.8px)",
+                                                  backgroundSize: "16px 16px",
+                                              }
+                                        : { backgroundColor: "transparent" }
+                                }
+                            >
+                                <ul className="flex w-full gap-2 md:h-full md:flex-col md:p-0">
+                                    {/* Map over the first 4 images of the gallry and display them in a column */}
+
+                                    {gall4.map((gallery4) => {
+                                        return (
+                                            <li
+                                                key={image.id}
+                                                className="h-[10vw] w-1/4 cursor-pointer overflow-hidden rounded-lg bg-gray-700 object-fill opacity-80 shadow-md shadow-black/30 hover:opacity-100 md:h-1/4 md:w-full"
+                                                onClick={() =>
+                                                    handleGalleryClick(
+                                                        gallery4.image
+                                                    )
+                                                }
+                                            >
+                                                <img
+                                                    src={gallery4.image}
+                                                    className="h-full w-full object-cover"
+                                                />
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
+
+                            {/* Show / hide Gallery Button */}
+                            <div
+                                onClick={() =>
+                                    setMinimizeGallery(!minimizeGallery)
+                                }
+                                className={` ${
+                                    minimizeGallery == false ? "" : ""
+                                } hidden h-full w-fit  cursor-pointer items-center justify-center rounded rounded-r-lg bg-zinc-200 p-0 text-zinc-600 hover:bg-slate-200 active:bg-zinc-300 dark:bg-zinc-700 dark:text-white md:flex md:rounded-r-lg lg:hidden`}
+                            >
+                                {minimizeGallery == false && (
+                                    <p className="mx-1 mt-[4.8rem] flex w-6 -rotate-90 whitespace-nowrap text-center align-middle tracking-wider transition-all duration-300 ease-in">
+                                        Show Gallery
+                                    </p>
+                                )}
+                                {minimizeGallery == true && (
+                                    <p className="mx-1 mt-[4.4rem] flex w-6 -rotate-90 whitespace-nowrap text-center align-middle tracking-wider transition-all duration-300 ease-in">
+                                        Hide Gallery
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+
                         {/* Search Term Filter Data Match */}
                         {searchTerm.length ? renderMatchedInfo() : null}
                         {/* tags */}
-                        <div className="mt-4 hidden w-fit max-w-full md:flex">
+                        <div className="no-scrollbar mt-4 hidden w-[195%] overflow-scroll md:flex lg:max-w-[100%] xl:max-w-[195%]">
                             <h4 className=" mx-2 w-fit text-sm font-medium dark:text-gray-300 md:text-base">
                                 TAGS:
                             </h4>
@@ -233,9 +455,15 @@ const ProjectCard = ({
                         </div>
                     </div>
                     {/* Right */}
-                    <div className="flex w-full flex-col items-start justify-start">
+                    <div
+                        className={`flex w-full  flex-col items-start justify-start pl-4 md:pl-0 ${
+                            minimizeGallery
+                                ? "md:w-[40%] "
+                                : "-translate-x-4 md:w-[50%]"
+                        } `}
+                    >
                         {/* Name */}
-                        <h2 className="text-2xl font-bold lg:mb-2 lg:text-4xl">
+                        <h2 className="max-w-[90%] text-left text-2xl font-bold lg:mb-2 lg:max-w-[unset] lg:text-4xl">
                             {name}
                         </h2>
                         {/* Date */}
@@ -283,7 +511,7 @@ const ProjectCard = ({
                         {/* Description Dropdown*/}
                         <div
                             id="accordionExample"
-                            className="z-20 w-full bg-white dark:bg-transparent"
+                            className="z-20 mb-8 w-[98%] bg-white dark:bg-transparent"
                         >
                             <div className="w-auto rounded-t-lg rounded-b-lg border border-neutral-200 dark:border-neutral-600">
                                 <h2 className="mb-0" id="headingOne">
@@ -337,8 +565,7 @@ const ProjectCard = ({
                                     <div className="rounded-b-lg border-[#525252] bg-white py-4 px-5 dark:bg-[#1E1E1D] dark:text-gray-300 dark:[&:not([data-te-collapse-collapsed])]:border-t-[1px]">
                                         <p className="mb-2 text-left">
                                             <strong className="dark:text-white">
-                                                This is the first item's
-                                                accordion body.
+                                                {tagline}
                                             </strong>{" "}
                                             {description}
                                         </p>
@@ -346,27 +573,8 @@ const ProjectCard = ({
                                 </div>
                             </div>
                         </div>
-                        {/*  */}
-                        {/* tags */}
-                        {/* <div className=" mr-auto justify-start align-baseline ">
-                            <h4 className=" text-md justify-start text-left font-medium line-clamp-1 sm:mt-1.5 md:mt-2 md:text-xl">
-                                TAGS:
-                            </h4>
-                            <div className=" mt-1 mr-auto block  justify-start overflow-ellipsis line-clamp-1">
-                                {ProjectItems.map((project) => {
-                                    return project.tags.map((tag) => {
-                                        return (
-                                            <div
-                                                key={tag}
-                                                className="xlg:text-base mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
-                                            >
-                                                {tag}
-                                            </div>
-                                        )
-                                    })
-                                })}
-                            </div>
-                        </div> */}
+
+                        <hr className="mx-3 mr-6 w-full border border-gray-200 dark:border-gray-700 md:hidden" />
                     </div>
                 </div>
             </div>
@@ -390,6 +598,7 @@ const Projects = () => {
         "2023",
         "2022",
     ])
+
     const [showMobileFilters, setShowMobileFilters] = useState(true)
     const [hoveredFilter, setHoveredFilter] = useState({ filter: "", count: 0 })
     const [currentPage, setCurrentPage] = useState(1)
@@ -397,6 +606,8 @@ const Projects = () => {
     const [searchTerm, setSearchTerm] = useState("")
     const [inputFocused, setInputFocused] = useState(false)
     const [searchMatchInfo, setSearchMatchInfo] = useState({})
+    const [showCarousel, setShowCarousel] = useState(false)
+    const [activeGalleryImages, setActiveGalleryImages] = useState([])
     const itemsPerPage = 4
 
     const updateCurrentPage = (newPage) => {
@@ -575,7 +786,7 @@ const Projects = () => {
                     className={` ${
                         searchTerm === "" ? "hidden h-0 opacity-0" : ""
                     }
-                my-2 w-screen rounded bg-gray-600 p-2 text-white shadow`}
+                w-automax-w-[50vw] my-2 rounded bg-gray-600 p-2 text-white shadow dark:bg-zinc-700`}
                 >
                     <h3 className="text-center text-lg font-bold dark:text-gray-200">
                         Search Term Match
@@ -586,7 +797,7 @@ const Projects = () => {
                             {matchInfo.matchType}
                         </span>
                     </p>
-                    <p className="font-bold text-gray-400 dark:text-gray-600">
+                    <p className="overflow-hidden font-bold text-gray-400">
                         Matched Text:{" "}
                         <span className="px-2 py-0.5  font-normal text-white dark:text-gray-400">
                             {beforeMatch}
@@ -602,7 +813,7 @@ const Projects = () => {
     }
 
     return (
-        <div className="max-w-screen relative flex w-auto flex-col items-center justify-evenly bg-white pb-12 text-center dark:bg-transparent md:px-6 md:text-left lg:px-10">
+        <div className="max-w-screen relative flex w-auto flex-col items-center justify-evenly  pb-12 text-center dark:bg-transparent md:px-6 md:text-left lg:px-10">
             <h3 className="relative top-24 z-50 w-[541.98px] text-center text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                 Projects
             </h3>
@@ -616,7 +827,7 @@ const Projects = () => {
                     currently being created.
                 </p>
             </div>
-            <div className=" relative flex w-full bg-white dark:bg-transparent">
+            <div className=" relative  flex w-auto max-w-[80vw]   dark:bg-transparent">
                 {/* mobile filter menu */}
                 <div
                     className={`${
@@ -632,18 +843,21 @@ const Projects = () => {
                     >
                         <div
                             className={`${
+                                //
                                 showMobileFilters
-                                    ? " mt-5 w-fit dark:bg-[#323737]/20 dark:hover:bg-gray-700/30"
-                                    : " w-[76px] shadow-2xl shadow-black hover:bg-gray-50 "
-                            } ml-1 flex flex-col items-center justify-around gap-2 rounded-2xl border-2 border-gray-200 bg-white p-1.5 outline-none dark:border-gray-700 dark:bg-[#323737]  dark:hover:bg-slate-700`}
+                                    ? " dark: mt-5 w-fit dark:bg-gray-700/30 dark:hover:bg-gray-700/30"
+                                    : " w-[76px] shadow-2xl shadow-black hover:bg-gray-50 dark:bg-[#323737]"
+                            } ml-1 flex flex-col items-center justify-around gap-2 rounded-2xl border-2 border-gray-200 bg-white p-1.5 outline-none dark:border-gray-700  dark:hover:bg-slate-700`}
                         >
                             {/* left */}
-                            <a href="#projects">
+                            <a
+                                href="#projects"
+                                onClick={handleMobileFilterClose}
+                            >
                                 <HiFilter
                                     className={`${
                                         showMobileFilters ? "" : ""
-                                    } w-22 h-22 my-auto flex cursor-pointer text-center align-middle text-4xl capitalize tracking-widest text-gray-500 hover:text-gray-700 dark:text-gray-200 dark:hover:text-white`}
-                                    onClick={handleMobileFilterClose}
+                                    } w-22 h-22 z-50 my-auto flex cursor-pointer text-center align-middle text-4xl capitalize tracking-widest text-gray-500 hover:text-gray-700 dark:text-gray-200 dark:hover:text-white`}
                                     data-tooltip-id="projectMobileFilter"
                                     data-tooltip-content="Filter Projects (Click to minimize)."
                                     data-tooltip-delay-show={300}
@@ -969,7 +1183,13 @@ const Projects = () => {
                     </div>
                 </div>
                 {/* Main Content */}
-                <div className=" max-w-screen w-full rounded-lg bg-white dark:bg-transparent md:p-4">
+                <div
+                    className={` ${
+                        showMobileFilters
+                            ? "md:w-full lg:w-[92%] xl:w-full"
+                            : "w-full"
+                    } rounded-lg bg-white dark:bg-transparent md:p-4 `}
+                >
                     {/* large filter box */}
                     <div className="relative my-4 hidden h-fit w-full rounded-2xl border-2 border-gray-200 bg-white bg-opacity-10  p-2 dark:border-none dark:bg-[#323737]/40 dark:text-white md:block">
                         <div className="flex gap-4">
@@ -1316,7 +1536,7 @@ const Projects = () => {
                         </div>
                     </div>
                     {/* Project Cards */}
-                    <div className=" mt-10 w-full rounded-2xl bg-white py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/30">
+                    <div className=" mt-10 flex w-full flex-col rounded-2xl bg-white py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/30 md:gap-6">
                         {projectsToDisplay.length > 0 ? (
                             projectsToDisplay.map((project) => {
                                 const id = project.id
@@ -1336,6 +1556,16 @@ const Projects = () => {
                                                         project.name,
                                                         searchTerm
                                                     )
+                                                }
+                                                setShowCarousel={
+                                                    setShowCarousel
+                                                }
+                                                showCarousel={showCarousel}
+                                                setActiveGalleryImages={
+                                                    setActiveGalleryImages
+                                                }
+                                                activeGalleryImages={
+                                                    activeGalleryImages
                                                 }
                                             />
                                         </React.Fragment>
@@ -1513,6 +1743,17 @@ const Projects = () => {
                     )}
                 </div>
             </div>
+            {showCarousel && (
+                <div className="fixed top-0 bottom-0 z-[99999999999999999999999] h-screen w-screen overscroll-contain">
+                    <Carousel
+                        slides={activeGalleryImages}
+                        autoslide={true}
+                        interval={5000}
+                        setShowCarousel={setShowCarousel}
+                        showCarousel={showCarousel}
+                    />
+                </div>
+            )}
         </div>
     )
 }

@@ -18,7 +18,7 @@ const Contact = () => {
                 {/* Subheader */}
                 <div
                     id="lineup-container"
-                    className="relative mt-4 w-full rounded-2xl md:p-2"
+                    className="relative z-[55] mt-4 w-full rounded-2xl md:p-2"
                 >
                     <p className="mb-6 mt-24 text-center text-lg dark:text-gray-400 md:px-10">
                         I'd love to hear from you! Please feel free to reach
@@ -38,6 +38,7 @@ const Contact = () => {
                         id="contactInfo"
                         place="left"
                         className="z-[1000] flex  h-fit max-w-[300px] rounded bg-gray-200 text-sm font-semibold text-slate-700 dark:bg-zinc-900 dark:text-white"
+                        event="hover"
                     />
                 </div>
             </div>
