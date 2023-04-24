@@ -33,7 +33,7 @@ export default function MobileMenu({ open, setOpen }) {
         <Transition.Root show={open} as={Fragment}>
             <Dialog
                 as="div"
-                className="relative z-[51] lg:hidden"
+                className="relative z-[99999999999999999999999] lg:hidden"
                 onClose={setOpen}
             >
                 <Transition.Child
@@ -45,11 +45,11 @@ export default function MobileMenu({ open, setOpen }) {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 backdrop-blur-sm" />
+                    <div className="backdrop:blur-black fixed inset-0 bg-gray-500 bg-opacity-75 backdrop-blur-sm" />
                 </Transition.Child>
 
                 <div className="fixed inset-0 h-screen overflow-hidden text-slate-700 dark:text-white">
-                    <div className="absolute inset-0 overflow-hidden">
+                    <div className="inset-0 overflow-hidden">
                         <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                             <Transition.Child
                                 as={Fragment}
@@ -61,7 +61,7 @@ export default function MobileMenu({ open, setOpen }) {
                                 leaveTo="translate-x-full"
                             >
                                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                                    <div className="ml-auto flex h-full w-fit flex-col overflow-y-scroll bg-white py-6 pr-2 shadow-xl dark:bg-zinc-900">
+                                    <div className=" ml-auto flex h-full w-fit flex-col overflow-y-scroll bg-white py-6 pr-2 shadow-xl dark:bg-zinc-900">
                                         <div className="">
                                             <div className="flex items-start justify-between">
                                                 <Link
@@ -166,7 +166,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                                     >
                                                                         <path
                                                                             stroke-linecap="round"
-                                                                            stroke-linejoin="round"
+                                                                            strokelinejoin="round"
                                                                             strokeWidth="2"
                                                                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                                                                         ></path>
@@ -213,7 +213,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                                     >
                                                                         <path
                                                                             stroke-linecap="round"
-                                                                            stroke-linejoin="round"
+                                                                            strokelinejoin="round"
                                                                             strokeWidth="2"
                                                                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                                                                         ></path>
@@ -240,7 +240,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                                     >
                                                                         <path
                                                                             stroke-linecap="round"
-                                                                            stroke-linejoin="round"
+                                                                            strokelinejoin="round"
                                                                             strokeWidth="2"
                                                                             d="M13 10V3L4 14h7v7l9-11h-7z"
                                                                         ></path>
@@ -281,7 +281,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                                     >
                                                                         <path
                                                                             stroke-linecap="round"
-                                                                            stroke-linejoin="round"
+                                                                            strokelinejoin="round"
                                                                             strokeWidth="2"
                                                                             d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                                                                         ></path>
@@ -340,7 +340,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                     >
                                                         <path
                                                             stroke-linecap="round"
-                                                            stroke-linejoin="round"
+                                                            strokelinejoin="round"
                                                             stroke-width="2"
                                                             d="M6 18L18 6M6 6l12 12"
                                                         ></path>

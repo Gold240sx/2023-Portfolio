@@ -9,18 +9,35 @@
         box-sizing: border-box;
     }
 
-    body {
+    body,
+    html {
         width: 100dvw;
+        width: 100vw;
+        max-width: 100vw;
         height: auto;
-        overflow-x: hidden;
+        min-width: 100vw;
+        /* overflow-x: hidden; */
+        scroll-padding: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        position: relative;
     }
 
     @media screen and (orientation: landscape) {
         body {
             width: 100dvh;
             height: auto;
-            overflow-x: hidden;
+            /* overflow-x: hidden; */
         }
+    }
+
+    /* If in landscape mode, make margin top: 80px, otherwise if in portrait mode, make 180px */
+
+    .hero-container {
+        margin-top: 20vh;
     }
 
     .hide {

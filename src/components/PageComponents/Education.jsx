@@ -1,49 +1,49 @@
-import { Fragment, useState } from "react"
-import { Tab } from "@headlessui/react"
-import { useTheme } from "../../hooks/useThemeContext"
-import * as te from "tw-elements"
-import IrondalePhoto from "../../assets/Images/Irondale.jpg"
-import PerpichPhoto from "../../assets/Images/Perpich.jpeg"
-import ArtCenterPhoto from "../../assets/Images/ArtCenter.jpeg"
-import CCSPhoto from "../../assets/Images/CCS.jpg"
-import Next from "../../assets/Images/coursePreviews/next.jpg"
-import Supabase from "../../assets/Images/coursePreviews/Supabase.jpg"
-import Tailwind from "../../assets/Images/coursePreviews/Tailwind.jpg"
-import Email from "../../assets/Images/coursePreviews/email.jpg"
-import D3 from "../../assets/Images/coursePreviews/d3.jpg"
-import React from "../../assets/Images/coursePreviews/react-firebase.jpg"
-import VanillaJS from "../../assets/Images/coursePreviews/vanillaJS.jpg"
-import OpenAi from "../../assets/Images/coursePreviews/openAi.jpg"
-import ReactNative from "../../assets/Images/coursePreviews/reactNative.jpg"
-import APIDev from "../../assets/Images/coursePreviews/apiDev.jpg"
-import Electron from "../../assets/Images/coursePreviews/electron.jpg"
-import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
-import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
-import Udemy from "../../assets/Images/coursePreviews/udemy.png"
-import Crosses from "../../assets/Images/backgrounds/crosses.png"
-import Holes from "../../assets/Images/backgrounds/holes.png"
-import Lines from "../../assets/Images/backgrounds/lines.png"
-import Mud from "../../assets/Images/backgrounds/mud.png"
-import { FaChevronDown, FaChevronUp } from "react-icons/fa"
+import { Fragment, useState } from "react";
+import { Tab } from "@headlessui/react";
+import { useTheme } from "../../hooks/useThemeContext";
+import * as te from "tw-elements";
+import IrondalePhoto from "../../assets/Images/Irondale.jpg";
+import PerpichPhoto from "../../assets/Images/Perpich.jpeg";
+import ArtCenterPhoto from "../../assets/Images/ArtCenter.jpeg";
+import CCSPhoto from "../../assets/Images/CCS.jpg";
+import Next from "../../assets/Images/coursePreviews/next.jpg";
+import Supabase from "../../assets/Images/coursePreviews/Supabase.jpg";
+import Tailwind from "../../assets/Images/coursePreviews/Tailwind.jpg";
+import Email from "../../assets/Images/coursePreviews/email.jpg";
+import D3 from "../../assets/Images/coursePreviews/d3.jpg";
+import React from "../../assets/Images/coursePreviews/react-firebase.jpg";
+import VanillaJS from "../../assets/Images/coursePreviews/vanillaJS.jpg";
+import OpenAi from "../../assets/Images/coursePreviews/openAi.jpg";
+import ReactNative from "../../assets/Images/coursePreviews/reactNative.jpg";
+import APIDev from "../../assets/Images/coursePreviews/apiDev.jpg";
+import Electron from "../../assets/Images/coursePreviews/electron.jpg";
+import Postgres from "../../assets/Images/coursePreviews/postgres.jpg";
+import Stripe from "../../assets/Images/coursePreviews/stripe.jpg";
+import Udemy from "../../assets/Images/coursePreviews/udemy.png";
+import Crosses from "../../assets/Images/backgrounds/crosses.png";
+import Holes from "../../assets/Images/backgrounds/holes.png";
+import Lines from "../../assets/Images/backgrounds/lines.png";
+import Mud from "../../assets/Images/backgrounds/mud.png";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 // Optimized  images
-import CollegeDarkGray from "../../assets/Icons/education-icons/college-dark-gray.png"
-import CollegeLightGray from "../../assets/Icons/education-icons/college-light-gray.png"
-import CollegeSelected from "../../assets/Icons/education-icons/college-selected.png"
-import HighSchoolDarkGray from "../../assets/Icons/education-icons/hs-dark-gray.png"
-import HighSchoolLightGray from "../../assets/Icons/education-icons/hs-light-gray.png"
-import HighSchoolSelected from "../../assets/Icons/education-icons/hs-selected.png"
-import ContEdDarkGray from "../../assets/Icons/education-icons/contEd-dark-gray.png"
-import ContEdLightGray from "../../assets/Icons/education-icons/contEd-light-gray.png"
-import ContEdSelected from "../../assets/Icons/education-icons/contEd-selected.png"
-import QueDarkGray from "../../assets/Icons/education-icons/que-dark-gray.png"
-import QueLightGray from "../../assets/Icons/education-icons/que-light-gray.png"
-import QueSelected from "../../assets/Icons/education-icons/que-selected.png"
-import CollegeNeon from "../../assets/Icons/education-icons/college-neon.png"
-import HighSchoolNeon from "../../assets/Icons/education-icons/highSchool-neon.png"
-import ContinuedNeon from "../../assets/Icons/education-icons/continued.png"
-import EducationNeon from "../../assets/Icons/education-icons/education.png"
-import QueNeon from "../../assets/Icons/education-icons/que.png"
+import CollegeDarkGray from "../../assets/Icons/education-icons/college-dark-gray.png";
+import CollegeLightGray from "../../assets/Icons/education-icons/college-light-gray.png";
+import CollegeSelected from "../../assets/Icons/education-icons/college-selected.png";
+import HighSchoolDarkGray from "../../assets/Icons/education-icons/hs-dark-gray.png";
+import HighSchoolLightGray from "../../assets/Icons/education-icons/hs-light-gray.png";
+import HighSchoolSelected from "../../assets/Icons/education-icons/hs-selected.png";
+import ContEdDarkGray from "../../assets/Icons/education-icons/contEd-dark-gray.png";
+import ContEdLightGray from "../../assets/Icons/education-icons/contEd-light-gray.png";
+import ContEdSelected from "../../assets/Icons/education-icons/contEd-selected.png";
+import QueDarkGray from "../../assets/Icons/education-icons/que-dark-gray.png";
+import QueLightGray from "../../assets/Icons/education-icons/que-light-gray.png";
+import QueSelected from "../../assets/Icons/education-icons/que-selected.png";
+import CollegeNeon from "../../assets/Icons/education-icons/college-neon.png";
+import HighSchoolNeon from "../../assets/Icons/education-icons/highSchool-neon.png";
+import ContinuedNeon from "../../assets/Icons/education-icons/continued.png";
+import EducationNeon from "../../assets/Icons/education-icons/education.png";
+import QueNeon from "../../assets/Icons/education-icons/que.png";
 
 const tabs = [
     {
@@ -326,30 +326,30 @@ const tabs = [
             },
         ],
     },
-]
+];
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(" ")
+    return classes.filter(Boolean).join(" ");
 }
 
 const Education = () => {
     // Accordian
-    const [activeIndex, setActiveIndex] = useState(null)
+    const [activeIndex, setActiveIndex] = useState(null);
     const handleAccordionClick = (accordianIndex) => {
         if (accordianIndex === activeIndex) {
-            setActiveIndex(null)
+            setActiveIndex(null);
         } else {
-            setActiveIndex(accordianIndex)
+            setActiveIndex(accordianIndex);
         }
-    }
+    };
     // Tabs
     const defaultTabIndex = tabs.findIndex(
         (tab) => tab.name === "Continued Education / Certificates"
-    )
+    );
     const [selectedTab, setSelectedTab] = useState(
         "Continued Education / Certificates"
-    )
-    const { mode } = useTheme()
+    );
+    const { mode } = useTheme();
 
     return (
         <div className="relative mb-10 w-auto overflow-hidden rounded-3xl bg-white dark:bg-white/5">
@@ -361,7 +361,7 @@ const Education = () => {
                         src={Lines}
                         alt="background-decoration"
                         className={`${
-                            mode === "dark" ? "opacity-[3%]" : "opacity-5"
+                            mode === "dark" ? "opacity-[5%]" : "opacity-[8%]"
                         } -z-1 translate-y-38  absolute h-full -translate-x-28 scale-125 object-cover `}
                     />
                 )}
@@ -370,7 +370,7 @@ const Education = () => {
                         src={Holes}
                         alt="background-decoration"
                         className={`${
-                            mode === "dark" ? "opacity-10" : "opacity-20"
+                            mode === "dark" ? "opacity-5" : "opacity-[8%]"
                         } -z-1  right-0 h-full -translate-y-60 -translate-x-20 rotate-[195deg] object-cover md:translate-x-0`}
                     />
                 )}
@@ -379,7 +379,7 @@ const Education = () => {
                         src={Crosses}
                         alt="background-decoration"
                         className={`${
-                            mode === "dark" ? "opacity-[3%]" : "opacity-[7%]"
+                            mode === "dark" ? "opacity-[10%]" : "opacity-[15%]"
                         } -z-1  left-0 h-fit w-[400%] -translate-y-[400px] translate-x-24 scale-[3] object-cover hue-rotate-90 saturate-100 md:scale-150`}
                     />
                 )}
@@ -389,8 +389,8 @@ const Education = () => {
                         alt="background-decoration"
                         className={`${
                             mode === "dark"
-                                ? "opacity-[2%] invert filter"
-                                : "opacity-5"
+                                ? "opacity-[3%] invert filter"
+                                : "opacity-[7%]"
                         } -z-1   h-full w-3/4 scale-125 object-cover`}
                     />
                 )}
@@ -454,7 +454,7 @@ const Education = () => {
                                         </div>
                                     </div>
                                     {tabs.map((tab) => (
-                                        <>
+                                        <div key={`${tab.name}`}>
                                             <Tab
                                                 key={tab.name}
                                                 onClick={() =>
@@ -625,7 +625,7 @@ const Education = () => {
                                                     </div>
                                                 )}
                                             </Tab>
-                                        </>
+                                        </div>
                                     ))}
                                     {/* Tab Title */}
                                     <div className="absolute mt-36 ml-4 overflow-ellipsis  text-left text-xl tracking-[2px] text-gray-500">
@@ -673,10 +673,10 @@ const Education = () => {
                         {/* End Mobile Tabs */}
 
                         <Tab.Panels as={Fragment}>
-                            {tabs.map((tab, tabIndex) => (
+                            {tabs.map((tab) => (
                                 <Tab.Panel
                                     key={tab.name}
-                                    className=" z-50 lg:pt-16"
+                                    className=" z-50 p-2 lg:pt-16"
                                 >
                                     <div
                                         className={` ${
@@ -688,7 +688,9 @@ const Education = () => {
                                     >
                                         {tab.features.map(
                                             (feature, featureIndex) => (
-                                                <>
+                                                <div
+                                                    key={`${tab.name}-${featureIndex}`}
+                                                >
                                                     {/* High School and College Layout */}
                                                     {selectedTab !==
                                                         "Continued Education / Certificates" &&
@@ -698,7 +700,7 @@ const Education = () => {
                                                                 key={
                                                                     feature.name
                                                                 }
-                                                                className="flex flex-col-reverse items-center justify-between px-4 py-8 sm:px-0 md:flex-row"
+                                                                className="z-50 flex flex-col-reverse items-center justify-between px-4 py-8 sm:px-0 md:flex-row"
                                                             >
                                                                 {/* Info */}
                                                                 <div className="md:w-1/2 md:pl-8 lg:w-2/3">
@@ -786,7 +788,7 @@ const Education = () => {
                                                                         activeIndex
                                                                             ? " border-gray-300 bg-white/50  dark:bg-[#353535] "
                                                                             : " "
-                                                                    } flex cursor-pointer items-center justify-between border-2  border-t-0  border-l-transparent border-r-transparent px-2 py-2 transition-all duration-300 ease-in-out last:border-b-transparent hover:bg-white/50 dark:border-zinc-800  dark:bg-zinc-800 dark:hover:bg-[#353535] dark:hover:text-sky-300`}
+                                                                    } z-50 flex cursor-pointer items-center justify-between border-2  border-t-0  border-l-transparent border-r-transparent px-2 py-2 transition-all duration-300 ease-in-out last:border-b-transparent hover:bg-white/50 dark:border-zinc-800  dark:bg-zinc-800 dark:hover:bg-[#353535] dark:hover:text-sky-300`}
                                                                     onClick={() =>
                                                                         handleAccordionClick(
                                                                             featureIndex
@@ -837,7 +839,7 @@ const Education = () => {
                                                                 {/* body */}
                                                                 {activeIndex ===
                                                                     featureIndex && (
-                                                                    <div className="bg-zinc-100 p-2 transition-all duration-300 ease-in-out dark:bg-zinc-900 dark:shadow-inner dark:shadow-black/50 md:flex md:justify-center md:px-4 lg:p-4">
+                                                                    <div className="z-50 bg-zinc-100 p-2 transition-all duration-300 ease-in-out dark:bg-zinc-900 dark:shadow-inner dark:shadow-black/50 md:flex md:justify-center md:px-4 lg:p-4">
                                                                         {/* Small Screen Image Full */}
                                                                         <div className="relative w-full overflow-hidden rounded-sm md:hidden">
                                                                             <img
@@ -1100,7 +1102,7 @@ const Education = () => {
                                                             </div>
                                                         </div>
                                                     )}
-                                                </>
+                                                </div>
                                             )
                                         )}
                                     </div>
@@ -1111,7 +1113,7 @@ const Education = () => {
                 </div>
             </section>
         </div>
-    )
-}
+    );
+};
 
-export default Education
+export default Education;

@@ -1,28 +1,32 @@
-import React from "react"
-import { useState, useEffect } from "react"
-import { HiFilter } from "react-icons/hi"
-import { BsRulers, BsFillCalendarMonthFill } from "react-icons/bs"
+import { active } from "d3";
+import React from "react";
+import { useState, useEffect } from "react";
+import { HiFilter } from "react-icons/hi";
+import { BsRulers, BsFillCalendarMonthFill } from "react-icons/bs";
 import {
     ArrowLongLeftIcon,
     ArrowLongRightIcon,
-} from "@heroicons/react/20/solid"
-import { IoIosHelpCircle } from "react-icons/io"
-import { IoCloseCircleOutline } from "react-icons/io5"
-import { FaDatabase } from "react-icons/fa"
-import { Tooltip } from "react-tooltip"
-import { SiStylelint } from "react-icons/si"
-import { MdOutlineSearch } from "react-icons/md"
-import { useTheme } from "../../hooks/useThemeContext"
-import Carousel from "../Carousel"
-import ProjectCard from "./ProjectCard.jsx"
+} from "@heroicons/react/20/solid";
+import { IoIosHelpCircle } from "react-icons/io";
+import { IoCloseCircleOutline } from "react-icons/io5";
+import { FaDatabase } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
+import { SiStylelint } from "react-icons/si";
+import { MdOutlineSearch } from "react-icons/md";
+import { useTheme } from "../../hooks/useThemeContext";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import MobileMenu from "../mobileMenu";
+import Carousel from "../Carousel";
 
 function getYearArray() {
-    const currentYear = new Date().getFullYear()
-    const yearArray = []
+    const currentYear = new Date().getFullYear();
+    const yearArray = [];
     for (let year = 2022; year <= currentYear; year++) {
-        yearArray.push(year)
+        yearArray.push(year);
     }
-    return yearArray
+    return yearArray;
 }
 
 const Technologies = [
@@ -93,7 +97,7 @@ const Technologies = [
         logo: "https://i.ibb.co/y4ZP2qG/sendgrid.png",
         type: "other",
     },
-]
+];
 
 const ProjectItems = [
     {
@@ -237,10 +241,348 @@ const ProjectItems = [
             },
         ],
     },
-]
+];
+
+const ProjectCard = ({
+    project,
+    searchTerm,
+    renderMatchedInfo,
+    activeDescription,
+    setShowCarousel,
+    activeGalleryImages,
+    setActiveGalleryImages,
+}) => {
+    const {
+        name,
+        image,
+        tagline,
+        description,
+        year,
+        technologies,
+        repository,
+        galleryImages,
+        link,
+        month,
+        tags,
+        id,
+    } = project;
+
+    const { mode } = useTheme();
+
+    const [minimizeGallery, setMinimizeGallery] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isLarge, setIsLarge] = useState(false);
+
+    const handleGalleryClick = (clickedImage) => {
+        const images = [image, ...galleryImages.map((item) => item.image)];
+        const filteredImages = images.filter((item) => item !== clickedImage);
+        setActiveGalleryImages([clickedImage, ...filteredImages]);
+        console.log(activeGalleryImages);
+        setShowCarousel(true);
+    };
+
+    const matchedTechnologies = Technologies.filter((technology) =>
+        technologies.includes(technology.name)
+    );
+
+    const gall4 = galleryImages.slice(0, 4);
+
+    const createValidId = (str) => str.replace(/\s+/g, "_");
+
+    const windowCheck = () => {
+        const handleResize = () => {
+            if (window.innerWidth > 768 && window.innerWidth < 1024) {
+                setMinimizeGallery(false);
+                setIsMobile(false);
+                setIsLarge(false);
+            } else if (window.innerWidth > 1024) {
+                setMinimizeGallery(true);
+                setIsMobile(false);
+                setIsLarge(true);
+            } else {
+                setMinimizeGallery(true);
+                setIsMobile(true);
+                setIsLarge(false);
+            }
+        };
+
+        // Set the initial values on load
+        handleResize();
+
+        // Add the event listener
+        window.addEventListener("resize", handleResize);
+    };
+
+    useEffect(() => {
+        windowCheck();
+    }, []);
+
+    return (
+        <div className="w-fit">
+            {/* main content */}
+            <div className="h-full w-auto items-center justify-center rounded-lg p-1">
+                <div className="flex w-auto flex-col gap-2 overflow-hidden md:flex-row lg:gap-4 ">
+                    {/* Left */}
+                    <div
+                        className={`relative flex w-auto flex-col items-start justify-start ${
+                            minimizeGallery ? "md:w-[60%]" : "md:w-[50%]"
+                        } `}
+                    >
+                        {/* image */}
+                        {/* <img
+                            src={image}
+                            alt={name}
+                            className="rounded-md  lg:rounded-lg"
+                            style={{ minHeight: "180px" }}
+                        /> */}
+                        <div
+                            className={` ${
+                                minimizeGallery == true ? "" : ""
+                            } flex flex-col md:h-[222px] md:flex-row`}
+                        >
+                            {/* Main Image */}
+                            <div
+                                onClick={() => handleGalleryClick(image)}
+                                className={`main-image h-auto cursor-pointer overflow-hidden rounded-lg  opacity-90 transition-all duration-300 ease-in-out hover:opacity-100 md:rounded-r-none lg:rounded-lg ${
+                                    minimizeGallery
+                                        ? "w-auto"
+                                        : "w-auto md:w-4/5"
+                                }`}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <img
+                                    src={image}
+                                    alt={name}
+                                    className="cursor-pointer object-cover"
+                                    style={{ minHeight: "220px" }}
+                                />
+                            </div>
+
+                            {/* Additional Images */}
+                            <div
+                                className={` ${
+                                    minimizeGallery == true
+                                        ? "h-[99%] w-full  p-1  md:w-1/5 md:max-w-[75px]"
+                                        : "w-0"
+                                } z-20 flex bg-transparent transition-all duration-300 ease-in-out md:flex-col lg:mx-2 lg:w-auto lg:max-w-[75px] lg:bg-transparent`}
+                                style={
+                                    isMobile === false && isLarge === false
+                                        ? mode !== "dark"
+                                            ? {
+                                                  backgroundColor: "#d5d5d5",
+                                                  opacity: "0.8",
+                                                  backgroundImage:
+                                                      "radial-gradient(#484848 0.8px, #d5d5d5 0.8px)",
+                                                  backgroundSize: "16px 16px",
+                                              }
+                                            : {
+                                                  backgroundColor: "#1c1c1c",
+                                                  opacity: "0.8",
+                                                  backgroundImage:
+                                                      "radial-gradient(#727272 0.8px, #1c1c1c 0.8px)",
+                                                  backgroundSize: "16px 16px",
+                                              }
+                                        : { backgroundColor: "transparent" }
+                                }
+                            >
+                                <ul className="flex w-full gap-2 md:h-full md:flex-col md:p-0">
+                                    {/* Map over the first 4 images of the gallry and display them in a column */}
+
+                                    {gall4.map((gallery4) => {
+                                        return (
+                                            <li
+                                                key={image.id}
+                                                className="h-[10vw] w-1/4 cursor-pointer overflow-hidden rounded-lg bg-gray-700 object-fill object-center opacity-80 shadow-md shadow-black/30 hover:opacity-100 md:h-1/4 md:w-full"
+                                                onClick={() =>
+                                                    handleGalleryClick(
+                                                        gallery4.image
+                                                    )
+                                                }
+                                            >
+                                                <img
+                                                    src={gallery4.image}
+                                                    className="mx-auto h-full w-auto object-cover"
+                                                />
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+
+                            {/* Show / hide Gallery Button */}
+                            <div
+                                onClick={() =>
+                                    setMinimizeGallery(!minimizeGallery)
+                                }
+                                className={` ${
+                                    minimizeGallery == false ? "" : ""
+                                } hidden h-auto w-fit  cursor-pointer items-center justify-center rounded rounded-r-lg bg-zinc-200 p-0 text-zinc-600 hover:bg-slate-200 active:bg-zinc-300 dark:bg-zinc-700 dark:text-white md:flex md:rounded-r-lg lg:hidden`}
+                            >
+                                {minimizeGallery == false && (
+                                    <p className="mx-1 mt-[4.8rem] flex w-6 -rotate-90 whitespace-nowrap text-center align-middle tracking-wider transition-all duration-300 ease-in">
+                                        Show Gallery
+                                    </p>
+                                )}
+                                {minimizeGallery == true && (
+                                    <p className="mx-1 mt-[4.4rem] flex w-6 -rotate-90 whitespace-nowrap text-center align-middle tracking-wider transition-all duration-300 ease-in">
+                                        Hide Gallery
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Search Term Filter Data Match */}
+                        {searchTerm.length ? renderMatchedInfo() : null}
+                        {/* tags */}
+                        <div className="no-scrollbar mt-4 hidden w-[195%] overflow-scroll md:flex lg:max-w-[100%] xl:max-w-[195%]">
+                            <h4 className=" mx-2 w-fit text-sm font-medium dark:text-gray-300 md:text-base">
+                                TAGS:
+                            </h4>
+                            {tags.map((tag) => {
+                                return (
+                                    <div
+                                        key={tag}
+                                        className="mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1 py-[2px] text-xs leading-none text-gray-500 dark:bg-transparent md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 md:dark:border-white/10 lg:px-3 lg:text-xs xl:text-xs"
+                                    >
+                                        {tag}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    {/* Right */}
+                    <div
+                        className={`flex w-auto  flex-col items-start justify-start pl-4 md:pl-0 ${
+                            minimizeGallery
+                                ? " md:w-[30%]"
+                                : "-translate-x-4 md:w-[40%]"
+                        } `}
+                    >
+                        {/* Name */}
+                        <h2 className="max-w-[90%] text-left text-2xl font-bold lg:mb-2 lg:max-w-[unset] lg:text-4xl">
+                            {name}
+                        </h2>
+                        {/* Date */}
+                        <h2 className="text-base dark:text-gray-500">
+                            {month}, {year}
+                        </h2>
+                        {/* Techs */}
+                        <div className="flex overflow-ellipsis lg:mb-1">
+                            <h4 className="align-center text-md mt-3 flex h-8 justify-center p-[2px] text-center font-medium dark:text-gray-400 md:mt-2 md:text-xl">
+                                TECH:
+                            </h4>
+                            {/* output logos of each techology used in each project */}
+                            <div className="ml-2 flex">
+                                {matchedTechnologies.map((tech) => (
+                                    <img
+                                        key={tech.id}
+                                        className={`${
+                                            tech.invert ? "dark:invert" : ""
+                                        } my-2 h-8 pr-1`}
+                                        src={tech.logo}
+                                        alt={tech.name}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                        {/* Project Info */}
+                        <div className="mb-4 flex w-auto justify-start gap-2">
+                            <h2 className="cursor-pointer text-left ">
+                                <a
+                                    href={link}
+                                    className="rounded-full border-2 border-sky-500 px-5 py-1 text-sky-500 hover:border-sky-700 hover:bg-sky-50/20 hover:text-sky-700 dark:border-sky-400 dark:text-white dark:hover:border-sky-300 dark:hover:bg-white/5  dark:hover:text-white"
+                                >
+                                    Demo
+                                </a>
+                            </h2>
+                            <h2 className="cursor-pointer text-left">
+                                <a
+                                    href={repository}
+                                    className="rounded-full bg-sky-400 px-5 py-1 text-white hover:bg-sky-500 dark:bg-sky-600 dark:hover:bg-sky-500"
+                                >
+                                    Repository
+                                </a>
+                            </h2>
+                        </div>
+                        {/* Description Dropdown*/}
+                        <div
+                            id="accordionExample"
+                            className="z-20 mb-8 w-full bg-white dark:bg-transparent"
+                        >
+                            <div className="w-auto rounded-t-lg rounded-b-lg border border-neutral-200 dark:border-neutral-600">
+                                <h2 className="mb-0" id="headingOne">
+                                    <button
+                                        className=" group relative flex w-full items-center rounded-t-lg rounded-b-lg border-0 py-2 px-3 text-left text-base text-gray-500 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-[#1E1E1D] dark:text-white [&:not([data-te-collapse-collapsed])]:rounded-b-none [&:not([data-te-collapse-collapsed])]:border-b-0 [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-sky-500 [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-[#1E1E1D] dark:[&:not([data-te-collapse-collapsed])]:text-sky-300 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                                        type="button"
+                                        data-te-collapse-init
+                                        data-te-collapse-collapsed
+                                        data-te-target={`#collapseOne-${createValidId(
+                                            name
+                                        )}`}
+                                        aria-expanded="false"
+                                        aria-controls={`collapseOne-${createValidId(
+                                            name
+                                        )}`}
+                                    >
+                                        Description
+                                        <span classname="ml-auto h-5 w-5 shrink-0 rotate-180 fill-[#212529] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:translate-y-0.5 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#336dec] motion-reduce:transition-none dark:fill-white dark:group-[[data-te-collapse-collapsed]]:fill-blue-300">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth="1.5"
+                                                stroke="currentColor"
+                                                classname="h-6 w-6"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                                />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div
+                                    // id="collapseOne"
+                                    id={`collapseOne-${createValidId(name)}`}
+                                    className={`!visible ${
+                                        activeDescription === name
+                                            ? ""
+                                            : "hidden"
+                                    }`}
+                                    data-te-collapse-item
+                                    // aria-labelledby="headingOne"
+                                    aria-labelledby={`headingOne-${createValidId(
+                                        name
+                                    )}`}
+                                    data-te-parent="#accordionExample"
+                                >
+                                    <div className="rounded-b-lg border-[#525252] bg-white py-4 px-5 dark:bg-[#1E1E1D] dark:text-gray-300 dark:[&:not([data-te-collapse-collapsed])]:border-t-[1px]">
+                                        <p className="mb-2 text-left">
+                                            <strong className="dark:text-white">
+                                                {tagline}
+                                            </strong>{" "}
+                                            {description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr className="mx-auto w-full -translate-x-2 border border-gray-200 dark:border-gray-700 md:hidden" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const Projects = () => {
-    // PROJECTS FUNCTIONS
     const [activeFilters, setActiveFilters] = useState([
         "Vanilla",
         "Typescript",
@@ -255,29 +597,32 @@ const Projects = () => {
         "PlanetScale",
         "2023",
         "2022",
-    ])
+    ]);
+
+    const [showMobileFilters, setShowMobileFilters] = useState(true);
     const [hoveredFilter, setHoveredFilter] = useState({
         filter: "",
         count: 0,
-    })
-    const [showMobileFilters, setShowMobileFilters] = useState(true)
-    const [currentPage, setCurrentPage] = useState(1)
-    const [showHelpInfo, setShowHelpInfo] = useState(false)
-    const [searchTerm, setSearchTerm] = useState("")
-    const [inputFocused, setInputFocused] = useState(false)
-    const [searchMatchInfo, setSearchMatchInfo] = useState({})
-    const [showCarousel, setShowCarousel] = useState(false)
-    const [activeGalleryImages, setActiveGalleryImages] = useState([])
-    const itemsPerPage = 4
+    });
+    const [currentPage, setCurrentPage] = useState(1);
+    const [showHelpInfo, setShowHelpInfo] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [inputFocused, setInputFocused] = useState(false);
+    const [searchMatchInfo, setSearchMatchInfo] = useState({});
+    const [showCarousel, setShowCarousel] = useState(false);
+    const [activeGalleryImages, setActiveGalleryImages] = useState([]);
+    const itemsPerPage = 4;
+
     const updateCurrentPage = (newPage) => {
         // Ensure the new page number is within the valid range
-        const maxPage = Math.ceil(filteredProjects.length / itemsPerPage)
+        const maxPage = Math.ceil(filteredProjects.length / itemsPerPage);
         if (newPage >= 1 && newPage <= maxPage) {
-            setCurrentPage(newPage)
+            setCurrentPage(newPage);
         }
-    }
+    };
+
     const toggleFilter = (filterName) => {
-        const yearFilters = getYearArray().map((year) => year.toString())
+        const yearFilters = getYearArray().map((year) => year.toString());
 
         if (activeFilters.includes(filterName)) {
             // If filter is already active, remove it only if it's not the last year filter
@@ -290,156 +635,193 @@ const Projects = () => {
             ) {
                 setActiveFilters(
                     activeFilters.filter((name) => name !== filterName)
-                )
+                );
             }
 
             // If the user deselects the last active year, select the most recent year
             const remainingYearFilters = activeFilters.filter(
                 (name) => yearFilters.includes(name) && name !== filterName
-            )
+            );
             if (
                 yearFilters.includes(filterName) &&
                 remainingYearFilters.length === 0
             ) {
-                const mostRecentYear = Math.max(...yearFilters)
+                const mostRecentYear = Math.max(...yearFilters);
                 setActiveFilters([
                     ...activeFilters.filter((name) => name !== filterName),
                     mostRecentYear.toString(),
-                ])
+                ]);
             }
         } else {
             // If filter is inactive, add it
-            setActiveFilters([...activeFilters, filterName])
+            setActiveFilters([...activeFilters, filterName]);
         }
-    }
+    };
+
     const handleMobileFilterClose = () => {
         // Close mobile filter menu
         showMobileFilters
             ? setShowMobileFilters(false)
-            : setShowMobileFilters(true)
-    }
+            : setShowMobileFilters(true);
+    };
+
     const countMatchingProjects = (filter) => {
         return ProjectItems.filter(
             (project) =>
                 project.technologies.includes(filter) ||
                 project.year.toString() === filter
-        ).length
-    }
+        ).length;
+    };
+
     // Rename the searchMatches function to getSearchMatchInfo
     const getSearchMatchInfo = (project, searchTerm) => {
         if (searchTerm.length === 0) {
-            return { isMatch: true, matchType: "", matchText: "" }
+            return { isMatch: true, matchType: "", matchText: "" };
         }
 
         const nameMatch = project.name
             .toLowerCase()
-            .includes(searchTerm.toLowerCase())
+            .includes(searchTerm.toLowerCase());
         const tagsMatch = project.tags.some((tag) =>
             tag.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+        );
         const descriptionMatch = project.description
             .toLowerCase()
-            .includes(searchTerm.toLowerCase())
+            .includes(searchTerm.toLowerCase());
 
         if (nameMatch) {
             return {
                 isMatch: true,
                 matchType: "Name",
                 matchText: project.name,
-            }
+            };
         } else if (tagsMatch) {
             const matchedTag = project.tags.find((tag) =>
                 tag.toLowerCase().includes(searchTerm.toLowerCase())
-            )
+            );
             return {
                 isMatch: true,
                 matchType: "Tag",
                 matchText: matchedTag,
-            }
+            };
         } else if (descriptionMatch) {
             return {
                 isMatch: true,
                 matchType: "Description",
                 matchText: project.description,
-            }
+            };
         } else {
-            return { isMatch: false, matchType: "", matchText: "" }
+            return { isMatch: false, matchType: "", matchText: "" };
         }
-    }
+    };
+
     // Move setSearchMatchInfo logic outside of filteredProjects function
     useEffect(() => {
-        const newSearchMatchInfo = {}
+        const newSearchMatchInfo = {};
 
         ProjectItems.forEach((project) => {
-            const searchMatch = getSearchMatchInfo(project, searchTerm)
-            newSearchMatchInfo[project.name] = searchMatch
-        })
+            const searchMatch = getSearchMatchInfo(project, searchTerm);
+            newSearchMatchInfo[project.name] = searchMatch;
+        });
 
-        setSearchMatchInfo(newSearchMatchInfo)
-    }, [ProjectItems, searchTerm, activeFilters])
+        setSearchMatchInfo(newSearchMatchInfo);
+    }, [ProjectItems, searchTerm, activeFilters]);
+
     // Update the filteredProjects function
     const filteredProjects = ProjectItems.filter((project) => {
         const hasTechnology = project.technologies.some((tech) =>
             activeFilters.includes(tech)
-        )
-        const hasYear = activeFilters.includes(project.year.toString())
+        );
+        const hasYear = activeFilters.includes(project.year.toString());
 
         return (
             hasTechnology && hasYear && searchMatchInfo[project.name]?.isMatch
-        )
-    })
+        );
+    });
+
     const areAllFiltersActive = () => {
         // Get all technology names
-        const allTechnologyFilters = Technologies.map((tech) => tech.name)
+        const allTechnologyFilters = Technologies.map((tech) => tech.name);
 
         // Get all years from year array
-        const allYearFilters = getYearArray().map((year) => year.toString())
+        const allYearFilters = getYearArray().map((year) => year.toString());
 
         // Combine both arrays
-        const allFilters = [...allTechnologyFilters, ...allYearFilters]
+        const allFilters = [...allTechnologyFilters, ...allYearFilters];
 
         // Check if every filter in allFilters is present in activeFilters
-        return allFilters.every((filter) => activeFilters.includes(filter))
-    }
+        return allFilters.every((filter) => activeFilters.includes(filter));
+    };
+
     const projectsToDisplay = filteredProjects.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
-    )
-    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage)
+    );
+
+    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+
     const renderMatchedInfo = (searchMatchInfo, name, searchTerm) => {
         if (searchTerm == "" || searchTerm == null || searchTerm == undefined) {
-            return ""
+            return "";
         }
 
-        const matchInfo = searchMatchInfo[name] || {}
+        const matchInfo = searchMatchInfo[name] || {};
 
         if (!matchInfo.matchType || !matchInfo.matchText) {
-            return null
+            return null;
         }
 
         const searchTermIndex = matchInfo.matchText
             .toLowerCase()
-            .indexOf(searchTerm.toLowerCase())
-        const beforeMatch = matchInfo.matchText.slice(0, searchTermIndex)
+            .indexOf(searchTerm.toLowerCase());
+        const beforeMatch = matchInfo.matchText.slice(0, searchTermIndex);
         const matchedText = matchInfo.matchText.slice(
             searchTermIndex,
             searchTermIndex + searchTerm.length
-        )
+        );
         const afterMatch = matchInfo.matchText.slice(
             searchTermIndex + searchTerm.length
-        )
-    }
-    //END PROJECTS  FUNCTIONS
+        );
+
+        return (
+            <>
+                <div
+                    className={` ${
+                        searchTerm === "" ? "hidden h-0 opacity-0" : ""
+                    }
+                w-automax-w-[50vw] my-2 rounded bg-gray-600 p-2 text-white shadow dark:bg-zinc-700`}
+                >
+                    <h3 className="text-center text-lg font-bold dark:text-gray-200">
+                        Search Term Match
+                    </h3>
+                    <p className="font-bold text-gray-400 dark:text-gray-200">
+                        Matching:{" "}
+                        <span className="font-normal text-white dark:text-gray-300">
+                            {matchInfo.matchType}
+                        </span>
+                    </p>
+                    <p className="overflow-hidden font-bold text-gray-400">
+                        Matched Text:{" "}
+                        <span className="px-2 py-0.5  font-normal text-white dark:text-gray-400">
+                            {beforeMatch}
+                            <span className="bg-yellow-300 dark:text-black">
+                                {matchedText}
+                            </span>
+                            {afterMatch}
+                        </span>
+                    </p>
+                </div>
+            </>
+        );
+    };
 
     return (
-        <div className="max-w-screen container relative flex w-screen max-w-[70rem] flex-col items-center  justify-evenly pb-12 text-center dark:bg-transparent md:px-6 md:text-left lg:px-10">
-            {/* Title */}
+        <div className="max-w-screen relative flex w-auto flex-col items-center justify-evenly  pb-12 text-center dark:bg-transparent md:px-6 md:text-left lg:max-w-[70rem] lg:px-10">
             <div className="flex w-auto justify-center">
                 <h3 className="z-50 translate-y-16  text-center text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
                     Projects
                 </h3>
             </div>
-
             {/* Subheader */}
             <div
                 id="lineup-container"
@@ -450,8 +832,6 @@ const Projects = () => {
                     currently being created.
                 </p>
             </div>
-
-            {/* Mobile / main div */}
             <div className="max-w-screen relative mx-auto flex w-auto justify-between dark:bg-transparent md:max-w-[1200px] ">
                 {/* mobile filter menu */}
                 <div
@@ -498,24 +878,24 @@ const Projects = () => {
                                 className="txt-sm flex min-w-fit cursor-pointer justify-center rounded-md border-2 border-transparent bg-sky-400 text-center align-middle text-white  hover:bg-sky-500  hover:text-white dark:bg-sky-500 dark:hover:bg-sky-400"
                                 onClick={() => {
                                     if (areAllFiltersActive()) {
-                                        setActiveFilters(["2023"])
-                                        updateCurrentPage(1)
+                                        setActiveFilters(["2023"]);
+                                        updateCurrentPage(1);
                                     } else {
                                         const allTechnologyFilters =
                                             Technologies.map(
                                                 (tech) => tech.name
-                                            )
+                                            );
                                         const allYearFilters =
                                             getYearArray().map((year) =>
                                                 year.toString()
-                                            )
+                                            );
 
                                         setActiveFilters([
                                             ...allTechnologyFilters,
                                             ...allYearFilters,
-                                        ])
+                                        ]);
 
-                                        updateCurrentPage(1)
+                                        updateCurrentPage(1);
                                     }
                                 }}
                             >
@@ -553,7 +933,7 @@ const Projects = () => {
                                                 const isActive =
                                                     activeFilters.includes(
                                                         tech.name
-                                                    )
+                                                    );
                                                 return (
                                                     <div
                                                         className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
@@ -567,11 +947,11 @@ const Projects = () => {
                                                             const count =
                                                                 countMatchingProjects(
                                                                     tech.name
-                                                                )
+                                                                );
                                                             setHoveredFilter({
                                                                 filter: tech.name,
                                                                 count,
-                                                            })
+                                                            });
                                                         }}
                                                         onMouseLeave={() =>
                                                             setHoveredFilter({
@@ -599,7 +979,7 @@ const Projects = () => {
                                                             alt={tech.name}
                                                         ></img>
                                                     </div>
-                                                )
+                                                );
                                             }
                                         })}
                                     </div>
@@ -623,7 +1003,7 @@ const Projects = () => {
                                                 const isActive =
                                                     activeFilters.includes(
                                                         tech.name
-                                                    )
+                                                    );
                                                 return (
                                                     <div
                                                         className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
@@ -637,11 +1017,11 @@ const Projects = () => {
                                                             const count =
                                                                 countMatchingProjects(
                                                                     tech.name
-                                                                )
+                                                                );
                                                             setHoveredFilter({
                                                                 filter: tech.name,
                                                                 count,
-                                                            })
+                                                            });
                                                         }}
                                                         onMouseLeave={() =>
                                                             setHoveredFilter({
@@ -669,7 +1049,7 @@ const Projects = () => {
                                                             alt={tech.name}
                                                         ></img>
                                                     </div>
-                                                )
+                                                );
                                             }
                                         })}
                                     </div>
@@ -693,7 +1073,7 @@ const Projects = () => {
                                                 const isActive =
                                                     activeFilters.includes(
                                                         tech.name
-                                                    )
+                                                    );
                                                 return (
                                                     <div
                                                         key={tech.id}
@@ -707,11 +1087,11 @@ const Projects = () => {
                                                             const count =
                                                                 countMatchingProjects(
                                                                     tech.name
-                                                                )
+                                                                );
                                                             setHoveredFilter({
                                                                 filter: tech.name,
                                                                 count,
-                                                            })
+                                                            });
                                                         }}
                                                         onMouseLeave={() =>
                                                             setHoveredFilter({
@@ -739,7 +1119,7 @@ const Projects = () => {
                                                             alt={tech.name}
                                                         ></img>
                                                     </div>
-                                                )
+                                                );
                                             }
                                         })}
                                     </div>
@@ -762,7 +1142,7 @@ const Projects = () => {
                                             const isActive =
                                                 activeFilters.includes(
                                                     year.toString()
-                                                )
+                                                );
                                             return (
                                                 <div
                                                     key={year}
@@ -776,11 +1156,11 @@ const Projects = () => {
                                                         const count =
                                                             countMatchingProjects(
                                                                 tech.name
-                                                            )
+                                                            );
                                                         setHoveredFilter({
                                                             filter: tech.name,
                                                             count,
-                                                        })
+                                                        });
                                                     }}
                                                     onMouseLeave={() =>
                                                         setHoveredFilter({
@@ -799,7 +1179,7 @@ const Projects = () => {
                                                         {year}
                                                     </h3>
                                                 </div>
-                                            )
+                                            );
                                         })}
                                     </div>
                                 </div>
@@ -851,23 +1231,23 @@ const Projects = () => {
                                 className="txt-xs my-auto mx-auto mr-2 cursor-pointer text-gray-500 dark:text-gray-400"
                                 onClick={() => {
                                     if (areAllFiltersActive()) {
-                                        setActiveFilters(["2023"])
-                                        updateCurrentPage(1)
+                                        setActiveFilters(["2023"]);
+                                        updateCurrentPage(1);
                                     } else {
                                         const allTechnologyFilters =
                                             Technologies.map(
                                                 (tech) => tech.name
-                                            )
+                                            );
                                         const allYearFilters =
                                             getYearArray().map((year) =>
                                                 year.toString()
-                                            )
+                                            );
 
                                         setActiveFilters([
                                             ...allTechnologyFilters,
                                             ...allYearFilters,
-                                        ])
-                                        updateCurrentPage(1)
+                                        ]);
+                                        updateCurrentPage(1);
                                     }
                                 }}
                             >
@@ -890,7 +1270,7 @@ const Projects = () => {
                                             const isActive =
                                                 activeFilters.includes(
                                                     tech.name
-                                                )
+                                                );
                                             return (
                                                 <div
                                                     className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
@@ -902,11 +1282,11 @@ const Projects = () => {
                                                         const count =
                                                             countMatchingProjects(
                                                                 tech.name
-                                                            )
+                                                            );
                                                         setHoveredFilter({
                                                             filter: tech.name,
                                                             count,
-                                                        })
+                                                        });
                                                     }}
                                                     onMouseLeave={() =>
                                                         setHoveredFilter({
@@ -947,7 +1327,7 @@ const Projects = () => {
                                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
                                                 </div>
-                                            )
+                                            );
                                         }
                                     })}
                                 </div>
@@ -963,7 +1343,7 @@ const Projects = () => {
                                             const isActive =
                                                 activeFilters.includes(
                                                     tech.name
-                                                )
+                                                );
                                             return (
                                                 <div
                                                     key={tech.id}
@@ -975,11 +1355,11 @@ const Projects = () => {
                                                         const count =
                                                             countMatchingProjects(
                                                                 tech.name
-                                                            )
+                                                            );
                                                         setHoveredFilter({
                                                             filter: tech.name,
                                                             count,
-                                                        })
+                                                        });
                                                     }}
                                                     onMouseLeave={() =>
                                                         setHoveredFilter({
@@ -1020,7 +1400,7 @@ const Projects = () => {
                                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
                                                 </div>
-                                            )
+                                            );
                                         }
                                     })}
                                 </div>
@@ -1036,7 +1416,7 @@ const Projects = () => {
                                             const isActive =
                                                 activeFilters.includes(
                                                     tech.name
-                                                )
+                                                );
                                             return (
                                                 <div
                                                     key={tech.id}
@@ -1048,11 +1428,11 @@ const Projects = () => {
                                                         const count =
                                                             countMatchingProjects(
                                                                 tech.name
-                                                            )
+                                                            );
                                                         setHoveredFilter({
                                                             filter: tech.name,
                                                             count,
-                                                        })
+                                                        });
                                                     }}
                                                     onMouseLeave={() =>
                                                         setHoveredFilter({
@@ -1093,7 +1473,7 @@ const Projects = () => {
                                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
                                                 </div>
-                                            )
+                                            );
                                         }
                                     })}
                                 </div>
@@ -1107,7 +1487,7 @@ const Projects = () => {
                                     {getYearArray().map((year) => {
                                         const isActive = activeFilters.includes(
                                             year.toString()
-                                        )
+                                        );
                                         return (
                                             <div
                                                 key={year}
@@ -1121,11 +1501,11 @@ const Projects = () => {
                                                     const count =
                                                         countMatchingProjects(
                                                             year.toString()
-                                                        )
+                                                        );
                                                     setHoveredFilter({
                                                         filter: year.toString(),
                                                         count,
-                                                    })
+                                                    });
                                                 }}
                                                 onMouseLeave={() =>
                                                     setHoveredFilter({
@@ -1154,7 +1534,7 @@ const Projects = () => {
                                                     className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                 />
                                             </div>
-                                        )
+                                        );
                                     })}
                                 </div>
                             </div>
@@ -1164,7 +1544,7 @@ const Projects = () => {
                     <div className=" mt-10 ml-auto flex w-auto flex-col rounded-2xl bg-white p-[2px] py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/30 sm:p-2 md:gap-6">
                         {projectsToDisplay.length > 0 ? (
                             projectsToDisplay.map((project) => {
-                                const id = project.id
+                                const id = project.id;
                                 return (
                                     <>
                                         {/* filter project according to the search term if the search term length is greater than 0, where matchtype is the type (contains: name, title or description, and text is the surrounding text of the search containing the search query, and highlighting it in yellow) */}
@@ -1195,7 +1575,7 @@ const Projects = () => {
                                             />
                                         </React.Fragment>
                                     </>
-                                )
+                                );
                             })
                         ) : (
                             <div className=" flex h-full flex-col items-center justify-center align-middle">
@@ -1211,8 +1591,8 @@ const Projects = () => {
                                     <div
                                         className="flex"
                                         onClick={() => {
-                                            setShowHelpInfo(!showHelpInfo)
-                                            setSearchTerm("")
+                                            setShowHelpInfo(!showHelpInfo);
+                                            setSearchTerm("");
                                         }}
                                     >
                                         <h2 className="my-auto mr-3 flex text-xl">
@@ -1352,7 +1732,7 @@ const Projects = () => {
                             >
                                 <a
                                     onClick={() => {
-                                        updateCurrentPage(currentPage + 1)
+                                        updateCurrentPage(currentPage + 1);
                                     }}
                                     href="#projects"
                                     className="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium "
@@ -1368,7 +1748,6 @@ const Projects = () => {
                     )}
                 </div>
             </div>
-            {/* Image Carousel (Gallery Viewer full screen) */}
             {showCarousel && (
                 <div className="fixed top-0 bottom-0 z-[99999999999999999999999] h-screen w-screen overscroll-contain">
                     <Carousel
@@ -1380,9 +1759,8 @@ const Projects = () => {
                     />
                 </div>
             )}
-            {/* End Projects */}
         </div>
-    )
-}
+    );
+};
 
-export default Projects
+export default Projects;

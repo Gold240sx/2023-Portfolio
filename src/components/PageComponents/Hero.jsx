@@ -24,13 +24,13 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5 }}
-                className="min-h-6 relative flex h-auto w-full flex-col items-center justify-center"
+                className="min-h-4 relative flex h-auto w-full flex-col items-center justify-center sm:min-h-6"
             >
                 <img
                     src={heroImage}
                     alt="hero-image"
                     id="hero-image"
-                    className="h-auto max-w-[500px]"
+                    className="max-w-screen h-auto md:max-w-[500px]"
                     style={{ maxHeight: "90vh" }} // set max height if needed
                 />
             </motion.div>

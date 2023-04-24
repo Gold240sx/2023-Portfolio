@@ -40,7 +40,10 @@ function App({ children }) {
 
     return (
         <>
-            <main className=" relative h-full w-screen bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white">
+            <main
+                className=" relative h-full w-screen bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white"
+                // style={{ maxWidth: "100dvw", overflowX: "hidden" }}
+            >
                 {/* Developer Notes*/}
                 {/* <div className="text-red fixed top-0 z-[9999999999999999999999999999999999] mb-20 h-fit max-h-[180px] w-full overflow-y-auto scroll-auto bg-black p-5 text-white">
                     <h2 className=" mb-2 block text-2xl text-slate-300">
@@ -76,14 +79,15 @@ function App({ children }) {
                     </span>
                 </div> */}
                 {/* End Developer Notes*/}
+
                 {authIsReady && (
                     <BrowserRouter>
                         <Navbar />
-                        <div className="fixed right-0 z-50">
+                        <div className="fixed right-0 z-[90]">
                             <div
                                 id="dark-mode-toggle"
                                 onClick={() => darkModeToggle()}
-                                className="mt-[100px]  h-16 w-[50px] cursor-pointer rounded-l-xl bg-zinc-200 text-center align-middle text-3xl text-zinc-400 shadow-xl hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-600 dark:hover:bg-zinc-800"
+                                className="z-[90] mt-[100px] h-16 w-[50px] cursor-pointer rounded-l-xl bg-zinc-200 text-center align-middle text-3xl text-zinc-400 shadow-xl hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-600 dark:hover:bg-zinc-800"
                             >
                                 <FaSun
                                     className="z-100 m-auto h-full justify-center dark:hidden"
@@ -131,7 +135,10 @@ function App({ children }) {
                     </BrowserRouter>
                 )}
             </main>
-            <section className=" h-fit w-full dark:bg-[#111111] dark:text-white">
+            <section
+                className=" h-fit w-screen dark:bg-[#111111] dark:text-white"
+                style={{ maxWidth: "100dvw" }}
+            >
                 <Footer />
             </section>
         </>
