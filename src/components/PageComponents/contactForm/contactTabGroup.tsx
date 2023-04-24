@@ -2,12 +2,31 @@ import React from "react"
 import GetQuote from "./getQuote"
 import Generalinquiry from "./generalinquiry"
 import HireMe from "./hireMe"
-import Swal from "sweetalert2"
+import swal from "sweetalert"
 
 interface TabPanelProps {
     children?: React.ReactNode
     index: any
     value: any
+}
+
+const handleSendTestEmail = async (data) => {
+    const url =
+        "https://us-central1-portfolio-23-b06dc.cloudfunctions.net/sendTestEmail"
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        const responseData = await response.json()
+        console.log("Email sent:", responseData.success)
+    } catch (error) {
+        console.error("Error sending email:", error)
+    }
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -22,7 +41,7 @@ function TabPanel(props: TabPanelProps) {
             className="w-full"
             {...other}
         >
-            {value === index && <div className="w-full p-4">{children}</div>}
+            {value === index && <div className=" w-full px-4">{children}</div>}
         </div>
     )
 }
@@ -37,12 +56,12 @@ export default function TabGroup() {
 
     const onSubmit = (data: Partial<{}>) => {
         setStore({
-            ...store,
             ...data,
         })
+        handleSendTestEmail(data)
 
         // alert and thank the user for their submission using sweetalert2
-        Swal.fire({
+        swal({
             title: "Thank you for Reaching Out!",
             text: "We will get back to you as soon as possible.",
             icon: "success",
@@ -53,6 +72,7 @@ export default function TabGroup() {
 
         //  reset all form fields within the store
         setStore({
+            contactType: "Get a Quote",
             company: "",
             email: "",
             position: "",
@@ -72,7 +92,7 @@ export default function TabGroup() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="mb-5 flex flex-col items-center justify-center ">
             <div className="mx-auto mt-2 mb-6 w-auto overflow-hidden  rounded-xl border-2 p-4 text-gray-400 dark:border-black/20 md:w-[580px]">
                 <div className=" mx-auto flex flex-col justify-around overflow-hidden rounded-xl border border-black/10 bg-gray-50/50 shadow-inner shadow-black/20 outline-2 dark:bg-black/20 sm:w-fit sm:flex-row">
                     <button

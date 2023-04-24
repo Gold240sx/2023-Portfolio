@@ -40,21 +40,18 @@ function App({ children }) {
 
     return (
         <>
-            <main className=" relative h-full w-screen bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white">
+            <main
+                className=" relative h-full w-screen bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white"
+                // style={{ maxWidth: "100dvw", overflowX: "hidden" }}
+            >
                 {/* Developer Notes*/}
-                <div className="text-red fixed top-0 z-[9999999999999999999999999999999999] mb-20 h-fit max-h-[180px] w-full overflow-y-auto scroll-auto bg-black p-5">
+                {/* <div className="text-red fixed top-0 z-[9999999999999999999999999999999999] mb-20 h-fit max-h-[180px] w-full overflow-y-auto scroll-auto bg-black p-5 text-white">
                     <h2 className=" mb-2 block text-2xl text-slate-300">
                         Developer Notes:
                     </h2>{" "}
                     <hr className="w-full border-gray-800" />
-                    <span className="flex h-fit flex-wrap text-2xl text-slate-700 dark:text-white">
+                    <span className="flex h-fit flex-wrap text-2xl ">
                         <h2 className=" text-lg text-slate-200 ">Projects:</h2>{" "}
-                        <p className="ml-1 text-[18px] text-gray-600">
-                            Maybe add a gallery with previews of each project
-                        </p>{" "}
-                        <p className="ml-1 text-[18px] text-gray-600">
-                            Add a mac computer icon next to Projects
-                        </p>{" "}
                         <hr className="w-full border-gray-800" />
                         <h2 className=" text-lg text-slate-400 ">
                             Skills:
@@ -62,30 +59,14 @@ function App({ children }) {
                         <h2 className="mt-2 block w-screen text-lg text-slate-400">
                             Education
                         </h2>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Scrollable Mobile Menu
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Compare the accordian menu to the last commit to
-                            redesign light mode
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Ensure the images always stay the same aspect ratio
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Max width to education mobile view (stacked)
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            max-4 projects with expansion
-                        </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Add the labels for Education tabs
-                        </p>{" "}
                         <h2 className="mt-2 block w-screen text-lg text-slate-400">
                             Timeline
                         </h2>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Fix Timeline for Mobile
+                        <h2 className="mt-2 block w-screen text-lg text-slate-400">
+                            Contact
+                        </h2>{" "}
+                        <p className="ml-1 text-[18px] text-gray-600 line-through">
+                            Maybe add a photo for contact me.
                         </p>{" "}
                         <hr className="w-full border-gray-800" />
                     </span>
@@ -95,20 +76,18 @@ function App({ children }) {
                         <p className="ml-1 text-[18px]">
                             Create an open / close state for dev notes.
                         </p>{" "}
-                        <p className="ml-1 text-[18px]">
-                            Optimize images for faster DL Speed.
-                        </p>{" "}
                     </span>
-                </div>
+                </div> */}
                 {/* End Developer Notes*/}
+
                 {authIsReady && (
                     <BrowserRouter>
                         <Navbar />
-                        <div className="fixed right-0 z-50">
+                        <div className="fixed right-0 z-[90]">
                             <div
                                 id="dark-mode-toggle"
                                 onClick={() => darkModeToggle()}
-                                className="mt-[100px]  h-16 w-[50px] cursor-pointer rounded-l-xl bg-zinc-200 text-center align-middle text-3xl text-zinc-400 shadow-xl hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-600 dark:hover:bg-zinc-800"
+                                className="z-[90] mt-[100px] h-16 w-[50px] cursor-pointer rounded-l-xl bg-zinc-200 text-center align-middle text-3xl text-zinc-400 shadow-xl hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-600 dark:hover:bg-zinc-800"
                             >
                                 <FaSun
                                     className="z-100 m-auto h-full justify-center dark:hidden"
@@ -138,9 +117,9 @@ function App({ children }) {
                         </div>
                         <Routes>
                             <Route path="/*" element={<Home />} />
-                            <Route path="/signin" element={<SignIn />} />
-                            <Route path="/signup" element={<Signup />} />
-                            {user && (
+                            {/* <Route path="/signin" element={<SignIn />} />
+                            <Route path="/signup" element={<Signup />} /> */}
+                            {/* {user && (
                                 <Route
                                     path="/dashboard"
                                     element={<Dashboard />}
@@ -151,12 +130,15 @@ function App({ children }) {
                                     path="/dashboard"
                                     element={<Navigate to="/signin" />}
                                 />
-                            )}
+                            )} */}
                         </Routes>
                     </BrowserRouter>
                 )}
             </main>
-            <section className=" h-fit w-full dark:bg-[#111111] dark:text-white">
+            <section
+                className=" h-fit w-screen dark:bg-[#111111] dark:text-white"
+                style={{ maxWidth: "100dvw" }}
+            >
                 <Footer />
             </section>
         </>

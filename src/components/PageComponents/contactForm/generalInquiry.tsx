@@ -19,7 +19,7 @@ export default ({
 }) => {
     const updatedStore = {
         ...store,
-        contactType: "Talk with Me",
+        contactType: "General Inquiry",
     }
     const {
         handleSubmit,
@@ -60,7 +60,7 @@ export default ({
     return (
         <form
             onSubmit={handleSubmit(handleFormSubmit)}
-            className="my-5 mx-auto flex w-full flex-col justify-center md:w-4/5 xl:w-3/4"
+            className=" my-5 mx-auto flex w-full flex-col justify-center md:w-4/5 xl:w-3/4"
         >
             <div className="floating-label-container flex h-fit flex-col md:mx-4">
                 <FaUserAstronaut
@@ -79,7 +79,7 @@ export default ({
                     name="name"
                     id="name"
                     placeholder=" "
-                    className="rounded border-0 bg-gray-300/10  font-normal outline-none focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-400/50 dark:bg-black/25 dark:text-white "
+                    className=" rounded border-0 bg-gray-300/10  font-normal outline-none focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-400/50 dark:bg-black/25 dark:text-white "
                 />
                 {errors.name && (
                     <p className="text-red-500">Name is required.</p>
@@ -156,7 +156,7 @@ export default ({
             <div className="floating-label-container mb-10 mt-6 flex h-fit flex-col md:mx-4">
                 <label
                     htmlFor="message"
-                    className="floating-label z-10 mb-2 w-fit text-xl text-gray-400 dark:text-white/30"
+                    className="floating-label mb-2 w-fit text-xl text-gray-400 dark:text-white/30"
                 >
                     Custom Message*
                 </label>
