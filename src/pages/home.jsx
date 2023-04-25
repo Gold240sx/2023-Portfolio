@@ -89,7 +89,6 @@ const Home = () => {
                     </div>
                 </div>
             </section> */}
-
             {/* Education */}
             <section
                 className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center align-middle"
@@ -135,13 +134,13 @@ const Home = () => {
                 }
                 id="projects"
             >
-                <div className="max-w-screen relative mx-auto flex justify-center md:p-4 lg:max-w-[70rem]">
-                    {/* <div
+                <div className="max-w-screen relative mx-auto flex justify-center md:p-4">
+                    <div
                         className="my-auto"
                         style={{ minHeight: "fit-content" }}
-                    > */}
-                    <Projects />
-                    {/* </div> */}
+                    >
+                        <Projects />
+                    </div>
                 </div>
             </section>
             {/* Contact */}
@@ -161,7 +160,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             {/* Blog */}
             {/* Art */}
             {/* Test */}
@@ -179,7 +177,7 @@ const Home = () => {
                 </div>
             </section> */}
         </div>
-    );
+    )
 }
 
 export default Home

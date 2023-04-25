@@ -371,7 +371,7 @@ export const navbar = () => {
                             astronautIsFlying ? "translate-y-[-500px]" : ""
                         } absolute z-[9999999999999999999999999999999999999999999999] h-full select-none items-end`}
                     >
-                        <div className="fixed bottom-0 right-2 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100">
+                        <div className="fixed bottom-0 right-2 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100 landscape:bottom-1 landscape:-right-6 landscape:-mb-4 landscape:scale-[70%] xl:landscape:scale-100">
                             <motion.div
                                 animate={astronautAnimation}
                                 className="z-50 duration-500 ease-in "

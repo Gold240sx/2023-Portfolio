@@ -86,6 +86,7 @@ const Technologies = [
         id: 10,
         logo: "https://i.ibb.co/DQH9WnY/planetscale.png",
         type: "database",
+        invert: true,
     },
     {
         name: "SendGrid",
@@ -432,10 +433,14 @@ const Projects = () => {
     //END PROJECTS  FUNCTIONS
 
     return (
-        <div className="max-w-screen container relative flex w-screen max-w-[70rem] flex-col items-center  justify-evenly pb-12 text-center dark:bg-transparent md:px-6 md:text-left lg:px-10">
+        <div
+            className={` ${
+                showMobileFilters ? "" : " "
+            } max-w-screen container relative z-40 flex w-auto max-w-[100vw] flex-col items-center justify-evenly border-2 border-red-600 pb-12 text-center  dark:bg-transparent md:text-left lg:max-w-[70rem]`}
+        >
             {/* Title */}
-            <div className="flex w-auto justify-center">
-                <h3 className="z-50 translate-y-16  text-center text-2xl uppercase tracking-[20px] text-gray-500 dark:text-white">
+            <div className="flex w-auto max-w-[100vw] justify-center">
+                <h3 className="z-50 translate-y-16  text-center text-xl uppercase tracking-[20px] text-gray-500 dark:text-white sm:text-2xl">
                     Projects
                 </h3>
             </div>
@@ -452,7 +457,11 @@ const Projects = () => {
             </div>
 
             {/* Mobile / main div */}
-            <div className="max-w-screen relative mx-auto flex w-auto justify-between dark:bg-transparent md:max-w-[1200px] ">
+            <div
+                className={` ${
+                    showMobileFilters ? "" : " "
+                } relative mx-auto flex w-full max-w-[100vw] justify-between border-2 border-gray-400 dark:bg-transparent `}
+            >
                 {/* mobile filter menu */}
                 <div
                     className={`${
@@ -810,10 +819,8 @@ const Projects = () => {
                 {/* Main Content */}
                 <div
                     className={` ${
-                        showMobileFilters
-                            ? " md:w-auto lg:w-[92%] xl:w-full"
-                            : "w-auto"
-                    } rounded-lg bg-white dark:bg-transparent md:p-4`}
+                        showMobileFilters ? "" : ""
+                    } w-full  max-w-[100vw] flex-col rounded-lg border-2 border-dashed border-orange-500 bg-white dark:bg-transparent md:p-4`}
                 >
                     {/* large filter box */}
                     <div className="relative mx-6 my-4 hidden h-fit w-auto rounded-2xl border-2 border-gray-200 bg-white bg-opacity-10  p-2 dark:border-none dark:bg-[#323737]/40 dark:text-white md:block">
@@ -1161,7 +1168,10 @@ const Projects = () => {
                         </div>
                     </div>
                     {/* Project Cards */}
-                    <div className=" mt-10 ml-auto flex w-auto flex-col rounded-2xl bg-white p-[2px] py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/30 sm:p-2 md:gap-6">
+                    <div
+                        id="projectCards"
+                        className=" max-w-screen mt-10 ml-auto flex w-auto flex-col rounded-2xl bg-white p-[2px] py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/30 sm:p-2 md:gap-6"
+                    >
                         {projectsToDisplay.length > 0 ? (
                             projectsToDisplay.map((project) => {
                                 const id = project.id
@@ -1185,10 +1195,12 @@ const Projects = () => {
                                                 setShowCarousel={
                                                     setShowCarousel
                                                 }
+                                                Technologies={Technologies}
                                                 showCarousel={showCarousel}
                                                 setActiveGalleryImages={
                                                     setActiveGalleryImages
                                                 }
+                                                ProjectItems={ProjectItems}
                                                 activeGalleryImages={
                                                     activeGalleryImages
                                                 }
@@ -1207,7 +1219,7 @@ const Projects = () => {
                                 </h3>
                                 {/* display help text when the help info button icon is clicked */}
                                 {/* help info icon */}
-                                <div className=" mx-2 mt-2 flex cursor-pointer flex-col  items-end justify-center rounded  border bg-gray-100 p-5  transition-all duration-500 ease-in-out hover:text-gray-600 dark:border-none dark:bg-[#1E1E1D] dark:text-gray-400 dark:hover:text-gray-200">
+                                <div className="mx-2 mt-2 flex cursor-pointer flex-col  items-end justify-center rounded  border bg-gray-100 p-5  transition-all duration-500 ease-in-out hover:text-gray-600 dark:border-none dark:bg-[#1E1E1D] dark:text-gray-400 dark:hover:text-gray-200">
                                     <div
                                         className="flex"
                                         onClick={() => {
