@@ -18,18 +18,6 @@ export default function Footer() {
     return (
         <footer>
             <div className="md:justify-between+ mx-auto max-w-7xl py-12 px-16 md:flex md:items-center">
-                <div className="flex justify-center space-x-6 md:order-2">
-                    {navigation.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            className="text-gray-400 hover:text-gray-500"
-                        >
-                            <span className="sr-only">{item.name}</span>
-                            <item.icon className="h-6 w-6" aria-hidden="true" />
-                        </a>
-                    ))}
-                </div>
                 <div className="mt-8 mr-auto ml-6 md:order-1 md:mt-0">
                     {/* <p className="text-left text-base leading-6 text-gray-400">
                         image by ...

@@ -4,6 +4,8 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import { useSignOut } from "../hooks/useSignOut"
 import siteLogo from "../assets/Images/header.png"
 import siteLogoDark from "../assets/Images/headerDark.png"
+import newSiteLogo from "../assets/Images/portfolio-logo-large.png"
+import newSiteLogoDark from "../assets/Images/portfolio-logo-dark-large.png"
 import SocialBar from "../components/SocialBar"
 import PageBar from "./PageBar"
 import { useTheme } from "../hooks/useThemeContext"
@@ -159,7 +161,7 @@ export const navbar = () => {
 
     return (
         <div>
-            <div className="absolute z-50 -mt-[80px] h-20 w-full border-b border-white/20  bg-slate-50 from-[#0D1B2E] to-[#0D243C] dark:bg-gradient-to-r dark:text-white">
+            <div className="absolute z-[91] -mt-[80px] h-20 w-full   bg-slate-50 from-[#0D1B2E] to-[#0D243C] dark:bg-gradient-to-r dark:text-white">
                 <div className="mx-auto flex h-full max-w-[1500px] items-center justify-between">
                     <motion.div
                         initial={{
@@ -179,22 +181,22 @@ export const navbar = () => {
                     >
                         <div className="flex items-center">
                             <Link to="/home">
-                                <div className="ml-4">
+                                <div className="mt-44 ml-4 opacity-90  hover:opacity-100">
                                     {/* <h1 className="text-2xl font-semibold text-slate-800 dark:text-slate-200">
                                 Logo
                             </h1> */}
                                     {mode === "light" && (
                                         <img
-                                            src={siteLogo}
+                                            src={newSiteLogo}
                                             alt="logo"
-                                            className="h-16 w-auto active:scale-[0.95]"
+                                            className="h-14 w-auto  active:scale-[0.95]"
                                         />
                                     )}
                                     {mode === "dark" && (
                                         <img
-                                            src={siteLogoDark}
+                                            src={newSiteLogoDark}
                                             alt="logo"
-                                            className="h-16 w-auto active:scale-[0.95]"
+                                            className="h-14 w-auto  active:scale-[0.95]"
                                         />
                                     )}
                                 </div>
@@ -202,8 +204,8 @@ export const navbar = () => {
                         </div>
                     </motion.div>
                     {/* Projects */}
-
-                    {/* <motion.div
+                    {/* 
+                    <motion.div
                         initial={{
                             x: 200,
                             opacity: 0,
@@ -311,8 +313,8 @@ export const navbar = () => {
                         }}
                         className="ml-auto mr-3 -mt-3 dark:text-white"
                     >
-                        <div className="flex items-center">
-                            {!user && (
+                        <div className="z-[99999] flex items-center">
+                            {/* {!user && (
                                 <div className="mr-4 hidden lg:flex">
                                     <Link to="/signIn">
                                         <h1 className="py-.75 text-semibold sticky z-50 cursor-pointer select-none rounded-full bg-[#DDDFDE] px-3 text-lg text-white hover:bg-[#C2C3C3] hover:opacity-80 dark:bg-slate-600 dark:text-slate-800 dark:hover:bg-slate-400 dark:active:bg-slate-700">
@@ -348,15 +350,15 @@ export const navbar = () => {
                                         Logout
                                     </h1>
                                 )}
-                            </div>
+                            </div> */}
                             <div
                                 id="hamburger-menu"
-                                className="z-50 mr-4 cursor-pointer space-y-1.5 rounded-lg border-2 border-transparent p-2 opacity-70 hover:bg-white/20 hover:opacity-100 hover:shadow-lg active:bg-black/20 sm:space-y-2 lg:hidden"
+                                className="z-[55] mt-48 cursor-pointer space-y-1.5 rounded-lg border-2 border-transparent p-2 opacity-70 hover:bg-white/20 hover:opacity-100 hover:shadow-lg active:bg-black/20 sm:space-y-2 lg:hidden"
                                 onClick={() => setOpen(!open)}
                             >
-                                <span className=" pointer-events-none block h-1 w-6  rounded-full bg-gray-400 sm:w-8"></span>
-                                <span className=" pointer-events-none block h-1 w-6 rounded-full bg-gray-400 sm:w-8"></span>
-                                <span className=" pointer-events-none block h-1 w-6 rounded-full bg-gray-400 sm:w-8"></span>
+                                <span className=" block h-1 w-6 cursor-pointer  rounded-full bg-gray-400 sm:w-8"></span>
+                                <span className=" block h-1 w-6 cursor-pointer rounded-full bg-gray-400 sm:w-8"></span>
+                                <span className=" block h-1 w-6 cursor-pointer rounded-full bg-gray-400 sm:w-8"></span>
                             </div>
                             <MobileMenu open={open} setOpen={setOpen} />
                         </div>
@@ -367,9 +369,9 @@ export const navbar = () => {
                     <div
                         className={`${
                             astronautIsFlying ? "translate-y-[-500px]" : ""
-                        } absolute z-50 h-full select-none items-end`}
+                        } absolute z-[9999999999999999999999999999999999999999999999] h-full select-none items-end`}
                     >
-                        <div className="fixed bottom-0 right-2 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100">
+                        <div className="fixed bottom-0 right-2 mt-auto mr-4 mb-4 flex h-auto opacity-100 duration-200 ease-in-out md:bottom-0 lg:opacity-70 lg:hover:opacity-100 landscape:bottom-1 landscape:-right-6 landscape:-mb-4 landscape:scale-[70%] xl:landscape:scale-100">
                             <motion.div
                                 animate={astronautAnimation}
                                 className="z-50 duration-500 ease-in "
@@ -403,13 +405,6 @@ export const navbar = () => {
                                                     To the skies!!!
                                                 </Bubble>
                                             )}
-                                        {/* <img
-                                            src={Astronaut}
-                                            alt="Astronaut"
-                                            className="h-22 w-15 z-50 ml-auto duration-300 ease-in"
-                                            height={150}
-                                            width={100}
-                                        /> */}
                                         <div className="relative">
                                             <img
                                                 src={Astronaut}
@@ -435,7 +430,9 @@ export const navbar = () => {
                 </div>
                 {!currentPath.endsWith("/sginIn") && <SocialBar />}
             </div>
-            {currentPath.endsWith("/home") && <PageBar />}
+            {(currentPath.endsWith("/home") || currentPath.endsWith("/")) && (
+                <PageBar />
+            )}
         </div>
     )
 }
