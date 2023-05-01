@@ -225,6 +225,7 @@ export default ({
                                     name="projectType"
                                     id={`projectType-${value}`}
                                     value={value}
+                                    defaultChecked={value === "website"}
                                     className="darkbg-sky-400/50 cursor-pointer select-none border-none bg-slate-200 text-sky-400 outline-none dark:bg-black/25 dark:text-sky-400"
                                 />
                                 <span className="ml-2 cursor-pointer text-gray-400 dark:text-white/70">

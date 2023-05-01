@@ -163,7 +163,7 @@ export const navbar = () => {
     return (
         <div>
             <div className="absolute z-[91] -mt-[80px] h-20 w-full   bg-slate-50 from-[#0D1B2E] to-[#0D243C] dark:bg-gradient-to-r dark:text-white">
-                <div className="mx-auto flex h-full max-w-[1500px] items-center justify-between">
+                <div className="mx-auto flex h-fit max-w-[1500px] items-center justify-between">
                     <motion.div
                         initial={{
                             x: -200,
@@ -182,7 +182,7 @@ export const navbar = () => {
                     >
                         <div className="flex items-center">
                             <Link to="/home">
-                                <div className="mt-32 ml-4 opacity-90  hover:opacity-100">
+                                <div className="mt-12 ml-4 opacity-90  hover:opacity-100">
                                     {/* <h1 className="text-2xl font-semibold text-slate-800 dark:text-slate-200">
                                 Logo
                             </h1> */}
@@ -359,7 +359,7 @@ export const navbar = () => {
                             </div> */}
                             <div
                                 id="hamburger-menu"
-                                className="z-[55] mt-24 cursor-pointer space-y-1.5 rounded-lg border-2 border-transparent p-2 opacity-70 hover:bg-white/20 hover:opacity-100 hover:shadow-lg active:bg-black/5 sm:space-y-2 lg:hidden"
+                                className="z-[55] mt-14 cursor-pointer space-y-1.5 rounded-lg border-2 border-transparent p-2 opacity-70 hover:bg-white/20 hover:opacity-100 hover:shadow-lg active:bg-black/5 sm:space-y-2 lg:hidden"
                                 onClick={() => setOpen(!open)}
                             >
                                 <span className=" block h-1 w-6 cursor-pointer  rounded-full bg-gray-400 sm:w-8"></span>

@@ -1,6 +1,7 @@
 import { faTrumpet } from "@fortawesome/pro-light-svg-icons"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { InView } from "react-intersection-observer"
 
 const FiterButton = (category, label, active) => {
     return (
@@ -18,12 +19,26 @@ const FiterButton = (category, label, active) => {
 }
 
 function TimelineItem(props) {
+    const [isVisible, setIsVisible] = useState(false)
     const { category, title, description, position, filters = {} } = props
 
     if (position === "left") {
         return (
-            <>
-                <>
+            <InView
+                as="div"
+                onChange={(inView, entry) => {
+                    if (inView) {
+                        setIsVisible(true)
+                    }
+                }}
+                threshold={0.1}
+            >
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={isVisible ? { opacity: 1 } : {}}
+                    transition={{ duration: 1.5 }}
+                    className={` ${isVisible ? "flex" : "hidden"}`}
+                >
                     <div className="mt-4 text-right">
                         <div className="text-sm font-bold md:text-base">
                             {title}
@@ -33,8 +48,8 @@ function TimelineItem(props) {
                         </div>
                     </div>
                     <div id="empty-right-2"></div>
-                </>
-            </>
+                </motion.div>
+            </InView>
         )
     } else if (position === "right") {
         return (

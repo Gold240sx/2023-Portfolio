@@ -741,7 +741,7 @@ const Education = () => {
                                         className={` ${
                                             tab.name ===
                                             "Continued Education / Certificates"
-                                                ? "rounded-xl overflow-hidden border-2 border-zinc-300 dark:border-zinc-800"
+                                                ? "overflow-hidden rounded-xl border-2 border-zinc-300 dark:border-zinc-800"
                                                 : ""
                                         } `}
                                     >
@@ -824,181 +824,142 @@ const Education = () => {
                                                             </div>
                                                         )}
                                                     {/* Accordian */}
-                                      
-                                                        <div
-                                                            className={` ${
-                                                                selectedTab ===
-                                                                "Continued Education / Certificates"
-                                                                    ? " border border-b-0 border-gray-300 last:border-b-2 dark:border-b-[1px] dark:border-zinc-900"
-                                                                    : null
-                                                            } overflow-hidden  dark:border-l-0 dark:border-t-0 dark:border-r-0  `}
-                                                        >
-                                                            {selectedTab ===
-                                                                "Continued Education / Certificates" && (
+
+                                                    <div
+                                                        className={` ${
+                                                            selectedTab ===
+                                                            "Continued Education / Certificates"
+                                                                ? " border border-b-0 border-gray-300 last:border-b-2 dark:border-b-[1px] dark:border-zinc-900"
+                                                                : null
+                                                        } overflow-hidden  dark:border-l-0 dark:border-t-0 dark:border-r-0  `}
+                                                    >
+                                                        {selectedTab ===
+                                                            "Continued Education / Certificates" && (
+                                                            <div
+                                                                key={
+                                                                    feature.name
+                                                                }
+                                                                className=""
+                                                            >
+                                                                {/* header */}
                                                                 <div
-                                                                    key={
-                                                                        feature.name
-                                                                    }
-                                                                    className=""
+                                                                    id={`feature-${featureIndex}`}
+                                                                    className={` ${
+                                                                        featureIndex ===
+                                                                        activeIndex
+                                                                            ? " border-gray-300 bg-white/50  dark:bg-[#353535] "
+                                                                            : " "
+                                                                    } z-50 flex cursor-pointer items-center justify-between border-2  border-t-0  border-l-transparent border-r-transparent px-2 py-2 transition-all duration-300 ease-in-out last:border-b-transparent hover:bg-white/50 dark:border-zinc-800/50  dark:bg-zinc-800/50 dark:hover:bg-[#353535] dark:hover:text-sky-300`}
+                                                                    onClick={() => {
+                                                                        handleAccordionClick(
+                                                                            featureIndex
+                                                                        )
+                                                                        // const element =
+                                                                        //     document.getElementById(
+                                                                        //         `feature-${featureIndex}`
+                                                                        //     )
+                                                                        // element.scrollIntoView(
+                                                                        //     {
+                                                                        //         behavior:
+                                                                        //             "smooth",
+                                                                        //         block: "start",
+                                                                        //     }
+                                                                        // )
+                                                                    }}
                                                                 >
-                                                                    {/* header */}
-                                                                    <div
-                                                                        className={` ${
-                                                                            featureIndex ===
-                                                                            activeIndex
-                                                                                ? " border-gray-300 bg-white/50  dark:bg-[#353535] "
-                                                                                : " "
-                                                                        } z-50 flex cursor-pointer items-center justify-between border-2  border-t-0  border-l-transparent border-r-transparent px-2 py-2 transition-all duration-300 ease-in-out last:border-b-transparent hover:bg-white/50 dark:border-zinc-800/50  dark:bg-zinc-800/50 dark:hover:bg-[#353535] dark:hover:text-sky-300`}
-                                                                        onClick={() =>
-                                                                            handleAccordionClick(
-                                                                                featureIndex
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        <div className="flex items-center space-x-3">
-                                                                            <div className=" h-16 w-16 shrink-0 overflow-hidden rounded-full">
-                                                                                <img
-                                                                                    src={
-                                                                                        feature.imageSrc
-                                                                                    }
-                                                                                    alt={
-                                                                                        feature.imageAlt
-                                                                                    }
-                                                                                    className="h-full w-full object-cover"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="flex flex-col">
-                                                                                <div className="text-md overflow-ellipsis font-bold text-gray-800 line-clamp-2 dark:text-gray-200">
-                                                                                    {
-                                                                                        feature.name
-                                                                                    }
-                                                                                </div>
-                                                                                <div className="mt-1  hidden text-sm font-medium text-gray-800 dark:text-gray-200 md:flex">
-                                                                                    {
-                                                                                        feature.instructor
-                                                                                    }{" "}
-                                                                                    |
-                                                                                    <img
-                                                                                        src={
-                                                                                            feature.platformLogo
-                                                                                        }
-                                                                                        className="ml-2 h-5 w-auto dark:grayscale dark:invert"
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
+                                                                    <div className="flex items-center space-x-3">
+                                                                        <div className=" h-16 w-16 shrink-0 overflow-hidden rounded-full">
+                                                                            <img
+                                                                                src={
+                                                                                    feature.imageSrc
+                                                                                }
+                                                                                alt={
+                                                                                    feature.imageAlt
+                                                                                }
+                                                                                className="h-full w-full object-cover"
+                                                                            />
                                                                         </div>
-                                                                        <div className="mr-4 text-gray-500 dark:text-white">
-                                                                            {activeIndex ===
-                                                                            featureIndex ? (
-                                                                                <FaChevronUp />
-                                                                            ) : (
-                                                                                <FaChevronDown />
-                                                                            )}
-                                                                        </div>
-                                                                    </div>
-                                                                    {/* body */}
-                                                                    {activeIndex ===
-                                                                        featureIndex && (
-                                                                        <div className="z-50 bg-zinc-100 p-2 transition-all duration-300 ease-in-out dark:bg-zinc-900 dark:shadow-inner dark:shadow-black/50 md:flex md:justify-center md:px-4 lg:p-4">
-                                                                            {/* Small Screen Image Full */}
-                                                                            <div className="relative w-full overflow-hidden rounded-sm md:hidden">
+                                                                        <div className="flex flex-col">
+                                                                            <div className="text-md overflow-ellipsis font-bold text-gray-800 line-clamp-2 dark:text-gray-200">
+                                                                                {
+                                                                                    feature.name
+                                                                                }
+                                                                            </div>
+                                                                            <div className="mt-1  hidden text-sm font-medium text-gray-800 dark:text-gray-200 md:flex">
+                                                                                {
+                                                                                    feature.instructor
+                                                                                }{" "}
+                                                                                |
                                                                                 <img
                                                                                     src={
                                                                                         feature.platformLogo
                                                                                     }
-                                                                                    className=" absolute right-2 mt-2 h-8 w-auto rounded bg-white/50 px-1 py-1 md:hidden"
-                                                                                />
-                                                                                <img
-                                                                                    src={
-                                                                                        feature.imageSrc
-                                                                                    }
-                                                                                    alt={
-                                                                                        feature.imageAlt
-                                                                                    }
-                                                                                    className="h-full w-full rounded object-cover"
+                                                                                    className="ml-2 h-5 w-auto dark:grayscale dark:invert"
                                                                                 />
                                                                             </div>
-                                                                            {/* Small Screen Info */}
-                                                                            <div className="mb-4 flex items-start justify-between py-2">
-                                                                                <div className="flex items-center md:hidden">
-                                                                                    <div>
-                                                                                        <a
-                                                                                            href={
-                                                                                                feature.courseLink
-                                                                                            }
-                                                                                            className="cursor-pointer hover:underline"
-                                                                                        >
-                                                                                            <h3 className="text-lg font-bold text-gray-800 dark:text-white">
-                                                                                                {
-                                                                                                    feature.name
-                                                                                                }
-                                                                                            </h3>
-                                                                                        </a>
-                                                                                        {/* Instructor */}
-                                                                                        <div className="my-2 flex gap-2 text-sm text-gray-500">
-                                                                                            <span className="font-semibold">
-                                                                                                Instructor:
-                                                                                            </span>{" "}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="mr-4 text-gray-500 dark:text-white">
+                                                                        {activeIndex ===
+                                                                        featureIndex ? (
+                                                                            <FaChevronUp />
+                                                                        ) : (
+                                                                            <FaChevronDown />
+                                                                        )}
+                                                                    </div>
+                                                                </div>
+                                                                {/* body */}
+                                                                {activeIndex ===
+                                                                    featureIndex && (
+                                                                    <div className="z-50 bg-zinc-100 p-2 transition-all duration-300 ease-in-out dark:bg-zinc-900 dark:shadow-inner dark:shadow-black/50 md:flex md:justify-center md:px-4 lg:p-4">
+                                                                        {/* Small Screen Image Full */}
+                                                                        <div className="relative w-full overflow-hidden rounded-sm md:hidden">
+                                                                            <img
+                                                                                src={
+                                                                                    feature.platformLogo
+                                                                                }
+                                                                                className=" absolute right-2 mt-2 h-8 w-auto rounded bg-white/50 px-1 py-1 md:hidden"
+                                                                            />
+                                                                            <img
+                                                                                src={
+                                                                                    feature.imageSrc
+                                                                                }
+                                                                                alt={
+                                                                                    feature.imageAlt
+                                                                                }
+                                                                                className="h-full w-full rounded object-cover"
+                                                                            />
+                                                                        </div>
+                                                                        {/* Small Screen Info */}
+                                                                        <div className="mb-4 flex items-start justify-between py-2">
+                                                                            <div className="flex items-center md:hidden">
+                                                                                <div>
+                                                                                    <a
+                                                                                        href={
+                                                                                            feature.courseLink
+                                                                                        }
+                                                                                        className="cursor-pointer hover:underline"
+                                                                                    >
+                                                                                        <h3 className="text-lg font-bold text-gray-800 dark:text-white">
                                                                                             {
-                                                                                                feature.instructor
+                                                                                                feature.name
                                                                                             }
-                                                                                        </div>
-                                                                                        {/* Certification */}
-                                                                                        <div className="flex gap-2 text-sm text-gray-500">
-                                                                                            <span className="font-semibold">
-                                                                                                Certification:
-                                                                                            </span>
-                                                                                            {feature.certLink !==
-                                                                                            "In Progress..." ? (
-                                                                                                <a
-                                                                                                    href={
-                                                                                                        feature.certLink
-                                                                                                    }
-                                                                                                    target="_blank"
-                                                                                                    rel="noopener noreferrer"
-                                                                                                    className="inline-flex items-center text-sky-500"
-                                                                                                >
-                                                                                                    See
-                                                                                                    Certificate
-                                                                                                    <svg
-                                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                                        className="ml-2 h-4 w-4"
-                                                                                                        viewBox="0 0 20 20"
-                                                                                                        fill="currentColor"
-                                                                                                    >
-                                                                                                        <path
-                                                                                                            fillRule="evenodd"
-                                                                                                            d="M14.707 8.707a1 1 0 010 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L10 10.586V3a1 1 0 112 0v7.586l2.293-2.293a1 1 0 011.414 0z"
-                                                                                                            clipRule="evenodd"
-                                                                                                        />
-                                                                                                    </svg>
-                                                                                                </a>
-                                                                                            ) : (
-                                                                                                "Pending..."
-                                                                                            )}
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            {/* Description, Tags and Photo*/}
-                                                                            <div className="grid grid-cols-1 md:grid-cols-2">
-                                                                                {/* Description and Tags */}
-                                                                                <div className="w-auto space-y-4">
-                                                                                    <div>
-                                                                                        <h3 className="mb-2 text-lg font-bold text-black dark:text-white">
-                                                                                            Description
                                                                                         </h3>
-                                                                                        <p className="px-2 text-gray-600 dark:text-gray-400">
-                                                                                            {
-                                                                                                feature.description
-                                                                                            }
-                                                                                        </p>
+                                                                                    </a>
+                                                                                    {/* Instructor */}
+                                                                                    <div className="my-2 flex gap-2 text-sm text-gray-500">
+                                                                                        <span className="font-semibold">
+                                                                                            Instructor:
+                                                                                        </span>{" "}
+                                                                                        {
+                                                                                            feature.instructor
+                                                                                        }
                                                                                     </div>
-                                                                                    {/* Certificate for md and up screens */}
-                                                                                    <div className="hidden gap-2 text-sm text-gray-500 dark:text-gray-300  md:flex">
+                                                                                    {/* Certification */}
+                                                                                    <div className="flex gap-2 text-sm text-gray-500">
                                                                                         <span className="font-semibold">
                                                                                             Certification:
-                                                                                        </span>{" "}
+                                                                                        </span>
                                                                                         {feature.certLink !==
                                                                                         "In Progress..." ? (
                                                                                             <a
@@ -1007,7 +968,7 @@ const Education = () => {
                                                                                                 }
                                                                                                 target="_blank"
                                                                                                 rel="noopener noreferrer"
-                                                                                                className="inline-flex items-center font-bold text-sky-500 hover:underline dark:text-sky-400"
+                                                                                                className="inline-flex items-center text-sky-500"
                                                                                             >
                                                                                                 See
                                                                                                 Certificate
@@ -1028,47 +989,98 @@ const Education = () => {
                                                                                             "Pending..."
                                                                                         )}
                                                                                     </div>
-                                                                                    <div className="">
-                                                                                        <h3 className="mb-2 text-lg font-bold text-black dark:text-white md:mb-4">
-                                                                                            Tags
-                                                                                        </h3>
-                                                                                        {feature.tags && (
-                                                                                            <div
-                                                                                                className={`flex max-w-[90%] flex-wrap`}
-                                                                                            >
-                                                                                                {feature.tags.map(
-                                                                                                    (
-                                                                                                        tag
-                                                                                                    ) => (
-                                                                                                        <span
-                                                                                                            key={
-                                                                                                                tag
-                                                                                                            }
-                                                                                                            className="border-2/50 mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-white px-1.5 py-1 text-xs leading-none text-gray-500  dark:border-zinc-800 dark:bg-zinc-700 dark:text-gray-300    md:px-2 md:text-gray-400 md:dark:border-gray-700 md:dark:text-white lg:px-3 lg:text-sm xl:text-base"
-                                                                                                        >
-                                                                                                            #
-                                                                                                            {
-                                                                                                                tag
-                                                                                                            }
-                                                                                                        </span>
-                                                                                                    )
-                                                                                                )}
-                                                                                            </div>
-                                                                                        )}
-                                                                                    </div>
                                                                                 </div>
-                                                                                <div className="justify-center">
-                                                                                    <div className="relative hidden h-72 w-auto md:flex lg:h-[22rem]">
-                                                                                        <img
-                                                                                            src={
-                                                                                                feature.imageSrc
+                                                                            </div>
+                                                                        </div>
+                                                                        {/* Description, Tags and Photo*/}
+                                                                        <div className="grid grid-cols-1 md:grid-cols-2">
+                                                                            {/* Description and Tags */}
+                                                                            <div className="w-auto space-y-4">
+                                                                                <div>
+                                                                                    <h3 className="mb-2 text-lg font-bold text-black dark:text-white">
+                                                                                        Description
+                                                                                    </h3>
+                                                                                    <p className="px-2 text-gray-600 dark:text-gray-400">
+                                                                                        {
+                                                                                            feature.description
+                                                                                        }
+                                                                                    </p>
+                                                                                </div>
+                                                                                {/* Certificate for md and up screens */}
+                                                                                <div className="hidden gap-2 text-sm text-gray-500 dark:text-gray-300  md:flex">
+                                                                                    <span className="font-semibold">
+                                                                                        Certification:
+                                                                                    </span>{" "}
+                                                                                    {feature.certLink !==
+                                                                                    "In Progress..." ? (
+                                                                                        <a
+                                                                                            href={
+                                                                                                feature.certLink
                                                                                             }
-                                                                                            alt={
-                                                                                                feature.imageAlt
-                                                                                            }
-                                                                                            className="inset-0 h-full w-full rounded-lg object-cover"
-                                                                                        />
-                                                                                        {/* <h3 className="text-lg font-medium text-gray-900">
+                                                                                            target="_blank"
+                                                                                            rel="noopener noreferrer"
+                                                                                            className="inline-flex items-center font-bold text-sky-500 hover:underline dark:text-sky-400"
+                                                                                        >
+                                                                                            See
+                                                                                            Certificate
+                                                                                            <svg
+                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                className="ml-2 h-4 w-4"
+                                                                                                viewBox="0 0 20 20"
+                                                                                                fill="currentColor"
+                                                                                            >
+                                                                                                <path
+                                                                                                    fillRule="evenodd"
+                                                                                                    d="M14.707 8.707a1 1 0 010 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L10 10.586V3a1 1 0 112 0v7.586l2.293-2.293a1 1 0 011.414 0z"
+                                                                                                    clipRule="evenodd"
+                                                                                                />
+                                                                                            </svg>
+                                                                                        </a>
+                                                                                    ) : (
+                                                                                        "Pending..."
+                                                                                    )}
+                                                                                </div>
+                                                                                <div className="">
+                                                                                    <h3 className="mb-2 text-lg font-bold text-black dark:text-white md:mb-4">
+                                                                                        Tags
+                                                                                    </h3>
+                                                                                    {feature.tags && (
+                                                                                        <div
+                                                                                            className={`flex max-w-[90%] flex-wrap`}
+                                                                                        >
+                                                                                            {feature.tags.map(
+                                                                                                (
+                                                                                                    tag
+                                                                                                ) => (
+                                                                                                    <span
+                                                                                                        key={
+                                                                                                            tag
+                                                                                                        }
+                                                                                                        className="border-2/50 mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-white px-1.5 py-1 text-xs leading-none text-gray-500  dark:border-zinc-800 dark:bg-zinc-700 dark:text-gray-300    md:px-2 md:text-gray-400 md:dark:border-gray-700 md:dark:text-white lg:px-3 lg:text-sm xl:text-base"
+                                                                                                    >
+                                                                                                        #
+                                                                                                        {
+                                                                                                            tag
+                                                                                                        }
+                                                                                                    </span>
+                                                                                                )
+                                                                                            )}
+                                                                                        </div>
+                                                                                    )}
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="justify-center">
+                                                                                <div className="relative hidden h-72 w-auto md:flex lg:h-[22rem]">
+                                                                                    <img
+                                                                                        src={
+                                                                                            feature.imageSrc
+                                                                                        }
+                                                                                        alt={
+                                                                                            feature.imageAlt
+                                                                                        }
+                                                                                        className="inset-0 h-full w-full rounded-lg object-cover"
+                                                                                    />
+                                                                                    {/* <h3 className="text-lg font-medium text-gray-900">
                                                                                         QR
                                                                                         Code
                                                                                     </h3>
@@ -1079,15 +1091,15 @@ const Education = () => {
                                                                                         alt={`${feature.name} QR Code`}
                                                                                         className="mt-2 h-32 w-32 object-contain"
                                                                                     /> */}
-                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    )}
-                                                                </div>
-                                                            )}
-                                                        </div>
-                              
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        )}
+                                                    </div>
+
                                                     {/* My Learning Que */}
                                                     {selectedTab ===
                                                         "My Learning Que" && (

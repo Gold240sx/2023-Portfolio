@@ -19,7 +19,7 @@ function handleEmailClick() {
 
 export default function SocialBar({}: Props) {
     return (
-        <header className="fixed bottom-0 z-20 mx-auto flex max-w-7xl items-center justify-between p-1 md:ml-4">
+        <header className="fixed bottom-0 z-20 mx-auto flex max-w-7xl items-center justify-between p-1 sm:left-0 landscape:sm:left-5">
             <motion.div
                 initial={{
                     x: -200,
@@ -129,7 +129,7 @@ export default function SocialBar({}: Props) {
                 >
                     <img
                         src={ResumeIcon}
-                        className="mb-2 h-8 w-auto translate-x-1 cursor-pointer opacity-80 fill-gray-400 lg:invert-0 lg:opacity-10 invert lg:dark:invert lg:dark:opacity-60 transition-all duration-500 ease-in-out  hover:scale-100 hover:opacity-100 dark:fill-white dark:opacity-20 hover:dark:opacity-40"
+                        className="mb-2 h-8 w-auto translate-x-1 cursor-pointer fill-gray-400 opacity-80 invert transition-all duration-500 ease-in-out hover:scale-100 hover:opacity-100 dark:fill-white dark:opacity-20  hover:dark:opacity-40 lg:opacity-10 lg:invert-0 lg:dark:opacity-60 lg:dark:invert"
                         data-tooltip-id="resume"
                         data-tooltip-content="Download: My Resume"
                         data-tooltip-delay-show={150}
