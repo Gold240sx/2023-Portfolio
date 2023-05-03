@@ -26,25 +26,26 @@ import Lines from "../../assets/Images/backgrounds/lines.png";
 import Mud from "../../assets/Images/backgrounds/mud.png";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { motion, useScroll, useAnimation } from "framer-motion"
+import { InView } from "react-intersection-observer"
 
 // Optimized  images
-import CollegeDarkGray from "../../assets/Icons/education-icons/college-dark-gray.png";
-import CollegeLightGray from "../../assets/Icons/education-icons/college-light-gray.png";
-import CollegeSelected from "../../assets/Icons/education-icons/college-selected.png";
-import HighSchoolDarkGray from "../../assets/Icons/education-icons/hs-dark-gray.png";
-import HighSchoolLightGray from "../../assets/Icons/education-icons/hs-light-gray.png";
-import HighSchoolSelected from "../../assets/Icons/education-icons/hs-selected.png";
-import ContEdDarkGray from "../../assets/Icons/education-icons/contEd-dark-gray.png";
-import ContEdLightGray from "../../assets/Icons/education-icons/contEd-light-gray.png";
-import ContEdSelected from "../../assets/Icons/education-icons/contEd-selected.png";
-import QueDarkGray from "../../assets/Icons/education-icons/que-dark-gray.png";
-import QueLightGray from "../../assets/Icons/education-icons/que-light-gray.png";
-import QueSelected from "../../assets/Icons/education-icons/que-selected.png";
-import CollegeNeon from "../../assets/Icons/education-icons/college-neon.png";
-import HighSchoolNeon from "../../assets/Icons/education-icons/highSchool-neon.png";
-import ContinuedNeon from "../../assets/Icons/education-icons/continued.png";
-import EducationNeon from "../../assets/Icons/education-icons/education.png";
-import QueNeon from "../../assets/Icons/education-icons/que.png";
+import CollegeDarkGray from "../../assets/Icons/education-icons/college-dark-gray.png"
+import CollegeLightGray from "../../assets/Icons/education-icons/college-light-gray.png"
+import CollegeSelected from "../../assets/Icons/education-icons/college-selected.png"
+import HighSchoolDarkGray from "../../assets/Icons/education-icons/hs-dark-gray.png"
+import HighSchoolLightGray from "../../assets/Icons/education-icons/hs-light-gray.png"
+import HighSchoolSelected from "../../assets/Icons/education-icons/hs-selected.png"
+import ContEdDarkGray from "../../assets/Icons/education-icons/contEd-dark-gray.png"
+import ContEdLightGray from "../../assets/Icons/education-icons/contEd-light-gray.png"
+import ContEdSelected from "../../assets/Icons/education-icons/contEd-selected.png"
+import QueDarkGray from "../../assets/Icons/education-icons/que-dark-gray.png"
+import QueLightGray from "../../assets/Icons/education-icons/que-light-gray.png"
+import QueSelected from "../../assets/Icons/education-icons/que-selected.png"
+import CollegeNeon from "../../assets/Icons/education-icons/college-neon.png"
+import HighSchoolNeon from "../../assets/Icons/education-icons/highSchool-neon.png"
+import ContinuedNeon from "../../assets/Icons/education-icons/continued.png"
+import EducationNeon from "../../assets/Icons/education-icons/education.png"
+import QueNeon from "../../assets/Icons/education-icons/que.png"
 
 const tabs = [
     {
@@ -327,30 +328,33 @@ const tabs = [
             },
         ],
     },
-];
+]
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
+    return classes.filter(Boolean).join(" ")
 }
 
 const Education = () => {
     // Accordian
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(0)
+    const [showEducationIconTooltip, setShowEducationIconTooltip] =
+        useState(false)
+    const [educationTooltipSeen, setEducationTooltipSeen] = useState(false)
     const handleAccordionClick = (accordianIndex) => {
         if (accordianIndex === activeIndex) {
-            setActiveIndex(null);
+            setActiveIndex(null)
         } else {
-            setActiveIndex(accordianIndex);
+            setActiveIndex(accordianIndex)
         }
-    };
+    }
     // Tabs
     const defaultTabIndex = tabs.findIndex(
         (tab) => tab.name === "Continued Education / Certificates"
-    );
+    )
     const [selectedTab, setSelectedTab] = useState(
         "Continued Education / Certificates"
-    );
-    const { mode } = useTheme();
+    )
+    const { mode } = useTheme()
 
     return (
         <div className="relative mb-10 w-auto overflow-hidden rounded-3xl bg-white/30 dark:bg-white/5">
@@ -399,15 +403,12 @@ const Education = () => {
 
             <section
                 aria-labelledby="features-heading"
-                className="mx-auto pb-4 pt-16  md:pt-32 lg:px-8"
+                className="mx-auto pb-8 pt-16  md:pt-32 lg:px-8"
             >
                 <div className="text-center">
-                    <h3 className="relative  z-50 text-[1.3rem] uppercase tracking-[15px] text-gray-500 dark:text-white sm:text-2xl sm:tracking-[20px]">
+                    <h3 className="relative z-50  pb-8 text-[1.3rem] uppercase tracking-[15px] text-gray-500 dark:text-white sm:text-2xl sm:tracking-[20px]">
                         Education
                     </h3>
-                    <p className="mt-4 text-sm text-gray-500">
-                        Always Learning, Never Quiting, Always Growing
-                    </p>
                 </div>
                 <div className="mx-auto  sm:px-4 lg:px-0">
                     <Tab.Group
@@ -443,6 +444,70 @@ const Education = () => {
                         <div className="relative mt-28 h-fit w-full border-0 py-2 outline-none md:px-4 ">
                             <div>
                                 {/* Tabs in the form of icons */}
+                                {/* Tab icons tooltip */}
+                                <InView
+                                    as="div"
+                                    onChange={(inView, entry) => {
+                                        if (inView) {
+                                            setShowEducationIconTooltip(true)
+                                        }
+                                    }}
+                                    threshold={0.1}
+                                >
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={
+                                            showEducationIconTooltip
+                                                ? { opacity: 1 }
+                                                : {}
+                                        }
+                                        transition={{ duration: 0.5 }}
+                                        className={` ${
+                                            showEducationIconTooltip
+                                                ? " w-full "
+                                                : "hidden"
+                                        }`}
+                                    >
+                                        {showEducationIconTooltip &&
+                                            !educationTooltipSeen && (
+                                                <div className="absolute top-24 left-1 z-[999999] ml-16 mt-4 flex w-[500%] max-w-[60vw] flex-col items-center justify-center rounded-xl bg-gray-100 p-2  text-sm font-semibold text-slate-700 shadow-lg shadow-black/50 dark:bg-zinc-900 dark:text-white">
+                                                    <span className="mb-2 text-center">
+                                                        <div className="mx-auto flex w-fit items-center gap-2 text-right">
+                                                            <p className="text-lg">
+                                                                {" "}
+                                                                Click the icons
+                                                                above such as:
+                                                            </p>
+                                                            <img
+                                                                src={
+                                                                    mode ===
+                                                                    "dark"
+                                                                        ? CollegeDarkGray
+                                                                        : CollegeLightGray
+                                                                }
+                                                                className="h-24 w-24"
+                                                            />
+                                                        </div>
+                                                        to cycle between tabs.
+                                                    </span>
+                                                    <button
+                                                        onClick={() => {
+                                                            setShowEducationIconTooltip(
+                                                                false
+                                                            )
+                                                            setEducationTooltipSeen(
+                                                                true
+                                                            )
+                                                        }}
+                                                        className=" my-2 flex cursor-pointer rounded bg-[#3A9E67] py-2  px-4 text-white dark:bg-[#5DFEA5] dark:text-black"
+                                                    >
+                                                        OK! Got it.
+                                                    </button>
+                                                </div>
+                                            )}
+                                    </motion.div>
+                                </InView>
+                                {/* Tab Icons */}
                                 <Tab.List className="flex -translate-y-5 justify-between  border-0 outline-none hover:outline-none focus:border-0 focus:outline-none sm:pr-10 md:ml-5 md:pr-20">
                                     <div
                                         className={` absolute mx-auto inline-block h-12 w-[95%] translate-y-[3vw] -skew-x-12 border-0 bg-gray-200 outline-none dark:bg-black/50  md:mt-[1.5rem] md:translate-y-0`}
@@ -524,7 +589,21 @@ const Education = () => {
                                                     </div>
                                                 )}
                                                 {selectedTab !== tab.name && (
-                                                    <div className="flex w-full flex-row">
+                                                    <div
+                                                        className="onClick={() => setShowEducationIconTooltip(                               false )
+                                                                            }
+                                                                                flex
+                                                                            w-full
+                                                                        flex-row"
+                                                        onClick={() => {
+                                                            setShowEducationIconTooltip(
+                                                                false
+                                                            )
+                                                            setEducationTooltipSeen(
+                                                                true
+                                                            )
+                                                        }}
+                                                    >
                                                         {/* LIghtMode */}
                                                         {mode !== "dark" && (
                                                             <>
@@ -1187,6 +1266,6 @@ const Education = () => {
             </section>
         </div>
     )
-};
+}
 
 export default Education;

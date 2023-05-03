@@ -63,7 +63,7 @@ export default function TabGroup() {
         // alert and thank the user for their submission using sweetalert2
         swal({
             title: "Thank you for Reaching Out!",
-            text: "We will get back to you as soon as possible. ONE LAST THING! Please, Check your inbox. There is a high likelihood that your confirmation email arrived in the JUNK Folder. To ensure future successful delivery please check for an emial within the next minute or so and markk ''Not junk''. Thank you!",
+            text: "We will get back to you as soon as possible. ONE LAST THING! Please, Check your inbox. There is a high likelihood that your confirmation email arrived in the JUNK Folder. To ensure future successful delivery please check for an email within the next minute or so and mark ''Not junk''. Thank you!",
             icon: "success",
             confirmButtonText: "OK",
         })

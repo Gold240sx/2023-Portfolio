@@ -1,26 +1,307 @@
 import { faTrumpet } from "@fortawesome/pro-light-svg-icons"
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
+import { SiHellofresh } from "react-icons/si"
 import { InView } from "react-intersection-observer"
 
-const FiterButton = (category, label, active) => {
+const timelineEvents = {
+    work: [
+        {
+            name: "Beach's Long Lake Service",
+            date: "2004",
+            endDate: "2005",
+            description: "First Job",
+        },
+        {
+            name: "AirTraffic Kites and Games",
+            date: "2005",
+            endDate: "2008",
+            description: "",
+        },
+        {
+            name: "Team Winmark",
+            date: "2008",
+            endDate: "2010",
+            description: "Sales Associate",
+        },
+        {
+            name: "Promoted to Manager",
+            date: "2009",
+            endDate: "",
+            description: "Team Winmark",
+        },
+        {
+            name: "Phase 2 Marketing Solutions",
+            date: "2011",
+            endDate: "",
+            description: "CO-founded - (Pittsburgh, PA)",
+        },
+        {
+            name: "Phase 2 Marketing Solutions",
+            date: "2015",
+            endDate: "",
+            description: "Created Solar Division",
+        },
+        {
+            name: "Easy Green Solar",
+            date: "2016",
+            endDate: "2019",
+            description: "CEO and founder",
+        },
+        {
+            name: "ELM Fieldsight",
+            date: "2020",
+            endDate: "2021",
+            description: "Business Development Manager",
+        },
+        {
+            name: "Tech Solar Industries",
+            date: "2021",
+            endDate: "2022",
+            description: "Business Development Manager",
+        },
+        {
+            name: "Dimaco (Direct Mail)",
+            date: "2022",
+            endDate: "2023",
+            description: "Web Developer",
+        },
+    ],
+    education: [
+        {
+            name: "Irondale High School",
+            date: "2004",
+            endDate: "2005",
+            description: "",
+        },
+        {
+            name: "College For Creative Studies",
+            date: "2005",
+            endDate: "",
+            description: "Summer Camp",
+        },
+        {
+            name: "Perpich - PCAE (High School)",
+            date: "2006",
+            endDate: "2008",
+            description: "Visual Arts",
+        },
+        {
+            name: "High School Diploma",
+            date: "2008",
+            endDate: "",
+            description: "Perpich - PCAE",
+        },
+        {
+            name: "Art Center College of Design",
+            date: "2014",
+            endDate: "",
+            description: "Transportation Design",
+        },
+        {
+            name: "ES6 Vanilla JS Master Course",
+            date: "2021",
+            endDate: "",
+            description: "Course Completed",
+        },
+        {
+            name: "D3 JS Data Visualization",
+            date: "2022",
+            endDate: "",
+            description: "Course Completed",
+        },
+        {
+            name: " React / Firebase Master Course",
+            date: "2022",
+            endDate: "",
+            description: "Course Completed",
+        },
+        {
+            name: "Started Next JS Master Course",
+            date: "2022",
+            endDate: "",
+            description: "... In Progress",
+        },
+    ],
+    life: [
+        {
+            name: "Competed in Juggling World Championships",
+            date: "2005",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "Moved to Fresno, CA",
+            date: "2005",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "Bought drift car",
+            date: "2008",
+            endDate: "",
+            description: "240sx",
+        },
+        {
+            name: "Moved to Minnesota",
+            date: "2010",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "Moved to Fresno, CA",
+            date: "2013",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "Moved to Pasadena, CA",
+            date: "2014",
+            endDate: "",
+            description: "to Attend Art Center",
+        },
+        {
+            name: "Moved to Huntington Beach, CA",
+            date: "2014",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "Moved to Fresno, CA",
+            date: "2014",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "Moved to Marin County, CA",
+            date: "2015",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "started Jiu Jitsu",
+            date: "2016",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "Got my Jiu Jitsu Blue Belt",
+            date: "2019",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "moved to Dallas, TX",
+            date: "2019",
+            endDate: "",
+            description: "",
+        },
+        {
+            name: "Synaptic Solar",
+            date: "2019",
+            endDate: "2020",
+            description: "Account Manager",
+        },
+        {
+            name: "Learned advanced Excel",
+            date: "2017",
+            endDate: "",
+            description: "Built a Solar Quote Calculator",
+        },
+        {
+            name: "Started learning to code",
+            date: "2020",
+            endDate: "",
+            description: "Vanilla HTML, CSS, JS",
+        },
+        {
+            name: "Tailwind CSS Course",
+            date: "2023",
+            endDate: "",
+            description: "Course Completed",
+        },
+        {
+            name: "Supabase Course",
+            date: "2023",
+            endDate: "",
+            description: "Course Completed",
+        },
+    ],
+}
+
+// const FiterButton = (category, label, active) => {
+//     return (
+//         <button
+//             className={`${
+//                 category
+//                     ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
+//                     : ""
+//             } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
+//             onClick={(e) => handleFilter(e)}
+//         >
+//             {label}
+//         </button>
+//     )
+// }
+function YearLabel(props) {
+    const [isVisible, setIsVisible] = useState(false)
+
     return (
-        <button
-            className={`${
-                category
-                    ? " border-sky-400 bg-gray-200 dark:border-sky-400 dark:bg-gray-700"
-                    : ""
-            } mx-3 rounded-lg border-2 border-gray-300 bg-gray-200 py-2 px-4 font-bold text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200`}
-            onClick={(e) => handleFilter(e)}
+        <InView
+            as="div"
+            onChange={(inView, entry) => {
+                if (inView) {
+                    setIsVisible(true)
+                }
+            }}
+            threshold={0.1}
         >
-            {label}
-        </button>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={isVisible ? { opacity: 1 } : {}}
+                transition={{ duration: 1 }}
+                className={` ${isVisible ? " w-full " : "hidden"}`}
+            >
+                <div id="lineup-col-content" className="">
+                    <h4 className="mx-auto mt-4 flex max-w-[80%] rounded-lg bg-white p-2 text-center font-permanent-marker text-xl text-gray-400 dark:bg-zinc-900">
+                        {props.year}
+                    </h4>
+                </div>
+                <div id="empty-right-1"></div>
+            </motion.div>
+        </InView>
     )
 }
 
 function TimelineItem(props) {
     const [isVisible, setIsVisible] = useState(false)
-    const { category, title, description, position, filters = {} } = props
+    const {
+        category,
+        title,
+        description,
+        position,
+        filters,
+        index = {},
+    } = props
+
+    const descriptNutShell = (description, date, endDate, key) => {
+        // If title.toLowerCase() starts with "moved" then show no description
+        if (title.toLowerCase().startsWith("moved")) {
+            // set description to empty string
+            return key
+        } else if (description === "" && date && endDate) {
+            // if the description is "" but we have a date and EndDate
+            return `(${date} - ${endDate} - ${key})`
+        } else if (props.endDate === "" && category === "education") {
+            // if the description doesnt have an end date and is education
+            return "Course Completed"
+        } else if (description !== "" && date && endDate) {
+            // if there is a description and a date and an end date
+            return `${description} (${date} - ${endDate})`
+        } else {
+            return description
+        }
+    }
 
     if (position === "left") {
         return (
@@ -36,15 +317,23 @@ function TimelineItem(props) {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isVisible ? { opacity: 1 } : {}}
-                    transition={{ duration: 1.5 }}
-                    className={` ${isVisible ? "flex" : "hidden"}`}
+                    transition={{ duration: 1.8 }}
+                    className={` ${
+                        isVisible
+                            ? "ml-auto flex w-fit items-end px-2 text-right"
+                            : "hidden"
+                    }`}
                 >
                     <div className="mt-4 text-right">
                         <div className="text-sm font-bold md:text-base">
                             {title}
                         </div>
                         <div className=" text-xs text-zinc-400 md:text-sm">
-                            {props.description}
+                            {descriptNutShell(
+                                props.description,
+                                props.date,
+                                props.endDate
+                            )}
                         </div>
                     </div>
                     <div id="empty-right-2"></div>
@@ -53,36 +342,44 @@ function TimelineItem(props) {
         )
     } else if (position === "right") {
         return (
-            <>
-                <>
+            <InView
+                as="div"
+                onChange={(inView, entry) => {
+                    if (inView) {
+                        setIsVisible(true)
+                    }
+                }}
+                threshold={0.1}
+            >
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={isVisible ? { opacity: 1 } : {}}
+                    transition={{ duration: 1.8 }}
+                    className={` ${
+                        isVisible
+                            ? "mr-auto flex w-fit items-start px-2 text-left"
+                            : "hidden"
+                    }`}
+                >
                     <div id="empty-left-1"></div>
                     <div className=" mt-4 text-left text-sm md:ml-2 md:text-base">
-                        <div className=" wrap max-w-[200px] break-normal font-bold lg:max-w-none">
+                        <div className=" wrap break-normal font-bold lg:max-w-none">
                             {title}
                         </div>
                         <div className=" overflow-ellipsis text-xs text-zinc-400 md:text-sm">
-                            {description}
+                            {descriptNutShell(
+                                props.description,
+                                props.date,
+                                props.endDate
+                            )}
                         </div>
                     </div>
-                </>
-            </>
+                </motion.div>
+            </InView>
         )
     } else {
         return <p>missing position</p>
     }
-}
-
-function YearLabel(props) {
-    return (
-        <>
-            <div id="lineup-col-content" className="">
-                <h4 className="mx-auto mt-4 flex max-w-[80%] rounded-lg bg-white p-2 text-center font-permanent-marker text-xl text-gray-400 dark:bg-zinc-900">
-                    {props.year}
-                </h4>
-            </div>
-            <div id="empty-right-1"></div>
-        </>
-    )
 }
 
 const Timeline = () => {
@@ -91,6 +388,50 @@ const Timeline = () => {
     const [lifeTimeline, setLifeTimeline] = useState(false)
     const [time2000s, setTime2000s] = useState(false)
     const [time2010s, setTime2010s] = useState(false)
+
+    const processEvents = (data, filters) => {
+        const {
+            workTimeline,
+            educationTimeline,
+            lifeTimeline,
+            time2000s,
+            time2010s,
+        } = filters
+        const events = []
+
+        Object.keys(data).forEach((category) => {
+            if (
+                (category === "work" && workTimeline) ||
+                (category === "education" && educationTimeline) ||
+                (category === "life" && lifeTimeline)
+            ) {
+                data[category].forEach((event) => {
+                    const date = parseInt(event.date, 10)
+                    if (
+                        (!time2000s && !time2010s) ||
+                        (time2000s && date >= 2000 && date < 2010) ||
+                        (time2010s && date >= 2010 && date < 2020) ||
+                        date >= 2020
+                    ) {
+                        events.push({ ...event, category })
+                    }
+                })
+            }
+        })
+
+        // Sort events by date
+        events.sort((a, b) => parseInt(a.date, 10) - parseInt(b.date, 10))
+
+        return events
+    }
+
+    const filteredEvents = processEvents(timelineEvents, {
+        workTimeline,
+        educationTimeline,
+        lifeTimeline,
+        time2000s,
+        time2010s,
+    })
 
     const handleFilter = (e) => {
         const button = e.target
@@ -104,6 +445,80 @@ const Timeline = () => {
             setLifeTimeline(!lifeTimeline)
         }
     }
+
+    // const handleFilter = (e) => {
+    //     const button = e.target
+    //     const category = button.textContent.toLowerCase()
+
+    //     if (category === "work") {
+    //         setWorkTimeline(!workTimeline)
+    //     } else if (category === "education") {
+    //         setEducationTimeline(!educationTimeline)
+    //     } else if (category === "life") {
+    //         setLifeTimeline(!lifeTimeline)
+    //     }
+    // }
+
+    const { leftElements, rightElements } = filteredEvents.reduce(
+        (acc, event, index) => {
+            let shouldDisplayYear = false
+
+            if (acc.lastYear !== event.date) {
+                acc.lastYear = event.date
+                acc.itemCounter = 0
+                shouldDisplayYear = true
+            }
+
+            if (shouldDisplayYear) {
+                acc.leftElements.push(
+                    <YearLabel key={`year-${event.date}`} year={event.date} />
+                )
+                acc.rightElements.push(
+                    <div key={`year-placeholder-${event.date}`}></div>
+                )
+            }
+
+            if (acc.itemCounter % 2 === 0) {
+                acc.leftElements.push(
+                    <TimelineItem
+                        key={`${event.date}-${event.name}-left`}
+                        category={event.category}
+                        title={event.name}
+                        date={event.date}
+                        endDate={event.endDate}
+                        description={event.description}
+                        position="left"
+                    />
+                )
+                acc.rightElements.push(
+                    <div
+                        key={`${event.date}-${event.name}-right-placeholder`}
+                    ></div>
+                )
+            } else {
+                acc.leftElements.push(
+                    <div
+                        key={`${event.date}-${event.name}-left-placeholder`}
+                    ></div>
+                )
+                acc.rightElements.push(
+                    <TimelineItem
+                        key={`${event.date}-${event.name}-right`}
+                        category={event.category}
+                        title={event.name}
+                        date={event.date}
+                        endDate={event.endDate}
+                        description={event.description}
+                        position="right"
+                    />
+                )
+            }
+
+            acc.itemCounter++
+            return acc
+        },
+        { lastYear: "", leftElements: [], rightElements: [], itemCounter: 0 }
+    )
 
     return (
         <div className="relative mx-auto flex h-fit  flex-col items-center justify-evenly text-center sm:max-w-screen-sm md:max-w-7xl md:text-left">
@@ -219,415 +634,16 @@ const Timeline = () => {
                             />
                         </div>
                         <div className="grid grid-cols-2 gap-8 text-gray-600 dark:text-gray-300">
-                            {time2000s && (
-                                <>
-                                    <YearLabel year="2004" />
-                                    {educationTimeline && (
-                                        <TimelineItem
-                                            category="education"
-                                            title={
-                                                <a
-                                                    href="https://www.moundsviewschools.org/irondale"
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="cursor-pointer underline"
-                                                >
-                                                    Irondale High School
-                                                </a>
-                                            }
-                                            description="(2004-2005)"
-                                            position="left"
-                                        />
-                                    )}
-                                    {workTimeline && (
-                                        <TimelineItem
-                                            category="work"
-                                            title={
-                                                <a
-                                                    href="https://www.facebook.com/people/Beachs-Long-Lake-Service/100063752972731/"
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="cursor-pointer underline"
-                                                >
-                                                    Beach's Long Lake Service
-                                                </a>
-                                            }
-                                            description="First Job"
-                                            position="right"
-                                        />
-                                    )}
-                                    <YearLabel year="2005" />
-                                    {workTimeline && (
-                                        <TimelineItem
-                                            category="work"
-                                            title={
-                                                <a
-                                                    href="https://airtraffictoys.com/"
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="cursor-pointer underline"
-                                                >
-                                                    AirTraffic Kites and Games
-                                                </a>
-                                            }
-                                            description="(2004-2008)"
-                                            position="left"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title={
-                                                <a
-                                                    href="https://www.juggle.org/"
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="cursor-pointer text-[.95rem] underline"
-                                                >
-                                                    Juggling World Championships
-                                                </a>
-                                            }
-                                            description="Competed"
-                                            position="right"
-                                        />
-                                    )}
-                                    {educationTimeline && (
-                                        <TimelineItem
-                                            category="education"
-                                            title={
-                                                <a
-                                                    href="https://www.collegeforcreativestudies.edu"
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="cursor-pointer underline"
-                                                >
-                                                    College For Creative Studies
-                                                </a>
-                                            }
-                                            description="Summer Camp"
-                                            position="left"
-                                        />
-                                    )}
-                                    <YearLabel year="2006" />
-                                    {educationTimeline && (
-                                        <TimelineItem
-                                            category="education"
-                                            title={
-                                                <a
-                                                    href="https://perpich.mn.gov/"
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="cursor-pointer underline"
-                                                >
-                                                    Perpich - PCAE (High School)
-                                                </a>
-                                            }
-                                            description="Visual Arts (2006 - 2008)"
-                                            position="right"
-                                        />
-                                    )}
-                                    <YearLabel year="2008" />
-                                    {educationTimeline && (
-                                        <TimelineItem
-                                            category="education"
-                                            title="High School Diploma"
-                                            description="Perpich - PCAE"
-                                            position="left"
-                                        />
-                                    )}
-                                    {workTimeline && (
-                                        <TimelineItem
-                                            category="work"
-                                            title="Team Winmark"
-                                            description="Sales Associate"
-                                            position="right"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Moved: Fresno, CA"
-                                            description=""
-                                            position="left"
-                                        />
-                                    )}
-                                    <YearLabel year="2009" />
-                                    {workTimeline && (
-                                        <TimelineItem
-                                            category="work"
-                                            title="Promoted to Manager"
-                                            description="Team Winmark"
-                                            position="right"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Bought drift car"
-                                            description="240sx"
-                                            position="left"
-                                        />
-                                    )}
-                                </>
-                            )}
-                            {time2010s && (
-                                <>
-                                    <YearLabel year="2010" />
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Moved: Minnesota"
-                                            description=""
-                                            position="right"
-                                        />
-                                    )}
-                                    <YearLabel year="2011" />
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Married"
-                                            description="(Pittsburgh, PA)"
-                                            position="left"
-                                        />
-                                    )}
-                                    {workTimeline && (
-                                        <TimelineItem
-                                            category="work"
-                                            title="Phase 2 Marketing Solutions"
-                                            description="CO-founded - (Pittsburgh, PA)"
-                                            position="right"
-                                        />
-                                    )}
-                                    <YearLabel year="2013" />
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Moved: Fresno, CA"
-                                            description=""
-                                            position="left"
-                                        />
-                                    )}
-                                    <YearLabel year="2014" />
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Divorced"
-                                            description=""
-                                            position="right"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Moved: Pasadena, CA"
-                                            description="to Attend Art Center"
-                                            position="left"
-                                            className="text-[.95rem]"
-                                        />
-                                    )}
-                                    {educationTimeline && (
-                                        <TimelineItem
-                                            category="education"
-                                            title={
-                                                <a
-                                                    href="https://perpich.mn.gov/"
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="cursor-pointer underline"
-                                                >
-                                                    Art Center College of Design
-                                                </a>
-                                            }
-                                            description="Transportation Design (2014)"
-                                            position="right"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Homeless"
-                                            description="for 3 months"
-                                            position="left"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Moved: Huntington Beach, CA"
-                                            description=""
-                                            position="right"
-                                            className="flex text-[.6rem]"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Moved: Fresno, CA"
-                                            description=""
-                                            position="left"
-                                        />
-                                    )}
-                                    <YearLabel year="2015" />
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Moved: Marin County, CA"
-                                            description=""
-                                            position="right"
-                                        />
-                                    )}
-                                    {workTimeline && (
-                                        <TimelineItem
-                                            category="work"
-                                            title="Phase 2 Marketing Solutions"
-                                            description="Created Solar Division"
-                                            position="left"
-                                        />
-                                    )}
-                                    <YearLabel year="2016" />
-                                    {workTimeline && (
-                                        <TimelineItem
-                                            category="work"
-                                            title="Easy Green Solar"
-                                            description="CEO and Founder"
-                                            position="right"
-                                        />
-                                    )}
-                                    {educationTimeline && (
-                                        <TimelineItem
-                                            category="education"
-                                            title="Got pretty good with Excel"
-                                            description="Built a Solar Quote Generator"
-                                            position="left"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Started Jiu Jitsu"
-                                            description=""
-                                            position="right"
-                                        />
-                                    )}
-                                    <YearLabel year="2019" />
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Got my Jiu Jitsu Blue Belt"
-                                            description=""
-                                            position="left"
-                                        />
-                                    )}
-                                    {lifeTimeline && (
-                                        <TimelineItem
-                                            category="life"
-                                            title="Moved: Dallas, TX"
-                                            description=""
-                                            position="right"
-                                        />
-                                    )}
-                                    {workTimeline && (
-                                        <TimelineItem
-                                            category="work"
-                                            title="Synaptic Solar"
-                                            description="Account Manager (2019-2020)"
-                                            position="left"
-                                        />
-                                    )}
-                                </>
-                            )}
-                            <YearLabel year="2020" />
-                            {workTimeline && (
-                                <TimelineItem
-                                    category="work"
-                                    title="ELM Fieldsight"
-                                    description="Biz Dev Manager (2020-2021)"
-                                    position="right"
-                                />
-                            )}
-                            {educationTimeline && (
-                                <TimelineItem
-                                    category="education"
-                                    title="Started learning To Code"
-                                    description="Vaniilla HTML, CSS, JS"
-                                    position="left"
-                                />
-                            )}
-                            <YearLabel year="2021" />
-                            {workTimeline && (
-                                <TimelineItem
-                                    category="work"
-                                    title="Tech Solar Industries"
-                                    description="Biz Dev (2021-2022)"
-                                    position="right"
-                                />
-                            )}
-                            {educationTimeline && (
-                                <TimelineItem
-                                    category="education"
-                                    title="ES6 Vanilla JS Master Course"
-                                    description="Completed"
-                                    position="left"
-                                />
-                            )}
-                            <YearLabel year="2022" />
-                            {educationTimeline && (
-                                <TimelineItem
-                                    category="education"
-                                    title="D3 JS Data Visualization"
-                                    description="Course Completed"
-                                    position="right"
-                                />
-                            )}
-                            {educationTimeline && (
-                                <TimelineItem
-                                    category="education"
-                                    title="React / Firebase Master Course"
-                                    description="Completed"
-                                    position="left"
-                                />
-                            )}
-                            {lifeTimeline && (
-                                <TimelineItem
-                                    category="life"
-                                    title="Deployed my 1st Portfolio Site"
-                                    description="Built in React"
-                                    position="right"
-                                />
-                            )}
-                            {educationTimeline && (
-                                <TimelineItem
-                                    category="education"
-                                    title="Started NextJS Course"
-                                    description="In Progress..."
-                                    position="left"
-                                />
-                            )}
-                            {workTimeline && (
-                                <TimelineItem
-                                    category="work"
-                                    title="Dimaco (Direct Mail)"
-                                    description="Web Developer (2022-2023)"
-                                    position="right"
-                                />
-                            )}
-                            <YearLabel year="2023" />
-                            {educationTimeline && (
-                                <TimelineItem
-                                    category="education"
-                                    title="Tailwind CSS Course"
-                                    description="Completed"
-                                    position="left"
-                                />
-                            )}
-                            {educationTimeline && (
-                                <TimelineItem
-                                    category="education"
-                                    title="Supabase Course"
-                                    description="Completed"
-                                    position="right"
-                                />
-                            )}
+                            {leftElements.map((leftElem, index) => (
+                                <React.Fragment key={leftElem.key}>
+                                    <div className="max-w-[100%]">
+                                        {leftElem}
+                                    </div>
+                                    <div className="max-w-[100%]">
+                                        {rightElements[index]}
+                                    </div>
+                                </React.Fragment>
+                            ))}
                         </div>
                     </div>
                 </div>

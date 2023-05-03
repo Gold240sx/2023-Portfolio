@@ -27,15 +27,15 @@ const Contact = () => {
                 </p>
                 {/* Form */}
                 <TabGroup />
-            </div>
-            <div
-                className="ml-auto flex w-fit cursor-help z-10"
-                data-tooltip-id="contactInfo"
-                data-tooltip-content="This contact form uses Google Firebase as a database, Trigger-Email serverless
+                <div
+                    className="z-10 ml-auto flex h-fit w-fit cursor-help"
+                    data-tooltip-id="contactInfo"
+                    data-tooltip-content="This contact form uses Google Firebase as a database, Trigger-Email serverless
                         functions and sendgrid to send emails. Any information obtained by this form will not be used for any other purpose than to contact you. I will never sell your information to any third party."
-                data-tooltip-delay-show={100}
-            >
-                <FaInfoCircle className="z-[1000]  ml-auto mt-4 mr-2 flex h-6 w-6 cursor-help text-gray-400 dark:text-gray-500" />
+                    data-tooltip-delay-show={100}
+                >
+                    <FaInfoCircle className="z-[1000]  ml-auto mr-2 mb-4 flex h-6 w-6 cursor-help text-gray-400 dark:text-gray-500" />
+                </div>
                 <Tooltip
                     id="contactInfo"
                     place="left"

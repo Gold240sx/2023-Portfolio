@@ -161,7 +161,7 @@ function recieveGeneralInquiry(formData) {
                                                 </tr>
                                                 <tr>
                                                     <td style="font-weight: 600">Name:</td>
-                                                    <td style="color:rgb(139, 139, 139)">${contactName}</td>
+                                                    <td style="color:rgb(139, 139, 139)">${name}</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="font-weight: 600">Return Email:</td>

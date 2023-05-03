@@ -919,7 +919,6 @@ function confirmRecieptQuoteTemplate(formData) {
                 <tr class="darkmode-transparent" data-id="react-email-hr" style="width:100%;border:none;border-top:1px solid #eaeaea;border-color:#e6ebf1;margin:20px 0;">
                     <p data-id="react-email-text" style="font-size:1.25rem;line-height:1.75rem;margin:16px 0;font-weight:600;color:rgb(136,152,170)">Your Form Submission:</p>
                     <div style="display:flex;height:fit-content;width:auto;flex-direction:column;border-width:2px;border-color:rgb(161,161,170);padding-left:0.75rem;padding-right:0.75rem; ">
-                        <p class="" data-id="react-email-text" style="font-size:14px;line-height:24px;margin:16px 0">Contact Form Type:</p>
                         <!-- Data Table -->
                         <table class="darkmode-transparent" style="table-layout:auto;border-radius:0.75rem;border-color:rgb(96, 96, 96); margin-bottom: 20px; padding-bottom: 20px; border:2px">
                             <thead style="border-top-left-radius:0.5rem;border-top-right-radius:0.5rem">

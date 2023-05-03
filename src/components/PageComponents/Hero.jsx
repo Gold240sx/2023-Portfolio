@@ -20,21 +20,18 @@ export default function Hero() {
     })
 
     return (
-        <div
-            className="w-fit space-y-8 text-center z-10"
-            id="hero-section"
-        >
+        <div className="z-10 w-fit space-y-8 text-center" id="hero-section">
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5 }}
-                className="min-h-4 relative flex h-auto w-[90vw] md:w-[80vw] lg:w-[70vw] flex-col items-center justify-center sm:min-h-6"
+                className="min-h-4 relative flex h-auto w-[90vw] flex-col items-center justify-center sm:min-h-6 md:w-[80vw] lg:w-[70vw]"
             >
                 <img
                     src={heroImage}
                     alt="hero-image"
                     id="hero-image"
-                    className="max-w-screen h-auto md:max-w-[850px] z-10"
+                    className="max-w-screen z-10 h-auto md:max-w-[850px]"
                     style={{ maxHeight: "90vh" }} // set max height if needed
                 />
             </motion.div>
@@ -44,12 +41,12 @@ export default function Hero() {
                 transition={{ duration: 1.5 }}
                 className="relative z-10 flex h-auto w-full flex-col items-center justify-center"
             >
-                <h1 className="z-20 hidden h-fit translate-y-[.8vh] md:block overflow-y-visible">
-                    <span className="text-start text-sm text-gray-400 sm:ml-[4.5rem] md:mx-4 md:text-xl lg:text-2xl z-10 ">
+                {/* <h1 className="bottom-10 z-20 mx-auto hidden h-fit overflow-y-visible lg:absolute">
+                    <span className="z-10 text-start text-sm text-gray-400 sm:ml-[4.5rem] md:mx-4 md:text-xl lg:text-2xl ">
                         {text}
                     </span>
                     <Cursor cursorColor="orange" cursorStyle="|" />
-                </h1>
+                </h1> */}
             </motion.div>
         </div>
     )

@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { SocialIcon } from "react-social-icons"
 import ResumeIcon from "../assets/Icons/ResumeDL.svg"
 import resumeFile from "../assets/files/MichaelMartell2023ResumeV1.3.pdf"
 import { Link } from "react-router-dom"
+
 import { motion } from "framer-motion"
 import { Tooltip } from "react-tooltip"
 import qs from "query-string"
@@ -18,6 +19,27 @@ function handleEmailClick() {
 }
 
 export default function SocialBar({}: Props) {
+    const tooltipRefs = useRef({})
+
+    const handleBlur = () => {
+        for (const tooltipRef in tooltipRefs.current) {
+            if (tooltipRefs.current[tooltipRef]) {
+                tooltipRefs.current[tooltipRef].hideTooltip()
+            }
+        }
+    }
+
+    const initializeTooltipRefs = (id) => (ref) => {
+        tooltipRefs.current[id] = ref
+    }
+
+    useEffect(() => {
+        window.addEventListener("blur", handleBlur)
+        return () => {
+            window.removeEventListener("blur", handleBlur)
+        }
+    }, [])
+
     return (
         <header className="fixed bottom-0 z-20 mx-auto flex max-w-7xl items-center justify-between p-1 sm:left-0 landscape:sm:left-5">
             <motion.div
@@ -39,12 +61,13 @@ export default function SocialBar({}: Props) {
                 {" "}
                 {/* above bg-orange-500 rounded-full */}
                 {/* social icons */}
+                {/* LinkedIn */}
                 <SocialIcon
                     url="https://www.linkedin.com/in/martell01"
                     fgColor="transparent"
                     bgColor="#737373"
                     className=" hover: cursor-pointer opacity-80 brightness-200 hover:opacity-100 dark:opacity-60 hover:dark:opacity-100"
-                    data-tooltip-id="stack"
+                    data-tooltip-id="linkedin"
                     data-tooltip-content="Link: My Linkedin Profile"
                     data-tooltip-delay-show={1000}
                     style={{
@@ -54,10 +77,12 @@ export default function SocialBar({}: Props) {
                     }}
                 />
                 <Tooltip
+                    ref={initializeTooltipRefs("linkedin")}
                     id="linkedin"
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                 />
+                {/* Github */}
                 <SocialIcon
                     url="https://github.com/gold240sx"
                     fgColor="#737373"
@@ -68,10 +93,12 @@ export default function SocialBar({}: Props) {
                     bgColor="transparent"
                 />
                 <Tooltip
+                    ref={initializeTooltipRefs("github")}
                     id="github"
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                 />
+                {/* StackOverflow */}
                 <SocialIcon
                     url="https://stackoverflow.com/users/16441693/michael-martell"
                     fgColor="transparent"
@@ -87,6 +114,7 @@ export default function SocialBar({}: Props) {
                     }}
                 />
                 <Tooltip
+                    ref={initializeTooltipRefs("stack")}
                     id="stack"
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
@@ -117,26 +145,29 @@ export default function SocialBar({}: Props) {
                     data-tooltip-delay-show={150}
                 />
                 <Tooltip
+                    ref={initializeTooltipRefs("email")}
                     id="email"
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                 />
+                {/* Resume */}
                 <Link
                     to={resumeFile}
                     target="_blank"
                     download
                     className="scale-90 hover:scale-100"
+                    data-tooltip-id="resume-dl"
+                    data-tooltip-content="Download: My Resume"
+                    data-tooltip-delay-show={150}
                 >
                     <img
                         src={ResumeIcon}
                         className="mb-2 h-8 w-auto translate-x-1 cursor-pointer fill-gray-400 opacity-80 invert transition-all duration-500 ease-in-out hover:scale-100 hover:opacity-100 dark:fill-white dark:opacity-20  hover:dark:opacity-40 lg:opacity-10 lg:invert-0 lg:dark:opacity-60 lg:dark:invert"
-                        data-tooltip-id="resume"
-                        data-tooltip-content="Download: My Resume"
-                        data-tooltip-delay-show={150}
                     />
                 </Link>
                 <Tooltip
-                    id="resume"
+                    ref={initializeTooltipRefs("resume")}
+                    id="resume-dl"
                     place="right"
                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                 />

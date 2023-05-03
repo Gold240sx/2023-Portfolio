@@ -397,7 +397,13 @@ export const navbar = () => {
                                 >
                                     <div
                                         className="hidden cursor-pointer flex-col items-end sm:flex"
-                                        onClick={handleClick}
+                                        onClick={() => {
+                                            setAstronautIsFlying(),
+                                                handleClick()
+                                        }}
+                                        data-tooltip-id={`astronaut`}
+                                        data-tooltip-content="Click me! Lets Fly!"
+                                        data-tooltip-delay-show={50}
                                     >
                                         {showSpeachBubble &&
                                             mode === "dark" && (
@@ -428,6 +434,11 @@ export const navbar = () => {
                                             )}
                                         </div>
                                     </div>
+                                    <Tooltip
+                                        id="astronaut"
+                                        place="left"
+                                        className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                    />
                                 </motion.div>
                             </motion.div>
                         </div>

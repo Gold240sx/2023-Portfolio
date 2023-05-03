@@ -7,6 +7,8 @@ import {
     ArrowLongRightIcon,
 } from "@heroicons/react/20/solid"
 import { IoIosHelpCircle } from "react-icons/io"
+import { InView } from "react-intersection-observer"
+import { motion } from "framer-motion"
 import { IoCloseCircleOutline } from "react-icons/io5"
 import { FaDatabase } from "react-icons/fa"
 import { Tooltip } from "react-tooltip"
@@ -269,6 +271,11 @@ const Projects = () => {
     const [searchMatchInfo, setSearchMatchInfo] = useState({})
     const [showCarousel, setShowCarousel] = useState(false)
     const [activeGalleryImages, setActiveGalleryImages] = useState([])
+    const [showMobileFilterTooltip, setShowMobileFilterTooltip] =
+        useState(false)
+    const [showTechFilterTooltip, setShowTechFilterTooltip] = useState(false)
+    const [projectFilterTooltipsSeen, setProjectFilterTooltipsSeen] =
+        useState(false)
     const itemsPerPage = 4
     const updateCurrentPage = (newPage) => {
         // Ensure the new page number is within the valid range
@@ -321,6 +328,13 @@ const Projects = () => {
     }
     const countMatchingProjects = (filter) => {
         console.log("countMatchingProjects", filter)
+        console.log(
+            ProjectItems.filter(
+                (project) =>
+                    project.technologies.includes(filter) ||
+                    project.year.toString() === filter
+            ).length
+        )
         return ProjectItems.filter(
             (project) =>
                 project.technologies.includes(filter) ||
@@ -410,6 +424,29 @@ const Projects = () => {
     )
     const totalPages = Math.ceil(filteredProjects.length / itemsPerPage)
 
+    useEffect(() => {
+        if (hoveredFilter.filter) {
+            let tooltip
+            if (isNaN(hoveredFilter.filter)) {
+                // Handle technologies
+                tooltip = document.querySelector(
+                    `#projectMobile${hoveredFilter.filter}`
+                )
+            } else {
+                // Handle years
+                tooltip = document.querySelector(
+                    `#projectMobileYear${hoveredFilter.filter}`
+                )
+            }
+            if (tooltip) {
+                tooltip.setAttribute(
+                    "data-tooltip-content",
+                    `${hoveredFilter.filter}: ${hoveredFilter.count} projects`
+                )
+            }
+        }
+    }, [hoveredFilter])
+
     return (
         <div
             className={` ${
@@ -457,9 +494,9 @@ const Projects = () => {
                             className={`${
                                 //
                                 showMobileFilters
-                                    ? "mt-5 w-fit dark:bg-[#060B19] translate-x-0"
-                                    : " fixed top-1/4 -ml-[1rem] w-[60px] bg-white shadow-2xl shadow-black hover:bg-gray-50 dark:bg-[#282a2a]"
-                            } z-[999] flex flex-col items-center justify-around gap-2 rounded-xl  p-1.5 outline-none dark:border-gray-700  `}
+                                    ? "translate-x-0px-1.5 mt-5 w-fit py-2 dark:bg-[#060B19]"
+                                    : " fixed top-1/4 -ml-[1rem] w-[60px] bg-white p-1.5  shadow-2xl shadow-black hover:bg-gray-50 dark:bg-[#282a2a]"
+                            } z-[999] flex flex-col items-center justify-around gap-0.5 rounded-xl   outline-none dark:border-gray-700  `}
                         >
                             {/* left */}
                             <a
@@ -468,8 +505,10 @@ const Projects = () => {
                             >
                                 <HiFilter
                                     className={`${
-                                        showMobileFilters ? "" : ""
-                                    } w-22 h-22 z-50 my-auto flex cursor-pointer text-center align-middle text-4xl capitalize tracking-widest text-gray-500 hover:text-gray-700 dark:text-gray-200 dark:hover:text-white`}
+                                        showMobileFilters
+                                            ? "h-14 w-14"
+                                            : "h-12 w-12"
+                                    } z-50 my-auto flex  cursor-pointer rounded-2xl border-2 p-2 text-center align-middle text-4xl capitalize tracking-widest text-gray-500 hover:text-gray-700 dark:text-gray-200 dark:hover:text-white`}
                                     data-tooltip-id="projectMobileFilter"
                                     data-tooltip-content="Filter Projects (Click to minimize)."
                                     data-tooltip-delay-show={300}
@@ -480,9 +519,124 @@ const Projects = () => {
                                     className="z-[1000] flex  h-fit bg-gray-200 text-base font-semibold text-slate-700 dark:bg-black dark:text-white md:text-xl"
                                 />
                             </a>
+                            <InView
+                                as="div"
+                                onChange={(inView, entry) => {
+                                    if (inView) {
+                                        setShowMobileFilterTooltip(true)
+                                    }
+                                }}
+                                threshold={0.1}
+                            >
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={
+                                        showMobileFilterTooltip
+                                            ? { opacity: 1 }
+                                            : {}
+                                    }
+                                    transition={{ duration: 0.75 }}
+                                    className={` ${
+                                        showMobileFilterTooltip
+                                            ? " w-full "
+                                            : "hidden"
+                                    }`}
+                                >
+                                    {showMobileFilterTooltip &&
+                                        !projectFilterTooltipsSeen && (
+                                            <div className="absolute top-0 left-1 ml-16 mt-4 flex w-[500%] max-w-[60vw] flex-col items-center justify-center rounded-xl bg-gray-200 p-2  text-sm font-semibold text-slate-700 shadow-lg shadow-black/50 dark:bg-black dark:text-white md:hidden">
+                                                <span>
+                                                    <div className="mx-auto flex w-fit items-center gap-4">
+                                                        <p className="text-lg">
+                                                            {" "}
+                                                            {`< Click:`}
+                                                        </p>
+                                                        <HiFilter className="h-6 w-6" />
+                                                    </div>
+                                                    to minimize the filter bar
+                                                    and view the projects in
+                                                    full screen.
+                                                </span>
+                                                <button
+                                                    onClick={() => {
+                                                        setShowMobileFilterTooltip(
+                                                            false
+                                                        )
+                                                        setShowTechFilterTooltip(
+                                                            true
+                                                        )
+                                                    }}
+                                                    className=" my-2 flex cursor-pointer rounded bg-sky-600 py-2  px-4 text-white hover:text-gray-700 dark:text-gray-200 dark:hover:text-white"
+                                                >
+                                                    Sweet!
+                                                </button>
+                                            </div>
+                                        )}
+                                </motion.div>
+                            </InView>
+
+                            <InView
+                                as="div"
+                                onChange={(inView, entry) => {
+                                    if (inView) {
+                                        setShowTechFilterTooltip(false)
+                                    }
+                                }}
+                                threshold={0.1}
+                            >
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={
+                                        showTechFilterTooltip
+                                            ? { opacity: 1 }
+                                            : {}
+                                    }
+                                    transition={{ duration: 0.5 }}
+                                    className={` ${
+                                        showTechFilterTooltip
+                                            ? " w-full "
+                                            : "hidden"
+                                    }`}
+                                >
+                                    {showTechFilterTooltip &&
+                                        !projectFilterTooltipsSeen && (
+                                            <div className="absolute top-[150px] left-1 ml-16 mt-4 flex w-[500%] max-w-[60vw] flex-col items-center justify-center rounded-xl bg-gray-200 p-2  text-sm font-semibold text-slate-700 shadow-lg shadow-black/50 dark:bg-black dark:text-white md:hidden">
+                                                <span>
+                                                    <div className="mx-auto flex w-fit items-center gap-4">
+                                                        <p className="mt-2 text-center align-middle text-lg">
+                                                            {" "}
+                                                            {`< Click Icons like:`}
+                                                        </p>
+                                                        <img
+                                                            src="https://img.icons8.com/color/48/000000/javascript.png"
+                                                            className="h-10 w-10"
+                                                        />
+                                                    </div>
+                                                    to the left to add / remove
+                                                    individual technologies and
+                                                    years from the filtered
+                                                    projects.
+                                                </span>
+                                                <button
+                                                    onClick={() => {
+                                                        setShowTechFilterTooltip(
+                                                            false
+                                                        )
+                                                        setProjectFilterTooltipsSeen(
+                                                            true
+                                                        )
+                                                    }}
+                                                    className=" my-2 flex cursor-pointer rounded bg-sky-600 py-2  px-4 text-white hover:text-gray-700 dark:text-gray-200 dark:hover:text-white"
+                                                >
+                                                    OK! Got it.
+                                                </button>
+                                            </div>
+                                        )}
+                                </motion.div>
+                            </InView>
                             {/* Select All / Deselect All Button */}
                             <div
-                                className="txt-sm flex min-w-fit cursor-pointer justify-center rounded-md border-2 border-transparent bg-sky-400 text-center align-middle text-white  hover:bg-sky-500  hover:text-white dark:bg-sky-500 dark:hover:bg-sky-400"
+                                className="txt-sm mb-1 flex min-w-fit cursor-pointer justify-center rounded-md border-2 border-transparent bg-sky-400 text-center align-middle text-white  hover:bg-sky-500  hover:text-white dark:bg-sky-500 dark:hover:bg-sky-400"
                                 onClick={() => {
                                     if (areAllFiltersActive()) {
                                         setActiveFilters(["2023"])
@@ -521,7 +675,7 @@ const Projects = () => {
                                         gap-2
                                 `}
                             >
-                                {/* left middle*/}
+                                {/* Top*/}
                                 <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <BsRulers
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
@@ -591,7 +745,7 @@ const Projects = () => {
                                         })}
                                     </div>
                                 </div>
-                                {/* middle */}
+                                {/* Upper-Center */}
                                 <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <SiStylelint
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest "
@@ -661,7 +815,7 @@ const Projects = () => {
                                         })}
                                     </div>
                                 </div>
-                                {/* right middle */}
+                                {/* Lower-Center */}
                                 <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <FaDatabase
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
@@ -731,7 +885,7 @@ const Projects = () => {
                                         })}
                                     </div>
                                 </div>
-                                {/* right*/}
+                                {/* Bottom*/}
                                 <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <BsFillCalendarMonthFill
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
@@ -863,8 +1017,11 @@ const Projects = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="mt-2 flex h-full items-center justify-around">
-                            {/* left middle*/}
+                        <p className="mt-4 ml-6">
+                            Click on the icons below to filter in/out individual
+                            projects by technology or year.
+                        </p>
+                        <div className=" flex h-full items-center justify-around">
                             <div className="group flex h-full flex-col items-center justify-center rounded-lg p-1.5 ">
                                 <h3 className="mb-1 text-2xl  tracking-wide text-gray-700  opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     Frameworks
@@ -877,46 +1034,31 @@ const Projects = () => {
                                                     tech.name
                                                 )
                                             return (
-                                                <div
-                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
-                                                    key={tech.id}
-                                                    onClick={() =>
-                                                        toggleFilter(tech.name)
-                                                    }
-                                                    onMouseEnter={() => {
-                                                        const count =
-                                                            countMatchingProjects(
+                                                <>
+                                                    <div
+                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                        key={tech.id}
+                                                        onClick={() =>
+                                                            toggleFilter(
                                                                 tech.name
                                                             )
-                                                        setHoveredFilter({
-                                                            filter: tech.name,
-                                                            count,
-                                                        })
-                                                    }}
-                                                    onMouseLeave={() =>
-                                                        setHoveredFilter({
-                                                            filter: "",
-                                                            count: 0,
-                                                        })
-                                                    }
-                                                >
-                                                    <img
-                                                        src={tech.logo}
-                                                        className={` ${
-                                                            isActive
-                                                                ? "opacity-100"
-                                                                : "grayscale"
-                                                        } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
-                                                            tech.invert
-                                                                ? "opacity-50 dark:invert"
-                                                                : ""
-                                                        } ${
-                                                            tech.invert &&
-                                                            isActive
-                                                                ? "opacity-100 dark:opacity-100"
-                                                                : "opacity-50 "
-                                                        }`}
-                                                        alt={tech.name}
+                                                        }
+                                                        onMouseEnter={() => {
+                                                            const count =
+                                                                countMatchingProjects(
+                                                                    tech.name
+                                                                )
+                                                            setHoveredFilter({
+                                                                filter: tech.name,
+                                                                count,
+                                                            })
+                                                        }}
+                                                        onMouseLeave={() =>
+                                                            setHoveredFilter({
+                                                                filter: "",
+                                                                count: 0,
+                                                            })
+                                                        }
                                                         data-tooltip-id={`projectMobile${tech.id}`}
                                                         data-tooltip-content={`
                                                             ${hoveredFilter.filter}:
@@ -925,19 +1067,37 @@ const Projects = () => {
                                                         data-tooltip-delay-show={
                                                             50
                                                         }
-                                                    ></img>
+                                                    >
+                                                        <img
+                                                            src={tech.logo}
+                                                            className={` ${
+                                                                isActive
+                                                                    ? "opacity-100"
+                                                                    : "grayscale"
+                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
+                                                                tech.invert
+                                                                    ? "opacity-50 dark:invert"
+                                                                    : ""
+                                                            } ${
+                                                                tech.invert &&
+                                                                isActive
+                                                                    ? "opacity-100 dark:opacity-100"
+                                                                    : "opacity-50 "
+                                                            }`}
+                                                            alt={tech.name}
+                                                        ></img>
+                                                    </div>
                                                     <Tooltip
                                                         id={`projectMobile${tech.id}`}
                                                         place="bottom"
-                                                        className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                                        className=" bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
-                                                </div>
+                                                </>
                                             )
                                         }
                                     })}
                                 </div>
                             </div>
-                            {/*middle */}
                             <div className="group flex h-full flex-col items-center justify-center p-1.5">
                                 <h3 className="mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     CSS
@@ -950,46 +1110,10 @@ const Projects = () => {
                                                     tech.name
                                                 )
                                             return (
-                                                <div
-                                                    key={tech.id}
-                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
-                                                    onClick={() =>
-                                                        toggleFilter(tech.name)
-                                                    }
-                                                    onMouseEnter={() => {
-                                                        const count =
-                                                            countMatchingProjects(
-                                                                tech.name
-                                                            )
-                                                        setHoveredFilter({
-                                                            filter: tech.name,
-                                                            count,
-                                                        })
-                                                    }}
-                                                    onMouseLeave={() =>
-                                                        setHoveredFilter({
-                                                            filter: "",
-                                                            count: 0,
-                                                        })
-                                                    }
-                                                >
-                                                    <img
-                                                        src={tech.logo}
-                                                        className={` ${
-                                                            isActive
-                                                                ? "opacity-100"
-                                                                : "grayscale"
-                                                        } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
-                                                            tech.invert
-                                                                ? "opacity-50 dark:invert"
-                                                                : ""
-                                                        } ${
-                                                            tech.invert &&
-                                                            isActive
-                                                                ? "opacity-100 dark:opacity-100"
-                                                                : "opacity-50 "
-                                                        }`}
-                                                        alt={tech.name}
+                                                <>
+                                                    <div
+                                                        key={tech.id}
+                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
                                                         data-tooltip-id={`projectMobile${tech.id}`}
                                                         data-tooltip-content={`
                                                             ${hoveredFilter.filter}:
@@ -998,19 +1122,58 @@ const Projects = () => {
                                                         data-tooltip-delay-show={
                                                             50
                                                         }
-                                                    ></img>
+                                                        onClick={() =>
+                                                            toggleFilter(
+                                                                tech.name
+                                                            )
+                                                        }
+                                                        onMouseEnter={() => {
+                                                            const count =
+                                                                countMatchingProjects(
+                                                                    tech.name
+                                                                )
+                                                            setHoveredFilter({
+                                                                filter: tech.name,
+                                                                count,
+                                                            })
+                                                        }}
+                                                        onMouseLeave={() =>
+                                                            setHoveredFilter({
+                                                                filter: "",
+                                                                count: 0,
+                                                            })
+                                                        }
+                                                    >
+                                                        <img
+                                                            src={tech.logo}
+                                                            className={` ${
+                                                                isActive
+                                                                    ? "opacity-100"
+                                                                    : "grayscale"
+                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
+                                                                tech.invert
+                                                                    ? "opacity-50 dark:invert"
+                                                                    : ""
+                                                            } ${
+                                                                tech.invert &&
+                                                                isActive
+                                                                    ? "opacity-100 dark:opacity-100"
+                                                                    : "opacity-50 "
+                                                            }`}
+                                                            alt={tech.name}
+                                                        ></img>
+                                                    </div>
                                                     <Tooltip
                                                         id={`projectMobile${tech.id}`}
                                                         place="bottom"
                                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
-                                                </div>
+                                                </>
                                             )
                                         }
                                     })}
                                 </div>
                             </div>
-                            {/* right middle */}
                             <div className="group flex h-full flex-col items-center justify-center p-1.5">
                                 <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     Databases
@@ -1023,46 +1186,10 @@ const Projects = () => {
                                                     tech.name
                                                 )
                                             return (
-                                                <div
-                                                    key={tech.id}
-                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
-                                                    onClick={() =>
-                                                        toggleFilter(tech.name)
-                                                    }
-                                                    onMouseEnter={() => {
-                                                        const count =
-                                                            countMatchingProjects(
-                                                                tech.name
-                                                            )
-                                                        setHoveredFilter({
-                                                            filter: tech.name,
-                                                            count,
-                                                        })
-                                                    }}
-                                                    onMouseLeave={() =>
-                                                        setHoveredFilter({
-                                                            filter: "",
-                                                            count: 0,
-                                                        })
-                                                    }
-                                                >
-                                                    <img
-                                                        src={tech.logo}
-                                                        className={` ${
-                                                            isActive
-                                                                ? "opacity-100"
-                                                                : "grayscale"
-                                                        } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
-                                                            tech.invert
-                                                                ? "opacity-50 dark:invert"
-                                                                : ""
-                                                        } ${
-                                                            tech.invert &&
-                                                            isActive
-                                                                ? "opacity-100 dark:opacity-100"
-                                                                : "opacity-50 "
-                                                        }`}
-                                                        alt={tech.name}
+                                                <>
+                                                    <div
+                                                        key={tech.id}
+                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
                                                         data-tooltip-id={`projectMobile${tech.id}`}
                                                         data-tooltip-content={`
                                                             ${hoveredFilter.filter}:
@@ -1071,19 +1198,58 @@ const Projects = () => {
                                                         data-tooltip-delay-show={
                                                             50
                                                         }
-                                                    ></img>
+                                                        onClick={() =>
+                                                            toggleFilter(
+                                                                tech.name
+                                                            )
+                                                        }
+                                                        onMouseEnter={() => {
+                                                            const count =
+                                                                countMatchingProjects(
+                                                                    tech.name
+                                                                )
+                                                            setHoveredFilter({
+                                                                filter: tech.name,
+                                                                count,
+                                                            })
+                                                        }}
+                                                        onMouseLeave={() =>
+                                                            setHoveredFilter({
+                                                                filter: "",
+                                                                count: 0,
+                                                            })
+                                                        }
+                                                    >
+                                                        <img
+                                                            src={tech.logo}
+                                                            className={` ${
+                                                                isActive
+                                                                    ? "opacity-100"
+                                                                    : "grayscale"
+                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
+                                                                tech.invert
+                                                                    ? "opacity-50 dark:invert"
+                                                                    : ""
+                                                            } ${
+                                                                tech.invert &&
+                                                                isActive
+                                                                    ? "opacity-100 dark:opacity-100"
+                                                                    : "opacity-50 "
+                                                            }`}
+                                                            alt={tech.name}
+                                                        ></img>
+                                                    </div>
                                                     <Tooltip
                                                         id={`projectMobile${tech.id}`}
                                                         place="bottom"
                                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
-                                                </div>
+                                                </>
                                             )
                                         }
                                     })}
                                 </div>
                             </div>
-                            {/* right*/}
                             <div className="group flex h-full flex-col items-center justify-center p-1.5 ">
                                 <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     Year
@@ -1120,10 +1286,10 @@ const Projects = () => {
                                                 }
                                             >
                                                 <h3
-                                                    className={`mx-[.15rem] mt-auto rounded-md bg-sky-400 px-1 text-sm text-white hover:bg-sky-300 ${
+                                                    className={`mx-[.15rem] mt-auto rounded-md  px-1 text-sm text-white ${
                                                         isActive
-                                                            ? ""
-                                                            : "bg-gray-300 text-gray-500"
+                                                            ? "bg-sky-400"
+                                                            : "bg-gray-300 text-gray-500 hover:bg-sky-300 "
                                                     }`}
                                                     data-tooltip-id={`projectMobile${year}`}
                                                     data-tooltip-content={`
@@ -1309,7 +1475,7 @@ const Projects = () => {
                     </div>
                     {/* Pagination */}
                     {projectsToDisplay.length !== 0 && (
-                        <nav className="mx-3 sm:mx-16 flex items-center justify-between border-t border-gray-200 px-4 dark:border-none sm:px-0">
+                        <nav className="mx-3 flex items-center justify-between border-t border-gray-200 px-4 dark:border-none sm:mx-16 sm:px-0">
                             <div
                                 className={`${
                                     currentPage === 1 || totalPages === 0
