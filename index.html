@@ -7,9 +7,17 @@
         <link href="/dist/output.css" rel="stylesheet" />
         <link rel="icon" href="/src/assets/Icons/favicon.ico" />
         <script type="module" src="/src/main.jsx" defer></script>
+        <style >
+            body {
+                background-color: #000000;
+            }
+        </style>
         <title>Michael Martell - Portfolio</title>
     </head>
-    <body class="h-auto w-auto bg-white dark:bg-[#0E1F36]">
+    <body 
+        class="h-auto w-auto bg-white dark:bg-[#0E1F36]"
+        style="padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);"
+    >
         <div id="root"></div>
     </body>
 </html>

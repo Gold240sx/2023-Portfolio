@@ -32,7 +32,7 @@ export default function Hero() {
                     alt="hero-image"
                     id="hero-image"
                     className="max-w-screen z-10 h-auto md:max-w-[850px]"
-                    style={{ maxHeight: "90vh" }} // set max height if needed
+                    style={{ maxHeight: "100vh" }} // set max height if needed
                 />
             </motion.div>
             <motion.div

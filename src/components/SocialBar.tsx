@@ -162,7 +162,7 @@ export default function SocialBar({}: Props) {
                 >
                     <img
                         src={ResumeIcon}
-                        className="mb-2 h-8 w-auto translate-x-1 cursor-pointer fill-gray-400 opacity-80 invert transition-all duration-500 ease-in-out hover:scale-100 hover:opacity-100 dark:fill-white dark:opacity-20  hover:dark:opacity-40 lg:opacity-10 lg:invert-0 lg:dark:opacity-60 lg:dark:invert"
+                        className="mb-2 h-8 w-auto translate-x-1 cursor-pointer  opacity-80 invert transition-all duration-500 ease-in-out hover:scale-100 hover:opacity-100 dark:fill-white dark:opacity-20  hover:dark:opacity-40 lg:dark:opacity-60 lg:dark:invert"
                     />
                 </Link>
                 <Tooltip

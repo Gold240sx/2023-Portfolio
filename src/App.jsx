@@ -83,7 +83,7 @@ function App({ children }) {
                 {authIsReady && (
                     <BrowserRouter>
                         <Navbar />
-                        <div className="fixed right-0 z-[40] translate-y-[150px]">
+                        <div className="fixed right-0 top-1/3 z-[40]">
                             <div
                                 id="dark-mode-toggle"
                                 onClick={() => darkModeToggle()}

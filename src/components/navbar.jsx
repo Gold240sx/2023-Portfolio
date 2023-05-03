@@ -162,8 +162,8 @@ export const navbar = () => {
 
     return (
         <div>
-            <div className="absolute z-[91] -mt-[80px] h-20 w-full   bg-slate-50 from-[#0D1B2E] to-[#0D243C] dark:bg-gradient-to-r dark:text-white">
-                <div className="mx-auto flex h-fit max-w-[1500px] items-center justify-between">
+            <div className="absolute z-[91] w-full   bg-slate-50 from-[#0D1B2E] to-[#0D243C] dark:bg-gradient-to-r dark:text-white">
+                <div className="absolute mx-auto mt-4 flex h-0 w-screen max-w-[1500px] items-center justify-between">
                     <motion.div
                         initial={{
                             x: -200,

@@ -20,31 +20,28 @@ const Home = () => {
     return (
         <div>
             {/* Timeline Blob BG */}
-            <div className="fixed top-0 left-0 right-0 bottom-0 z-[-0] h-[100vh] w-full items-center justify-between blur-xl">
+            <div className="fixed top-0  left-0 right-0 bottom-0  h-[100vh] w-full items-center justify-between blur-xl">
                 {/* First and second SVG blobs */}
-                <div className="duration-2000 absolute -left-10 -bottom-10 h-[80vh]  w-[60vh] translate-y-1/2 scale-x-[250%] scale-y-[350%]  opacity-100 transition-all ease-in-out dark:opacity-[20%]">
-                    <div className=" w-[50vw]] h-[70vh]">
-                        <svg
-                            viewBox="0 0 200 200"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <defs>
-                                <linearGradient id={gradientId2}>
-                                    <stop offset="5%" stopColor="#DE0F87" />
-                                    <stop offset="95%" stopColor="#39ACC4" />
-                                </linearGradient>
-                            </defs>
-                            <path
-                                d="M11.9,-19.3C16.9,-15.3,23.5,-14.5,28.3,-10.9C33.1,-7.2,36.3,-0.8,32.9,2.9C29.6,6.7,19.8,7.7,14.6,11.3C9.3,14.9,8.7,21.2,5.9,23.5C3.2,25.8,-1.7,24.2,-7.8,23.7C-13.8,23.3,-21,23.9,-26.2,21C-31.3,18.1,-34.4,11.7,-32.1,6.6C-29.8,1.4,-22.2,-2.6,-18.4,-7.4C-14.6,-12.1,-14.7,-17.6,-12.3,-22.7C-9.9,-27.9,-4.9,-32.8,-0.7,-31.6C3.5,-30.5,6.9,-23.3,11.9,-19.3Z"
-                                transform="translate(100 100)"
-                                // Use the generated gradient ID as a class
-                                fill={`url(#${gradientId2})`}
-                            />
-                        </svg>
-                    </div>
+                <div className="absolute  top-[90%] left-[5%] bottom-0 h-[400px]  w-[550px] max-w-[100%] -rotate-[25deg] scale-[250%] opacity-100 transition-all duration-1000 ease-in-out   dark:opacity-[20%]">
+                    <svg
+                        viewBox="0 0 200 200"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <defs>
+                            <linearGradient id={gradientId1}>
+                                <stop offset="5%" stopColor="#DE0F87" />
+                                <stop offset="95%" stopColor="#39ACC4" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M54.1,-46.9C59.2,-36.7,44.9,-14.8,37.1,4.1C29.3,23.1,28,39.1,17.2,49.6C6.5,60.1,-13.5,64.9,-33.8,59.3C-54.1,53.7,-74.6,37.7,-79.9,17.4C-85.1,-2.9,-75.1,-27.4,-59.3,-40.1C-43.4,-52.8,-21.7,-53.6,1.4,-54.7C24.5,-55.8,48.9,-57.2,54.1,-46.9Z"
+                            transform="translate(100 25)"
+                            // Apply the gradient fill using the gradient ID
+                            fill={`url(#${gradientId1})`}
+                        />
+                    </svg>
                 </div>
-
-                <div className=" absolute top-[20%] -right-20 bottom-1/2 h-[80vh] w-[60vh] translate-x-6 scale-[150%] opacity-100 transition-all ease-in-out dark:opacity-[20%]">
+                <div className="duration-2000 absolute -right-24 mt-[20%] h-[80vh] w-[60vh] scale-[250%] opacity-100 transition-all ease-in-out dark:opacity-[20%]">
                     <div className=" h-[80%] w-[80%]">
                         <svg
                             viewBox="0 0 200 200"
@@ -68,7 +65,7 @@ const Home = () => {
             </div>
             <section
                 id="hero-container"
-                className="max-w-screen z-10  m-auto mt-8 flex h-screen w-screen items-center justify-center align-middle dark:bg-transparent"
+                className="max-w-screen z-10  m-auto  flex h-screen w-screen items-center justify-center align-middle dark:bg-transparent"
                 //  if in landscape mode, move the hero section down
                 style={{
                     // height: "calc(100vh - 144px)",
@@ -77,7 +74,7 @@ const Home = () => {
                 }}
             >
                 <div className="my-auto min-h-fit ">
-                    <div id="hero" className="mx-auto snap-center">
+                    <div id="hero" className="mx-auto">
                         <Hero />
                     </div>
                 </div>

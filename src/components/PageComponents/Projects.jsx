@@ -451,7 +451,7 @@ const Projects = () => {
         <div
             className={` ${
                 showMobileFilters ? "" : " "
-            } max-w-screen container relative z-30 flex w-auto max-w-[100vw] flex-col items-center justify-evenly  pb-12 text-center  dark:bg-transparent md:text-left lg:max-w-[70rem]`}
+            } max-w-screen container relative flex w-auto max-w-[100vw] flex-col items-center justify-evenly  pb-12 text-center  dark:bg-transparent md:text-left lg:max-w-[70rem]`}
         >
             {/* Title */}
             <div className="flex w-auto max-w-[100vw] justify-center">
@@ -886,7 +886,7 @@ const Projects = () => {
                                     </div>
                                 </div>
                                 {/* Bottom*/}
-                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
+                                {/* <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <BsFillCalendarMonthFill
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest"
                                         data-tooltip-id="projectMobileYear"
@@ -943,7 +943,7 @@ const Projects = () => {
                                             )
                                         })}
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
