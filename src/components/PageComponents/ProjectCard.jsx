@@ -69,7 +69,7 @@ const ProjectCard = ({
         month,
         tags,
         id,
-        key
+        key,
     } = project
 
     const { mode } = useTheme()
@@ -117,21 +117,21 @@ const ProjectCard = ({
         )
 
         return (
-            <div className="hidden md:block mt-2 rounded dark:bg-zinc-800 p-2 dark:text-white bg-zinc-200 text-black border-2 border-gray-400 dark:border-0">
+            <div className="mt-2 hidden rounded border-2 border-gray-400 bg-zinc-200 p-2 text-black dark:border-0 dark:bg-zinc-800 dark:text-white md:block">
                 <h3 className="text-center text-lg font-bold dark:text-gray-200">
                     Search Term Match:
                 </h3>
                 <p className="font-bold text-gray-700 dark:text-gray-200">
-                     Matching: 
+                    Matching:
                     <span className="font-normal text-gray-600 dark:text-gray-300">
-                         {matchedInfo.matchType}
+                        {matchedInfo.matchType}
                     </span>
                 </p>
                 <p className="overflow-hidden font-bold text-gray-500 dark:text-gray-400">
                     Matched Text:
                     <span className="px-2 py-0.5  font-normal text-gray-700 dark:text-gray-400">
                         {beforeMatch}
-                        <span className="bg-yellow-200 text-black pl-0.5 mx-0.5 px-0.5">
+                        <span className="mx-0.5 bg-yellow-200 px-0.5 pl-0.5 text-black">
                             {matchedText}
                         </span>
                         {afterMatch}
@@ -287,23 +287,23 @@ const ProjectCard = ({
                             })}
                         </div> */}
                         {/* desktop */}
-                        <div className=" mt-6 mr-auto ml-2 hidden w-[150%] flex-col justify-start gap-1 align-baseline sm:flex-row md:flex lg:flex">
-                            <h4 className=" text-md mt-[0.15rem] w-fit  justify-start text-left font-medium dark:text-gray-400 md:text-xl lg:mt-[0.3rem] xl:mt-[0.35rem]">
+                        <div className=" mt-6 mr-auto ml-2 hidden w-[150%] flex-col gap-1 align-baseline sm:flex-row md:flex lg:flex">
+                            <h4 className=" text-md mt-[0.15rem] w-fit   text-left font-medium dark:text-gray-400 md:text-xl lg:mt-[0.3rem] xl:mt-[0.35rem]">
                                 TAGS:
                             </h4>
-                            <div className=" mt-1 ml-3 flex flex-wrap justify-start overflow-ellipsis line-clamp-1">
-                                {ProjectItems.map((project) => {
-                                    return project.tags.map((tag) => {
-                                        return (
-                                            <div
-                                                key={tag}
-                                                className="xlg:text-base mb-2 mr-2 inline-flex h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500 dark:border-gray-700 dark:text-gray-400 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
-                                            >
-                                                {tag}
-                                            </div>
-                                        )
-                                    })
+                            <div className=" mt-1 ml-3 flex flex-wrap  overflow-ellipsis line-clamp-1">
+                                {project.tags.map((tag) => {
+                                    return (
+                                        <div
+                                            key={` ${project.id}-${tag}`}
+                                            className="xlg:text-base mb-2 mr-2 inline-flex h-6 h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs capitalize leading-none text-gray-500 dark:border-gray-700 dark:text-gray-400 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
+                                        >
+                                            {tag.toLowerCase()}
+                                        </div>
+                                    )
                                 })}
+
+                                {/* {project.id} */}
                             </div>
                         </div>
                     </div>

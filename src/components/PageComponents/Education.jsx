@@ -100,7 +100,7 @@ const tabs = [
             {
                 instructor: "ZTM Academy",
                 name: "Complete Next.js Developer in 2023: Zero to Mastery",
-                certLink: "In Progress...",
+                certLink: "https://lnkd.in/gwXBy46r",
                 courseLink:
                     "https://www.udemy.com/course/complete-nextjs-developer-zero-to-mastery/",
                 description:

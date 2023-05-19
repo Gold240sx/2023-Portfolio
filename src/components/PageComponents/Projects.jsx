@@ -29,7 +29,7 @@ function getYearArray() {
 
 const Technologies = [
     {
-        name: "Vanilla",
+        name: "Javascript",
         id: 1,
         logo: "https://img.icons8.com/color/48/000000/javascript.png",
         type: "framework",
@@ -96,19 +96,121 @@ const Technologies = [
         logo: "https://i.ibb.co/y4ZP2qG/sendgrid.png",
         type: "other",
     },
+    {
+        name: "Prisma",
+        id: 12,
+        logo: "https://i.ibb.co/xj61MMr/prisma-logo-3805665-B69-seeklogo-com-2.png",
+        type: "other",
+        invert: true,
+    },
+    {
+        name: "Upstash",
+        id: 13,
+        logo: "https://i.ibb.co/PFcgZPb/upstash-icon-logo-6-EB6-AA96-EE-seeklogo-com.png",
+        type: "database",
+    },
 ]
 
 const ProjectItems = [
     {
         id: 1,
-        name: "Solar Proposal Tool",
-        image: "https://s3-ap-south-1.amazonaws.com/static.awfis.com/wp-content/uploads/2017/07/07184649/ProjectManagement.jpg",
+        name: "2023 Portfolio Website",
+        image: "https://i.ibb.co/JjN2VfS/SCR-20230519-duat.png",
+        imageDescription:
+            "Search function across all project descriptions, tags, and technologies.",
         tagline: "This website is a portfolio of my work.",
         description:
-            "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
-        month: "January",
-        year: 2022,
-        technologies: ["Next.js", "Tailwind", "Firebase", "Typescript"],
+            " It is built with React.js and Tailwind CSS. It is hosted on Firebase. It uses Sendgrid for contact-form email integration. For further info on me, my resume is available to download in the lower lefthand corner. ",
+        month: "March",
+        year: 2023,
+        technologies: ["Javascript", "React", "Tailwind", "Firebase"],
+        repository: "https://github.com/Gold240sx/2023-Portfolio",
+        link: "#",
+        tags: [
+            "NoSQL",
+            "Responsive",
+            "Mobile-First",
+            "Edge Functions",
+            "Cloud Functions",
+            "React-hook-form",
+        ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/M8LcDKj/email-recieved.gif",
+                description: "Contact Me Form Email To The User",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/Tb0BTGT/SCR-20230519-dvod.png",
+                description: "Mobile Projects section with menubar collapsed",
+            },
+            {
+                id: 3,
+                image: "https://i.ibb.co/HCYdMKq/SCR-20230519-dway.png",
+                description: "Section Pagination with animated buttons",
+            },
+            {
+                id: 4,
+                image: "https://i.ibb.co/bgJLtYk/SCR-20230519-dwir.png",
+                description: "Hand drawn (ipad) Hero Logo",
+            },
+        ],
+    },
+    {
+        id: 2,
+        name: "T3 Stack Demo",
+        image: "https://i.ibb.co/QbHRpGT/SCR-20230516-kpwz.png",
+        tagline: "Production Ready Typesafe Twitter-like App",
+        description: `The purpose of this project is to build a production-ready application with the T3 Stack: 
+            A Next.JS based framework that uses Typescript, TailwindCSS, TRPC and Prisma. In this 
+            project, we enbaled Upstash (built on Redis) rate limiting to prevent DDOS attacks and 
+            post spamming, We used Clerk for Authentication, and ensured back-to front typesafety 
+            with Zod. Data management was each passed through a GraphQL API, and we used Prisma 
+            and PrismaStudio to manage our Planetscale Database, built on MySQL. Logging handled via Axiom API Integration.`,
+        month: "May",
+        year: 2023,
+        technologies: [
+            "Typescript",
+            "Tailwind",
+            "T3",
+            "Prisma",
+            "PlanetScale",
+            "Upstash",
+        ],
+        repository: "https://github.com/Gold240sx/theo-t3-demo",
+        link: "https://theo-t3-demo-git-7-demo-completed-gold240sx.vercel.app",
+        tags: [
+            "Next.js",
+            "Rate Limiting",
+            "DDOS Prevention",
+            "Production Ready",
+            "Demo",
+            "SSR",
+            "SSG",
+            "API Integration",
+            "React",
+            "SQL",
+            "CRUD",
+        ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/GRLyb8m/SCR-20230516-kptv.png",
+                description:
+                    "Prisma Studio - Data Visualization of Planetscale Database",
+            },
+        ],
+    },
+    {
+        id: 3,
+        name: "Project 3",
+        image: "https://s3-ap-south-1.amazonaws.com/static.awfis.com/wp-content/uploads/2017/07/07184649/ProjectManagement.jpg",
+        tagline: "This is a placeholder",
+        description: "Project coming soon!",
+        month: "February",
+        year: 2023,
+        technologies: ["Next.js", "Tailwind"],
         repository: "#",
         link: "#",
         tags: [
@@ -138,92 +240,20 @@ const ProjectItems = [
                 id: 4,
                 image: "https://i.ibb.co/bQqMwvY/fireship.png",
             },
-            {
-                id: 5,
-                image: "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
-            },
-        ],
-    },
-    {
-        id: 2,
-        name: "T3 Stack Twitter-like App",
-        image: "https://i.ibb.co/QbHRpGT/SCR-20230516-kpwz.png",
-        tagline: "Production Ready Typesafe Twitter-like App",
-        description:
-            "The purpose of this project is to build a production-ready application with the T3 Stack: A Next.JS based framework that uses Typescript, TailwindCSS, TRPC and Prisma. In this project, we enbaled Upstash (built on Redis) rate limiting to prevent DDOS attacks and post spamming, We used Clerk for Authentication, and ensured back-to front typesafety with Zod. Data management was each passed through a GraphQL API, and we used Prisma and PrismaStudio to manage our Planetscale Database, built on MySQL.",
-        month: "May",
-        year: 2023,
-        technologies: [
-            "Javascript",
-            "React",
-            "Next.js",
-            "T3",
-            "Tailwind",
-            "Prisma",
-            "Planetscale",
-        ],
-        repository: "https://github.com/Gold240sx/theo-t3-demo",
-        link: "https://theo-t3-demo-git-7-demo-completed-gold240sx.vercel.app",
-        tags: [
-            "Next.js",
-            "Tailwind",
-            "SQL",
-            "Prisma",
-            "Planetscale",
-            "T3",
-            "Typescript",
-            "React",
-            "SQL",
-            "CRUD",
-        ],
-        galleryImages: [
-            {
-                id: 1,
-                image: "https://i.ibb.co/GRLyb8m/SCR-20230516-kptv.png",
-            },
-        ],
-    },
-    {
-        id: 3,
-        name: "Project 3",
-        image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
-        tagline: "This website is a portfolio of my work.",
-        description:
-            "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
-        month: "February",
-        year: 2023,
-        technologies: ["Next.js", "Tailwind"],
-        repository: "#",
-        link: "#",
-        tags: ["Next.js", "Tailwind"],
-        galleryImages: [
-            {
-                id: 1,
-                image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
-            },
-            {
-                id: 2,
-                image: "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
-            },
-            {
-                id: 3,
-                image: "https://i.ibb.co/M8M8Vkr/megaman.png",
-            },
         ],
     },
     {
         id: 4,
         name: "Project 4",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
-        tagline: "This website is a portfolio of my work.",
-        description:
-            "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
+        tagline: "This is a placeholder",
+        description: "Project coming soon!",
         month: "February",
         year: 2023,
-        technologies: ["Next.js", "Tailwind"],
+        technologies: ["React", "Sass"],
         repository: "#",
         link: "#",
-        tags: ["Next.js", "Tailwind"],
+        tags: ["React", "Sass"],
         galleryImages: [
             {
                 id: 1,
@@ -235,9 +265,8 @@ const ProjectItems = [
         id: 5,
         name: "Project 5",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
-        tagline: "This website is a portfolio of my work.",
-        description:
-            "This website is a portfolio of my work. It is built with Next.js and Tailwind CSS. It is hosted on Vercel.",
+        tagline: "This is a placeholder",
+        description: "Project coming soon!",
         month: "February",
         year: 2023,
         technologies: ["Next.js", "Tailwind"],
@@ -260,7 +289,7 @@ const ProjectItems = [
 const Projects = () => {
     // PROJECTS FUNCTIONS
     const [activeFilters, setActiveFilters] = useState([
-        "Vanilla",
+        "Javascript",
         "Typescript",
         "React",
         "Next.js",
@@ -271,6 +300,8 @@ const Projects = () => {
         "Supabase",
         "SendGrid",
         "PlanetScale",
+        "Prisma",
+        "Upstash",
         "2023",
         "2022",
     ])
@@ -286,6 +317,7 @@ const Projects = () => {
     const [searchMatchInfo, setSearchMatchInfo] = useState({})
     const [showCarousel, setShowCarousel] = useState(false)
     const [activeGalleryImages, setActiveGalleryImages] = useState([])
+    const [activeImageDescription, setActiveImageDescription] = useState([])
     const [showMobileFilterTooltip, setShowMobileFilterTooltip] =
         useState(false)
     const [showTechFilterTooltip, setShowTechFilterTooltip] = useState(false)
@@ -1553,6 +1585,8 @@ const Projects = () => {
                         interval={5000}
                         setShowCarousel={setShowCarousel}
                         showCarousel={showCarousel}
+                        // pass the descriptions to the carousel
+                        // slideDescriptions={[activeGalleryImages.descriptions]}
                     />
                 </div>
             )}

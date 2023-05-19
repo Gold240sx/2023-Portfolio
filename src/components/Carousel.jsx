@@ -4,10 +4,21 @@ import { FaRegPlayCircle } from "react-icons/fa"
 import { RiCloseCircleLine } from "react-icons/ri"
 import { MdOutlineDownloadForOffline } from "react-icons/md"
 
-function Carousel({ slides, autoslide, interval, setShowCarousel }) {
+function Carousel({
+    slides,
+    autoslide,
+    interval,
+    setShowCarousel,
+    // slideDescriptions,
+}) {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [autoSlide, setAutoSlide] = useState(autoslide)
     const videoRef = useRef(null)
+
+    // output the corresponding gallery image description to the gallery Image
+    // console.log(currentSlide)
+
+    // const currentSlideDescription = (slides.id === currentSlide).slideDescriptions
 
     const prev = () => {
         setCurrentSlide((currentSlide) =>

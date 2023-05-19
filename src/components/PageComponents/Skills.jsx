@@ -279,7 +279,7 @@ const Skills = () => {
                                     place="bottom"
                                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
-                                <a
+                                {/* <a
                                     href="https://tailwindui.com/"
                                     target="_blank"
                                     data-tooltip-id="tailwindUI"
@@ -298,7 +298,7 @@ const Skills = () => {
                                     id="tailwindUI"
                                     place="bottom"
                                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
-                                />
+                                /> */}
                                 <a
                                     className="ml-2 mt-1 px-1 pb-[-4px] pt-[1px] dark:bg-white"
                                     href="https://nodejs.org"
@@ -409,6 +409,7 @@ const Skills = () => {
                                     place="bottom"
                                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
+
                                 <a
                                     href="https://www.prisma.io/"
                                     target="_blank"
@@ -421,12 +422,55 @@ const Skills = () => {
                                             height: "50px",
                                             marginTop: "3px",
                                         }}
-                                        src="https://i.ibb.co/KysryBD/prisma.png"
+                                        src="https://i.ibb.co/xj61MMr/prisma-logo-3805665-B69-seeklogo-com-2.png"
                                         className="mr-2 dark:invert"
                                     />
                                 </a>
                                 <Tooltip
                                     id="prisma"
+                                    place="bottom"
+                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                />
+
+                                <a
+                                    href="https://planetscale.com"
+                                    target="_blank"
+                                    data-tooltip-id="planetscale"
+                                    data-tooltip-content="PlanetScale"
+                                    data-tooltip-delay-show={500}
+                                >
+                                    <img
+                                        style={{
+                                            height: "50px",
+                                            marginTop: "3px",
+                                        }}
+                                        src="https://i.ibb.co/X3Xjk9w/planetscale-logo-0-EEA8-CAEB4-seeklogo-com.png"
+                                        className="mr-2 dark:invert"
+                                    />
+                                </a>
+                                <Tooltip
+                                    id="planetscale"
+                                    place="bottom"
+                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                />
+                                <a
+                                    href="https://Upstash.com"
+                                    target="_blank"
+                                    data-tooltip-id="Upstash"
+                                    data-tooltip-content="Upstash"
+                                    data-tooltip-delay-show={500}
+                                >
+                                    <img
+                                        style={{
+                                            height: "50px",
+                                            marginTop: "3px",
+                                        }}
+                                        src=" https://i.ibb.co/PFcgZPb/upstash-icon-logo-6-EB6-AA96-EE-seeklogo-com.png"
+                                        className="mr-2 "
+                                    />
+                                </a>
+                                <Tooltip
+                                    id="Upstash"
                                     place="bottom"
                                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
@@ -491,7 +535,7 @@ const Skills = () => {
                                 <Tooltip
                                     id="html"
                                     place="top"
-                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white z-20"
+                                    className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
                                 <a
                                     href="https://www.w3schools.com/css/"
@@ -505,7 +549,7 @@ const Skills = () => {
                                 <Tooltip
                                     id="css"
                                     place="top"
-                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white z-20"
+                                    className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
                                 <a
                                     href="https://getbootstrap.com"
@@ -519,7 +563,7 @@ const Skills = () => {
                                 <Tooltip
                                     id="bootstrap"
                                     place="top"
-                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white z-20"
+                                    className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
                                 <a
                                     href="https://gulpjs.com/"
@@ -540,7 +584,7 @@ const Skills = () => {
                                 <Tooltip
                                     id="gulp"
                                     place="top"
-                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white z-20"
+                                    className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
                                 <a
                                     href="https://sass-lang.com/"
@@ -554,7 +598,7 @@ const Skills = () => {
                                 <Tooltip
                                     id="sass"
                                     place="top"
-                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white z-20"
+                                    className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
                                 <a
                                     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
@@ -568,7 +612,7 @@ const Skills = () => {
                                 <Tooltip
                                     id="js"
                                     place="top"
-                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white z-20"
+                                    className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
                             </div>
                             {/* Row 2 */}
