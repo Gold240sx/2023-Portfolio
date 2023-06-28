@@ -159,9 +159,94 @@ const ProjectItems = [
     },
     {
         id: 2,
+        name: "Google Streetview Image Bundler",
+        image: "https://i.ibb.co/GMKXQNJ/SCR-20230623-lvmd.png",
+        tagline: "API => JPG => Zip.",
+        description: `This app parses and combines addresses from an an XLSX file, uses Google StreetView API to return an image of that address, 
+            and bundle all the images into a zip file for data-processing. Images were also named according to their image size to sort out invalid 
+            address photos. This app replaced an outdated PHP variation that one day quit working due to outdated / legacy dependencies.`,
+        month: "December",
+        year: 2022,
+        technologies: ["React", "Tailwind", "Firebase", "SendGrid'"],
+        repository: "https://github.com/Gold240sx/GoogleStreetViewImageDLr",
+        link: "https://dimaco-streets-demo.web.app",
+        tags: [
+            "file processing",
+            "xlsx",
+            "spreadsheet",
+            "application",
+            "dashboard",
+            "authentication",
+            "auth",
+            "react",
+            "API",
+            "tailwind",
+        ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/s98m4RV/SCR-20230623-lvgw.png",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/M1FB23K/SCR-20230623-kybl.png",
+            },
+            {
+                id: 3,
+                image: "https://i.ibb.co/wC8TwM4/SCR-20230623-kjip.png",
+            },
+        ],
+    },
+    {
+        id: 3,
+        name: "Insurance Sales Funnel",
+        image: "https://i.ibb.co/GnDMPbW/SCR-20230623-jxda.png",
+        imageDescription:
+            "Search function across all project descriptions, tags, and technologies.",
+        tagline: "Vanilla JS + CSS Sales Funnel to Email.",
+        description: `User specified that he wanted a QR code to link to a webform whose form data would be sent to two seperate emails.  Originally the custom 
+        HTML form and emails were to be sent via SalesChimp, but with two days left to spare, Mailchimp informed me only one email per form submission was 
+        possible. I then configured this to run via Google's triggerEmail extension. The extension sent an email to both my client and his client sending the data 
+        and confiming that the data was recieved. Data could then optionally be stored for analytics or for access to the data at a later date. For convieniece sake, 
+        everything was built into a single HTML file since nearing project completion I found that the site was updated via FTP and I wanted updates to be as simple 
+        as possible for my client. The form design was created by the design department and a conditional form interest check was put in place to limit the length 
+        of the form to only the policies the user was interested in. (I did not take part in any other url belonging to this site)`,
+        month: "November",
+        year: 2022,
+        technologies: ["Javascript", "Firebase", "SendGrid"],
+        repository: "#",
+        link: "http://www.zaneshepherdfinancial.com/getQuote/",
+        tags: [
+            "vanilla",
+            "validation",
+            "email",
+            "javascript",
+            "FTP",
+            "responsive",
+            "QRCode",
+            "marketing",
+            "emailDevelopment",
+        ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/McWXCdH/SCR-20230623-jxgp.png",
+                description: "Hand drawn (ipad) Hero Logo",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/RzwZhjR/SCR-20230623-jxjf.png",
+                description: "Hand drawn (ipad) Hero Logo",
+            },
+        ],
+    },
+    {
+        id: 4,
         name: "T3 Stack Demo",
         image: "https://i.ibb.co/QbHRpGT/SCR-20230516-kpwz.png",
-        tagline: "Production Ready Typesafe Twitter-like App",
+        imageDescription:
+            "Search function across all project descriptions, tags, and technologies.",
+        tagline: "Production Ready Typesafe Twitter-like App.",
         description: `The purpose of this project is to build a production-ready application with the T3 Stack: 
             A Next.JS based framework that uses Typescript, TailwindCSS, TRPC and Prisma. In this 
             project, we enbaled Upstash (built on Redis) rate limiting to prevent DDOS attacks and 
@@ -203,8 +288,66 @@ const ProjectItems = [
         ],
     },
     {
-        id: 3,
-        name: "Project 3",
+        id: 5,
+        name: "Drag + Drop App",
+        image: "https://i.ibb.co/rtbvR6g/SCR-20230628-dcox.png",
+        imageDescription:
+            "Validation from scratch using decorators and class-based components.",
+        tagline: "Typescript Node Drag and Drop Project Management App",
+        description: `Project Management App built with vanilla Typescript and Node.js.  
+        Drag and Drop functionality built with HTML5 Drag and Drop API.  
+        The puropose of this project was to strengthen my understanding of types, class-based components and OOP. 
+        This project features Form validation, and a build-from-scratch state management system similar in functionality 
+        and use as React. This project followed a demo belonging to Maximilian Schwarzmullers Udemy course, 
+        Understanding Typescript - 2021 Edition.`,
+        month: "June",
+        year: 2023,
+        technologies: ["Node.Js", "Typescript"],
+        repository: "https://github.com/Gold240sx/TS-Drag-And-Drop",
+        link: "https://ts-drag-and-drop-pi.vercel.app",
+        tags: [
+            "node.js",
+            "OOP",
+            "class-based",
+            "decorators",
+            "state management",
+            "typescript",
+            "vanilla",
+            "drag and drop",
+        ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/j5LNXHk/SCR-20230628-dclr.png",
+                description:
+                    "Prisma Studio - Data Visualization of Planetscale Database",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/6nsVGkh/SCR-20230628-dcxv.png",
+                description:
+                    "Prisma Studio - Data Visualization of Planetscale Database",
+            },
+        ],
+    },
+    {
+        id: 5,
+        name: "TS Google Maps App",
+        image: "https://i.ibb.co/2qgmv5L/SCR-20230628-oqni.png",
+        imageDescription: "Typescript Vite-React Google Maps Application ",
+        tagline: "Api Key -Env Variable Security - Google Maps API",
+        description: `This project is a refactorization of Maximilian Schwarzmüller's Google Maps application demo from his "Understanding TypeScript" Udemy course. Originally a vanilla Ts app, I rewrote this app in vite-react and by expressing the API keys as env variables, I could then ensure that these env variables were not exposed in the browser..`,
+        month: "June",
+        year: 2023,
+        technologies: ["Typescript", "React"],
+        repository: "https://github.com/Gold240sx/Ts-vite-googleMaps",
+        link: "https://ts-vite-google-maps.vercel.app",
+        tags: ["api", "google maps", "env variables", "demo refactor", "Vite"],
+        galleryImages: [],
+    },
+    {
+        id: 7,
+        name: "Project 7",
         image: "https://s3-ap-south-1.amazonaws.com/static.awfis.com/wp-content/uploads/2017/07/07184649/ProjectManagement.jpg",
         tagline: "This is a placeholder",
         description: "Project coming soon!",
@@ -243,8 +386,8 @@ const ProjectItems = [
         ],
     },
     {
-        id: 4,
-        name: "Project 4",
+        id: 8,
+        name: "Project 8",
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
         tagline: "This is a placeholder",
         description: "Project coming soon!",
@@ -258,29 +401,6 @@ const ProjectItems = [
             {
                 id: 1,
                 image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
-            },
-        ],
-    },
-    {
-        id: 5,
-        name: "Project 5",
-        image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
-        tagline: "This is a placeholder",
-        description: "Project coming soon!",
-        month: "February",
-        year: 2023,
-        technologies: ["Next.js", "Tailwind"],
-        repository: "#",
-        link: "#",
-        tags: ["Next.js", "Tailwind"],
-        galleryImages: [
-            {
-                id: 1,
-                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
-            },
-            {
-                id: 2,
-                image: "https://i.ibb.co/0hYQqZV/Screen-Shot-2021-09-01-at-11-01-51-AM.png",
             },
         ],
     },
