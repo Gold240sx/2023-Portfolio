@@ -16,15 +16,16 @@ import VanillaJS from "../../assets/Images/coursePreviews/vanillaJS.jpg";
 import OpenAi from "../../assets/Images/coursePreviews/openAi.jpg";
 import ReactNative from "../../assets/Images/coursePreviews/reactNative.jpg";
 import APIDev from "../../assets/Images/coursePreviews/apiDev.jpg";
-import Electron from "../../assets/Images/coursePreviews/electron.jpg";
-import Postgres from "../../assets/Images/coursePreviews/postgres.jpg";
-import Stripe from "../../assets/Images/coursePreviews/stripe.jpg";
-import Udemy from "../../assets/Images/coursePreviews/udemy.png";
-import Crosses from "../../assets/Images/backgrounds/crosses.png";
-import Holes from "../../assets/Images/backgrounds/holes.png";
-import Lines from "../../assets/Images/backgrounds/lines.png";
-import Mud from "../../assets/Images/backgrounds/mud.png";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import Typescript from "../../assets/Images/coursePreviews/typescript.jpg"
+import Electron from "../../assets/Images/coursePreviews/electron.jpg"
+import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
+import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
+import Udemy from "../../assets/Images/coursePreviews/udemy.png"
+import Crosses from "../../assets/Images/backgrounds/crosses.png"
+import Holes from "../../assets/Images/backgrounds/holes.png"
+import Lines from "../../assets/Images/backgrounds/lines.png"
+import Mud from "../../assets/Images/backgrounds/mud.png"
+import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 import { motion, useScroll, useAnimation } from "framer-motion"
 import { InView } from "react-intersection-observer"
 
@@ -46,6 +47,7 @@ import HighSchoolNeon from "../../assets/Icons/education-icons/highSchool-neon.p
 import ContinuedNeon from "../../assets/Icons/education-icons/continued.png"
 import EducationNeon from "../../assets/Icons/education-icons/education.png"
 import QueNeon from "../../assets/Icons/education-icons/que.png"
+import { Type } from "react-feather"
 
 const tabs = [
     {
@@ -97,6 +99,28 @@ const tabs = [
     {
         name: "Continued Education / Certificates",
         features: [
+            {
+                instructor: "Maximillian Schwarzmüller",
+                name: "Understanding Typescript",
+                certLink: "https://lnkd.in/gitKtMiT",
+                courseLink:
+                    "https://www.udemy.com/share/1013yQ3@bTgPhx_sXYjpvWf03pmrBX9zDF9Aal_QoJJjjrfk7LcSZpPuB56j0oz4isTj8ysDfA==/",
+                description:
+                    "I took a deep dive into Typescript, class-based programming, and how to practically use typescript in modern software and web development. I created several projects as well .",
+                imageSrc: Typescript,
+                imageAlt: "Understanding Typescript Preview",
+                qrCode: "",
+                tags: [
+                    "typescript",
+                    "OOP",
+                    "decorators",
+                    "express",
+                    "generics",
+                    "tsconfig",
+                ],
+                platform: "Udemy",
+                platformLogo: Udemy,
+            },
             {
                 instructor: "ZTM Academy",
                 name: "Complete Next.js Developer in 2023: Zero to Mastery",
