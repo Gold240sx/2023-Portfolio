@@ -20,6 +20,7 @@ import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import MobileMenu from "../mobileMenu"
 import Carousel from "../Carousel"
+import Github from "../../assets/images/githubLogo.png"
 
 const windowCheck = (setMinimizeGallery, setIsMobile, setIsLarge) => {
     const handleResize = debounce(() => {
@@ -65,6 +66,7 @@ const ProjectCard = ({
         technologies,
         repository,
         galleryImages,
+        uiDesign,
         link,
         month,
         tags,
@@ -344,6 +346,27 @@ const ProjectCard = ({
                         </div>
                         {/* Project Info */}
                         <div className="mb-4 mt-2 flex w-auto flex-wrap justify-start gap-4 md:gap-2">
+                            <h2 className="group relative ml-2 cursor-pointer text-left">
+                                <a
+                                    href={uiDesign}
+                                    className={` ${
+                                        uiDesign !== "#"
+                                            ? "opacity-100 group-hover:border-white dark:hover:text-white  dark:group-hover:border-white dark:group-hover:bg-zinc-900 "
+                                            : "text-zinc-500 grayscale group-hover:border-transparent dark:group-hover:bg-zinc-800"
+                                    } w-fit rounded-r-full border-2 border-l-0 py-1  pl-10 pr-5   dark:border-zinc-800 dark:bg-zinc-800  dark:hover:bg-white/5  `}
+                                >
+                                    <img
+                                        src="https://i.ibb.co/QnLZMv7/SCR-20230822-qpdp.png"
+                                        alt="figma project"
+                                        className={` ${
+                                            uiDesign !== "#"
+                                                ? "group-hover:border-white group-hover:border-r-transparent"
+                                                : ""
+                                        } absolute -left-1 -top-1 inline-block h-8 w-8 rounded border-2 border-zinc-800`}
+                                    />
+                                    Design
+                                </a>
+                            </h2>
                             <h2 className="cursor-pointer text-left ">
                                 <a
                                     href={link}
@@ -356,16 +379,25 @@ const ProjectCard = ({
                                     Demo
                                 </a>
                             </h2>
-                            <h2 className="cursor-pointer text-left">
+                            <h2 className="group relative ml-2 cursor-pointer text-left">
                                 <a
                                     href={repository}
                                     className={` ${
                                         repository !== "#"
-                                            ? "opacity-100"
-                                            : "pointer-events-none cursor-not-allowed opacity-30 grayscale"
-                                    } rounded-full bg-sky-400 px-5 py-1 text-white hover:bg-sky-500 dark:bg-sky-600 dark:hover:bg-sky-500 `}
+                                            ? "border-transparent  bg-sky-500 text-white  opacity-100 dark:group-hover:bg-sky-400 "
+                                            : "bg-zinc-800 text-zinc-500 grayscale "
+                                    } w-fit rounded-full  py-1 pr-10  pl-5`}
                                 >
                                     Repo
+                                    <img
+                                        src={Github}
+                                        alt="figma project"
+                                        className={` ${
+                                            repository !== "#"
+                                                ? " group-hover:opacity-100 dark:group-hover:bg-white/30"
+                                                : ""
+                                        } absolute right-1 inline-block h-6 w-6 rounded-full opacity-70  invert`}
+                                    />
                                 </a>
                             </h2>
                         </div>

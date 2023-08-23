@@ -119,6 +119,7 @@ const ProjectItems = [
         imageDescription:
             "Search function across all project descriptions, tags, and technologies.",
         tagline: "This website is a portfolio of my work.",
+        uiDesign: "#",
         description:
             " It is built with React.js and Tailwind CSS. It is hosted on Firebase. It uses Sendgrid for contact-form email integration. For further info on me, my resume is available to download in the lower lefthand corner. ",
         month: "March",
@@ -167,6 +168,7 @@ const ProjectItems = [
             address photos. This app replaced an outdated PHP variation that one day quit working due to outdated / legacy dependencies.`,
         month: "December",
         year: 2022,
+        uiDesign: "#",
         technologies: ["React", "Tailwind", "Firebase", "SendGrid'"],
         repository: "https://github.com/Gold240sx/GoogleStreetViewImageDLr",
         link: "https://dimaco-streets-demo.web.app",
@@ -203,6 +205,7 @@ const ProjectItems = [
         image: "https://i.ibb.co/GnDMPbW/SCR-20230623-jxda.png",
         imageDescription:
             "Search function across all project descriptions, tags, and technologies.",
+        uiDesign: "#",
         tagline: "Vanilla JS + CSS Sales Funnel to Email.",
         description: `User specified that he wanted a QR code to link to a webform whose form data would be sent to two seperate emails.  Originally the custom 
         HTML form and emails were to be sent via SalesChimp, but with two days left to spare, Mailchimp informed me only one email per form submission was 
@@ -244,6 +247,7 @@ const ProjectItems = [
         id: 4,
         name: "T3 Stack Demo",
         image: "https://i.ibb.co/QbHRpGT/SCR-20230516-kpwz.png",
+        uiDesign: "#",
         imageDescription:
             "Search function across all project descriptions, tags, and technologies.",
         tagline: "Production Ready Typesafe Twitter-like App.",
@@ -293,6 +297,7 @@ const ProjectItems = [
         image: "https://i.ibb.co/rtbvR6g/SCR-20230628-dcox.png",
         imageDescription:
             "Validation from scratch using decorators and class-based components.",
+        uiDesign: "#",
         tagline: "Typescript Node Drag and Drop Project Management App",
         description: `Project Management App built with vanilla Typescript and Node.js.  
         Drag and Drop functionality built with HTML5 Drag and Drop API.  
@@ -335,6 +340,7 @@ const ProjectItems = [
         name: "TS Google Maps App",
         image: "https://i.ibb.co/2qgmv5L/SCR-20230628-oqni.png",
         imageDescription: "Typescript Vite-React Google Maps Application ",
+        uiDesign: "#",
         tagline: "Api Key -Env Variable Security - Google Maps API",
         description: `This project is a refactorization of Maximilian Schwarzmüller's Google Maps application demo from his "Understanding TypeScript" Udemy course. Originally a vanilla Ts app, I rewrote this app in vite-react and by expressing the API keys as env variables, I could then ensure that these env variables were not exposed in the browser..`,
         month: "June",
@@ -351,6 +357,7 @@ const ProjectItems = [
         image: "https://s3-ap-south-1.amazonaws.com/static.awfis.com/wp-content/uploads/2017/07/07184649/ProjectManagement.jpg",
         tagline: "This is a placeholder",
         description: "Project coming soon!",
+        uiDesign: "#",
         month: "February",
         year: 2023,
         technologies: ["Next.js", "Tailwind"],
@@ -391,6 +398,7 @@ const ProjectItems = [
         image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
         tagline: "This is a placeholder",
         description: "Project coming soon!",
+        uiDesign: "#",
         month: "February",
         year: 2023,
         technologies: ["React", "Sass"],
@@ -1486,6 +1494,7 @@ const Projects = () => {
                         {projectsToDisplay.length > 0 ? (
                             projectsToDisplay.map((project) => {
                                 const id = project.id
+                                const uiDesign = project.uiDesign
                                 return (
                                     <>
                                         {/* filter project according to the search term if the search term length is greater than 0, where matchtype is the type (contains: name, title or description, and text is the surrounding text of the search containing the search query, and highlighting it in yellow) */}
@@ -1496,6 +1505,7 @@ const Projects = () => {
                                                 key={id}
                                                 project={project}
                                                 searchTerm={searchTerm}
+                                                uiDesign={uiDesign}
                                                 // renderMatchedInfo={() =>
                                                 //     renderMatchedInfo(
                                                 //         searchMatchInfo,

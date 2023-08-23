@@ -20,7 +20,9 @@ import Typescript from "../../assets/Images/coursePreviews/typescript.jpg"
 import Electron from "../../assets/Images/coursePreviews/electron.jpg"
 import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
 import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
+import Next13 from "../../assets/Images/coursePreviews/Next13.png"
 import Udemy from "../../assets/Images/coursePreviews/udemy.png"
+import NetNinja from "../../assets/Images/coursePreviews/netNinja.png"
 import Crosses from "../../assets/Images/backgrounds/crosses.png"
 import Holes from "../../assets/Images/backgrounds/holes.png"
 import Lines from "../../assets/Images/backgrounds/lines.png"
@@ -99,6 +101,31 @@ const tabs = [
     {
         name: "Continued Education / Certificates",
         features: [
+            {
+                instructor: "Net Ninja",
+                name: "Next.JS Version 13 Masterclass",
+                certLink:
+                    "https://i.ibb.co/rkJJ8sC/certificate-of-completion-for-next-13-masterclass.jpg",
+                courseLink: "https://netninja.dev/p/next-13-masterclass",
+                description: `Built a CRUD application using Next 13 Server Components utilizing both 
+                Client Component API calls to Supabase, as well as utilzing Server Actions to leverage 
+                the performance benefits of server components for our form. The application I built upon 
+                this course, incorporating Stripe, and refactored in Typescript. It is the BikeShop E-Commerce 
+                App that is currently in development.`,
+                imageSrc: Next13,
+                imageAlt: "The Net Ninja Logo",
+                qrCode: "",
+                tags: [
+                    "next13",
+                    "server components",
+                    "supabase auth",
+                    "app router",
+                    "api requests",
+                    "middleware",
+                ],
+                platform: "Net Ninja",
+                platformLogo: NetNinja,
+            },
             {
                 instructor: "Maximillian Schwarzmüller",
                 name: "Understanding Typescript",

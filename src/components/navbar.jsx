@@ -183,9 +183,6 @@ export const navbar = () => {
                         <div className="flex items-center">
                             <Link to="/home">
                                 <div className="mt-12 ml-4 opacity-90  hover:opacity-100">
-                                    {/* <h1 className="text-2xl font-semibold text-slate-800 dark:text-slate-200">
-                                Logo
-                            </h1> */}
                                     {/* {mode === "light" && (
                                         <img
                                             src={newSiteLogo}

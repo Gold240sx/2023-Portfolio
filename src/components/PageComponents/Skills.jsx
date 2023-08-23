@@ -7,9 +7,9 @@ export const skillData = [
     { name: "SASS/CSS", value: 98 },
     { name: "Tailwind", value: 95 },
     { name: "Vanilla Javascript", value: 90 },
-    { name: "React", value: 75 },
-    { name: "NextJS", value: 65 },
-    // { name: "TypeScript", value: 45 },
+    { name: "React", value: 85 },
+    { name: "NextJS", value: 75 },
+    { name: "TypeScript", value: 50 },
     // { name: "REST API", value: 25 },
     // { name: "NOSQL", value: 45 },
 ]
@@ -30,6 +30,29 @@ const Skills = () => {
                         <div className="z-10 flex flex-col">
                             {/* row 1 */}
                             <div className="z-10 flex cursor-pointer">
+                                <a
+                                    href="https://www.figma.com/?fuid="
+                                    target="_blank"
+                                    data-tooltip-id="figma"
+                                    data-tooltip-content="Figma"
+                                    data-tooltip-delay-show={500}
+                                    className="z-10"
+                                    style={{
+                                        height: "48px",
+                                        marginTop: "0px",
+                                        width: "52px",
+                                    }}
+                                >
+                                    <img
+                                        className="z-10"
+                                        src="https://i.ibb.co/0FJ39J4/png-transparent-figma-app-logo-tech-companies-thumbnail.png"
+                                    />
+                                </a>
+                                <Tooltip
+                                    id="figma"
+                                    place="top"
+                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                />
                                 <a
                                     href="https://www.w3.org/html/"
                                     target="_blank"
@@ -441,8 +464,8 @@ const Skills = () => {
                                 >
                                     <img
                                         style={{
-                                            height: "50px",
-                                            marginTop: "3px",
+                                            height: "40px",
+                                            marginTop: "7px",
                                         }}
                                         src="https://i.ibb.co/X3Xjk9w/planetscale-logo-0-EEA8-CAEB4-seeklogo-com.png"
                                         className="mr-2 dark:invert"
@@ -524,6 +547,25 @@ const Skills = () => {
                             {/* Row 1 */}
                             <div className="flex">
                                 <a
+                                    href="https://www.figma.com/?fuid="
+                                    target="_blank"
+                                    data-tooltip-id="figma"
+                                    data-tooltip-content="Figma"
+                                    data-tooltip-delay-show={500}
+                                    style={{
+                                        height: "48px",
+                                        marginTop: "0px",
+                                        width: "52px",
+                                    }}
+                                >
+                                    <img src="https://i.ibb.co/0FJ39J4/png-transparent-figma-app-logo-tech-companies-thumbnail.png" />
+                                </a>
+                                <Tooltip
+                                    id="figma"
+                                    place="top"
+                                    className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                />
+                                <a
                                     href="https://www.w3.org/html/"
                                     target="_blank"
                                     data-tooltip-id="html"
@@ -600,6 +642,9 @@ const Skills = () => {
                                     place="top"
                                     className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
+                            </div>
+                            {/* Row 2 */}
+                            <div className="flex">
                                 <a
                                     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
                                     target="_blank"
@@ -614,9 +659,6 @@ const Skills = () => {
                                     place="top"
                                     className="z-20 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
-                            </div>
-                            {/* Row 2 */}
-                            <div className="flex">
                                 <a
                                     href="https://d3js.org/"
                                     target="_blank"
@@ -702,6 +744,9 @@ const Skills = () => {
                                     place="top"
                                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
+                            </div>
+                            {/* Row 3 */}
+                            <div className="mx-auto flex">
                                 <a
                                     href="https://tailwindcss.com/"
                                     target="_blank"
@@ -716,9 +761,6 @@ const Skills = () => {
                                     place="top"
                                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
-                            </div>
-                            {/* Row 3 */}
-                            <div className="mx-auto flex">
                                 <a
                                     href="https://tailwindui.com/"
                                     target="_blank"
@@ -874,6 +916,27 @@ const Skills = () => {
                                     className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                                 />
                                 <a
+                                    href="https://planetscale.com"
+                                    target="_blank"
+                                    data-tooltip-id="planetscale"
+                                    data-tooltip-content="PlanetScale"
+                                    data-tooltip-delay-show={500}
+                                >
+                                    <img
+                                        style={{
+                                            height: "40px",
+                                            marginTop: "7px",
+                                        }}
+                                        src="https://i.ibb.co/X3Xjk9w/planetscale-logo-0-EEA8-CAEB4-seeklogo-com.png"
+                                        className="mr-2 dark:invert"
+                                    />
+                                </a>
+                                <Tooltip
+                                    id="planetscale"
+                                    place="bottom"
+                                    className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                />
+                                <a
                                     href="https://sendgrid.com/"
                                     target="_blank"
                                     data-tooltip-id="sendGrid"
@@ -923,21 +986,44 @@ const Skills = () => {
                     <div className="mx-auto flex-col gap-3 md:mx-[unset]">
                         <div className="flex">
                             <a
-                                href="https://reactjs.org/"
+                                href="https://www.figma.com/?fuid="
                                 target="_blank"
-                                data-tooltip-id="react-bottom"
-                                data-tooltip-content="React"
+                                data-tooltip-id="figma"
+                                data-tooltip-content="Figma"
                                 data-tooltip-delay-show={500}
+                                className="z-10"
+                                style={{
+                                    height: "48px",
+                                    marginTop: "3px",
+                                    width: "52px",
+                                }}
                             >
                                 <img
-                                    src="https://img.icons8.com/color/48/000000/react-native.png"
-                                    className="mr-2"
+                                    className="z-10"
+                                    src="https://i.ibb.co/0FJ39J4/png-transparent-figma-app-logo-tech-companies-thumbnail.png"
                                 />
                             </a>
                             <Tooltip
-                                id="react-bottom"
-                                place="bottom"
+                                id="figma"
+                                place="top"
                                 className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                            />
+                            <a
+                                href="https://nextjs.org/"
+                                target="_blank"
+                                data-tooltip-id="next"
+                                data-tooltip-content="Next.js"
+                                data-tooltip-delay-show={500}
+                            >
+                                <img
+                                    src="https://img.icons8.com/color/48/000000/nextjs.png"
+                                    className="dark:grayscale dark:invert"
+                                />
+                            </a>
+                            <Tooltip
+                                id="next"
+                                place="top"
+                                className=" bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                             />
                             <a
                                 href="https://www.typescriptlang.org/"
@@ -958,6 +1044,44 @@ const Skills = () => {
                                 className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                             />
                             <a
+                                href="https://vercel.com"
+                                target="_blank"
+                                data-tooltip-id="vercel"
+                                data-tooltip-content="Vercel"
+                                data-tooltip-delay-show={500}
+                            >
+                                <img
+                                    style={{
+                                        height: "50px",
+                                        marginTop: "3px",
+                                    }}
+                                    src="https://i.ibb.co/4jSbQ3t/vercel.png"
+                                    className="mr-2 "
+                                />
+                            </a>
+                            <Tooltip
+                                id="vercel"
+                                place="bottom"
+                                className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                            />
+                            <a
+                                href="https://sass-lang.com/"
+                                target="_blank"
+                                data-tooltip-id="sass"
+                                data-tooltip-content="SASS / SCSS"
+                                data-tooltip-delay-show={500}
+                            >
+                                <img
+                                    src="https://img.icons8.com/color/48/000000/sass.png"
+                                    className="h-30 z-10"
+                                />
+                            </a>
+                            <Tooltip
+                                id="sass"
+                                place="top"
+                                className=" bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                            />
+                            <a
                                 href="https://tailwindcss.com/"
                                 target="_blank"
                                 data-tooltip-id="tailwind"
@@ -972,6 +1096,27 @@ const Skills = () => {
                                 className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
                             />
                             <a
+                                href="https://supabase.com/"
+                                target="_blank"
+                                data-tooltip-id="supabase"
+                                data-tooltip-content="Supabase"
+                                data-tooltip-delay-show={500}
+                            >
+                                <img
+                                    style={{
+                                        height: "50px",
+                                        marginTop: "3px",
+                                    }}
+                                    src="https://i.ibb.co/Yjn0Nbx/supabase.png"
+                                    className="mr-2"
+                                />
+                            </a>
+                            <Tooltip
+                                id="supabase"
+                                place="bottom"
+                                className="bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                            />
+                            {/* <a
                                 href="https://firebase.google.com/"
                                 target="_blank"
                                 data-tooltip-id="firebase"
@@ -982,7 +1127,7 @@ const Skills = () => {
                                     src="https://img.icons8.com/color/48/000000/firebase.png"
                                     className="mr-2"
                                 />
-                            </a>
+                            </a> */}
                             <Tooltip
                                 id="firebase"
                                 place="bottom"
