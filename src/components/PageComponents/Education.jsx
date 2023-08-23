@@ -102,7 +102,7 @@ const tabs = [
         name: "Continued Education / Certificates",
         features: [
             {
-                instructor: "Net Ninja",
+                instructor: "The Net Ninja",
                 name: "Next.JS Version 13 Masterclass",
                 certLink:
                     "https://i.ibb.co/rkJJ8sC/certificate-of-completion-for-next-13-masterclass.jpg",
@@ -123,7 +123,7 @@ const tabs = [
                     "api requests",
                     "middleware",
                 ],
-                platform: "Net Ninja",
+                platform: "The Net Ninja",
                 platformLogo: NetNinja,
             },
             {

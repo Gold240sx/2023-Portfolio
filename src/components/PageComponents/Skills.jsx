@@ -1014,6 +1014,7 @@ const Skills = () => {
                                 data-tooltip-id="next"
                                 data-tooltip-content="Next.js"
                                 data-tooltip-delay-show={500}
+                                className="mt-0.5 flex"
                             >
                                 <img
                                     src="https://img.icons8.com/color/48/000000/nextjs.png"

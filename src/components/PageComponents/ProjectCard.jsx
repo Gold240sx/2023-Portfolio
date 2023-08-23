@@ -345,15 +345,15 @@ const ProjectCard = ({
                             </div>
                         </div>
                         {/* Project Info */}
-                        <div className="mb-4 mt-2 flex w-auto flex-wrap justify-start gap-4 md:gap-2">
-                            <h2 className="group relative ml-2 cursor-pointer text-left">
+                        <div className="mb-4 mt-2 flex w-auto flex-wrap justify-start gap-2 md:gap-2">
+                            <h2 className="group relative ml-2  text-left">
                                 <a
                                     href={uiDesign}
                                     className={` ${
                                         uiDesign !== "#"
-                                            ? "opacity-100 group-hover:border-white dark:hover:text-white  dark:group-hover:border-white dark:group-hover:bg-zinc-900 "
-                                            : "text-zinc-500 grayscale group-hover:border-transparent dark:group-hover:bg-zinc-800"
-                                    } w-fit rounded-r-full border-2 border-l-0 py-1  pl-10 pr-5   dark:border-zinc-800 dark:bg-zinc-800  dark:hover:bg-white/5  `}
+                                            ? " opacity-100 group-hover:border-white dark:hover:text-white dark:group-hover:border-white  dark:group-hover:bg-zinc-900"
+                                            : "pointer-events-none cursor-default border-transparent bg-zinc-100 text-zinc-500 grayscale dark:group-hover:border-transparent dark:group-hover:bg-zinc-800 md:absolute md:opacity-0 lg:relative lg:opacity-100"
+                                    } w-fit rounded-full rounded-r-full border-2 px-5 py-1 dark:border-zinc-800  dark:bg-zinc-800 dark:hover:bg-white/5   lg:border-l-0 lg:pl-10  lg:pr-5  `}
                                 >
                                     <img
                                         src="https://i.ibb.co/QnLZMv7/SCR-20230822-qpdp.png"
@@ -361,32 +361,32 @@ const ProjectCard = ({
                                         className={` ${
                                             uiDesign !== "#"
                                                 ? "group-hover:border-white group-hover:border-r-transparent"
-                                                : ""
+                                                : " hidden invert dark:invert-0 lg:flex"
                                         } absolute -left-1 -top-1 inline-block h-8 w-8 rounded border-2 border-zinc-800`}
                                     />
                                     Design
                                 </a>
                             </h2>
-                            <h2 className="cursor-pointer text-left ">
+                            <h2 className="text-left ">
                                 <a
                                     href={link}
                                     className={` ${
                                         link !== "#"
                                             ? "opacity-100"
-                                            : "pointer-events-none cursor-not-allowed opacity-30 grayscale"
+                                            : "cursor-defaultpointer-events-none pointer-events-none cursor-not-allowed opacity-30 grayscale"
                                     } rounded-full border-2 border-sky-500 px-5 py-1 text-sky-500 hover:border-sky-700 hover:bg-sky-50/20 hover:text-sky-700 dark:border-sky-400 dark:text-white dark:hover:border-sky-300 dark:hover:bg-white/5  dark:hover:text-white `}
                                 >
                                     Demo
                                 </a>
                             </h2>
-                            <h2 className="group relative ml-2 cursor-pointer text-left">
+                            <h2 className="group relative  text-left">
                                 <a
                                     href={repository}
                                     className={` ${
                                         repository !== "#"
-                                            ? "border-transparent  bg-sky-500 text-white  opacity-100 dark:group-hover:bg-sky-400 "
-                                            : "bg-zinc-800 text-zinc-500 grayscale "
-                                    } w-fit rounded-full  py-1 pr-10  pl-5`}
+                                            ? "border-transparent  bg-sky-500 px-5  text-white opacity-100 group-hover:bg-sky-400 lg:pr-10  lg:pl-5"
+                                            : "pointer-events-none cursor-default bg-zinc-300 px-5 text-zinc-100 dark:bg-zinc-800 dark:text-zinc-500 dark:grayscale"
+                                    } w-fit rounded-full  py-1 `}
                                 >
                                     Repo
                                     <img
@@ -394,9 +394,9 @@ const ProjectCard = ({
                                         alt="figma project"
                                         className={` ${
                                             repository !== "#"
-                                                ? " group-hover:opacity-100 dark:group-hover:bg-white/30"
-                                                : ""
-                                        } absolute right-1 inline-block h-6 w-6 rounded-full opacity-70  invert`}
+                                                ? " hidden group-hover:bg-sky-400 group-hover:opacity-100 lg:flex "
+                                                : "hidden"
+                                        } absolute -right-1 -top-1 inline-block h-8 w-8 rounded-full bg-sky-600 p-0.5`}
                                     />
                                 </a>
                             </h2>
