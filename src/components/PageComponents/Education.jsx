@@ -108,7 +108,7 @@ const tabs = [
                     "https://i.ibb.co/rkJJ8sC/certificate-of-completion-for-next-13-masterclass.jpg",
                 courseLink: "https://netninja.dev/p/next-13-masterclass",
                 description: `Built a CRUD application using Next 13 Server Components utilizing both 
-                Client Component API calls to Supabase, as well as utilzing Server Actions to leverage 
+                Client Component API calls to Supabase, as well as utilizing Server Actions to leverage 
                 the performance benefits of server components for our form. The application I built upon 
                 this course, incorporating Stripe, and refactored in Typescript. It is the BikeShop E-Commerce 
                 App that is currently in development.`,
@@ -155,7 +155,7 @@ const tabs = [
                 courseLink:
                     "https://www.udemy.com/course/complete-nextjs-developer-zero-to-mastery/",
                 description:
-                    "Next JS MasterClass - I'm learning fullstack app developement, Serverside rendering Techniques, and Api Developement with Next JS.",
+                    "Next JS MasterClass - I'm learning fullstack app development, Serverside rendering Techniques, and Api Development with Next JS.",
                 imageSrc: Next,
                 imageAlt:
                     "ZTM Academy - Complete Next.js Developer in 2023: Zero to Mastery Preview",
@@ -238,7 +238,7 @@ const tabs = [
                     - Lastly, I learned how to utilize dark/light mode user preferences within email.
                 `,
                 imageSrc: Email,
-                imageAlt: "Zero to Hero, Tailwind V3 2023 Preview",
+                imageAlt: "HTML Email Image",
                 qrCode: "",
                 tags: [
                     "email",
@@ -300,7 +300,7 @@ const tabs = [
             },
             {
                 instructor: "Shaun Pelling (The Net Ninja)",
-                name: "Build Web Apps with React & Firebase",
+                name: "Modern Javascript - From Novice to Ninja",
                 certLink: "https://lnkd.in/gdPeeaEE",
                 courseLink:
                     "https://www.udemy.com/course/modern-javascript-from-novice-to-ninja/",

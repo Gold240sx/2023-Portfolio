@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import { SocialIcon } from "react-social-icons"
 import ResumeIcon from "../assets/Icons/ResumeDL.svg"
-import resumeFile from "../assets/files/MichaelMartell2023ResumeV1.3.pdf"
+import resumeFile from "../assets/files/Michael Martell Resume 2023 - minimized v1.5.3.pdf"
 import { Link } from "react-router-dom"
 
 import { motion } from "framer-motion"
