@@ -109,11 +109,129 @@ const Technologies = [
         logo: "https://i.ibb.co/PFcgZPb/upstash-icon-logo-6-EB6-AA96-EE-seeklogo-com.png",
         type: "database",
     },
+        {
+        name: "Resend",
+        id: 14,
+        logo: "https://i.ibb.co/n75f7bg/resend-copy.jpg",
+        type: "api",
+    },
 ]
 
 const ProjectItems = [
-    {
+        {
         id: 1,
+        name: "Product Giveaway Manager",
+        image: "https://i.ibb.co/T4MVT6W/animated-hero.png",
+        imageDescription:
+            "Website Animated Hero",
+        tagline: "Full-Stack Marketing and product web app w/ order + customer management application",
+        uiDesign: "#",
+        description:
+            `What is this project for?
+            This project is a website built for a client who wanted a landing page with web presence that incorporated an form application to retrieve information towards users seeking to get free mobile devices through a progam that they are a dealer with.  
+
+            How does it accomplish that goal?
+            Its intentionally simple, with the main goal for users to fill out the form, with enough of a web presence to ensure trust, but without anything unessessary, to facilitate that goal. It takes the user-submitted data and sends it to the clients email allowing him to see if the user qualifies for a device. Additionally, the data is sent to Google Firebase to, where it can be viewed on the backend of the application (dashboard) where once the client signs in, can then view edit and modify that data to their liking. `,
+        month: "November",
+        year: 2023,
+        technologies: ["Next.js", "Typescript", "Tailwind", "Firebase", "Resend"],
+        repository: "https://github.com/Gold240sx/Bruce-phones",
+        link: "http://www.alwaystherewireless.com",
+        tags: [
+            "Typescript Zod Data Validation",
+            "App Router",
+            "Resend API",
+            "react-email",
+            "Admin Dashboard",
+            "React-hook-form",
+        ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/bgGBykf/multi-step-form.png",
+                description: "Multi-step-form",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/2vgKLfv/file-upload.png",
+                description: "File upload",
+            },
+            {
+                id: 3,
+                image: "https://i.ibb.co/ssLQQF6/user-manager.png",
+                description: "User Permissions-based Management",
+            },
+            {
+                id: 4,
+                image: "https://i.ibb.co/F0K4PgW/react-select.png",
+                description: "React-Select",
+            },
+            {
+                id: 5,
+                image: "https://i.ibb.co/R3Lsmqd/form-success-toast.png",
+                description: "DB upload and email Success",
+            },
+            {
+                id: 6,
+                image: "https://i.ibb.co/mRj80sq/react-calendar.png",
+                description: "React- calendar",
+            },
+        ],
+    },
+    {
+        id: 2,
+        name: "BikeShop: e-commerce app w/ Stripe payments",
+        image: "https://i.ibb.co/Y7qfCf6/carousel.png",
+        imageDescription:
+            "Custom Carousel Hero",
+        tagline: "Full-Stack Next13 app-router e-commerce platform w/ stripe payments and admin order processing",
+        uiDesign: "#",
+        description: `BikeShop is a full stack e-commerce app with consumer facing stripe checkout process, and a an admin facing backend for checkout, order and fufillment process's. Products can be added by admins `,
+        month: "August",
+        year: 2023,
+        technologies: ["Next.js", "Typescript", "Tailwind", "Supabase"],
+        repository: "https://github.com/Gold240sx/bike-shop-Next-13",
+        link: "#",
+        tags: [
+            "CMS",
+            "Postgres SQL",
+            "role-based auth",
+            "App Router",
+            "Stripe API",
+            "route handlers",
+            "server actions",
+            "data persistence",
+        ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/tXtHGR9/product-page.png",
+                description: "Product Page",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/8973bL5/admin-dash.png",
+                description: "Backend Admin Dash",
+            },
+            {
+                id: 3,
+                image: "https://i.ibb.co/YXhp8Lm/checkout-process.png",
+                description: "Cart Checkout",
+            },
+            {
+                id: 4,
+                image: "https://i.ibb.co/kMKLWMX/stripe-checkout.png",
+                description: "Stripe Payment Processing",
+            },
+            {
+                id: 5,
+                image: "https://i.ibb.co/Y7qfCf6/carousel.png",
+                description: "Flowy Layout",
+            },
+        ],
+    },
+    {
+        id: 2,
         name: "2023 Portfolio Website",
         image: "https://i.ibb.co/JjN2VfS/SCR-20230519-duat.png",
         imageDescription:
@@ -159,7 +277,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 2,
+        id: 3,
         name: "Google Streetview Image Bundler",
         image: "https://i.ibb.co/GMKXQNJ/SCR-20230623-lvmd.png",
         tagline: "API => JPG => Zip.",
@@ -200,7 +318,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 3,
+        id: 4,
         name: "Insurance Sales Funnel",
         image: "https://i.ibb.co/GnDMPbW/SCR-20230623-jxda.png",
         imageDescription:
@@ -244,7 +362,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 4,
+        id: 5,
         name: "T3 Stack Demo",
         image: "https://i.ibb.co/QbHRpGT/SCR-20230516-kpwz.png",
         uiDesign: "#",
@@ -292,7 +410,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 5,
+        id: 6,
         name: "Drag + Drop App",
         image: "https://i.ibb.co/rtbvR6g/SCR-20230628-dcox.png",
         imageDescription:
@@ -336,7 +454,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 5,
+        id: 7,
         name: "TS Google Maps App",
         image: "https://i.ibb.co/2qgmv5L/SCR-20230628-oqni.png",
         imageDescription: "Typescript Vite-React Google Maps Application ",
@@ -351,67 +469,67 @@ const ProjectItems = [
         tags: ["api", "google maps", "env variables", "demo refactor", "Vite"],
         galleryImages: [],
     },
-    {
-        id: 7,
-        name: "Project 7",
-        image: "https://s3-ap-south-1.amazonaws.com/static.awfis.com/wp-content/uploads/2017/07/07184649/ProjectManagement.jpg",
-        tagline: "This is a placeholder",
-        description: "Project coming soon!",
-        uiDesign: "#",
-        month: "February",
-        year: 2023,
-        technologies: ["Next.js", "Tailwind"],
-        repository: "#",
-        link: "#",
-        tags: [
-            "dashboard",
-            "authentication",
-            "auth",
-            "scrollbar",
-            "nextjs",
-            "tailwind",
-            "firebase",
-            "typescript",
-        ],
-        galleryImages: [
-            {
-                id: 1,
-                image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
-            },
-            {
-                id: 2,
-                image: "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
-            },
-            {
-                id: 3,
-                image: "https://i.ibb.co/M8M8Vkr/megaman.png",
-            },
-            {
-                id: 4,
-                image: "https://i.ibb.co/bQqMwvY/fireship.png",
-            },
-        ],
-    },
-    {
-        id: 8,
-        name: "Project 8",
-        image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
-        tagline: "This is a placeholder",
-        description: "Project coming soon!",
-        uiDesign: "#",
-        month: "February",
-        year: 2023,
-        technologies: ["React", "Sass"],
-        repository: "#",
-        link: "#",
-        tags: ["React", "Sass"],
-        galleryImages: [
-            {
-                id: 1,
-                image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
-            },
-        ],
-    },
+    // {
+    //     id: 8,
+    //     name: "Project 8",
+    //     image: "https://s3-ap-south-1.amazonaws.com/static.awfis.com/wp-content/uploads/2017/07/07184649/ProjectManagement.jpg",
+    //     tagline: "This is a placeholder",
+    //     description: "Project coming soon!",
+    //     uiDesign: "#",
+    //     month: "February",
+    //     year: 2023,
+    //     technologies: ["Next.js", "Tailwind"],
+    //     repository: "#",
+    //     link: "#",
+    //     tags: [
+    //         "dashboard",
+    //         "authentication",
+    //         "auth",
+    //         "scrollbar",
+    //         "nextjs",
+    //         "tailwind",
+    //         "firebase",
+    //         "typescript",
+    //     ],
+    //     galleryImages: [
+    //         {
+    //             id: 1,
+    //             image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
+    //         },
+    //         {
+    //             id: 2,
+    //             image: "https://i.ibb.co/DGVVsj4/circle-logo-color.png",
+    //         },
+    //         {
+    //             id: 3,
+    //             image: "https://i.ibb.co/M8M8Vkr/megaman.png",
+    //         },
+    //         {
+    //             id: 4,
+    //             image: "https://i.ibb.co/bQqMwvY/fireship.png",
+    //         },
+    //     ],
+    // },
+    // {
+    //     id: 9,
+    //     name: "Project 9",
+    //     image: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2017Q2/project-planning-header@2x.png",
+    //     tagline: "This is a placeholder",
+    //     description: "Project coming soon!",
+    //     uiDesign: "#",
+    //     month: "February",
+    //     year: 2023,
+    //     technologies: ["React", "Sass"],
+    //     repository: "#",
+    //     link: "#",
+    //     tags: ["React", "Sass"],
+    //     galleryImages: [
+    //         {
+    //             id: 1,
+    //             image: "https://i.ibb.co/CH8rLhy/Avatar-prop.png",
+    //         },
+    //     ],
+    // },
 ]
 
 const Projects = () => {

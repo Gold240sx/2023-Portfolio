@@ -20,6 +20,7 @@ import Typescript from "../../assets/Images/coursePreviews/typescript.jpg"
 import Electron from "../../assets/Images/coursePreviews/electron.jpg"
 import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
 import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
+import Swift from "../../assets/Images/coursePreviews/Swift.jpeg"
 import Next13 from "../../assets/Images/coursePreviews/Next13.png"
 import Udemy from "../../assets/Images/coursePreviews/udemy.png"
 import NetNinja from "../../assets/Images/coursePreviews/netNinja.png"
@@ -102,6 +103,24 @@ const tabs = [
         name: "Continued Education / Certificates",
         features: [
             {
+                instructor: "Abdi Ahmed",
+                name: "Stripe Masterclass with React.js & Node.js",
+                certLink: "https://www.udemy.com/certificate/UC-ec7b6e75-dfc8-4485-aac1-e212ae835dc6/",
+                courseLink: "https://www.udemy.com/course/stripe-masterclass-with-react-node/",
+                description: `I built a full stack e-commerce website and learned how to integrate stripe api within a Next.js application. (I remixed the app up a bit from what was shown.`,
+                imageSrc: Stripe,
+                imageAlt: "Stripe Course Logo",
+                qrCode: "",
+                tags: [
+                    "e-comerce",
+                    "api integration",
+                    "next.js 13",
+                    "payment processing",
+                ],
+                platform: "Udemy",
+                platformLogo: Udemy,
+            },
+            {
                 instructor: "The Net Ninja",
                 name: "Next.JS Version 13 Masterclass",
                 certLink:
@@ -123,7 +142,7 @@ const tabs = [
                     "api requests",
                     "middleware",
                 ],
-                platform: "The Net Ninja",
+                  platform: "netNinja",
                 platformLogo: NetNinja,
             },
             {
@@ -320,22 +339,32 @@ const tabs = [
         name: "My Learning Que",
         features: [
             {
+                name: "Complete React Native in 2023: Zero to Mastery (with Hooks)",
+                courseLink:
+                    "https://www.udemy.com/course/complete-react-native-mobile-development-zero-to-mastery-with-hooks/",
+                description:
+                    "Master React Native for iOS and Android Mobile App Development using JavaScript. Build a modern e-commerce mobile app!",
+                imageSrc: ReactNative,
+                imageAlt: "ReactNatice Masterclass Preview.",
+                platformLogo: Udemy,
+            },
+            {
+                name: "iOS & Swift - The Complete iOS App Development Bootcamp",
+                courseLink:
+                    "https://www.udemy.com/share/101WsW3@ZPLPCzyElLI_JtUMEj4eEbU-CM6kzZBVjm-PbA9lGJsSpn47z9EKfWA8VNNQFbLPSQ==/",
+                description:
+                    "From Beginner to iOS App Developer with Just One Course! Learn the Swift Language - a successor to C++ used by Apple for unified mobile, tablet and desktop software applications. Fully Updated with a Comprehensive Module Dedicated to SwiftUI!",
+                imageSrc: Swift,
+                imageAlt: "Swift Masterclass Preview.",
+                platformLogo: Udemy,
+            },
+            {
                 name: "Next JS & Open AI / GPT: Next-generation Next JS & AI apps",
                 courseLink: "https://www.udemy.com/course/next-js-ai/",
                 description:
                     "Integrate OpenAI into your Next Generation Web Application feat. a SAAS project. Setup Stripe for charging customers. Store content with MongoDB.",
                 imageSrc: OpenAi,
                 imageAlt: "Open Ai + Next JS Preview.",
-                platformLogo: Udemy,
-            },
-            {
-                name: "Stripe Masterclass with React.js and Node.js",
-                courseLink:
-                    "https://www.udemy.com/course/stripe-masterclass-with-react-node/",
-                description:
-                    "Integrate  payments into your React.js and Node.js apps with Stripe.",
-                imageSrc: Stripe,
-                imageAlt: "Stripe Masterclass Preview.",
                 platformLogo: Udemy,
             },
             // {
@@ -366,17 +395,7 @@ const tabs = [
                 imageSrc: APIDev,
                 imageAlt: "API Masterclass Preview.",
                 platformLogo: Udemy,
-            },
-            {
-                name: "Complete React Native in 2023: Zero to Mastery (with Hooks)",
-                courseLink:
-                    "https://www.udemy.com/course/complete-react-native-mobile-development-zero-to-mastery-with-hooks/",
-                description:
-                    "Master React Native for iOS and Android Mobile App Development using JavaScript. Build a modern e-commerce mobile app!",
-                imageSrc: ReactNative,
-                imageAlt: "ReactNatice Masterclass Preview.",
-                platformLogo: Udemy,
-            },
+            }
         ],
     },
 ]
