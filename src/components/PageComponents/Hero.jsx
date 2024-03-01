@@ -2,6 +2,7 @@ import React from "react"
 import { Cursor, useTypewriter } from "react-simple-typewriter"
 // import heroImage from "../../assets/Images/Hero Image.png"
 import heroImage from "../../assets/Images/HeaderLogo.png"
+import myFont from "../../assets/fonts/Anta_Regular.json"
 // import heroRing from "../../assets/Images/Hero Ring.png"
 import { motion } from "framer-motion"
 
@@ -24,7 +25,7 @@ export default function Hero() {
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5 }}
+                transition={{ duration: 0.6 }}
                 className="min-h-4 relative flex h-auto w-[90vw] flex-col items-center justify-center sm:min-h-6 md:w-[80vw] lg:w-[70vw]"
             >
                 <img
@@ -38,7 +39,7 @@ export default function Hero() {
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5 }}
+                transition={{ duration: 0.6 }}
                 className="relative z-10 flex h-auto w-full flex-col items-center justify-center"
             >
                 {/* <h1 className="bottom-10 z-20 mx-auto hidden h-fit overflow-y-visible lg:absolute">

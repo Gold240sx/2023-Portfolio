@@ -1,27 +1,28 @@
-import { Fragment, useState } from "react";
-import { Tab } from "@headlessui/react";
-import { useTheme } from "../../hooks/useThemeContext";
-import * as te from "tw-elements";
-import IrondalePhoto from "../../assets/Images/Irondale.jpg";
-import PerpichPhoto from "../../assets/Images/Perpich.jpeg";
-import ArtCenterPhoto from "../../assets/Images/ArtCenter.jpeg";
-import CCSPhoto from "../../assets/Images/CCS.jpg";
-import Next from "../../assets/Images/coursePreviews/next.jpg";
-import Supabase from "../../assets/Images/coursePreviews/Supabase.jpg";
-import Tailwind from "../../assets/Images/coursePreviews/Tailwind.jpg";
-import Email from "../../assets/Images/coursePreviews/email.jpg";
-import D3 from "../../assets/Images/coursePreviews/d3.jpg";
-import React from "../../assets/Images/coursePreviews/react-firebase.jpg";
-import VanillaJS from "../../assets/Images/coursePreviews/vanillaJS.jpg";
-import OpenAi from "../../assets/Images/coursePreviews/openAi.jpg";
-import ReactNative from "../../assets/Images/coursePreviews/reactNative.jpg";
-import APIDev from "../../assets/Images/coursePreviews/apiDev.jpg";
+import { Fragment, useState } from "react"
+import { Tab } from "@headlessui/react"
+import { useTheme } from "../../hooks/useThemeContext"
+import * as te from "tw-elements"
+import IrondalePhoto from "../../assets/Images/Irondale.jpg"
+import PerpichPhoto from "../../assets/Images/Perpich.jpeg"
+import ArtCenterPhoto from "../../assets/Images/ArtCenter.jpeg"
+import CCSPhoto from "../../assets/Images/CCS.jpg"
+import Next from "../../assets/Images/coursePreviews/next.jpg"
+import Supabase from "../../assets/Images/coursePreviews/Supabase.jpg"
+import Tailwind from "../../assets/Images/coursePreviews/Tailwind.jpg"
+import Email from "../../assets/Images/coursePreviews/email.jpg"
+import D3 from "../../assets/Images/coursePreviews/d3.jpg"
+import React from "../../assets/Images/coursePreviews/react-firebase.jpg"
+import VanillaJS from "../../assets/Images/coursePreviews/vanillaJS.jpg"
+import OpenAi from "../../assets/Images/coursePreviews/openAi.jpg"
+import ReactNative from "../../assets/Images/coursePreviews/reactNative.jpg"
+import APIDev from "../../assets/Images/coursePreviews/apiDev.jpg"
 import Typescript from "../../assets/Images/coursePreviews/typescript.jpg"
 import Electron from "../../assets/Images/coursePreviews/electron.jpg"
 import Postgres from "../../assets/Images/coursePreviews/postgres.jpg"
 import Stripe from "../../assets/Images/coursePreviews/stripe.jpg"
 import Swift from "../../assets/Images/coursePreviews/Swift.jpeg"
 import Next13 from "../../assets/Images/coursePreviews/Next13.png"
+import GSAP from "../../assets/images/coursePreviews/gsap.jpg"
 import Udemy from "../../assets/Images/coursePreviews/udemy.png"
 import NetNinja from "../../assets/Images/coursePreviews/netNinja.png"
 import Crosses from "../../assets/Images/backgrounds/crosses.png"
@@ -103,10 +104,66 @@ const tabs = [
         name: "Continued Education / Certificates",
         features: [
             {
+                instructor: "Dr. Angela Yu",
+                name: "iOS & Swift - The Complete iOS App Development Bootcamp",
+                certLink: "In Progress...",
+                courseLink:
+                    "https://www.udemy.com/share/101WsW3@ZPLPCzyElLI_JtUMEj4eEbU-CM6kzZBVjm-PbA9lGJsSpn47z9EKfWA8VNNQFbLPSQ==/",
+                description:
+                    "From Beginner to iOS App Developer with Just One Course! Learn the Swift Language - a successor to C++ used by Apple for unified mobile, tablet and desktop software applications. Fully Updated with a Comprehensive Module Dedicated to SwiftUI!",
+                imageSrc: Swift,
+                imageAlt: "Swift Masterclass Preview.",
+                qrCode: "",
+                tags: [
+                    "iOS",
+                    "macOS",
+                    "iPadOS",
+                    "watchOS",
+                    "visionOS",
+                    "tvOS",
+                    "Apple",
+                    "swiftUI",
+                    "swift",
+                    "app development",
+                    "mobile",
+                    "tablet",
+                    "desktop",
+                ],
+                platform: "Udemy",
+                platformLogo: Udemy,
+            },
+            {
+                instructor: "Course Max One",
+                name: "Javascript Web Animations with Greensock (GSAP)",
+                certLink:
+                    "https://www.udemy.com/certificate/UC-0cad9be8-c37e-4460-9457-07b88d3aef46/",
+                courseLink:
+                    "https://www.udemy.com/course/animating-with-greensock/?couponCode=KEEPLEARNING",
+                description: `A couple weeks ago, I completed the GSAP Web animations course. It was pretty 
+                    cool and without a doubt, greensock (GSAP) is an incredible resource, and I look forward to 
+                    utilizing this tech in many of my upcoming projects. To say that GSAP is the fundamental 
+                    basis for some of the webs most captivating web experiences is an understatement!! It's a 
+                    truly amazing technology. `,
+                imageSrc: GSAP,
+                imageAlt: "GSAP Course Logo",
+                qrCode: "",
+                tags: [
+                    "web-animations",
+                    "gsap",
+                    "dynamic ui",
+                    "web design",
+                    "engagement",
+                ],
+                platform: "Udemy",
+                platformLogo: Udemy,
+            },
+            {
                 instructor: "Abdi Ahmed",
                 name: "Stripe Masterclass with React.js & Node.js",
-                certLink: "https://www.udemy.com/certificate/UC-ec7b6e75-dfc8-4485-aac1-e212ae835dc6/",
-                courseLink: "https://www.udemy.com/course/stripe-masterclass-with-react-node/",
+                certLink:
+                    "https://www.udemy.com/certificate/UC-ec7b6e75-dfc8-4485-aac1-e212ae835dc6/",
+                courseLink:
+                    "https://www.udemy.com/course/stripe-masterclass-with-react-node/",
                 description: `I built a full stack e-commerce website and learned how to integrate stripe api within a Next.js application. (I remixed the app up a bit from what was shown.`,
                 imageSrc: Stripe,
                 imageAlt: "Stripe Course Logo",
@@ -142,7 +199,7 @@ const tabs = [
                     "api requests",
                     "middleware",
                 ],
-                  platform: "netNinja",
+                platform: "netNinja",
                 platformLogo: NetNinja,
             },
             {
@@ -395,7 +452,7 @@ const tabs = [
                 imageSrc: APIDev,
                 imageAlt: "API Masterclass Preview.",
                 platformLogo: Udemy,
-            }
+            },
         ],
     },
 ]
@@ -1338,4 +1395,4 @@ const Education = () => {
     )
 }
 
-export default Education;
+export default Education

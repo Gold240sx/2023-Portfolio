@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useLayoutEffect } from "react"
 import { SocialIcon } from "react-social-icons"
 import ResumeIcon from "../assets/Icons/ResumeDL.svg"
-import resumeFile from "../assets/files/Michael Martell Resume 2023 - minimized v1.5.3.pdf"
+import resumeFile from "../assets/files/Michael Martell Resume 2024 v1.6.pdf"
 import { Link } from "react-router-dom"
 
 import { motion } from "framer-motion"
@@ -33,7 +33,7 @@ export default function SocialBar({}: Props) {
         tooltipRefs.current[id] = ref
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.addEventListener("blur", handleBlur)
         return () => {
             window.removeEventListener("blur", handleBlur)

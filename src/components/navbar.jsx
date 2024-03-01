@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useLayoutEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useSignOut } from "../hooks/useSignOut"
 import siteLogo from "../assets/Images/header.png"
-import siteLogoDark from "../assets/Images/headerDark.png"
+// import siteLogoDark from "../assets/Images/headerDark.png"
 import newSiteLogo from "../assets/Images/portfolio-logo-large.png"
 import newSiteLogoDark from "../assets/Images/portfolio-logo-dark-large.png"
 import LoResLogo from "../assets/Icons/logoLoRes.png"
@@ -138,7 +138,7 @@ export const navbar = () => {
         }
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.addEventListener("scroll", astronautHandler)
 
         // Cleanup the event listener on component unmount
@@ -147,7 +147,7 @@ export const navbar = () => {
         }
     }, [])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (showAstronaut) {
             astronautAnimation.start({
                 y: 0,

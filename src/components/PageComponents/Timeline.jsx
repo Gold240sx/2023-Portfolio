@@ -259,7 +259,7 @@ function YearLabel(props) {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={isVisible ? { opacity: 1 } : {}}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.6 }}
                 className={` ${isVisible ? " w-full " : "hidden"}`}
             >
                 <div id="lineup-col-content" className="">
@@ -317,7 +317,7 @@ function TimelineItem(props) {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isVisible ? { opacity: 1 } : {}}
-                    transition={{ duration: 1.8 }}
+                    transition={{ duration: 0.6 }}
                     className={` ${
                         isVisible
                             ? "ml-auto flex w-fit items-end px-2 text-right"
@@ -354,7 +354,7 @@ function TimelineItem(props) {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isVisible ? { opacity: 1 } : {}}
-                    transition={{ duration: 1.8 }}
+                    transition={{ duration: 0.6 }}
                     className={` ${
                         isVisible
                             ? "mr-auto flex w-fit items-start px-2 text-left"

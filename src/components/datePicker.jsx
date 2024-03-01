@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useLayoutEffect } from "react"
 
 const MONTH_NAMES = [
     "January",
@@ -26,7 +26,7 @@ export const DatePicker = ({ onChange }) => {
     const [blankDays, setBlankDays] = useState([])
     const [timeoutId, setTimeoutId] = useState(null)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const initDate = () => {
             let today = new Date()
             setMonth(today.getMonth())
@@ -66,7 +66,6 @@ export const DatePicker = ({ onChange }) => {
     }
 
     const handleInputBlur = (e) => {
-
         // if the value of what was clicked on had an id of datepicker, monthLast or MonthNext, then return
         if (
             e.target.id === "datepicker" ||

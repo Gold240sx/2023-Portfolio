@@ -6,7 +6,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline"
 import { useTheme } from "../hooks/useThemeContext"
 import { FaHotTub } from "react-icons/fa"
 import siteLogo from "../assets/Images/header.png"
-import siteLogoDark from "../assets/Images/headerDark.png"
+// import siteLogoDark from "../assets/Images/headerDark.png"
 import loResLogo from "../assets/Icons/logoLoRes.png"
 import { MdOutlineWorkHistory } from "react-icons/md"
 import { TbInfoSquare, TbSchool, TbCode } from "react-icons/tb"
@@ -74,7 +74,7 @@ export default function MobileMenu({ open, setOpen }) {
                                                         smoothClose(setOpen)
                                                     }
                                                 >
-                                                    <div className="ml-4 w-[214px] flex items-center justify-center -mb-2">
+                                                    <div className="ml-4 -mb-2 flex w-[214px] items-center justify-center">
                                                         {/* <h1 className="text-2xl font-semibold text-slate-800 dark:text-slate-200">
                                 Logo
                             </h1> */}

@@ -1,32 +1,32 @@
-import { active } from "d3";
-import React from "react";
-import { useState, useEffect } from "react";
-import { HiFilter } from "react-icons/hi";
-import { BsRulers, BsFillCalendarMonthFill } from "react-icons/bs";
+import { active } from "d3"
+import React from "react"
+import { useState, useEffect } from "react"
+import { HiFilter } from "react-icons/hi"
+import { BsRulers, BsFillCalendarMonthFill } from "react-icons/bs"
 import {
     ArrowLongLeftIcon,
     ArrowLongRightIcon,
-} from "@heroicons/react/20/solid";
-import { IoIosHelpCircle } from "react-icons/io";
-import { IoCloseCircleOutline } from "react-icons/io5";
-import { FaDatabase } from "react-icons/fa";
-import { Tooltip } from "react-tooltip";
-import { SiStylelint } from "react-icons/si";
-import { MdOutlineSearch } from "react-icons/md";
-import { useTheme } from "../../hooks/useThemeContext";
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import MobileMenu from "../mobileMenu";
-import Carousel from "../Carousel";
+} from "@heroicons/react/20/solid"
+import { IoIosHelpCircle } from "react-icons/io"
+import { IoCloseCircleOutline } from "react-icons/io5"
+import { FaDatabase } from "react-icons/fa"
+import { Tooltip } from "react-tooltip"
+import { SiStylelint } from "react-icons/si"
+import { MdOutlineSearch } from "react-icons/md"
+import { useTheme } from "../../hooks/useThemeContext"
+import Accordion from "react-bootstrap/Accordion"
+import Card from "react-bootstrap/Card"
+import Button from "react-bootstrap/Button"
+import MobileMenu from "../mobileMenu"
+import Carousel from "../Carousel"
 
 function getYearArray() {
-    const currentYear = new Date().getFullYear();
-    const yearArray = [];
+    const currentYear = new Date().getFullYear()
+    const yearArray = []
     for (let year = 2022; year <= currentYear; year++) {
-        yearArray.push(year);
+        yearArray.push(year)
     }
-    return yearArray;
+    return yearArray
 }
 
 const Technologies = [
@@ -97,7 +97,7 @@ const Technologies = [
         logo: "https://i.ibb.co/y4ZP2qG/sendgrid.png",
         type: "other",
     },
-];
+]
 
 const ProjectItems = [
     {
@@ -241,7 +241,7 @@ const ProjectItems = [
             },
         ],
     },
-];
+]
 
 const ProjectCard = ({
     project,
@@ -265,57 +265,57 @@ const ProjectCard = ({
         month,
         tags,
         id,
-    } = project;
+    } = project
 
-    const { mode } = useTheme();
+    const { mode } = useTheme()
 
-    const [minimizeGallery, setMinimizeGallery] = useState(true);
-    const [isMobile, setIsMobile] = useState(false);
-    const [isLarge, setIsLarge] = useState(false);
+    const [minimizeGallery, setMinimizeGallery] = useState(true)
+    const [isMobile, setIsMobile] = useState(false)
+    const [isLarge, setIsLarge] = useState(false)
 
     const handleGalleryClick = (clickedImage) => {
-        const images = [image, ...galleryImages.map((item) => item.image)];
-        const filteredImages = images.filter((item) => item !== clickedImage);
-        setActiveGalleryImages([clickedImage, ...filteredImages]);
-        console.log(activeGalleryImages);
-        setShowCarousel(true);
-    };
+        const images = [image, ...galleryImages.map((item) => item.image)]
+        const filteredImages = images.filter((item) => item !== clickedImage)
+        setActiveGalleryImages([clickedImage, ...filteredImages])
+        console.log(activeGalleryImages)
+        setShowCarousel(true)
+    }
 
     const matchedTechnologies = Technologies.filter((technology) =>
         technologies.includes(technology.name)
-    );
+    )
 
-    const gall4 = galleryImages.slice(0, 4);
+    const gall4 = galleryImages.slice(0, 4)
 
-    const createValidId = (str) => str.replace(/\s+/g, "_");
+    const createValidId = (str) => str.replace(/\s+/g, "_")
 
     const windowCheck = () => {
         const handleResize = () => {
             if (window.innerWidth > 768 && window.innerWidth < 1024) {
-                setMinimizeGallery(false);
-                setIsMobile(false);
-                setIsLarge(false);
+                setMinimizeGallery(false)
+                setIsMobile(false)
+                setIsLarge(false)
             } else if (window.innerWidth > 1024) {
-                setMinimizeGallery(true);
-                setIsMobile(false);
-                setIsLarge(true);
+                setMinimizeGallery(true)
+                setIsMobile(false)
+                setIsLarge(true)
             } else {
-                setMinimizeGallery(true);
-                setIsMobile(true);
-                setIsLarge(false);
+                setMinimizeGallery(true)
+                setIsMobile(true)
+                setIsLarge(false)
             }
-        };
+        }
 
         // Set the initial values on load
-        handleResize();
+        handleResize()
 
         // Add the event listener
-        window.addEventListener("resize", handleResize);
-    };
+        window.addEventListener("resize", handleResize)
+    }
 
     useEffect(() => {
-        windowCheck();
-    }, []);
+        windowCheck()
+    }, [])
 
     return (
         <div className="w-fit">
@@ -408,7 +408,7 @@ const ProjectCard = ({
                                                     className="mx-auto h-full w-auto object-cover"
                                                 />
                                             </li>
-                                        );
+                                        )
                                     })}
                                 </ul>
                             </div>
@@ -450,7 +450,7 @@ const ProjectCard = ({
                                     >
                                         {tag}
                                     </div>
-                                );
+                                )
                             })}
                         </div>
                     </div>
@@ -579,8 +579,8 @@ const ProjectCard = ({
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
 const Projects = () => {
     const [activeFilters, setActiveFilters] = useState([
@@ -597,32 +597,32 @@ const Projects = () => {
         "PlanetScale",
         "2023",
         "2022",
-    ]);
+    ])
 
-    const [showMobileFilters, setShowMobileFilters] = useState(true);
+    const [showMobileFilters, setShowMobileFilters] = useState(true)
     const [hoveredFilter, setHoveredFilter] = useState({
         filter: "",
         count: 0,
-    });
-    const [currentPage, setCurrentPage] = useState(1);
-    const [showHelpInfo, setShowHelpInfo] = useState(false);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [inputFocused, setInputFocused] = useState(false);
-    const [searchMatchInfo, setSearchMatchInfo] = useState({});
-    const [showCarousel, setShowCarousel] = useState(false);
-    const [activeGalleryImages, setActiveGalleryImages] = useState([]);
-    const itemsPerPage = 4;
+    })
+    const [currentPage, setCurrentPage] = useState(1)
+    const [showHelpInfo, setShowHelpInfo] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("")
+    const [inputFocused, setInputFocused] = useState(false)
+    const [searchMatchInfo, setSearchMatchInfo] = useState({})
+    const [showCarousel, setShowCarousel] = useState(false)
+    const [activeGalleryImages, setActiveGalleryImages] = useState([])
+    const itemsPerPage = 4
 
     const updateCurrentPage = (newPage) => {
         // Ensure the new page number is within the valid range
-        const maxPage = Math.ceil(filteredProjects.length / itemsPerPage);
+        const maxPage = Math.ceil(filteredProjects.length / itemsPerPage)
         if (newPage >= 1 && newPage <= maxPage) {
-            setCurrentPage(newPage);
+            setCurrentPage(newPage)
         }
-    };
+    }
 
     const toggleFilter = (filterName) => {
-        const yearFilters = getYearArray().map((year) => year.toString());
+        const yearFilters = getYearArray().map((year) => year.toString())
 
         if (activeFilters.includes(filterName)) {
             // If filter is already active, remove it only if it's not the last year filter
@@ -635,153 +635,153 @@ const Projects = () => {
             ) {
                 setActiveFilters(
                     activeFilters.filter((name) => name !== filterName)
-                );
+                )
             }
 
             // If the user deselects the last active year, select the most recent year
             const remainingYearFilters = activeFilters.filter(
                 (name) => yearFilters.includes(name) && name !== filterName
-            );
+            )
             if (
                 yearFilters.includes(filterName) &&
                 remainingYearFilters.length === 0
             ) {
-                const mostRecentYear = Math.max(...yearFilters);
+                const mostRecentYear = Math.max(...yearFilters)
                 setActiveFilters([
                     ...activeFilters.filter((name) => name !== filterName),
                     mostRecentYear.toString(),
-                ]);
+                ])
             }
         } else {
             // If filter is inactive, add it
-            setActiveFilters([...activeFilters, filterName]);
+            setActiveFilters([...activeFilters, filterName])
         }
-    };
+    }
 
     const handleMobileFilterClose = () => {
         // Close mobile filter menu
         showMobileFilters
             ? setShowMobileFilters(false)
-            : setShowMobileFilters(true);
-    };
+            : setShowMobileFilters(true)
+    }
 
     const countMatchingProjects = (filter) => {
         return ProjectItems.filter(
             (project) =>
                 project.technologies.includes(filter) ||
                 project.year.toString() === filter
-        ).length;
-    };
+        ).length
+    }
 
     // Rename the searchMatches function to getSearchMatchInfo
     const getSearchMatchInfo = (project, searchTerm) => {
         if (searchTerm.length === 0) {
-            return { isMatch: true, matchType: "", matchText: "" };
+            return { isMatch: true, matchType: "", matchText: "" }
         }
 
         const nameMatch = project.name
             .toLowerCase()
-            .includes(searchTerm.toLowerCase());
+            .includes(searchTerm.toLowerCase())
         const tagsMatch = project.tags.some((tag) =>
             tag.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+        )
         const descriptionMatch = project.description
             .toLowerCase()
-            .includes(searchTerm.toLowerCase());
+            .includes(searchTerm.toLowerCase())
 
         if (nameMatch) {
             return {
                 isMatch: true,
                 matchType: "Name",
                 matchText: project.name,
-            };
+            }
         } else if (tagsMatch) {
             const matchedTag = project.tags.find((tag) =>
                 tag.toLowerCase().includes(searchTerm.toLowerCase())
-            );
+            )
             return {
                 isMatch: true,
                 matchType: "Tag",
                 matchText: matchedTag,
-            };
+            }
         } else if (descriptionMatch) {
             return {
                 isMatch: true,
                 matchType: "Description",
                 matchText: project.description,
-            };
+            }
         } else {
-            return { isMatch: false, matchType: "", matchText: "" };
+            return { isMatch: false, matchType: "", matchText: "" }
         }
-    };
+    }
 
     // Move setSearchMatchInfo logic outside of filteredProjects function
-    useEffect(() => {
-        const newSearchMatchInfo = {};
+    useLayoutEffect(() => {
+        const newSearchMatchInfo = {}
 
         ProjectItems.forEach((project) => {
-            const searchMatch = getSearchMatchInfo(project, searchTerm);
-            newSearchMatchInfo[project.name] = searchMatch;
-        });
+            const searchMatch = getSearchMatchInfo(project, searchTerm)
+            newSearchMatchInfo[project.name] = searchMatch
+        })
 
-        setSearchMatchInfo(newSearchMatchInfo);
-    }, [ProjectItems, searchTerm, activeFilters]);
+        setSearchMatchInfo(newSearchMatchInfo)
+    }, [ProjectItems, searchTerm, activeFilters])
 
     // Update the filteredProjects function
     const filteredProjects = ProjectItems.filter((project) => {
         const hasTechnology = project.technologies.some((tech) =>
             activeFilters.includes(tech)
-        );
-        const hasYear = activeFilters.includes(project.year.toString());
+        )
+        const hasYear = activeFilters.includes(project.year.toString())
 
         return (
             hasTechnology && hasYear && searchMatchInfo[project.name]?.isMatch
-        );
-    });
+        )
+    })
 
     const areAllFiltersActive = () => {
         // Get all technology names
-        const allTechnologyFilters = Technologies.map((tech) => tech.name);
+        const allTechnologyFilters = Technologies.map((tech) => tech.name)
 
         // Get all years from year array
-        const allYearFilters = getYearArray().map((year) => year.toString());
+        const allYearFilters = getYearArray().map((year) => year.toString())
 
         // Combine both arrays
-        const allFilters = [...allTechnologyFilters, ...allYearFilters];
+        const allFilters = [...allTechnologyFilters, ...allYearFilters]
 
         // Check if every filter in allFilters is present in activeFilters
-        return allFilters.every((filter) => activeFilters.includes(filter));
-    };
+        return allFilters.every((filter) => activeFilters.includes(filter))
+    }
 
     const projectsToDisplay = filteredProjects.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
-    );
+    )
 
-    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage)
 
     const renderMatchedInfo = (searchMatchInfo, name, searchTerm) => {
         if (searchTerm == "" || searchTerm == null || searchTerm == undefined) {
-            return "";
+            return ""
         }
 
-        const matchInfo = searchMatchInfo[name] || {};
+        const matchInfo = searchMatchInfo[name] || {}
 
         if (!matchInfo.matchType || !matchInfo.matchText) {
-            return null;
+            return null
         }
 
         const searchTermIndex = matchInfo.matchText
             .toLowerCase()
-            .indexOf(searchTerm.toLowerCase());
-        const beforeMatch = matchInfo.matchText.slice(0, searchTermIndex);
+            .indexOf(searchTerm.toLowerCase())
+        const beforeMatch = matchInfo.matchText.slice(0, searchTermIndex)
         const matchedText = matchInfo.matchText.slice(
             searchTermIndex,
             searchTermIndex + searchTerm.length
-        );
+        )
         const afterMatch = matchInfo.matchText.slice(
             searchTermIndex + searchTerm.length
-        );
+        )
 
         return (
             <>
@@ -812,8 +812,8 @@ const Projects = () => {
                     </p>
                 </div>
             </>
-        );
-    };
+        )
+    }
 
     return (
         <div className="max-w-screen relative flex w-auto flex-col items-center justify-evenly  pb-12 text-center dark:bg-transparent md:px-6 md:text-left lg:max-w-[70rem] lg:px-10">
@@ -878,24 +878,24 @@ const Projects = () => {
                                 className="txt-sm flex min-w-fit cursor-pointer justify-center rounded-md border-2 border-transparent bg-sky-400 text-center align-middle text-white  hover:bg-sky-500  hover:text-white dark:bg-sky-500 dark:hover:bg-sky-400"
                                 onClick={() => {
                                     if (areAllFiltersActive()) {
-                                        setActiveFilters(["2023"]);
-                                        updateCurrentPage(1);
+                                        setActiveFilters(["2023"])
+                                        updateCurrentPage(1)
                                     } else {
                                         const allTechnologyFilters =
                                             Technologies.map(
                                                 (tech) => tech.name
-                                            );
+                                            )
                                         const allYearFilters =
                                             getYearArray().map((year) =>
                                                 year.toString()
-                                            );
+                                            )
 
                                         setActiveFilters([
                                             ...allTechnologyFilters,
                                             ...allYearFilters,
-                                        ]);
+                                        ])
 
-                                        updateCurrentPage(1);
+                                        updateCurrentPage(1)
                                     }
                                 }}
                             >
@@ -933,7 +933,7 @@ const Projects = () => {
                                                 const isActive =
                                                     activeFilters.includes(
                                                         tech.name
-                                                    );
+                                                    )
                                                 return (
                                                     <div
                                                         className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
@@ -947,11 +947,11 @@ const Projects = () => {
                                                             const count =
                                                                 countMatchingProjects(
                                                                     tech.name
-                                                                );
+                                                                )
                                                             setHoveredFilter({
                                                                 filter: tech.name,
                                                                 count,
-                                                            });
+                                                            })
                                                         }}
                                                         onMouseLeave={() =>
                                                             setHoveredFilter({
@@ -979,7 +979,7 @@ const Projects = () => {
                                                             alt={tech.name}
                                                         ></img>
                                                     </div>
-                                                );
+                                                )
                                             }
                                         })}
                                     </div>
@@ -1003,7 +1003,7 @@ const Projects = () => {
                                                 const isActive =
                                                     activeFilters.includes(
                                                         tech.name
-                                                    );
+                                                    )
                                                 return (
                                                     <div
                                                         className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
@@ -1017,11 +1017,11 @@ const Projects = () => {
                                                             const count =
                                                                 countMatchingProjects(
                                                                     tech.name
-                                                                );
+                                                                )
                                                             setHoveredFilter({
                                                                 filter: tech.name,
                                                                 count,
-                                                            });
+                                                            })
                                                         }}
                                                         onMouseLeave={() =>
                                                             setHoveredFilter({
@@ -1049,7 +1049,7 @@ const Projects = () => {
                                                             alt={tech.name}
                                                         ></img>
                                                     </div>
-                                                );
+                                                )
                                             }
                                         })}
                                     </div>
@@ -1073,7 +1073,7 @@ const Projects = () => {
                                                 const isActive =
                                                     activeFilters.includes(
                                                         tech.name
-                                                    );
+                                                    )
                                                 return (
                                                     <div
                                                         key={tech.id}
@@ -1087,11 +1087,11 @@ const Projects = () => {
                                                             const count =
                                                                 countMatchingProjects(
                                                                     tech.name
-                                                                );
+                                                                )
                                                             setHoveredFilter({
                                                                 filter: tech.name,
                                                                 count,
-                                                            });
+                                                            })
                                                         }}
                                                         onMouseLeave={() =>
                                                             setHoveredFilter({
@@ -1119,7 +1119,7 @@ const Projects = () => {
                                                             alt={tech.name}
                                                         ></img>
                                                     </div>
-                                                );
+                                                )
                                             }
                                         })}
                                     </div>
@@ -1142,7 +1142,7 @@ const Projects = () => {
                                             const isActive =
                                                 activeFilters.includes(
                                                     year.toString()
-                                                );
+                                                )
                                             return (
                                                 <div
                                                     key={year}
@@ -1156,11 +1156,11 @@ const Projects = () => {
                                                         const count =
                                                             countMatchingProjects(
                                                                 tech.name
-                                                            );
+                                                            )
                                                         setHoveredFilter({
                                                             filter: tech.name,
                                                             count,
-                                                        });
+                                                        })
                                                     }}
                                                     onMouseLeave={() =>
                                                         setHoveredFilter({
@@ -1179,7 +1179,7 @@ const Projects = () => {
                                                         {year}
                                                     </h3>
                                                 </div>
-                                            );
+                                            )
                                         })}
                                     </div>
                                 </div>
@@ -1231,23 +1231,23 @@ const Projects = () => {
                                 className="txt-xs my-auto mx-auto mr-2 cursor-pointer text-gray-500 dark:text-gray-400"
                                 onClick={() => {
                                     if (areAllFiltersActive()) {
-                                        setActiveFilters(["2023"]);
-                                        updateCurrentPage(1);
+                                        setActiveFilters(["2023"])
+                                        updateCurrentPage(1)
                                     } else {
                                         const allTechnologyFilters =
                                             Technologies.map(
                                                 (tech) => tech.name
-                                            );
+                                            )
                                         const allYearFilters =
                                             getYearArray().map((year) =>
                                                 year.toString()
-                                            );
+                                            )
 
                                         setActiveFilters([
                                             ...allTechnologyFilters,
                                             ...allYearFilters,
-                                        ]);
-                                        updateCurrentPage(1);
+                                        ])
+                                        updateCurrentPage(1)
                                     }
                                 }}
                             >
@@ -1270,7 +1270,7 @@ const Projects = () => {
                                             const isActive =
                                                 activeFilters.includes(
                                                     tech.name
-                                                );
+                                                )
                                             return (
                                                 <div
                                                     className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
@@ -1282,11 +1282,11 @@ const Projects = () => {
                                                         const count =
                                                             countMatchingProjects(
                                                                 tech.name
-                                                            );
+                                                            )
                                                         setHoveredFilter({
                                                             filter: tech.name,
                                                             count,
-                                                        });
+                                                        })
                                                     }}
                                                     onMouseLeave={() =>
                                                         setHoveredFilter({
@@ -1327,7 +1327,7 @@ const Projects = () => {
                                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
                                                 </div>
-                                            );
+                                            )
                                         }
                                     })}
                                 </div>
@@ -1343,7 +1343,7 @@ const Projects = () => {
                                             const isActive =
                                                 activeFilters.includes(
                                                     tech.name
-                                                );
+                                                )
                                             return (
                                                 <div
                                                     key={tech.id}
@@ -1355,11 +1355,11 @@ const Projects = () => {
                                                         const count =
                                                             countMatchingProjects(
                                                                 tech.name
-                                                            );
+                                                            )
                                                         setHoveredFilter({
                                                             filter: tech.name,
                                                             count,
-                                                        });
+                                                        })
                                                     }}
                                                     onMouseLeave={() =>
                                                         setHoveredFilter({
@@ -1400,7 +1400,7 @@ const Projects = () => {
                                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
                                                 </div>
-                                            );
+                                            )
                                         }
                                     })}
                                 </div>
@@ -1416,7 +1416,7 @@ const Projects = () => {
                                             const isActive =
                                                 activeFilters.includes(
                                                     tech.name
-                                                );
+                                                )
                                             return (
                                                 <div
                                                     key={tech.id}
@@ -1428,11 +1428,11 @@ const Projects = () => {
                                                         const count =
                                                             countMatchingProjects(
                                                                 tech.name
-                                                            );
+                                                            )
                                                         setHoveredFilter({
                                                             filter: tech.name,
                                                             count,
-                                                        });
+                                                        })
                                                     }}
                                                     onMouseLeave={() =>
                                                         setHoveredFilter({
@@ -1473,7 +1473,7 @@ const Projects = () => {
                                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                     />
                                                 </div>
-                                            );
+                                            )
                                         }
                                     })}
                                 </div>
@@ -1487,7 +1487,7 @@ const Projects = () => {
                                     {getYearArray().map((year) => {
                                         const isActive = activeFilters.includes(
                                             year.toString()
-                                        );
+                                        )
                                         return (
                                             <div
                                                 key={year}
@@ -1501,11 +1501,11 @@ const Projects = () => {
                                                     const count =
                                                         countMatchingProjects(
                                                             year.toString()
-                                                        );
+                                                        )
                                                     setHoveredFilter({
                                                         filter: year.toString(),
                                                         count,
-                                                    });
+                                                    })
                                                 }}
                                                 onMouseLeave={() =>
                                                     setHoveredFilter({
@@ -1534,7 +1534,7 @@ const Projects = () => {
                                                     className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                                 />
                                             </div>
-                                        );
+                                        )
                                     })}
                                 </div>
                             </div>
@@ -1544,7 +1544,7 @@ const Projects = () => {
                     <div className=" mt-10 ml-auto flex w-auto flex-col rounded-2xl bg-white p-[2px] py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/30 sm:p-2 md:gap-6">
                         {projectsToDisplay.length > 0 ? (
                             projectsToDisplay.map((project) => {
-                                const id = project.id;
+                                const id = project.id
                                 return (
                                     <>
                                         {/* filter project according to the search term if the search term length is greater than 0, where matchtype is the type (contains: name, title or description, and text is the surrounding text of the search containing the search query, and highlighting it in yellow) */}
@@ -1575,7 +1575,7 @@ const Projects = () => {
                                             />
                                         </React.Fragment>
                                     </>
-                                );
+                                )
                             })
                         ) : (
                             <div className=" flex h-full flex-col items-center justify-center align-middle">
@@ -1591,8 +1591,8 @@ const Projects = () => {
                                     <div
                                         className="flex"
                                         onClick={() => {
-                                            setShowHelpInfo(!showHelpInfo);
-                                            setSearchTerm("");
+                                            setShowHelpInfo(!showHelpInfo)
+                                            setSearchTerm("")
                                         }}
                                     >
                                         <h2 className="my-auto mr-3 flex text-xl">
@@ -1732,7 +1732,7 @@ const Projects = () => {
                             >
                                 <a
                                     onClick={() => {
-                                        updateCurrentPage(currentPage + 1);
+                                        updateCurrentPage(currentPage + 1)
                                     }}
                                     href="#projects"
                                     className="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium "
@@ -1760,7 +1760,7 @@ const Projects = () => {
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default Projects;
+export default Projects

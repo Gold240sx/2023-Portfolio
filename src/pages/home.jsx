@@ -99,7 +99,7 @@ const Home = () => {
             <section
                 className={`section-background relative ${
                     mode !== "dark" ? "light-mode" : "dark-mode"
-                } z-10 m-auto mx-auto my-[80px] flex h-[600px] w-full skew-y-12 snap-y snap-center justify-center border-t-8 border-gray-200/40 pb-[40px] align-middle dark:border-gray-600 lg:skew-y-0 lg:border-transparent`}
+                } z-10 m-auto mx-auto my-[80px] flex h-[750px] w-full skew-y-12 snap-y snap-center justify-center border-t-8 border-gray-200/40 pb-[70px] align-middle dark:border-gray-600 md:h-[600px] lg:skew-y-0 lg:border-transparent`}
                 id="skills"
             >
                 <div
@@ -111,7 +111,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            {/* Timeline */}
+            {/* Timeline
             <section
                 className="max-w-screen  mt-[80px] flex  justify-center align-middle"
                 style={{ minHeight: "fit-content" }}
@@ -120,13 +120,12 @@ const Home = () => {
                 <div className="my-auto " style={{ minHeight: "fit-content" }}>
                     <div className="snap-center">
                         <div className="relative">
-                            {/* <Timeline />
-                             */}
+                            
                             <Timeline />
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             {/* Education */}
             <section
                 className=" container m-auto mt-[80px] flex w-screen snap-y snap-center justify-center align-middle"

@@ -1,7 +1,7 @@
 import.meta.hot
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom"
 import { navbar as Navbar } from "./components/navbar"
-import { useState, useContext, useEffect } from "react"
+import { useState, useContext, useEffect, useLayoutEffect } from "react"
 import { AuthContextProvider } from "./context/AuthContext"
 import { Home, SignIn, Signup, Dashboard } from "./pages/index"
 import { useAuthContext } from "./hooks/useAuthContext.js"
@@ -9,6 +9,7 @@ import { FaSun } from "react-icons/fa"
 import { BsFillMoonStarsFill } from "react-icons/bs"
 import { Tooltip } from "react-tooltip"
 import MobileMenu from "./components/mobileMenu"
+import { Helmet } from "react-helmet"
 
 import { useTheme } from "./hooks/useThemeContext"
 import Footer from "./components/Footer"
@@ -28,7 +29,7 @@ function App({ children }) {
             localStorage.theme = "light"
         }
     }
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (localStorage.theme === "dark") {
             document.body.classList.add("dark")
             changeMode("dark")
@@ -40,6 +41,13 @@ function App({ children }) {
 
     return (
         <>
+            <Helmet>
+                <title>Michael Martell - Portfolio</title>
+                <meta
+                    name="Michael Martell's Developer Portfolio Website"
+                    content="A collection of projects, skills, and education."
+                />
+            </Helmet>
             <main
                 className=" relative h-full w-screen bg-slate-50 from-[#0D243B] to-[#0A1120] pb-[80px] dark:bg-gradient-to-bl dark:text-white"
                 // style={{ maxWidth: "100dvw", overflowX: "hidden" }}

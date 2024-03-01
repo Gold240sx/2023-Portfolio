@@ -1,6 +1,6 @@
 import { active } from "d3"
 import React from "react"
-import { useState, useEffect } from "react"
+import { useState, useLayoutEffect } from "react"
 import { HiFilter } from "react-icons/hi"
 import { BsRulers, BsFillCalendarMonthFill } from "react-icons/bs"
 import {
@@ -96,7 +96,7 @@ const ProjectCard = ({
 
     const createValidId = (str) => str.replace(/\s+/g, "_")
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         // Call windowCheck function only once
         windowCheck(setMinimizeGallery, setIsMobile, setIsLarge)
     }, [])
@@ -298,9 +298,9 @@ const ProjectCard = ({
                                     return (
                                         <div
                                             key={` ${project.id}-${tag}`}
-                                            className="xlg:text-base mb-2 mr-2 inline-flex h-6 h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs capitalize leading-none text-gray-500 dark:border-gray-700 dark:text-gray-400 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
+                                            className="xlg:text-base mb-2 mr-2 inline-flex h-6 h-fit items-center rounded-full border-2 bg-gray-100 px-1.5 py-1 text-xs leading-none text-gray-500 dark:border-gray-700 dark:text-gray-400 md:border-gray-300 md:bg-transparent md:px-2 md:text-gray-400 lg:px-3 lg:text-sm"
                                         >
-                                            {tag.toLowerCase()}
+                                            {tag}
                                         </div>
                                     )
                                 })}
@@ -331,14 +331,14 @@ const ProjectCard = ({
                                 TECH:
                             </h4>
                             {/* output logos of each techology used in each project */}
-                            <div className="ml-2 flex">
+                            <div className="ml-2 flex object-fill">
                                 {matchedTechnologies.map((tech) => (
                                     <img
                                         key={tech.id}
                                         className={`${
                                             tech.invert ? "dark:invert" : ""
-                                        } my-2 h-8 pr-1`}
-                                        src={tech.logo}
+                                        } my-2 mr-1 h-8 rounded-md object-fill`}
+                                        src={tech.imgSrc}
                                         alt={tech.name}
                                     />
                                 ))}

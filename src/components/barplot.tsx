@@ -1,4 +1,10 @@
-import React, { useMemo, useRef, useEffect, useState } from "react"
+import React, {
+    useMemo,
+    useRef,
+    useEffect,
+    useLayoutEffect,
+    useState,
+} from "react"
 import * as d3 from "d3"
 
 const MARGIN = { top: 5, right: 30, bottom: 15, left: 30 }
@@ -124,7 +130,7 @@ export const Barplot = ({ data }: BarplotProps) => {
             </g>
         ))
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const handleResize = () => {
             const newWidth = containerRef.current?.clientWidth || 400
             if (newWidth !== width) {

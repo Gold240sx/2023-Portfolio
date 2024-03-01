@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react"
 import { ChevronLeft, ChevronRight, StopCircle } from "react-feather"
 import { FaRegPlayCircle } from "react-icons/fa"
 import { RiCloseCircleLine } from "react-icons/ri"
@@ -41,11 +41,7 @@ function Carousel({
         a.click()
     }
 
-    useEffect(() => {
-        console.log(slides)
-    }, [])
-
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (autoSlide) {
             const intervalId = setInterval(() => {
                 setCurrentSlide((currentSlide) =>

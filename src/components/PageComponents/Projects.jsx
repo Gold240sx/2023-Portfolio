@@ -1,5 +1,5 @@
 import React from "react"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useLayoutEffect, useRef } from "react"
 import { HiFilter } from "react-icons/hi"
 import { BsRulers, BsFillCalendarMonthFill } from "react-icons/bs"
 import {
@@ -17,6 +17,14 @@ import { MdOutlineSearch } from "react-icons/md"
 import { useTheme } from "../../hooks/useThemeContext"
 import Carousel from "../Carousel"
 import ProjectCard from "./ProjectCard.jsx"
+import { SlScreenSmartphone } from "react-icons/sl"
+import { PiDesktopFill } from "react-icons/pi"
+import { TbDeviceVisionPro } from "react-icons/tb"
+import { TbServer2 } from "react-icons/tb"
+import { CgAppleWatch } from "react-icons/cg"
+import Web from "../../assets/Icons/web.webp"
+
+import { techList } from "../PageComponents/skillsSections/techList"
 
 function getYearArray() {
     const currentYear = new Date().getFullYear()
@@ -27,114 +35,293 @@ function getYearArray() {
     return yearArray
 }
 
-const Technologies = [
-    {
-        name: "Javascript",
-        id: 1,
-        logo: "https://img.icons8.com/color/48/000000/javascript.png",
-        type: "framework",
-    },
-    {
-        name: "Typescript",
-        id: 2,
-        logo: "https://i.ibb.co/hyG9DhN/typescript.png",
-        type: "framework",
-    },
-    {
-        name: "React",
-        id: 3,
-        logo: "https://img.icons8.com/color/48/000000/react-native.png",
-        type: "framework",
-    },
-    {
-        name: "Next.js",
-        id: 4,
-        logo: "https://img.icons8.com/color/48/000000/nextjs.png",
-        type: "framework",
-        invert: true,
-    },
-    {
-        name: "T3",
-        id: 5,
-        logo: "https://i.ibb.co/CPTK4xm/t3.png",
-        type: "framework",
-    },
-    {
-        name: "Sass",
-        id: 6,
-        logo: "https://img.icons8.com/color/48/000000/sass.png",
-        type: "css",
-    },
-    {
-        name: "Tailwind",
-        id: 7,
-        logo: "https://img.icons8.com/color/48/000000/tailwindcss.png",
-        type: "css",
-    },
-    {
-        name: "Firebase",
-        id: 8,
-        logo: "https://img.icons8.com/color/48/000000/firebase.png",
-        type: "database",
-    },
-    {
-        name: "Supabase",
-        id: 9,
-        logo: "https://i.ibb.co/Yjn0Nbx/supabase.png",
-        type: "database",
-    },
-    {
-        name: "PlanetScale",
-        id: 10,
-        logo: "https://i.ibb.co/DQH9WnY/planetscale.png",
-        type: "database",
-        invert: true,
-    },
-    {
-        name: "SendGrid",
-        id: 11,
-        logo: "https://i.ibb.co/y4ZP2qG/sendgrid.png",
-        type: "other",
-    },
-    {
-        name: "Prisma",
-        id: 12,
-        logo: "https://i.ibb.co/xj61MMr/prisma-logo-3805665-B69-seeklogo-com-2.png",
-        type: "other",
-        invert: true,
-    },
-    {
-        name: "Upstash",
-        id: 13,
-        logo: "https://i.ibb.co/PFcgZPb/upstash-icon-logo-6-EB6-AA96-EE-seeklogo-com.png",
-        type: "database",
-    },
-        {
-        name: "Resend",
-        id: 14,
-        logo: "https://i.ibb.co/n75f7bg/resend-copy.jpg",
-        type: "api",
-    },
-]
+// const Technologies = [
+//     {
+//         name: "Javascript",
+//         id: 1,
+//         logo: "https://img.icons8.com/color/48/000000/javascript.png",
+//         type: "framework",
+//     },
+//     {
+//         name: "Typescript",
+//         id: 2,
+//         logo: "https://i.ibb.co/hyG9DhN/typescript.png",
+//         type: "framework",
+//     },
+//     // {
+//     //     name: "Swift",
+//     //     id: 3,
+//     //     logo: "https://i.ibb.co/hyG9DhN/typescript.png",
+//     //     type: "framework",
+//     // },
+//     {
+//         name: "React",
+//         id: 3,
+//         logo: "https://img.icons8.com/color/48/000000/react-native.png",
+//         type: "framework",
+//     },
+//     {
+//         name: "Next.js",
+//         id: 4,
+//         logo: "https://img.icons8.com/color/48/000000/nextjs.png",
+//         type: "framework",
+//         invert: true,
+//     },
+//     {
+//         name: "T3",
+//         id: 5,
+//         logo: "https://i.ibb.co/CPTK4xm/t3.png",
+//         type: "framework",
+//     },
+//     {
+//         name: "React-Native",
+//         id: 6,
+//         logo: "https://i.ibb.co/YdCjKL5/react-native-dark-poster-with-blue-icon-on-black-vector-36271615.jpg",
+//         type: "framework",
+//     },
+//     {
+//         name: "Sass",
+//         id: 7,
+//         logo: "https://img.icons8.com/color/48/000000/sass.png",
+//         type: "css",
+//     },
+//     {
+//         name: "Tailwind",
+//         id: 8,
+//         logo: "https://img.icons8.com/color/48/000000/tailwindcss.png",
+//         type: "css",
+//     },
+//     {
+//         name: "Firebase",
+//         id: 9,
+//         logo: "https://img.icons8.com/color/48/000000/firebase.png",
+//         type: "database",
+//     },
+//     {
+//         name: "Supabase",
+//         id: 10,
+//         logo: "https://i.ibb.co/Yjn0Nbx/supabase.png",
+//         type: "database",
+//     },
+//     {
+//         name: "PlanetScale",
+//         id: 11,
+//         logo: "https://i.ibb.co/DQH9WnY/planetscale.png",
+//         type: "database",
+//         invert: true,
+//     },
+//     {
+//         name: "AWS",
+//         id: 12,
+//         logo: "https://i.ibb.co/YP7KCrF/aws-amplify-logo-D68-DDB5-AB1-seeklogo-com.png",
+//         type: "database",
+//     },
+//     {
+//         name: "SendGrid",
+//         id: 13,
+//         logo: "https://i.ibb.co/y4ZP2qG/sendgrid.png",
+//         type: "other",
+//     },
+//     {
+//         name: "Prisma",
+//         id: 14,
+//         logo: "https://i.ibb.co/xj61MMr/prisma-logo-3805665-B69-seeklogo-com-2.png",
+//         type: "other",
+//         invert: true,
+//     },
+//     {
+//         name: "Upstash",
+//         id: 15,
+//         logo: "https://i.ibb.co/PFcgZPb/upstash-icon-logo-6-EB6-AA96-EE-seeklogo-com.png",
+//         type: "database",
+//     },
+//     {
+//         name: "Resend",
+//         id: 16,
+//         logo: "https://i.ibb.co/n75f7bg/resend-copy.jpg",
+//         type: "api",
+//     },
+// ]
 
 const ProjectItems = [
-        {
+    {
+        id: 0,
+        name: "3D Site - React Three Fiber",
+        image: "https://i.ibb.co/6YJx6ZX/SCR-20240301-jemf.png",
+        imageDescription: "3D Site - React Three Fiber",
+        tagline: "React Three Fiber Interactive 3D Environment",
+        uiDesign: "#",
+        description: `This is my first time using React Three Fiber. I created a 3D environment utilizing React Three Fiber, 
+        React Drei, and . The environment is interactive and the user can move around and zoom into the scene. The 
+        scene additionally loads in with an animation.`,
+        month: "February",
+        year: 2024,
+        technologies: ["React", "Three.js", "React-Three-Fiber", "ThreeDrei"],
+        repository: "https://github.com/Gold240sx/reactThreeFiber-First-Go",
+        link: "#",
+        tags: ["3D", "React-Three-Fiber", "three.js", "animation"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/s2S07pb/SCR-20240301-jclk.png",
+                description: "3D View",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/HzrxBT8/SCR-20240301-jcto.png",
+                description: "3D View",
+            },
+        ],
+    },
+    {
+        id: 0,
+        name: "FlashChat - iOS Swift Messenger",
+        image: "https://i.ibb.co/cLwmFmj/SCR-20240301-inin.png",
+        imageDescription: "FlashChat iOS App",
+        tagline: "Messenging Application with Firebase Database integration.",
+        uiDesign: "#",
+        description: `In this project, I learned how to use the iOS Navigation Controller, 
+        Swift loops, CocoaPods and the Swift Package Manager, how to integrate Google 
+        Firebase Authentication and Firestore (database) to retrieve and refresh live data 
+        into the app. I also learned how to create iOS Table Views, and create custom UI
+        components with .xib files.`,
+        month: "February",
+        year: 2024,
+        technologies: ["Swift", "Firebase"],
+        repository: "https://github.com/Gold240sx/Swift-Flash-Chat",
+        link: "#",
+        tags: ["Swift", "iOS", "Apple", "macOS", "visionOS", "iPadOS"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/F70KhX3/SCR-20240301-ipmj.png",
+                description: "Login Screen",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/K069Gh1/SCR-20240301-iobf.png",
+                description: "Chat Screen",
+            },
+            {
+                id: 3,
+                image: "https://i.ibb.co/7p2r7nr/SCR-20240301-iptu.png",
+                description: "Firebase Content",
+            },
+        ],
+    },
+    {
+        id: 0,
+        name: "Pyramid Decoder",
+        image: "https://i.ibb.co/sKJDYxN/SCR-20240227-ifnp.png",
+        imageDescription: "Pyramid Decoder App",
+        tagline: "Parsing and decoding unformatted data from a .txt file",
+        uiDesign: "#",
+        description: `What is this project for?
+            This was a test for a job position to parse unformatted data from 
+            a .txt file, then, arrange the data into a pyramid, and only return 
+            the numbers on the right side of the pyramid. The numbers then 
+            should act as the key to each value, and the app needed to return 
+            the decoded value.`,
+        month: "February",
+        year: 2024,
+        technologies: ["Javascript"],
+        repository: "https://github.com/Gold240sx/pyramid-decoder ",
+        link: "https://pyramid-decoder-e7ae0.web.app",
+        tags: ["vanilla JS", "fibinacci", "file parsing", "data structure"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/5FnxLDM/SCR-20240227-iftp.png",
+                description: "Decode Modal",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/wW103S7/SCR-20240228-gewj.png",
+                description: "Unformatted .txt file that this app parses",
+            },
+        ],
+    },
+    {
+        id: 1,
+        name: "DEVcember - React Native 25 day master class",
+        image: "https://i.ibb.co/Jv3NMsb/SCR-20231205-oltl.png",
+        imageDescription: "Learning React Native in a 25 day class",
+        tagline: "Learning React Native in a 25 day class",
+        uiDesign: "#",
+        description: `What is this project for?
+           This class ran by not-just-dev is my first exposure to react-native. We're building 24 new projects with various functionality to become proficient in building real-world mobile apps. The course can be found at: https://www.notjust.dev/projects/devember `,
+        month: "December",
+        year: 2023,
+        technologies: ["Typescript", "React-Native", "Tailwind", "AWS Amplify"],
+        repository:
+            "https://github.com/Gold240sx/2023-ReactNative-Ts-NativeWind-Base",
+        link: "#",
+        tags: [
+            "android",
+            "ios",
+            "api",
+            "FaceID",
+            "BioMetrics",
+            "Expo",
+            "Mobile dev",
+            "React-Native",
+            "Amplify",
+        ],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/LvjRgWS/SCR-20231205-onbn.png",
+                description: "Animated Splash Screen",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/XZF8QtF/SCR-20231205-ongy.png",
+                description: "Multipage Animated Onboarding Screen",
+            },
+            {
+                id: 3,
+                image: "https://i.ibb.co/7k4xnGz/SCR-20231205-onoe.png",
+                description: "Markdown Editor and Viewer (Formatted Text)",
+            },
+            {
+                id: 4,
+                image: "https://i.ibb.co/800G1sv/SCR-20231205-onve.png",
+                description: "Air BnB clone",
+            },
+            {
+                id: 5,
+                image: "https://i.ibb.co/WW5KBgM/SCR-20231211-lpij.png",
+                description: "Voice Memos",
+            },
+            {
+                id: 6,
+                image: "https://i.ibb.co/h1HhS4n/SCR-20231214-fkjm.png",
+                description: "Weather App",
+            },
+        ],
+    },
+    {
         id: 1,
         name: "Product Giveaway Manager",
         image: "https://i.ibb.co/T4MVT6W/animated-hero.png",
-        imageDescription:
-            "Website Animated Hero",
-        tagline: "Full-Stack Marketing and product web app w/ order + customer management application",
+        imageDescription: "Website Animated Hero",
+        tagline:
+            "Full-Stack Marketing and product web app w/ order + customer management application",
         uiDesign: "#",
-        description:
-            `What is this project for?
+        description: `What is this project for?
             This project is a website built for a client who wanted a landing page with web presence that incorporated an form application to retrieve information towards users seeking to get free mobile devices through a progam that they are a dealer with.  
 
             How does it accomplish that goal?
             Its intentionally simple, with the main goal for users to fill out the form, with enough of a web presence to ensure trust, but without anything unessessary, to facilitate that goal. It takes the user-submitted data and sends it to the clients email allowing him to see if the user qualifies for a device. Additionally, the data is sent to Google Firebase to, where it can be viewed on the backend of the application (dashboard) where once the client signs in, can then view edit and modify that data to their liking. `,
         month: "November",
         year: 2023,
-        technologies: ["Next.js", "Typescript", "Tailwind", "Firebase", "Resend"],
+        technologies: [
+            "Next.js",
+            "Typescript",
+            "Tailwind",
+            "Firebase",
+            "Resend",
+        ],
         repository: "https://github.com/Gold240sx/Bruce-phones",
         link: "http://www.alwaystherewireless.com",
         tags: [
@@ -182,9 +369,9 @@ const ProjectItems = [
         id: 2,
         name: "BikeShop: e-commerce app w/ Stripe payments",
         image: "https://i.ibb.co/Y7qfCf6/carousel.png",
-        imageDescription:
-            "Custom Carousel Hero",
-        tagline: "Full-Stack Next13 app-router e-commerce platform w/ stripe payments and admin order processing",
+        imageDescription: "Custom Carousel Hero",
+        tagline:
+            "Full-Stack Next13 app-router e-commerce platform w/ stripe payments and admin order processing",
         uiDesign: "#",
         description: `BikeShop is a full stack e-commerce app with consumer facing stripe checkout process, and a an admin facing backend for checkout, order and fufillment process's. Products can be added by admins `,
         month: "August",
@@ -380,7 +567,7 @@ const ProjectItems = [
         technologies: [
             "Typescript",
             "Tailwind",
-            "T3",
+            "T3 App",
             "Prisma",
             "PlanetScale",
             "Upstash",
@@ -531,6 +718,32 @@ const ProjectItems = [
     //     ],
     // },
 ]
+const Platforms = [
+    {
+        name: "web",
+        icon: Web,
+    },
+    {
+        name: "mobile",
+        icon: SlScreenSmartphone,
+    },
+    {
+        name: "desktop",
+        icon: PiDesktopFill,
+    },
+    {
+        name: "server",
+        icon: TbServer2,
+    },
+    {
+        name: "watch",
+        icon: CgAppleWatch,
+    },
+    {
+        name: "VR / AR",
+        icon: TbDeviceVisionPro,
+    },
+]
 
 const Projects = () => {
     // PROJECTS FUNCTIONS
@@ -539,17 +752,16 @@ const Projects = () => {
         "Typescript",
         "React",
         "Next.js",
-        "T3",
-        "Sass",
-        "Tailwind",
+        "React Native",
         "Firebase",
         "Supabase",
-        "SendGrid",
+        "React Native",
         "PlanetScale",
-        "Prisma",
-        "Upstash",
+        "Swift",
+        "AWS Amplify",
         "2023",
         "2022",
+        "2024",
     ])
     const [hoveredFilter, setHoveredFilter] = useState({
         filter: "",
@@ -620,14 +832,14 @@ const Projects = () => {
             : setShowMobileFilters(true)
     }
     const countMatchingProjects = (filter) => {
-        console.log("countMatchingProjects", filter)
-        console.log(
-            ProjectItems.filter(
-                (project) =>
-                    project.technologies.includes(filter) ||
-                    project.year.toString() === filter
-            ).length
-        )
+        // console.log("countMatchingProjects", filter)
+        // console.log(
+        //     ProjectItems.filter(
+        //         (project) =>
+        //             project.technologies.includes(filter) ||
+        //             project.year.toString() === filter
+        //     ).length
+        // )
         return ProjectItems.filter(
             (project) =>
                 project.technologies.includes(filter) ||
@@ -677,7 +889,7 @@ const Projects = () => {
         }
     }
     // Move setSearchMatchInfo logic outside of filteredProjects function
-    useEffect(() => {
+    useLayoutEffect(() => {
         const newSearchMatchInfo = {}
 
         ProjectItems.forEach((project) => {
@@ -700,7 +912,7 @@ const Projects = () => {
     })
     const areAllFiltersActive = () => {
         // Get all technology names
-        const allTechnologyFilters = Technologies.map((tech) => tech.name)
+        const allTechnologyFilters = techList.map((tech) => tech.name)
 
         // Get all years from year array
         const allYearFilters = getYearArray().map((year) => year.toString())
@@ -936,9 +1148,7 @@ const Projects = () => {
                                         updateCurrentPage(1)
                                     } else {
                                         const allTechnologyFilters =
-                                            Technologies.map(
-                                                (tech) => tech.name
-                                            )
+                                            techList.map((tech) => tech.name)
                                         const allYearFilters =
                                             getYearArray().map((year) =>
                                                 year.toString()
@@ -982,7 +1192,8 @@ const Projects = () => {
                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                     />
                                     <div className=" flex flex-col items-center border-t-2 py-5">
-                                        {Technologies.map((tech) => {
+                                        {/* mobile frameWorks */}
+                                        {/* {Technologies.map((tech) => {
                                             if (tech.type === "framework") {
                                                 const isActive =
                                                     activeFilters.includes(
@@ -1035,11 +1246,99 @@ const Projects = () => {
                                                     </div>
                                                 )
                                             }
+                                        })} */}
+                                        {techList.map((tech, index) => {
+                                            const isActive =
+                                                activeFilters.includes(
+                                                    tech.name
+                                                )
+
+                                            return (
+                                                <>
+                                                    {(tech.type ===
+                                                        "language" ||
+                                                        tech.type ===
+                                                            "framework") &&
+                                                        tech.hide !== true &&
+                                                        tech.projectFilter ===
+                                                            true && (
+                                                            <>
+                                                                <div
+                                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                                    key={
+                                                                        tech.id
+                                                                    }
+                                                                    onClick={() =>
+                                                                        toggleFilter(
+                                                                            tech.name
+                                                                        )
+                                                                    }
+                                                                    onMouseEnter={() => {
+                                                                        const count =
+                                                                            countMatchingProjects(
+                                                                                tech.name
+                                                                            )
+                                                                        setHoveredFilter(
+                                                                            {
+                                                                                filter: tech.name,
+                                                                                count,
+                                                                            }
+                                                                        )
+                                                                    }}
+                                                                    onMouseLeave={() =>
+                                                                        setHoveredFilter(
+                                                                            {
+                                                                                filter: "",
+                                                                                count: 0,
+                                                                            }
+                                                                        )
+                                                                    }
+                                                                    data-tooltip-id={`projectMobile${tech.id}`}
+                                                                    data-tooltip-content={`
+                                                            ${hoveredFilter.filter}:
+                                                            ${hoveredFilter.count}
+                                                        projects`}
+                                                                    data-tooltip-delay-show={
+                                                                        50
+                                                                    }
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            tech.imgSrc
+                                                                        }
+                                                                        className={` ${
+                                                                            isActive
+                                                                                ? "opacity-100"
+                                                                                : "grayscale"
+                                                                        }  mb-1 max-h-[40px] rounded-md opacity-50 hover:grayscale-[50%] ${
+                                                                            tech.invert
+                                                                                ? "opacity-50 dark:invert"
+                                                                                : ""
+                                                                        } ${
+                                                                            tech.invert &&
+                                                                            isActive
+                                                                                ? "opacity-100 dark:opacity-100"
+                                                                                : "opacity-50 "
+                                                                        }`}
+                                                                        alt={
+                                                                            tech.name
+                                                                        }
+                                                                    ></img>
+                                                                </div>
+                                                                <Tooltip
+                                                                    id={`projectMobile${tech.id}`}
+                                                                    place="right"
+                                                                    className=" bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                                                />
+                                                            </>
+                                                        )}
+                                                </>
+                                            )
                                         })}
                                     </div>
                                 </div>
                                 {/* Upper-Center */}
-                                <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
+                                {/* <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <SiStylelint
                                         className=" w-22 h-22 my-auto flex pb-1.5 text-center align-middle text-4xl capitalize tracking-widest "
                                         data-tooltip-id="projectMobileCSS"
@@ -1052,62 +1351,9 @@ const Projects = () => {
                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                     />
                                     <div className=" flex flex-col items-center border-t-2 py-5">
-                                        {Technologies.map((tech) => {
-                                            if (tech.type === "css") {
-                                                const isActive =
-                                                    activeFilters.includes(
-                                                        tech.name
-                                                    )
-                                                return (
-                                                    <div
-                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
-                                                        key={tech.id}
-                                                        onClick={() =>
-                                                            toggleFilter(
-                                                                tech.name
-                                                            )
-                                                        }
-                                                        onMouseEnter={() => {
-                                                            const count =
-                                                                countMatchingProjects(
-                                                                    tech.name
-                                                                )
-                                                            setHoveredFilter({
-                                                                filter: tech.name,
-                                                                count,
-                                                            })
-                                                        }}
-                                                        onMouseLeave={() =>
-                                                            setHoveredFilter({
-                                                                filter: "",
-                                                                count: 0,
-                                                            })
-                                                        }
-                                                    >
-                                                        <img
-                                                            src={tech.logo}
-                                                            className={` ${
-                                                                isActive
-                                                                    ? "opacity-100"
-                                                                    : "grayscale"
-                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
-                                                                tech.invert
-                                                                    ? "opacity-50 dark:invert"
-                                                                    : ""
-                                                            } ${
-                                                                tech.invert &&
-                                                                isActive
-                                                                    ? "opacity-100 dark:opacity-100"
-                                                                    : "opacity-50 "
-                                                            }`}
-                                                            alt={tech.name}
-                                                        ></img>
-                                                    </div>
-                                                )
-                                            }
-                                        })}
+                                        mobile css
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* Lower-Center */}
                                 <div className="flex h-full flex-col items-center justify-center rounded-lg border-2 p-1.5 dark:border-gray-600 dark:bg-white/5 dark:hover:bg-white/10">
                                     <FaDatabase
@@ -1122,7 +1368,7 @@ const Projects = () => {
                                         className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
                                     />
                                     <div className="flex flex-col items-center border-t-2 py-5">
-                                        {Technologies.map((tech) => {
+                                        {/* {Technologies.map((tech) => {
                                             if (tech.type === "database") {
                                                 const isActive =
                                                     activeFilters.includes(
@@ -1175,6 +1421,91 @@ const Projects = () => {
                                                     </div>
                                                 )
                                             }
+                                        })} */}
+                                        {techList.map((tech, index) => {
+                                            const isActive =
+                                                activeFilters.includes(
+                                                    tech.name
+                                                )
+
+                                            return (
+                                                <>
+                                                    {tech.type === "database" &&
+                                                        tech.hide !== true &&
+                                                        tech.projectFilter ===
+                                                            true && (
+                                                            <>
+                                                                <div
+                                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                                    key={
+                                                                        tech.id
+                                                                    }
+                                                                    onClick={() =>
+                                                                        toggleFilter(
+                                                                            tech.name
+                                                                        )
+                                                                    }
+                                                                    onMouseEnter={() => {
+                                                                        const count =
+                                                                            countMatchingProjects(
+                                                                                tech.name
+                                                                            )
+                                                                        setHoveredFilter(
+                                                                            {
+                                                                                filter: tech.name,
+                                                                                count,
+                                                                            }
+                                                                        )
+                                                                    }}
+                                                                    onMouseLeave={() =>
+                                                                        setHoveredFilter(
+                                                                            {
+                                                                                filter: "",
+                                                                                count: 0,
+                                                                            }
+                                                                        )
+                                                                    }
+                                                                    data-tooltip-id={`projectMobile${tech.id}database`}
+                                                                    data-tooltip-content={`
+                                                            ${hoveredFilter.filter}:
+                                                            ${hoveredFilter.count}
+                                                        projects`}
+                                                                    data-tooltip-delay-show={
+                                                                        50
+                                                                    }
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            tech.imgSrc
+                                                                        }
+                                                                        className={` ${
+                                                                            isActive
+                                                                                ? "opacity-100"
+                                                                                : "grayscale"
+                                                                        }  mx-1 mb-2 max-h-[40px] rounded-md opacity-50 hover:grayscale-[50%] ${
+                                                                            tech.invert
+                                                                                ? "opacity-50 dark:invert"
+                                                                                : ""
+                                                                        } ${
+                                                                            tech.invert &&
+                                                                            isActive
+                                                                                ? "opacity-100 dark:opacity-100"
+                                                                                : "opacity-50 "
+                                                                        }`}
+                                                                        alt={
+                                                                            tech.name
+                                                                        }
+                                                                    ></img>
+                                                                </div>
+                                                                <Tooltip
+                                                                    id={`projectMobile${tech.id}database`}
+                                                                    place="right"
+                                                                    className=" bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                                                />
+                                                            </>
+                                                        )}
+                                                </>
+                                            )
                                         })}
                                     </div>
                                 </div>
@@ -1283,13 +1614,11 @@ const Projects = () => {
                                 className="txt-xs my-auto mx-auto mr-2 cursor-pointer text-gray-500 dark:text-gray-400"
                                 onClick={() => {
                                     if (areAllFiltersActive()) {
-                                        setActiveFilters(["2023"])
+                                        setActiveFilters(["2024"])
                                         updateCurrentPage(1)
                                     } else {
                                         const allTechnologyFilters =
-                                            Technologies.map(
-                                                (tech) => tech.name
-                                            )
+                                            techList.map((tech) => tech.name)
                                         const allYearFilters =
                                             getYearArray().map((year) =>
                                                 year.toString()
@@ -1317,81 +1646,96 @@ const Projects = () => {
                         <div className=" flex h-full items-center justify-around">
                             <div className="group flex h-full flex-col items-center justify-center rounded-lg p-1.5 ">
                                 <h3 className="mb-1 text-2xl  tracking-wide text-gray-700  opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
-                                    Frameworks
+                                    Languages / Frameworks
                                 </h3>
-                                <div className="flex max-h-16 lg:gap-2">
-                                    {Technologies.map((tech) => {
-                                        if (tech.type === "framework") {
-                                            const isActive =
-                                                activeFilters.includes(
-                                                    tech.name
-                                                )
-                                            return (
-                                                <>
-                                                    <div
-                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
-                                                        key={tech.id}
-                                                        onClick={() =>
-                                                            toggleFilter(
-                                                                tech.name
-                                                            )
-                                                        }
-                                                        onMouseEnter={() => {
-                                                            const count =
-                                                                countMatchingProjects(
-                                                                    tech.name
-                                                                )
-                                                            setHoveredFilter({
-                                                                filter: tech.name,
-                                                                count,
-                                                            })
-                                                        }}
-                                                        onMouseLeave={() =>
-                                                            setHoveredFilter({
-                                                                filter: "",
-                                                                count: 0,
-                                                            })
-                                                        }
-                                                        data-tooltip-id={`projectMobile${tech.id}`}
-                                                        data-tooltip-content={`
+                                <div className="flex max-h-16">
+                                    {techList.map((tech, index) => {
+                                        const isActive = activeFilters.includes(
+                                            tech.name
+                                        )
+
+                                        return (
+                                            <>
+                                                {(tech.type === "language" ||
+                                                    tech.type ===
+                                                        "framework") &&
+                                                    tech.hide !== true &&
+                                                    tech.projectFilter ===
+                                                        true && (
+                                                        <>
+                                                            <div
+                                                                className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                                key={tech.id}
+                                                                onClick={() =>
+                                                                    toggleFilter(
+                                                                        tech.name
+                                                                    )
+                                                                }
+                                                                onMouseEnter={() => {
+                                                                    const count =
+                                                                        countMatchingProjects(
+                                                                            tech.name
+                                                                        )
+                                                                    setHoveredFilter(
+                                                                        {
+                                                                            filter: tech.name,
+                                                                            count,
+                                                                        }
+                                                                    )
+                                                                }}
+                                                                onMouseLeave={() =>
+                                                                    setHoveredFilter(
+                                                                        {
+                                                                            filter: "",
+                                                                            count: 0,
+                                                                        }
+                                                                    )
+                                                                }
+                                                                data-tooltip-id={`projectMobile${tech.id}`}
+                                                                data-tooltip-content={`
                                                             ${hoveredFilter.filter}:
                                                             ${hoveredFilter.count}
                                                         projects`}
-                                                        data-tooltip-delay-show={
-                                                            50
-                                                        }
-                                                    >
-                                                        <img
-                                                            src={tech.logo}
-                                                            className={` ${
-                                                                isActive
-                                                                    ? "opacity-100"
-                                                                    : "grayscale"
-                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
-                                                                tech.invert
-                                                                    ? "opacity-50 dark:invert"
-                                                                    : ""
-                                                            } ${
-                                                                tech.invert &&
-                                                                isActive
-                                                                    ? "opacity-100 dark:opacity-100"
-                                                                    : "opacity-50 "
-                                                            }`}
-                                                            alt={tech.name}
-                                                        ></img>
-                                                    </div>
-                                                    <Tooltip
-                                                        id={`projectMobile${tech.id}`}
-                                                        place="bottom"
-                                                        className=" bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
-                                                    />
-                                                </>
-                                            )
-                                        }
+                                                                data-tooltip-delay-show={
+                                                                    50
+                                                                }
+                                                            >
+                                                                <img
+                                                                    src={
+                                                                        tech.imgSrc
+                                                                    }
+                                                                    className={` ${
+                                                                        isActive
+                                                                            ? "opacity-100"
+                                                                            : "grayscale"
+                                                                    }  mx-1 max-h-[40px] rounded-md opacity-50 hover:grayscale-[50%] ${
+                                                                        tech.invert
+                                                                            ? "opacity-50 dark:invert"
+                                                                            : ""
+                                                                    } ${
+                                                                        tech.invert &&
+                                                                        isActive
+                                                                            ? "opacity-100 dark:opacity-100"
+                                                                            : "opacity-50 "
+                                                                    }`}
+                                                                    alt={
+                                                                        tech.name
+                                                                    }
+                                                                ></img>
+                                                            </div>
+                                                            <Tooltip
+                                                                id={`projectMobile${tech.id}`}
+                                                                place="bottom"
+                                                                className=" bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                                            />
+                                                        </>
+                                                    )}
+                                            </>
+                                        )
                                     })}
                                 </div>
                             </div>
-                            <div className="group flex h-full flex-col items-center justify-center p-1.5">
+                            {/* <div className="group flex h-full flex-col items-center justify-center p-1.5">
                                 <h3 className="mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     CSS
                                 </h3>
@@ -1466,83 +1810,168 @@ const Projects = () => {
                                         }
                                     })}
                                 </div>
-                            </div>
+                            </div> */}
+                            {/* Databases */}
                             <div className="group flex h-full flex-col items-center justify-center p-1.5">
                                 <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     Databases
                                 </h3>
-                                <div className="flex md:gap-2">
-                                    {Technologies.map((tech) => {
-                                        if (tech.type === "database") {
-                                            const isActive =
-                                                activeFilters.includes(
-                                                    tech.name
-                                                )
-                                            return (
-                                                <>
-                                                    <div
-                                                        key={tech.id}
-                                                        className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
-                                                        data-tooltip-id={`projectMobile${tech.id}`}
-                                                        data-tooltip-content={`
+                                <div className="flex">
+                                    {techList.map((tech, index) => {
+                                        const isActive = activeFilters.includes(
+                                            tech.name
+                                        )
+
+                                        return (
+                                            <>
+                                                {tech.type === "database" &&
+                                                    tech.hide !== true &&
+                                                    tech.projectFilter ===
+                                                        true && (
+                                                        <>
+                                                            <div
+                                                                className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                                key={tech.id}
+                                                                onClick={() =>
+                                                                    toggleFilter(
+                                                                        tech.name
+                                                                    )
+                                                                }
+                                                                onMouseEnter={() => {
+                                                                    const count =
+                                                                        countMatchingProjects(
+                                                                            tech.name
+                                                                        )
+                                                                    setHoveredFilter(
+                                                                        {
+                                                                            filter: tech.name,
+                                                                            count,
+                                                                        }
+                                                                    )
+                                                                }}
+                                                                onMouseLeave={() =>
+                                                                    setHoveredFilter(
+                                                                        {
+                                                                            filter: "",
+                                                                            count: 0,
+                                                                        }
+                                                                    )
+                                                                }
+                                                                data-tooltip-id={`projectMobile${tech.id}`}
+                                                                data-tooltip-content={`
                                                             ${hoveredFilter.filter}:
                                                             ${hoveredFilter.count}
                                                         projects`}
-                                                        data-tooltip-delay-show={
-                                                            50
-                                                        }
-                                                        onClick={() =>
-                                                            toggleFilter(
-                                                                tech.name
-                                                            )
-                                                        }
-                                                        onMouseEnter={() => {
-                                                            const count =
-                                                                countMatchingProjects(
-                                                                    tech.name
-                                                                )
-                                                            setHoveredFilter({
-                                                                filter: tech.name,
-                                                                count,
-                                                            })
-                                                        }}
-                                                        onMouseLeave={() =>
-                                                            setHoveredFilter({
-                                                                filter: "",
-                                                                count: 0,
-                                                            })
-                                                        }
-                                                    >
-                                                        <img
-                                                            src={tech.logo}
-                                                            className={` ${
-                                                                isActive
-                                                                    ? "opacity-100"
-                                                                    : "grayscale"
-                                                            } filter- max-h-[40px] opacity-50 hover:grayscale-[50%] ${
-                                                                tech.invert
-                                                                    ? "opacity-50 dark:invert"
-                                                                    : ""
-                                                            } ${
-                                                                tech.invert &&
-                                                                isActive
-                                                                    ? "opacity-100 dark:opacity-100"
-                                                                    : "opacity-50 "
-                                                            }`}
-                                                            alt={tech.name}
-                                                        ></img>
-                                                    </div>
-                                                    <Tooltip
-                                                        id={`projectMobile${tech.id}`}
-                                                        place="bottom"
-                                                        className="z-[1000] bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
-                                                    />
-                                                </>
-                                            )
-                                        }
+                                                                data-tooltip-delay-show={
+                                                                    50
+                                                                }
+                                                            >
+                                                                <img
+                                                                    src={
+                                                                        tech.imgSrc
+                                                                    }
+                                                                    className={` ${
+                                                                        isActive
+                                                                            ? "opacity-100"
+                                                                            : "grayscale"
+                                                                    }  mx-1 max-h-[40px] rounded-md opacity-50 hover:grayscale-[50%] ${
+                                                                        tech.invert
+                                                                            ? "opacity-50 dark:invert"
+                                                                            : ""
+                                                                    } ${
+                                                                        tech.invert &&
+                                                                        isActive
+                                                                            ? "opacity-100 dark:opacity-100"
+                                                                            : "opacity-50 "
+                                                                    }`}
+                                                                    alt={
+                                                                        tech.name
+                                                                    }
+                                                                ></img>
+                                                            </div>
+                                                            <Tooltip
+                                                                id={`projectMobile${tech.id}`}
+                                                                place="bottom"
+                                                                className=" bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                                            />
+                                                        </>
+                                                    )}
+                                            </>
+                                        )
                                     })}
                                 </div>
                             </div>
+
+                            {/* <div className="group flex h-full flex-col items-center justify-center p-1.5">
+                                <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
+                                    Platform
+                                </h3>
+                                <div className="flex">
+                                    {Platforms.map((tech, index) => {
+                                        const isActive = activeFilters.includes(
+                                            tech.name
+                                        )
+
+                                        return (
+                                            <>
+                                                <div
+                                                    className="align-center flex cursor-pointer rounded-lg hover:bg-white dark:hover:bg-gray-600"
+                                                    key={tech.id}
+                                                    onClick={() =>
+                                                        toggleFilter(tech.name)
+                                                    }
+                                                    onMouseEnter={() => {
+                                                        const count =
+                                                            countMatchingProjects(
+                                                                tech.name
+                                                            )
+                                                        setHoveredFilter({
+                                                            filter: tech.name,
+                                                            count,
+                                                        })
+                                                    }}
+                                                    onMouseLeave={() =>
+                                                        setHoveredFilter({
+                                                            filter: "",
+                                                            count: 0,
+                                                        })
+                                                    }
+                                                    data-tooltip-id={`projectMobile${tech.id}`}
+                                                    data-tooltip-content={`
+                                                            ${hoveredFilter.filter}:
+                                                            ${hoveredFilter.count}
+                                                        projects`}
+                                                    data-tooltip-delay-show={50}
+                                                >
+                                                    <img
+                                                        src={tech.imgSrc}
+                                                        className={` ${
+                                                            isActive
+                                                                ? "opacity-100"
+                                                                : "grayscale"
+                                                        }  mx-1 max-h-[40px] rounded-md opacity-50 hover:grayscale-[50%] ${
+                                                            tech.invert
+                                                                ? "opacity-50 dark:invert"
+                                                                : ""
+                                                        } ${
+                                                            tech.invert &&
+                                                            isActive
+                                                                ? "opacity-100 dark:opacity-100"
+                                                                : "opacity-50 "
+                                                        }`}
+                                                        alt={tech.name}
+                                                    ></img>
+                                                </div>
+                                                <Tooltip
+                                                    id={`projectMobile${tech.id}`}
+                                                    place="bottom"
+                                                    className=" bg-gray-200 text-xl font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                                />
+                                            </>
+                                        )
+                                    })}
+                                </div>
+                            </div> */}
                             <div className="group flex h-full flex-col items-center justify-center p-1.5 ">
                                 <h3 className=" mb-1 text-2xl tracking-wide text-gray-700 opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100 dark:text-gray-300">
                                     Year
@@ -1610,11 +2039,11 @@ const Projects = () => {
                         className=" max-w-screen mt-10 ml-auto flex w-auto flex-col rounded-2xl bg-white/60 p-[2px] py-5 transition-all duration-300 ease-in-out dark:bg-[#262826]/30 sm:p-2 md:mx-10 md:gap-6"
                     >
                         {projectsToDisplay.length > 0 ? (
-                            projectsToDisplay.map((project) => {
+                            projectsToDisplay.map((project, index) => {
                                 const id = project.id
                                 const uiDesign = project.uiDesign
                                 return (
-                                    <>
+                                    <div key={index}>
                                         {/* filter project according to the search term if the search term length is greater than 0, where matchtype is the type (contains: name, title or description, and text is the surrounding text of the search containing the search query, and highlighting it in yellow) */}
                                         <React.Fragment
                                             key={`${id}-${searchTerm}`}
@@ -1639,7 +2068,7 @@ const Projects = () => {
                                                 setShowCarousel={
                                                     setShowCarousel
                                                 }
-                                                Technologies={Technologies}
+                                                Technologies={techList}
                                                 showCarousel={showCarousel}
                                                 setActiveGalleryImages={
                                                     setActiveGalleryImages
@@ -1650,7 +2079,7 @@ const Projects = () => {
                                                 }
                                             />
                                         </React.Fragment>
-                                    </>
+                                    </div>
                                 )
                             })
                         ) : (

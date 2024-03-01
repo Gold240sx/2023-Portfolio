@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useLayoutEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { InView } from "react-intersection-observer"
 import MeLogo from "../../assets/images/Hero Image.png"
 
@@ -7,7 +7,7 @@ const AboutMe = () => {
     const [isVisible, setIsVisible] = useState(false)
     const [isWordsVisible, setIsWordsVisible] = useState(false)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setIsVisible(true)
     }, [])
 
@@ -49,7 +49,7 @@ const AboutMe = () => {
                                 opacity: 0,
                             }}
                             whileInView={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 1.2 }}
+                            transition={{ duration: 0.6 }}
                             className="relative z-10 h-0"
                             style={{ paddingBottom: "100%" }}
                         >
@@ -79,7 +79,7 @@ const AboutMe = () => {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isWordsVisible ? { opacity: 1 } : {}}
-                    transition={{ duration: 1.5 }}
+                    transition={{ duration: 0.6 }}
                     className={` ${
                         isWordsVisible ? "flex" : "hidden"
                     } min-h-4 relative h-auto w-[90vw] flex-col items-center justify-center sm:min-h-6 md:w-[80vw] lg:w-[70vw]`}
@@ -94,9 +94,8 @@ const AboutMe = () => {
                     <p className=" prose  mt-6 mb-10 w-[80%] text-left text-base leading-8 text-gray-400 dark:text-gray-400 lg:ml-[unset]">
                         {"\u00A0\u00A0\u00A0"} Thanks for checking out my
                         portfolio! I am a former arts and design student in
-                        Frisco, TX. I began my web developement journey in
-                        November of 2020. My first formal web Developement Job
-                        began in 2022.
+                        Frisco, TX. I began my web developement journey in 2020.
+                        My first formal web Developement Job began in 2022.
                         <br />
                         <br />
                         {"\u00A0\u00A0\u00A0"} I'm a proud doggy dad. My Corgi
@@ -111,4 +110,4 @@ const AboutMe = () => {
     )
 }
 
-export default AboutMe;
+export default AboutMe
