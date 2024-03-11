@@ -333,14 +333,24 @@ const ProjectCard = ({
                             {/* output logos of each techology used in each project */}
                             <div className="ml-2 flex object-fill">
                                 {matchedTechnologies.map((tech) => (
-                                    <img
-                                        key={tech.id}
-                                        className={`${
-                                            tech.invert ? "dark:invert" : ""
-                                        } my-2 mr-1 h-8 rounded-md object-fill`}
-                                        src={tech.imgSrc}
-                                        alt={tech.name}
-                                    />
+                                    <div key={tech.name}>
+                                        <img
+                                            key={tech.id}
+                                            className={`${
+                                                tech.invert ? "dark:invert" : ""
+                                            } my-2 mr-1 h-8 cursor-pointer rounded-md object-fill`}
+                                            src={tech.imgSrc}
+                                            alt={tech.name}
+                                            data-tooltip-id={`${tech.tooltipRef}-${key}`}
+                                            data-tooltip-content={tech.name}
+                                            data-tooltip-delay-show={300}
+                                        />
+                                        <Tooltip
+                                            id={`${tech.tooltipRef}-${key}`}
+                                            place="top"
+                                            className="z-100 bg-gray-200 font-semibold text-slate-700 dark:bg-black dark:text-white"
+                                        />
+                                    </div>
                                 ))}
                             </div>
                         </div>

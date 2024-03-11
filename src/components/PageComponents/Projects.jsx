@@ -146,6 +146,40 @@ function getYearArray() {
 const ProjectItems = [
     {
         id: 0,
+        name: "SwiftUI - SwiftData CRUD with Persistence",
+        image: "https://i.ibb.co/ZLHkx3k/SCR-20240311-cvga.png",
+        imageDescription: "Expense Tracking app with basic CRUD functionality",
+        tagline: "CRUD SwiftData App with Persistence",
+        uiDesign: "#",
+        description: `My First SwiftData App. Working with SwiftData, I created a simple 
+                                CRUD app that allows the user to add, edit, and delete expenses.`,
+        month: "March",
+        year: 2024,
+        technologies: ["Swift", "SwiftData", "SwiftUI"],
+        repository:
+            "https://github.com/Gold240sx/SwiftData-ios-CRUD-ExpenseList/",
+        link: "#",
+        tags: ["Swift", "SwiftData", "SwiftUI", "Crud", "Persistence"],
+        galleryImages: [
+            {
+                id: 1,
+                image: "https://i.ibb.co/mTGPPBC/SCR-20240311-ctob.png",
+                description: "Adding an item (Create)",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/zNrphs8/SCR-20240311-ctwd.png",
+                description: "Edit Item (Update)",
+            },
+            {
+                id: 2,
+                image: "https://i.ibb.co/dj5hzhY/SCR-20240311-cudt.png",
+                description: "Delete Item (Delete)",
+            },
+        ],
+    },
+    {
+        id: 1,
         name: "3D Site - React Three Fiber",
         image: "https://i.ibb.co/6YJx6ZX/SCR-20240301-jemf.png",
         imageDescription: "3D Site - React Three Fiber",
@@ -174,7 +208,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 0,
+        id: 2,
         name: "FlashChat - iOS Swift Messenger",
         image: "https://i.ibb.co/cLwmFmj/SCR-20240301-inin.png",
         imageDescription: "FlashChat iOS App",
@@ -210,7 +244,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 0,
+        id: 3,
         name: "Pyramid Decoder",
         image: "https://i.ibb.co/sKJDYxN/SCR-20240227-ifnp.png",
         imageDescription: "Pyramid Decoder App",
@@ -242,7 +276,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 1,
+        id: 4,
         name: "DEVcember - React Native 25 day master class",
         image: "https://i.ibb.co/Jv3NMsb/SCR-20231205-oltl.png",
         imageDescription: "Learning React Native in a 25 day class",
@@ -252,7 +286,7 @@ const ProjectItems = [
            This class ran by not-just-dev is my first exposure to react-native. We're building 24 new projects with various functionality to become proficient in building real-world mobile apps. The course can be found at: https://www.notjust.dev/projects/devember `,
         month: "December",
         year: 2023,
-        technologies: ["Typescript", "React-Native", "Tailwind", "AWS Amplify"],
+        technologies: ["Typescript", "React Native", "Tailwind", "AWS Amplify"],
         repository:
             "https://github.com/Gold240sx/2023-ReactNative-Ts-NativeWind-Base",
         link: "#",
@@ -301,7 +335,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 1,
+        id: 5,
         name: "Product Giveaway Manager",
         image: "https://i.ibb.co/T4MVT6W/animated-hero.png",
         imageDescription: "Website Animated Hero",
@@ -366,7 +400,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 2,
+        id: 6,
         name: "BikeShop: e-commerce app w/ Stripe payments",
         image: "https://i.ibb.co/Y7qfCf6/carousel.png",
         imageDescription: "Custom Carousel Hero",
@@ -376,7 +410,13 @@ const ProjectItems = [
         description: `BikeShop is a full stack e-commerce app with consumer facing stripe checkout process, and a an admin facing backend for checkout, order and fufillment process's. Products can be added by admins `,
         month: "August",
         year: 2023,
-        technologies: ["Next.js", "Typescript", "Tailwind", "Supabase"],
+        technologies: [
+            "Next.js",
+            "Typescript",
+            "Tailwind",
+            "Supabase",
+            "Stripe",
+        ],
         repository: "https://github.com/Gold240sx/bike-shop-Next-13",
         link: "#",
         tags: [
@@ -418,7 +458,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 2,
+        id: 7,
         name: "2023 Portfolio Website",
         image: "https://i.ibb.co/JjN2VfS/SCR-20230519-duat.png",
         imageDescription:
@@ -464,7 +504,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 3,
+        id: 8,
         name: "Google Streetview Image Bundler",
         image: "https://i.ibb.co/GMKXQNJ/SCR-20230623-lvmd.png",
         tagline: "API => JPG => Zip.",
@@ -505,7 +545,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 4,
+        id: 9,
         name: "Insurance Sales Funnel",
         image: "https://i.ibb.co/GnDMPbW/SCR-20230623-jxda.png",
         imageDescription:
@@ -549,7 +589,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 5,
+        id: 10,
         name: "T3 Stack Demo",
         image: "https://i.ibb.co/QbHRpGT/SCR-20230516-kpwz.png",
         uiDesign: "#",
@@ -597,7 +637,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 6,
+        id: 11,
         name: "Drag + Drop App",
         image: "https://i.ibb.co/rtbvR6g/SCR-20230628-dcox.png",
         imageDescription:
@@ -641,7 +681,7 @@ const ProjectItems = [
         ],
     },
     {
-        id: 7,
+        id: 12,
         name: "TS Google Maps App",
         image: "https://i.ibb.co/2qgmv5L/SCR-20230628-oqni.png",
         imageDescription: "Typescript Vite-React Google Maps Application ",
